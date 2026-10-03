@@ -4,7 +4,7 @@ An original third-person survival horror game for Unreal Engine 5, inspired by t
 
 The first build has 5 chapters and about 2 hours of play. It is designed to grow to 10 or more chapters.
 
-## Design docs (Phase 0)
+## Docs
 
 | Doc | What it covers |
 |---|---|
@@ -15,11 +15,16 @@ The first build has 5 chapters and about 2 hours of play. It is designed to grow
 | [Cutscenes](docs/Cutscenes.md) | The shot-by-shot script for every cutscene |
 | [Asset List](docs/AssetList.md) | Every model, animation, weapon, environment and sound needed, with sources |
 | [Asset Credits](docs/AssetCredits.md) | Licence log for imported assets |
+| [Project Setup](docs/systems/ProjectSetup.md) | Phase 1: how to build, open and test the Unreal project |
+
+## Getting started
+
+See [Project Setup](docs/systems/ProjectSetup.md). You need Unreal Engine 5.6+, Visual Studio 2022 and Git LFS.
 
 ## Build phases
 
-0. Design docs (this branch)
-1. Project setup
+0. Design docs (done)
+1. Project setup (done)
 2. Player movement, health states and injuries
 3. Weapons and combat
 4. Items, crates, inventory and map
