@@ -17,7 +17,11 @@ The first build has 5 chapters and about 2 hours of play. It is designed to grow
 | [Asset Credits](docs/AssetCredits.md) | Licence log for imported assets |
 | [Project Setup](docs/systems/ProjectSetup.md) | Phase 1: how to build, open and test the Unreal project |
 
-## Getting started
+## Play the browser build
+
+Chapter 1 is playable in a desktop browser. See [web/README.md](web/README.md).
+
+## Getting started (Unreal Engine)
 
 See [Project Setup](docs/systems/ProjectSetup.md). You need Unreal Engine 5.6+, Visual Studio 2022 and Git LFS.
 

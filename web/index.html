@@ -1,0 +1,214 @@
+<title>VEILFALL Chapter 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Barlow+Condensed:wght@400;500;600&family=Special+Elite&display=swap">
+<style>
+/* Layout: full-bleed 3D view, HUD pinned to corners, modals centred like evidence on a desk.
+   Single dark look on purpose: the game is always played in the dark. */
+:root {
+  color-scheme: dark;
+  --ink: #0b0c0e;          /* night */
+  --panel: rgba(14, 15, 17, 0.92);
+  --bone: #d9d3c4;         /* paper, text */
+  --dim: #8b867a;
+  --blood: #b3261e;        /* danger, accents */
+  --amber: #d8a33a;        /* caution, prompts */
+  --vital: #5fbf6a;        /* fine */
+  --paper: #e6dfcc;
+  --paper-ink: #2a2620;
+  --font-display: "IM Fell English SC", "Times New Roman", serif;
+  --font-ui: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --font-doc: "Special Elite", "Courier New", monospace;
+}
+html, body { height: 100%; }
+[hidden] { display: none !important; }
+body { background: var(--ink); color: var(--bone); font-family: var(--font-ui); overflow: hidden; user-select: none; }
+#game { position: fixed; inset: 0; }
+#game canvas { display: block; width: 100%; height: 100%; }
+.hud { position: fixed; pointer-events: none; z-index: 5; }
+#hud-vitals { left: 24px; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 6px; }
+#ecg { width: 220px; height: 54px; border: 1px solid rgba(217,211,196,0.18); background: rgba(0,0,0,0.35); }
+#vital-label { font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase; }
+#injuries { display: flex; gap: 6px; flex-wrap: wrap; min-height: 22px; }
+.chip { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border: 1px solid currentColor; color: var(--blood); background: rgba(0,0,0,0.4); }
+#hud-ammo { right: 28px; bottom: calc(22px + env(safe-area-inset-bottom, 0px)); text-align: right; }
+#ammo-mag { font-size: 52px; line-height: 1; font-variant-numeric: tabular-nums; font-weight: 500; }
+#ammo-res { font-size: 22px; color: var(--dim); font-variant-numeric: tabular-nums; }
+#weapon-name { font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+#hud-objective { left: 24px; top: calc(20px + env(safe-area-inset-top, 0px)); max-width: min(420px, 70vw); }
+#objective-label { font-size: 12px; letter-spacing: 0.24em; color: var(--dim); text-transform: uppercase; }
+#objective-text { font-size: 19px; }
+#hud-detect { right: 28px; top: calc(20px + env(safe-area-inset-top, 0px)); font-size: 14px; letter-spacing: 0.22em; text-transform: uppercase; text-align: right; }
+#detect-bar { width: 130px; height: 4px; background: rgba(255,255,255,0.12); margin-top: 6px; margin-left: auto; }
+#detect-fill { height: 100%; width: 0; background: var(--amber); }
+#crosshair { left: 50%; top: 50%; width: 0; height: 0; }
+#crosshair i { position: absolute; background: var(--bone); opacity: 0.9; box-shadow: 0 0 2px #000; }
+#crosshair .h { width: 8px; height: 2px; top: -1px; }
+#crosshair .v { width: 2px; height: 8px; left: -1px; }
+#crosshair .dot { width: 3px; height: 3px; left: -1.5px; top: -1.5px; border-radius: 50%; }
+#prompt { left: 50%; top: 62%; transform: translateX(-50%); font-size: 20px; letter-spacing: 0.06em; background: rgba(0,0,0,0.55); padding: 6px 14px; border-left: 3px solid var(--amber); }
+#prompt kbd { font-family: var(--font-ui); font-weight: 600; color: var(--amber); margin-right: 8px; }
+#toast { left: 50%; top: 22%; transform: translateX(-50%); font-size: 20px; text-align: center; text-shadow: 0 1px 4px #000; max-width: 80vw; transition: opacity 0.4s; }
+#subtitles { z-index: 9; left: 50%; bottom: calc(15vh + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); width: min(900px, 86vw); text-align: center; font-size: 23px; line-height: 1.35; text-shadow: 0 2px 6px #000, 0 0 2px #000; }
+#subtitles b { color: var(--amber); font-weight: 600; letter-spacing: 0.04em; }
+.letterbox { position: fixed; left: 0; right: 0; height: 0; background: #000; z-index: 4; transition: height 0.6s ease; pointer-events: none; }
+#lb-top { top: 0; } #lb-bot { bottom: 0; }
+body.cine .letterbox { height: 11vh; }
+body.cine .gameplay { display: none !important; }
+#struggle { left: 50%; top: 58%; transform: translateX(-50%); text-align: center; font-size: 26px; letter-spacing: 0.12em; color: var(--blood); text-transform: uppercase; }
+#struggle-bar { width: 260px; height: 8px; background: rgba(255,255,255,0.15); margin: 8px auto 0; }
+#struggle-fill { height: 100%; width: 0; background: var(--bone); }
+#titlecard { z-index: 9; left: 50%; top: 40%; transform: translate(-50%, -50%); text-align: center; transition: opacity 1.2s; }
+#titlecard small { display: block; font-family: var(--font-ui); letter-spacing: 0.5em; font-size: 15px; color: var(--dim); }
+#titlecard span { font-family: var(--font-display); font-size: clamp(40px, 7vw, 84px); letter-spacing: 0.08em; }
+#fade { position: fixed; inset: 0; background: #000; opacity: 0; pointer-events: none; z-index: 8; transition: opacity 1s; }
+
+.screen { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding-inline: 16px; background: radial-gradient(ellipse at 50% 40%, rgba(40,10,10,0.55), rgba(5,5,6,0.96) 70%); }
+.screen-inner { width: min(640px, 100%); display: grid; gap: 22px; justify-items: center; text-align: center; }
+.logo { font-family: var(--font-display); font-size: clamp(56px, 13vw, 128px); letter-spacing: 0.12em; line-height: 0.9; color: var(--bone); text-shadow: 0 0 30px rgba(179,38,30,0.35); }
+.logo-sub { font-size: 15px; letter-spacing: 0.5em; text-transform: uppercase; color: var(--dim); }
+.btn { pointer-events: auto; font-family: var(--font-ui); font-size: 20px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--bone); background: transparent; border: 1px solid rgba(217,211,196,0.4); padding: 12px 36px; cursor: pointer; }
+.btn:hover, .btn:focus-visible { border-color: var(--blood); color: #fff; background: rgba(179,38,30,0.18); outline: none; }
+.controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 4px 22px; width: 100%; font-size: 15px; text-align: left; color: var(--dim); }
+.controls b { color: var(--bone); font-weight: 600; display: inline-block; min-width: 72px; }
+.note { font-size: 14px; color: var(--dim); max-width: 520px; line-height: 1.5; }
+
+.modal { position: fixed; inset: 0; z-index: 9; display: grid; place-items: center; padding-inline: 16px; background: rgba(0,0,0,0.72); }
+.sheet { width: min(620px, 100%); max-height: 84vh; overflow: auto; background: var(--paper); color: var(--paper-ink); font-family: var(--font-doc); font-size: 17px; line-height: 1.6; padding: 34px 38px; box-shadow: 0 20px 60px rgba(0,0,0,0.7); transform: rotate(-0.6deg); }
+.sheet h2 { font-family: var(--font-doc); font-size: 20px; margin: 0 0 14px; text-transform: uppercase; letter-spacing: 0.06em; }
+.sheet p { margin: 0 0 12px; white-space: pre-wrap; }
+.close-hint { margin-top: 18px; font-family: var(--font-ui); font-size: 14px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); text-align: center; }
+.panel { width: min(760px, 100%); max-height: 88vh; overflow: auto; background: var(--panel); border: 1px solid rgba(217,211,196,0.16); padding: 26px; display: grid; gap: 18px; }
+.panel h2 { margin: 0; font-family: var(--font-display); font-size: 30px; letter-spacing: 0.06em; font-weight: 400; }
+.panel h3 { margin: 0; font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--dim); font-weight: 500; }
+.slots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.slot { pointer-events: auto; aspect-ratio: 1.25; border: 1px solid rgba(217,211,196,0.18); background: rgba(255,255,255,0.03); color: var(--bone); font-family: var(--font-ui); font-size: 16px; display: grid; align-content: center; justify-items: center; gap: 2px; cursor: pointer; padding: 4px; }
+.slot:hover, .slot:focus-visible { border-color: var(--amber); outline: none; }
+.slot.sel { border-color: var(--blood); background: rgba(179,38,30,0.2); }
+.slot .qty { font-size: 22px; font-variant-numeric: tabular-nums; }
+.slot .sw { width: 22px; height: 22px; border-radius: 50%; }
+.slot.empty { cursor: default; opacity: 0.4; }
+.keys { display: flex; flex-wrap: wrap; gap: 8px; }
+.keys span { border: 1px solid rgba(216,163,58,0.5); color: var(--amber); padding: 4px 10px; font-size: 15px; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; }
+.files { display: grid; gap: 6px; }
+.files button { pointer-events: auto; text-align: left; font-family: var(--font-doc); font-size: 15px; background: rgba(230,223,204,0.06); color: var(--bone); border: 1px solid rgba(217,211,196,0.12); padding: 8px 12px; cursor: pointer; }
+.files button:hover { border-color: var(--amber); }
+.small { font-size: 15px; color: var(--dim); }
+.keypad { display: grid; grid-template-columns: repeat(3, 64px); gap: 8px; justify-content: center; }
+.keypad button, .breakers button { pointer-events: auto; font-family: var(--font-ui); font-size: 24px; height: 56px; background: #1c1d20; color: var(--bone); border: 1px solid #3a3a3e; cursor: pointer; }
+.keypad button:hover, .breakers button:hover { border-color: var(--amber); }
+.readout { font-family: var(--font-doc); font-size: 34px; letter-spacing: 0.4em; text-align: center; background: #0d1a10; color: #7dff9a; padding: 8px; }
+.breakers { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.breakers button { height: 110px; display: grid; align-content: space-between; padding: 10px 0; }
+.breakers button.on { background: #3a1513; border-color: var(--blood); }
+#map-canvas { width: 100%; height: auto; background: #070809; border: 1px solid rgba(217,211,196,0.12); }
+.legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--dim); }
+.legend i { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: -1px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; width: 100%; }
+.stats div { border-top: 1px solid rgba(217,211,196,0.2); padding-top: 8px; }
+.stats b { display: block; font-size: 30px; font-weight: 500; font-variant-numeric: tabular-nums; }
+.stats span { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
+#loading { font-size: 16px; letter-spacing: 0.3em; color: var(--dim); text-transform: uppercase; }
+@media (prefers-reduced-motion: reduce) { .letterbox, #titlecard, #fade, #toast { transition: none; } }
+</style>
+
+<div id="game"></div>
+
+<div class="letterbox" id="lb-top"></div>
+<div class="letterbox" id="lb-bot"></div>
+
+<div class="hud gameplay" id="hud-objective" hidden>
+  <div id="objective-label">Objective</div>
+  <div id="objective-text"></div>
+</div>
+<div class="hud gameplay" id="hud-detect" hidden>
+  <div id="detect-text">Unseen</div>
+  <div id="detect-bar"><div id="detect-fill"></div></div>
+</div>
+<div class="hud gameplay" id="hud-vitals" hidden>
+  <div id="injuries"></div>
+  <canvas id="ecg" width="440" height="108"></canvas>
+  <div id="vital-label">Fine</div>
+</div>
+<div class="hud gameplay" id="hud-ammo" hidden>
+  <div id="weapon-name">Handgun</div>
+  <div id="ammo-mag">9</div>
+  <div id="ammo-res">/ 0</div>
+</div>
+<div class="hud gameplay" id="crosshair" hidden>
+  <i class="h" id="ch-l"></i><i class="h" id="ch-r"></i><i class="v" id="ch-t"></i><i class="v" id="ch-b"></i><i class="dot"></i>
+</div>
+<div class="hud gameplay" id="prompt" hidden></div>
+<div class="hud" id="toast"></div>
+<div class="hud" id="subtitles"></div>
+<div class="hud" id="struggle" hidden>Break free: tap E<div id="struggle-bar"><div id="struggle-fill"></div></div></div>
+<div class="hud" id="titlecard" style="opacity:0"><small id="titlecard-small"></small><span id="titlecard-text"></span></div>
+<div id="fade"></div>
+
+<div class="screen" id="title-screen">
+  <div class="screen-inner">
+    <div>
+      <div class="logo">VEILFALL</div>
+      <div class="logo-sub">Chapter 1 · Quarantine</div>
+    </div>
+    <div id="loading">Loading the city</div>
+    <button class="btn" id="btn-start" hidden>Enter Harrow Bay</button>
+    <div class="controls">
+      <div><b>W A S D</b>Move</div>
+      <div><b>Mouse</b>Look</div>
+      <div><b>Shift</b>Sprint</div>
+      <div><b>C</b>Crouch</div>
+      <div><b>Right mouse</b>Aim</div>
+      <div><b>Left mouse</b>Fire</div>
+      <div><b>R</b>Reload</div>
+      <div><b>E</b>Interact</div>
+      <div><b>F</b>Knife</div>
+      <div><b>Q</b>Quick turn</div>
+      <div><b>1 / 2</b>Weapons</div>
+      <div><b>L</b>Flashlight</div>
+      <div><b>Tab</b>Inventory</div>
+      <div><b>M</b>Map</div>
+      <div><b>Space</b>Skip cutscene</div>
+      <div><b>Esc</b>Pause</div>
+    </div>
+    <p class="note">Play with headphones, a keyboard and a mouse. This browser build uses simple stand-in models; the full game targets Unreal Engine 5 with photoreal characters.</p>
+  </div>
+</div>
+
+<div class="screen" id="pause-screen" hidden>
+  <div class="screen-inner">
+    <div class="logo" style="font-size:64px">Paused</div>
+    <button class="btn" id="btn-resume">Resume</button>
+    <button class="btn" id="btn-restart-cp">Load last save</button>
+  </div>
+</div>
+
+<div class="screen" id="dead-screen" hidden>
+  <div class="screen-inner">
+    <div class="logo" style="font-size:72px;color:var(--blood)">You Are Dead</div>
+    <button class="btn" id="btn-continue">Continue from last save</button>
+  </div>
+</div>
+
+<div class="screen" id="end-screen" hidden>
+  <div class="screen-inner">
+    <div>
+      <div class="logo-sub">Chapter 1 complete</div>
+      <div class="logo" style="font-size:64px">Quarantine</div>
+    </div>
+    <div class="stats" id="end-stats"></div>
+    <p class="note">Next: Chapter 2, Undercurrent. Mara follows the storm drains toward the water treatment plant.</p>
+    <button class="btn" id="btn-replay">Play again</button>
+  </div>
+</div>
+
+<div class="modal" id="modal" hidden></div>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="src/main.js"></script>
