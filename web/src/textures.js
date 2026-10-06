@@ -148,6 +148,22 @@ const painters = {
     for (let i = -s; i < s * 2; i += 64) { g.beginPath(); g.moveTo(i, 0); g.lineTo(i + 32, 0); g.lineTo(i + 32 - s, s); g.lineTo(i - s, s); g.fill(); }
     speckle(g, s, 3000, ['#3a3a36', '#6a5a2a'], 0.5, 3, 0.5);
   },
+  // A city facade: two storeys of windows per tile, a few still lit, some broken.
+  windows(g, s) {
+    g.fillStyle = '#5a5248'; g.fillRect(0, 0, s, s);
+    speckle(g, s, 5000, ['#6a6258', '#4a433a', '#3a342e'], 0.5, 2.5, 0.5);
+    const cols = 4, rows = 2, cw = s / cols, rh = s / rows;
+    for (let i = 0; i < cols; i++) for (let j = 0; j < rows; j++) {
+      const x = i * cw + cw * 0.2, y = j * rh + rh * 0.22, w = cw * 0.6, h = rh * 0.5;
+      g.fillStyle = '#2a2622'; g.fillRect(x - 6, y - 6, w + 12, h + 14);
+      const r = Math.random();
+      g.fillStyle = r < 0.12 ? '#c9a46a' : r < 0.3 ? '#0c0d0f' : '#1a2228';
+      g.fillRect(x, y, w, h);
+      if (r > 0.85) { g.strokeStyle = '#8a9aa6'; g.lineWidth = 2; g.beginPath(); g.moveTo(x, y); g.lineTo(x + w * 0.6, y + h * 0.5); g.lineTo(x + w * 0.3, y + h); g.stroke(); }
+      g.fillStyle = 'rgba(160,170,180,0.12)'; g.fillRect(x, y, w * 0.5, h);
+    }
+    grimeBottom(g, s, 0.4);
+  },
   carpet(g, s) {
     g.fillStyle = '#2d3a42'; g.fillRect(0, 0, s, s);
     speckle(g, s, 14000, ['#35444d', '#232e34', '#3e4c55'], 0.5, 1.5, 0.6);

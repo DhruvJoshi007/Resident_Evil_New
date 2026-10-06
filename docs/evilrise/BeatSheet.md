@@ -3,6 +3,28 @@
 One table per chapter: each beat, where it happens, the objective, the enemies, the items and the cutscene or radio exchange. Every ID matches the Data Tables in `Content/EvilRise/Data/` and the registries in [Canon.md](Canon.md).
 
 
+## Prologue: Check-In
+
+The night before Chapter 1. No infected are on screen until the morning: the first ten minutes are the story of the virus, a hotel lobby and a quiet room. Then the window, the knock, and a stealth escape that teaches the Prologue's one rule: Husks only come for what they see, and if you break their line of sight they forget you. It ends with a drive, not a fight.
+
+| # | Scene | Location ID | Objective | Enemies | Items found | Cutscene or radio |
+|---|---|---|---|---|---|---|
+| 1 | Narrated opening: the Annex, Subject 7, the container, Port Halvern at 02:14, the mist, the bite, dawn. Leon walks to the hotel at night. | LOC_C0_Opening | — | — | — | **CS_C0_Opening** |
+| 2 | The Gullwing Hotel lobby, 23:10. Ruth at the night desk. | LOC_C0_Lobby | OBJ_C0_01 Check in | — | NAR_C0_KeySleeve, NAR_C0_Voicemail | **CS_C0_CheckIn** |
+| 3 | Past the bar, up the stairs, along the third-floor corridor to 304. | LOC_C0_Corridor | OBJ_C0_02 Go up to room 304 | — | — | — |
+| 4 | Room 304. The bed by the window. | LOC_C0_Room304 | OBJ_C0_03 Get some sleep | — | — | — |
+| 5 | 07:00. The TV wakes on its own. Leon opens the curtains: wrecks with their windows out, people walking wrong, one feeding, a big one running a man down. Three knocks. | LOC_C0_Room304 | — | ENM_Husk (street, scripted) | NAR_C0_TVBulletin | **CS_C0_Morning** |
+| 6 | He takes the steel flask from the table and opens the door ready to swing. It is Ortiz. | LOC_C0_Room304 | OBJ_C0_04 Answer the door | — | WPN_Pistol (9 + 21 rounds), WPN_Knife, KEY_C0_CarKey | **CS_C0_Door** |
+| 7 | Ortiz leads down the corridor. Room 309 thumps; a note under its door says not to open. | LOC_C0_Corridor | OBJ_C0_05 Follow Ortiz | — | NAR_C0_UnderDoor | — |
+| 8 | Husks are coming up the stairwell. Ortiz fires and draws them up; Leon goes down. | LOC_C0_Stairwell | — | ENM_Husk ×3 (scripted) | — | **CS_C0_Stairwell** |
+| 9 | The lobby in red emergency light. Ruth's log on the desk. Through the back office to the garage stairs. | LOC_C0_Lobby | OBJ_C0_06 Get to the garage unseen, OBJ_C0_09 Read the night desk log *(optional)* | ENM_Husk ×3 | NAR_C0_NightLog, ITM_HerbGreen | — |
+| 10 | Garage P2. Five identical grey sedans in the reserved row; the fob chirps near the right one. Wrong cars scream. | LOC_C0_Garage | OBJ_C0_07 Find bay 14 | ENM_Husk ×5 | NAR_C0_GarageSign | PZL_C0_Bay14 |
+| 11 | Ortiz arrives at a run and gets in. The ramp gate opens. | LOC_C0_Garage | — | — | — | **CS_C0_Car** |
+| 12 | The drive: Harbor Avenue south, a bus across the lane, wrecks, runners that grab the car if it slows, left onto Kestrel Street. | LOC_C0_Streets | OBJ_C0_08 Drive to the field office | ENM_Husk (walkers and runners) | — | DLG_C0_Drive (7 lines) |
+| 13 | The field office gate. Pruitt sends Leon to the phones and takes Ortiz. Time cards: 13:00, 17:40, 22:00. | LOC_C0_FieldOffice | Prologue end | — | — | **CS_C0_FieldOffice** |
+
+**Teaching beats, in order:** walk and interact (2–4) → read a file (2) → hold an improvised weapon (6) → crouch and line of sight (9) → forgetting: break sight and wait (9–10) → noise draws them (car alarms, 10) → driving and the car's health (12).
+
 ## Chapter 1: Port Halvern
 
 22:30. Rain, sodium floods, and a container port that has stopped answering its own radio. Leon Cater comes in by hired boat because the harbour authority stopped returning calls eighteen hours ago, and because a three-person federal contact team walked in here at noon yesterday and never walked out. Chapter 1 teaches the whole grammar of the game in order: look, read, sneak, finish what you kill, solve, then fight because there is no other door. The investigation is the spine — manifests in the dock office tie sealed Vigor Biotech freight to Yard C, and the dock office CCTV holds the only recording of the night everything started. The reveal is small and ugly and arrives on a monitor, not in a speech: something was shipped in, it was opened at 02:14, and somebody at this port had already been told not to open it.

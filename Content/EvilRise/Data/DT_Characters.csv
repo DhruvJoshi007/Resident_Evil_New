@@ -10,8 +10,9 @@ CHR_Bert,Bert Linnane,"Port watchman, the first to turn (Tape 02:14)."
 CHR_Kelso,Dan Kelso,"Dockworker, bitten by Bert. Appears in Ch1 as a strong Husk."
 CHR_Begg,Tom Begg,Night worker who opened the container. Appears on the tape.
 CHR_Varga,Dmitri Varga,Night-shift operator of Crane 3. Becomes the Hookman.
-CHR_Ortiz,Lena Ortiz,Pruitt's team. Found dead in Ch1 and Ch4.
-CHR_Whitlock,Sam Whitlock,Pruitt's team. Found dead in Ch1 and Ch4.
+CHR_Ortiz,Lena Ortiz,Pruitt's team. Ortiz is Leon's partner in the Prologue and is found dead in Ch1. Whitlock is found dead in Ch4.
+CHR_Whitlock,Sam Whitlock,Pruitt's team. Ortiz is Leon's partner in the Prologue and is found dead in Ch1. Whitlock is found dead in Ch4.
+CHR_Ruth,Ruth,Night clerk at the Gullwing Hotel (Prologue). Her desk log is an optional read.
 CHR_Penhallow,Ezra Penhallow,"Subject 7, Patient Zero (Ch3 footage)."
 CHR_Pilot,Hank Doyle,Boat pilot who drops Leon off in Ch1.
 CHR_Ruiz,Officer Ana Ruiz,Dead officer whose body camera Leon finds in Ch4.

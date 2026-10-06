@@ -13,12 +13,12 @@ const TYPE_LABEL = { Note: 'Note', Diary: 'Diary', Email: 'Email', AudioLog: 'Au
 const CRANE_ORDER = [3, 1, 2]; // nights first, then round the clock: day, swing
 const CAGE_CODE = '0214';      // the timestamp on the tape: "when it opened"
 
-export async function loadData() {
+export async function loadData(chapter = 1) {
   const get = (f) => fetch(new URL(`../data/${f}`, import.meta.url)).then(r => {
     if (!r.ok) throw new Error(`could not load ${f} (${r.status})`);
     return r.json();
   });
-  const [narrative, objectives] = await Promise.all([get('narrative_c1.json'), get('objectives_c1.json')]);
+  const [narrative, objectives] = await Promise.all([get(`narrative_c${chapter}.json`), get(`objectives_c${chapter}.json`)]);
   return { narrative, objectives };
 }
 
@@ -628,7 +628,7 @@ export class Story {
       G.flags.FLG_C1_Landed = true;
       G.ui.titleCard('Chapter 1', 'Port Halvern', 3.5);
       this.objective('OBJ_C1_01');
-      G.ui.toast('Crouch with C to move quietly. Husks hear better than they see.', 6);
+      G.ui.toast('Crouch with C to move quietly. Husks only come for what they can see.', 6);
       this.saveGame();
     });
   }

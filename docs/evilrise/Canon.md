@@ -24,6 +24,8 @@ This file is the single reference that every other EvilRise document and data ta
 | F16 | The save point and item box are undefined. | **Relay radio**: Leon checks in with Mara to save. **Supply locker**: a shared item box in every safe room. Neither copies another game's save item. |
 | F17 | The strain getting stronger is not quantified. | Infected health and damage scale by chapter: ×1.0, ×1.15, ×1.3, ×1.5, ×1.7. |
 | F18 | Hale's mutated fight needs a reason he is infected. | Hale was bitten at the port during the seizure of Pruitt's team. He hid the bite with suppressant stolen from Vigor shipments, then ran out. |
+| F19 | You asked (2026-10-06) for infected that react only to what they see, and forget. | Husks never chase what they cannot see. Noise makes them wander over to its source, and if they see Leon when they get there, they chase. If Leon breaks their line of sight for about 5 seconds, they shamble to the last place they saw him, look around, and forget him. V-7 has damaged the part of the brain that remembers. In the streets the strong (worker) Husks run at a moving car and can grab on below about 30 km/h; frail ones barely walk. Indoors every Husk walks. |
+| F20 | You asked (2026-10-06) for a long story opening, a hotel night and a drive to HQ before the port. | New **Prologue (chapter 0), "Check-In"**: the narrated backstory, Leon's night at the **Gullwing Hotel, Harbor Avenue, Marrow Bay**, the morning window, **Agent Lena Ortiz** at the door with his sidearm (30 rounds), a knife and the car key, the stealth escape to the garage, and the drive to the **federal field office on Kestrel Street**. Pruitt sends Leon to hold the phones and takes Ortiz and Whitlock in at 13:00. Chapter 1 now starts that night, after nobody answers. Hank's line became "Around noon", and Ortiz's notes end with a line to Leon. |
 
 ## Timeline (one night into dawn)
 
@@ -32,13 +34,17 @@ This file is the single reference that every other EvilRise document and data ta
 | 8 months before | A V-7 trial at the Saltmere Annex goes wrong. Subject 7 (Patient Zero, Ezra Penhallow, a dying fisherman) kills two staff. Vigor seals the Annex and moves the work to Vigor Tower. |
 | 3 weeks before | Dr. Ines Calder, Voss's assistant, hides her diary pages on Saltmere and is found drowned in the harbor. |
 | 3 days before | Owen Quinn is sent to the sealed Annex to recover samples. He radios his sister Mara: a container is coming through the port, and nobody should open it. |
-| Night before, 02:14 | At Port Halvern Yard C, night workers Tom Begg and Dan Kelso pry open Vigor container **VGR-7718**, which is listed as "medical supplies". Cold mist leaks out. |
+| Night before, 22:51 | Ortiz leaves Leon a voicemail: Pruitt wants him at the nine o'clock briefing. |
+| 23:10 | Leon checks in to room 304 at the Gullwing Hotel, Harbor Avenue (**Prologue**). |
+| 02:14 | At Port Halvern Yard C, night workers Tom Begg and Dan Kelso pry open Vigor container **VGR-7718**, which is listed as "medical supplies". Cold mist leaks out. |
 | 02:31 | The watchman, **Bert Linnane** (71, sick and exhausted), collapses in the mist. |
 | 02:58 | Bert rises and bites Dan Kelso, who came back to help him. |
 | 03:40 | Dan Kelso turns. He is faster and stronger, and he forces a locked gate open. By dawn the port is lost. |
-| Day before, 09:10 | Mara sends the distress call from Halvern Harbor Radio on Saltmere Point. |
-| 13:00 | Agent **Dale Pruitt**'s contact team (Pruitt, Lena Ortiz, Sam Whitlock) lands at the port. |
+| Day before, 07:30 | Leon wakes and sees the infected in the street. Ortiz knocks. They escape the hotel and drive to the field office on Kestrel Street (about 08:40). |
+| 09:10 | Mara sends the distress call from Halvern Harbor Radio on Saltmere Point. |
+| 13:00 | Agent **Dale Pruitt**'s contact team (Pruitt, Lena Ortiz, Sam Whitlock) lands at the port. Leon stays at the field office as liaison. |
 | 17:40 | Pruitt's last call: "Port police are here. Hale's people. They're taking the container." Then nothing. |
+| 22:00 | Nobody answers Leon's call for backup. He hires a boat. |
 | Story night, 22:30 | **Ch1:** Leon lands on the north pier. |
 | 00:40 | **Ch2:** Leon crosses to Saltmere Island. |
 | 02:10 | **Ch3:** the Annex beneath the island, then the raft through the sea cave. |
@@ -60,7 +66,8 @@ This file is the single reference that every other EvilRise document and data ta
 | CHR_Kelso | Dan Kelso | Dockworker, bitten by Bert. Appears in Ch1 as a strong Husk. |
 | CHR_Begg | Tom Begg | Night worker who opened the container. Appears on the tape. |
 | CHR_Varga | Dmitri Varga | Night-shift operator of Crane 3. Becomes **the Hookman**. |
-| CHR_Ortiz, CHR_Whitlock | Lena Ortiz, Sam Whitlock | Pruitt's team. Found dead in Ch1 and Ch4. |
+| CHR_Ortiz, CHR_Whitlock | Lena Ortiz, Sam Whitlock | Pruitt's team. Ortiz is Leon's partner in the Prologue and is found dead in Ch1. Whitlock is found dead in Ch4. |
+| CHR_Ruth | Ruth | Night clerk at the Gullwing Hotel (Prologue). Her desk log is an optional read. |
 | CHR_Penhallow | Ezra Penhallow | Subject 7, Patient Zero (Ch3 footage). |
 | CHR_Pilot | Hank Doyle | Boat pilot who drops Leon off in Ch1. |
 | CHR_Ruiz | Officer Ana Ruiz | Dead officer whose body camera Leon finds in Ch4. |
@@ -92,6 +99,7 @@ This file is the single reference that every other EvilRise document and data ta
 
 | Ch | ID | Name | Where |
 |---|---|---|---|
+| 0 | KEY_C0_CarKey | Bureau Car Key (bay 14) | Given by Ortiz in room 304 |
 | 1 | KEY_C1_Fuse | Crane Fuse | Break Room |
 | 1 | KEY_C1_ShutterKey | Cargo Shutter Key | Dropped by the Hookman |
 | 1 | WPN_Shotgun | Shotgun (Pruitt's team case) | Customs Cage (special room, code 0214) |
@@ -117,6 +125,7 @@ This file is the single reference that every other EvilRise document and data ta
 
 ## Location registry
 
+- **Prologue (Ch0):** LOC_C0_Opening (off-map montage), LOC_C0_Lobby, LOC_C0_Corridor, LOC_C0_Room304, LOC_C0_Stairwell, LOC_C0_Garage, LOC_C0_Streets, LOC_C0_FieldOffice.
 - **Ch1:** LOC_C1_Pier, LOC_C1_DockOffice (safe room), LOC_C1_Warehouse, LOC_C1_BreakRoom, LOC_C1_CustomsCage, LOC_C1_ControlHouse, LOC_C1_Yard, LOC_C1_BoatDock.
 - **Ch2:** LOC_C2_Landing, LOC_C2_FloodedStreet, LOC_C2_FishMarket, LOC_C2_CalderHouse, LOC_C2_CalderCellar, LOC_C2_Church (safe room in the vestry), LOC_C2_BellTower, LOC_C2_HarborMasterHut, LOC_C2_Harbor, LOC_C2_Lighthouse, LOC_C2_HiddenStair.
 - **Ch3:** LOC_C3_Tunnel, LOC_C3_Reception, LOC_C3_CryptLift, LOC_C3_Labs, LOC_C3_Whiteboard, LOC_C3_CoolingChamber, LOC_C3_ColdVault, LOC_C3_SecurityWing, LOC_C3_Armory, LOC_C3_Ward (patient ward, the Patient Zero footage), LOC_C3_LowerLevels, LOC_C3_SeaCave.
@@ -132,7 +141,7 @@ Flags are named `FLG_C<chapter>_<Thing>`. For example: FLG_C1_TapeWatched, FLG_C
 - **Arrival (CS_C1_Arrival):** Hank Doyle's boat noses up to the north pier in rain.
   - HANK: "This is as close as I go."
   - LEON: "Pruitt's team came in here?"
-  - HANK: "Noon yesterday. Nobody's called since."
+  - HANK: "Around noon. Nobody's called since."
   - LEON: "Then somebody should."
 
   Hank backs away into the fog.

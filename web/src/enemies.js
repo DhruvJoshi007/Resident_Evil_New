@@ -83,11 +83,12 @@ export class Husk {
     const eff = muffled ? radius * 0.55 : radius;
     if (d > eff) return;
     if (this.state === 'fakeDead') { if (kind === 'gunshot' && d < 6) this.wake(); return; }
+    // Sound only draws them to wander over. They never chase what they cannot see (canon F19).
     const gain = (kind === 'gunshot' ? 0.9 : 0.3) * (1 - d / eff);
-    this.aware = Math.min(1.2, this.aware + gain);
+    this.aware = Math.min(0.9, this.aware + gain);
     if (this.state !== 'chase' && this.state !== 'grab') {
       this.target = new THREE.Vector3(pos.x, 0, pos.z);
-      if (this.aware >= 1) this.startChase(); else this.setState('suspicious');
+      this.setState('suspicious');
     }
   }
 
@@ -341,10 +342,11 @@ export class Husk {
       want = this.target; speed = this.speedWalk;
     } else if (st === 'suspicious') {
       if (this.target && dist2D(this.target, this.pos) > 0.8) { want = this.target; speed = this.speedWalk * 1.2; }
-      else { this.timer -= dt; this.yawTarget = this.yaw + Math.sin(G.time) * 0.5; if (this.timer <= 0) { this.aware *= 0.5; this.setState(this.opts.patrol ? 'wander' : 'idle'); } }
+      else { this.timer -= dt; this.yawTarget = this.yaw + Math.sin(G.time) * 0.5; if (this.timer <= 0) { this.aware = 0; this.setState(this.opts.patrol ? 'wander' : 'idle'); } }
     } else if (st === 'chase') {
       const d = dist2D(p.pos, this.pos);
-      if (this.lostT > 7) { this.target = this.lastSeen.clone(); this.aware = 0.6; this.setState('suspicious'); }
+      // Out of sight for a few seconds and the damaged brain lets go: shamble to the last spot, then forget.
+      if (this.lostT > (this.forgetAfter ?? 5)) { this.target = this.lastSeen.clone(); this.aware = 0.3; this.setState('suspicious'); }
       else if (p.hp > 0) {
         want = this.lostT > 0.5 ? this.lastSeen : p.pos;
         speed = this.speedChase * (this.windup > 0 ? 0.2 : 1);

@@ -44,6 +44,7 @@ export class Player {
     this.heartT = 0;
     this.flashOn = true;
     this.control = true;     // false during cutscenes
+    this.unarmed = false;    // the Prologue starts with Leon's sidearm at the field office
     this.autoWalk = null;    // cutscene-driven walking target
     this.camOverride = null; // cutscene camera
     this.camPos = new THREE.Vector3();
@@ -160,7 +161,7 @@ export class Player {
       g.t += dt;
       if (I.pressed('KeyE') || I.pressed('Space')) g.progress += 0.16;
       g.progress = Math.max(0, g.progress - dt * 0.25);
-      if (I.pressed('KeyF') && this.counterCd <= 0) { this.counterCd = 20; g.progress = 1; G.audio.knife(); G.ui.toast('Knife counter'); g.enemy.takeHit?.(25, 'torso', new THREE.Vector3(Math.sin(this.yaw), 0, Math.cos(this.yaw)), 2, null, 'knife'); }
+      if (I.pressed('KeyF') && this.counterCd <= 0 && !this.unarmed) { this.counterCd = 20; g.progress = 1; G.audio.knife(); G.ui.toast('Knife counter'); g.enemy.takeHit?.(25, 'torso', new THREE.Vector3(Math.sin(this.yaw), 0, Math.cos(this.yaw)), 2, null, 'knife'); }
       G.ui.struggle(g.progress);
       if (g.progress >= 1) { g.enemy.release(true); this.grab = null; G.ui.struggle(null); }
       else if (g.t > 2.3) {
@@ -198,8 +199,8 @@ export class Player {
       if (I.pressed('KeyC')) { this.crouch = !this.crouch; }
       if (I.pressed('KeyL')) { this.flashOn = !this.flashOn; G.audio.ui(); }
       if (I.pressed('KeyV')) this.shoulder *= -1;
-      this.aiming = I.mouse(2) && this.knifeT <= 0;
-      if (I.pressed('KeyF') && this.knifeCd <= 0) this.knifeAttack();
+      this.aiming = I.mouse(2) && this.knifeT <= 0 && !this.unarmed;
+      if (I.pressed('KeyF') && this.knifeCd <= 0 && !this.unarmed) this.knifeAttack();
     } else if (!this.autoWalk) this.aiming = false;
     if (this.autoWalk) {
       const d = new THREE.Vector3(this.autoWalk.x - this.pos.x, 0, this.autoWalk.z - this.pos.z);

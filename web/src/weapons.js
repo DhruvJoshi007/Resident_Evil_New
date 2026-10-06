@@ -87,7 +87,8 @@ export class Weapons {
     const I = G.input, p = G.player;
     this.cool -= dt;
     this.bloom = Math.max(0, this.bloom - dt * 0.12);
-    const active = G.mode === 'play' && p.control && p.hp > 0 && !p.grab && p.healT <= 0;
+    const active = G.mode === 'play' && p.control && p.hp > 0 && !p.grab && p.healT <= 0 && !p.unarmed;
+    this.models[this.current].visible = !p.unarmed;
     if (active) {
       if (I.pressed('Digit1')) this.select('handgun');
       if (I.pressed('Digit2')) this.select('shotgun');

@@ -109,7 +109,7 @@
     "sets_flags": ["FLG_C1_WarehouseCrossed", "FLG_C1_StealthTaught"],
     "next": ["OBJ_C1_08", "OBJ_C1_09"],
     "optional": false,
-    "hint": "They hear better than they see. Keep the pallets between you and them and don't run on the grating."
+    "hint": "They only come for what they see. Keep the pallets between you and them. If one spots you, break its line of sight and wait for it to forget."
   },
   {
     "id": "OBJ_C1_08",

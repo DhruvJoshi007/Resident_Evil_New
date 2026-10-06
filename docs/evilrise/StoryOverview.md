@@ -6,6 +6,8 @@ Port Halvern is the container port for the city of Marrow Bay. Vigor Biotech hol
 
 At 02:14 on the night before the story, two night workers pried open container VGR-7718 in Yard C. Cold mist spilled out. Bert Linnane, the old, sick night watchman, sat down in it and turned first. He bit Dan Kelso, the big dockworker who came back to help him, and Kelso turned faster and stronger. That is the rule of V-7. Breathing it in only takes hold in the weak. A bite gives a full dose to anyone, and strong bodies come back stronger. By dawn the port was lost. Harbor radio operator Mara Quinn called for help from Saltmere Point. A three-agent federal contact team led by Dale Pruitt landed at 13:00. At 17:40 Pruitt reported that "port police" were taking the container, and then he went silent.
 
+**Prologue, Check-In (the night before, 22:51 to the next evening).** A narrated opening shows what happened: V-7 at the Annex, Subject 7, the sealed container, and the mist at Port Halvern at 02:14. Leon lands late in Marrow Bay for a nine o'clock briefing and checks in to the Gullwing Hotel on Harbor Avenue. He wakes at 07:00 to an emergency broadcast, opens the curtains and watches the street walk wrong: wrecked cars with their windows out, one of them kneeling at an open door, a big one running a man down. Someone knocks. He picks up a steel flask from the table and opens the door ready to swing. It is Agent Lena Ortiz, his partner. She gives him his sidearm with 30 rounds and a knife, explains the one rule (they only come for what they see, and they forget), and hands him the key to the bureau car in garage bay 14. She draws a crowd up the stairwell so he can get down. He crosses the lobby and the garage unseen, finds the right car, and drives her through blocked streets to the federal field office on Kestrel Street. Pruitt takes Ortiz and Whitlock to the port at 13:00 and leaves Leon to hold the phones. Nobody calls back.
+
 **Chapter 1, Port Halvern (22:30).** Agent Leon Cater lands alone on the north pier. Mara finds him on the port radio and talks him through the port. In the dock office he plays the overnight security tape and watches the outbreak begin. He crosses Warehouse 3 and learns the Reborn rule: a body that is not finished gets back up. He restores crane power and kills the Hookman, the night crane operator Dmitri Varga. Then he takes the port tender across the river.
 
 **Chapter 2, Saltmere Island (00:40).** In a flooded fishing town, Leon follows Dr. Ines Calder's hidden diary. Calder was Voss's assistant and is now drowned. A church organ, a bell tower and the lighthouse lens lead him to a stair under the lighthouse. A photo ties Police Chief Warren Hale to Dr. Elias Voss. The Brine Maw hunts the harbor.
@@ -32,7 +34,9 @@ At 02:14 on the night before the story, two night workers pried open container V
 | **Dan Kelso** | Dockworker. | Help the old man. | Bitten on the tape. Comes back as a strong Husk in Ch1. |
 | **Tom Begg** | Night worker who opened the container. | Get off shift. | Seen only on the tape and in his unsent texts. |
 | **Hank Doyle** | Boat pilot. | Get paid and get out. | Drops Leon at the pier in Ch1. |
-| **Lena Ortiz, Sam Whitlock** | Pruitt's team. | Hold the line. | Found dead: Ortiz in Ch1, Whitlock in Ch4. |
+| **Agent Lena Ortiz** | Leon's partner on Pruitt's team. | Get Leon to the field office alive. | Saves him in the Prologue: the knock, the gun, the knife, the car key, the stairwell. Goes to the port at 13:00 and is found dead there in Ch1. |
+| **Ruth** | Night clerk at the Gullwing Hotel. | Finish her shift. | Checks Leon in. Her night desk log tracks the outbreak reaching the hotel. Gone by morning. |
+| **Sam Whitlock** | Pruitt's team. | Hold the line. | Found dead in Ch4. |
 | **Ezra Penhallow** | Subject 7, Patient Zero. | Nothing left. | Ch3 footage. |
 | **Officer Ana Ruiz** | Marrow Bay officer. | Record what she saw. | Her body camera is the Ch4 evidence. |
 

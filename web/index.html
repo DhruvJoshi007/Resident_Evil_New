@@ -1,4 +1,4 @@
-<title>EvilRise Chapter 1</title>
+<title>EvilRise</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Barlow+Condensed:wght@400;500;600&family=Special+Elite&display=swap">
@@ -69,6 +69,7 @@ body.cine .gameplay { display: none !important; }
 .logo-sub { font-size: 15px; letter-spacing: 0.5em; text-transform: uppercase; color: var(--dim); }
 .btn { pointer-events: auto; font-family: var(--font-ui); font-size: 20px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--bone); background: transparent; border: 1px solid rgba(217,211,196,0.4); padding: 12px 36px; cursor: pointer; }
 .btn:hover, .btn:focus-visible { border-color: var(--blood); color: #fff; background: rgba(179,38,30,0.18); outline: none; }
+.btn-quiet { font-size: 14px; padding: 8px 22px; border-color: rgba(217,211,196,0.18); color: var(--dim); }
 .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 4px 22px; width: 100%; font-size: 15px; text-align: left; color: var(--dim); }
 .controls b { color: var(--bone); font-weight: 600; display: inline-block; min-width: 72px; }
 .note { font-size: 14px; color: var(--dim); max-width: 520px; line-height: 1.5; }
@@ -158,10 +159,11 @@ body.cctv .letterbox { height: 0 !important; }
   <div class="screen-inner">
     <div>
       <div class="logo">EvilRise</div>
-      <div class="logo-sub">Chapter 1 · Port Halvern</div>
+      <div class="logo-sub" id="logo-sub">EvilRise</div>
     </div>
-    <div id="loading">Loading the port</div>
-    <button class="btn" id="btn-start" hidden>Step onto the pier</button>
+    <div id="loading">Loading</div>
+    <button class="btn" id="btn-start" hidden>Begin</button>
+    <button class="btn btn-quiet" id="btn-chapter" hidden>Skip to Chapter 1</button>
     <div class="controls">
       <div><b>W A S D</b>Move</div>
       <div><b>Mouse</b>Look</div>
@@ -202,11 +204,12 @@ body.cctv .letterbox { height: 0 !important; }
 <div class="screen" id="end-screen" hidden>
   <div class="screen-inner">
     <div>
-      <div class="logo-sub">Chapter 1 complete</div>
-      <div class="logo" style="font-size:64px">Port Halvern</div>
+      <div class="logo-sub" id="end-sub">Chapter 1 complete</div>
+      <div class="logo" style="font-size:64px" id="end-title">Port Halvern</div>
     </div>
     <div class="stats" id="end-stats"></div>
-    <p class="note">Next: Chapter 2, Saltmere Island. Leon crosses the river mouth to Mara's radio station on the point.</p>
+    <p class="note" id="end-note">Next: Chapter 2, Saltmere Island. Leon crosses the river mouth to Mara's radio station on the point.</p>
+    <button class="btn" id="btn-next" hidden>Continue to Chapter 1</button>
     <button class="btn" id="btn-replay">Play again</button>
   </div>
 </div>

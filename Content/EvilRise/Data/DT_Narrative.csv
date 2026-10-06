@@ -1,4 +1,91 @@
 Name,chapter,type,title,speaker,text,location,unlocks
+DLG_C0_Opening_01,0,Dialogue,What Happened,NARRATOR,"Eight months ago, under Saltmere Island, Vigor Biotech tested a virus they called V-7.",LOC_C0_Opening,()
+DLG_C0_Opening_02,0,Dialogue,What Happened,NARRATOR,It was meant to make weak bodies strong. Old men. Sick men. People nobody would miss.,LOC_C0_Opening,()
+DLG_C0_Opening_03,0,Dialogue,What Happened,NARRATOR,Subject seven was a dying fisherman. He did not stay dying.,LOC_C0_Opening,()
+DLG_C0_Opening_04,0,Dialogue,What Happened,NARRATOR,Two of the staff were dead by morning. Vigor sealed the Annex and called it a flood.,LOC_C0_Opening,()
+DLG_C0_Opening_05,0,Dialogue,What Happened,NARRATOR,What was left of the stock went into a container. The label said Medical Supplies.,LOC_C0_Opening,()
+DLG_C0_Opening_06,0,Dialogue,What Happened,NARRATOR,"Last night it came through Port Halvern. At 02:14, two dock workers opened it.",LOC_C0_Opening,()
+DLG_C0_Opening_07,0,Dialogue,What Happened,NARRATOR,"A cold mist came out. Breathe it, and it only takes the weak.",LOC_C0_Opening,()
+DLG_C0_Opening_08,0,Dialogue,What Happened,NARRATOR,A bite takes anyone. And the strong come back stronger.,LOC_C0_Opening,()
+DLG_C0_Opening_09,0,Dialogue,What Happened,NARRATOR,By dawn the port was gone. By breakfast it was walking into the city.,LOC_C0_Opening,()
+DLG_C0_Opening_10,0,Dialogue,What Happened,LEON,None of that was on the news when I checked in.,LOC_C0_Opening,(FLG_C0_OpeningSeen)
+DLG_C0_CheckIn_01,0,Dialogue,Check-In,RUTH,Late one.,LOC_C0_Lobby,()
+DLG_C0_CheckIn_02,0,Dialogue,Check-In,LEON,"Late flight. Cater, one night.",LOC_C0_Lobby,()
+DLG_C0_CheckIn_03,0,Dialogue,Check-In,RUTH,Three-oh-four. Elevator's out. Stairs are past the bar.,LOC_C0_Lobby,()
+DLG_C0_CheckIn_04,0,Dialogue,Check-In,LEON,Of course they are.,LOC_C0_Lobby,()
+DLG_C0_CheckIn_05,0,Dialogue,Check-In,RUTH,Breakfast is seven till ten.,LOC_C0_Lobby,()
+DLG_C0_CheckIn_06,0,Dialogue,Check-In,LEON,I'll be gone by seven.,LOC_C0_Lobby,"(FLG_C0_CheckedIn,OBJ_C0_02)"
+NAR_C0_KeySleeve,0,Note,Key Card Sleeve,Gullwing Hotel,"GULLWING HOTEL · HARBOR AVENUE · MARROW BAY
+Room 304
+
+Breakfast 07:00 to 10:00 in the Harbor Room.
+The elevator is out of service. We apologise for the climb.
+
+On the back, in biro: ""Ice machine on 2 works. 3 doesn't. — R.""",LOC_C0_Lobby,()
+NAR_C0_Voicemail,0,AudioLog,"Voicemail, 22:51",Lena Ortiz,"""Cater, it's Ortiz, field office. Pruitt wants you at the nine o'clock. Don't be late, he counts.
+
+[A pause, traffic behind her.]
+
+And don't eat at the Gullwing. I've seen the kitchen. See you at nine.""",LOC_C0_Room304,(FLG_C0_OrtizIntroduced)
+NAR_C0_TVBulletin,0,Footage,Morning Bulletin,Channel 6,"[The TV wakes on its own at 07:00, an alarm somebody set and forgot.]
+
+EMERGENCY BROADCAST — HARBOR DISTRICT
+Residents between Harbor Avenue and the port are advised to remain indoors. Do not approach persons who appear unwell. Do not attempt to restrain them.
+
+[The anchor is reading it off paper. Her hands are shaking. The ticker under her still runs the weather.]",LOC_C0_Room304,()
+DLG_C0_Window_01,0,Dialogue,The Window,LEON,That's not drunk.,LOC_C0_Room304,"(FLG_C0_WindowSeen,OBJ_C0_04)"
+DLG_C0_Door_01,0,Dialogue,The Knock,ORTIZ,"Cater. Cater, it's Ortiz.",LOC_C0_Room304,()
+DLG_C0_Door_02,0,Dialogue,The Knock,LEON,You knock like one of them.,LOC_C0_Room304,()
+DLG_C0_Door_03,0,Dialogue,The Knock,ORTIZ,You answer the door like one. Put the bottle down.,LOC_C0_Room304,()
+DLG_C0_Door_04,0,Dialogue,The Knock,ORTIZ,You didn't pick up. Pruitt sent me. The port went dark at three and it's spreading this way.,LOC_C0_Room304,()
+DLG_C0_Door_05,0,Dialogue,The Knock,LEON,What is it?,LOC_C0_Room304,()
+DLG_C0_Door_06,0,Dialogue,The Knock,ORTIZ,Something off a Vigor container. Nobody's saying more than that on an open line.,LOC_C0_Room304,()
+DLG_C0_Door_07,0,Dialogue,The Knock,ORTIZ,Your sidearm. Thirty rounds. That's all I could carry.,LOC_C0_Room304,()
+DLG_C0_Door_08,0,Dialogue,The Knock,ORTIZ,And the knife. Quieter.,LOC_C0_Room304,()
+DLG_C0_Door_09,0,Dialogue,The Knock,LEON,They come for noise?,LOC_C0_Room304,()
+DLG_C0_Door_10,0,Dialogue,The Knock,ORTIZ,They wander toward it. They only come for you if they see you.,LOC_C0_Room304,()
+DLG_C0_Door_11,0,Dialogue,The Knock,ORTIZ,Break their line of sight and wait. They lose you. Whatever's in them chews up the part that remembers.,LOC_C0_Room304,()
+DLG_C0_Door_12,0,Dialogue,The Knock,ORTIZ,"Bureau car, garage level two, bay fourteen. Key's yours. You drive, I shoot.",LOC_C0_Room304,"(FLG_C0_Armed,OBJ_C0_05)"
+DLG_C0_Stairwell_01,0,Dialogue,The Stairwell,ORTIZ,"Too many. Go down, I'll pull them up.",LOC_C0_Stairwell,()
+DLG_C0_Stairwell_02,0,Dialogue,The Stairwell,LEON,Ortiz —,LOC_C0_Stairwell,()
+DLG_C0_Stairwell_03,0,Dialogue,The Stairwell,ORTIZ,Bay fourteen. Don't make me wait.,LOC_C0_Stairwell,"(FLG_C0_Split,OBJ_C0_06)"
+NAR_C0_NightLog,0,Note,Night Desk Log,Ruth,"23:10. Cater, 304. Polite. Tired.
+
+02:40. Ambulances on Harbor Ave. Lots.
+
+03:55. Man from 309 says someone is trying his door. Told him it's the wind.
+
+04:30. Phone lines busy. All of them.
+
+05:10. A man came in off the street holding his arm. I put him in the back office with the first aid kit. He's quiet now. I'll check on him in a minute.",LOC_C0_Lobby,()
+NAR_C0_UnderDoor,0,Note,Note Under Door 309,,"Folded hotel stationery, pushed halfway under the door from the inside:
+
+DON'T OPEN FOR HIM.
+HE SOUNDS LIKE FRANK.
+HE ISN'T.",LOC_C0_Corridor,()
+NAR_C0_GarageSign,0,Note,Garage Notice,Gullwing Hotel,"GUEST PARKING — LEVEL P2
+Bays 1–20. Reserved: bays 12–16, Federal pool vehicles.
+
+The ramp gate opens automatically for vehicles leaving. Please drive slowly. Pedestrians have right of way.",LOC_C0_Garage,()
+DLG_C0_Car_01,0,Dialogue,Bay Fourteen,ORTIZ,Drive.,LOC_C0_Garage,()
+DLG_C0_Car_02,0,Dialogue,Bay Fourteen,LEON,You took your time.,LOC_C0_Garage,()
+DLG_C0_Car_03,0,Dialogue,Bay Fourteen,ORTIZ,"I took the long way. Kestrel Street, the field office. Don't stop for anyone.",LOC_C0_Garage,"(FLG_C0_InCar,OBJ_C0_08)"
+DLG_C0_Drive_01,0,Dialogue,The Drive,ORTIZ,"Right out of the ramp. Stay off the pavement, they come out of the doorways.",LOC_C0_Streets,()
+DLG_C0_Drive_02,0,Dialogue,The Drive,ORTIZ,Bus across the lane. Go round on the left.,LOC_C0_Streets,()
+DLG_C0_Drive_03,0,Dialogue,The Drive,ORTIZ,Runners. Don't slow down. Slowing down is how they get on the car.,LOC_C0_Streets,()
+DLG_C0_Drive_04,0,Dialogue,The Drive,LEON,They're fast.,LOC_C0_Streets,()
+DLG_C0_Drive_05,0,Dialogue,The Drive,ORTIZ,The big ones are. The old ones can barely stand.,LOC_C0_Streets,()
+DLG_C0_Drive_06,0,Dialogue,The Drive,ORTIZ,Left at the lights. There aren't any lights. Left anyway.,LOC_C0_Streets,()
+DLG_C0_Drive_07,0,Dialogue,The Drive,ORTIZ,Kestrel Street. The gate with the sandbags. That's us.,LOC_C0_Streets,()
+DLG_C0_HQ_01,0,Dialogue,The Field Office,PRUITT,Cater. You're late.,LOC_C0_FieldOffice,()
+DLG_C0_HQ_02,0,Dialogue,The Field Office,LEON,Traffic.,LOC_C0_FieldOffice,()
+DLG_C0_HQ_03,0,Dialogue,The Field Office,PRUITT,Port Halvern went dark at three. Vigor container. I'm taking the team in at noon.,LOC_C0_FieldOffice,()
+DLG_C0_HQ_04,0,Dialogue,The Field Office,LEON,I'm coming.,LOC_C0_FieldOffice,()
+DLG_C0_HQ_05,0,Dialogue,The Field Office,PRUITT,"You're a liaison. You hold the phones. If we don't call by dark, you call the cavalry.",LOC_C0_FieldOffice,()
+DLG_C0_HQ_06,0,Dialogue,The Field Office,ORTIZ,"We'll be back by dark, Cater. Keep the coffee on.",LOC_C0_FieldOffice,(FLG_C0_Complete)
+DLG_C0_Cards_01,0,Dialogue,After the Briefing,NARRATOR,"13:00. Pruitt, Ortiz and Whitlock land at Port Halvern.",LOC_C0_FieldOffice,()
+DLG_C0_Cards_02,0,Dialogue,After the Briefing,NARRATOR,"17:40. Pruitt's last call: ""Port police are here. Hale's people."" Then nothing.",LOC_C0_FieldOffice,()
+DLG_C0_Cards_03,0,Dialogue,After the Briefing,NARRATOR,22:00. Nobody answers the cavalry either. Leon hires a boat.,LOC_C0_FieldOffice,()
 NAR_C1_ManifestA,1,Note,"Inbound Manifest — Berth 2, Yard C",Priya Dann,"INBOUND MANIFEST / PORT HALVERN / BERTH 2 -> YARD C
 Vessel: MV Coldwater Rose. Discharged 23:50.
 
@@ -127,7 +214,9 @@ NAR_C1_OrtizNotes,1,Diary,Ortiz — Field Notes,Lena Ortiz,"13:00. Landed. Port'
 
 17:40. Pruitt's on the radio to Bay Central. He's saying ""port police"". He's saying ""Hale's people"". Then he isn't saying anything.
 
-Later. My arm's wrapped. I can hear them walking the aisles. Whoever reads this: the tape is the whole case. Take the tape.",LOC_C1_CustomsCage,(FLG_C1_PruittFateHinted)
+Later. My arm's wrapped. I can hear them walking the aisles. Whoever reads this: the tape is the whole case. Take the tape.
+
+Cater, if it's you: I said we'd be back by dark. Sorry about the coffee.",LOC_C1_CustomsCage,(FLG_C1_PruittFateHinted)
 NAR_C1_SuppressantLabel,1,Note,V-7 Suppressant — Auto-injector Label,Vigor Biotech,"V-7 SUPPRESSANT / AUTO-INJECTOR / SINGLE USE
 FOR AUTHORISED FIELD PERSONNEL. NOT FOR SALE. NOT A CURE.
 
@@ -220,9 +309,9 @@ RAD_C1_AfterTape_03,1,Radio,After the Tape,MARA,Never mind.,LOC_C1_DockOffice,()
 RAD_C1_AfterTape_04,1,Radio,After the Tape,LEON,Timestamp was 02:14. I'll keep that one.,LOC_C1_DockOffice,"(FLG_C1_CageCodeKnown,OBJ_C1_07)"
 RAD_C1_Warehouse_01,1,Radio,Warehouse 3,MARA,Warehouse 3 is your only way to the yard side. It's a long room full of pallets.,LOC_C1_Warehouse,()
 RAD_C1_Warehouse_02,1,Radio,Warehouse 3,LEON,Three of them on the floor. They haven't looked up yet.,LOC_C1_Warehouse,()
-RAD_C1_Warehouse_03,1,Radio,Warehouse 3,MARA,Then don't make them. They hear better than they see — throw something and they'll go to the noise.,LOC_C1_Warehouse,()
+RAD_C1_Warehouse_03,1,Radio,Warehouse 3,MARA,Then don't let them see you. Throw something and they'll wander to the noise. They only come for what they can see.,LOC_C1_Warehouse,()
 RAD_C1_Warehouse_04,1,Radio,Warehouse 3,LEON,Walking past is cheaper than shooting. Noted.,LOC_C1_Warehouse,(OBJ_C1_09)
-RAD_C1_Ortiz_01,1,Radio,Ortiz,LEON,One of the team. Ortiz. She ran dry and she sat down to do it properly.,LOC_C1_Warehouse,(FLG_C1_OrtizFound)
+RAD_C1_Ortiz_01,1,Radio,Ortiz,LEON,It's Ortiz. She said they'd be back by dark.,LOC_C1_Warehouse,(FLG_C1_OrtizFound)
 RAD_C1_Ortiz_02,1,Radio,Ortiz,MARA,I'm sorry.,LOC_C1_Warehouse,()
 RAD_C1_Ortiz_03,1,Radio,Ortiz,LEON,She left notes. She was better at this than whoever sent her.,LOC_C1_Warehouse,()
 RAD_C1_Reborn_01,1,Radio,The First Reborn,LEON,It got back up. It is not the same shape it was.,LOC_C1_BreakRoom,(FLG_C1_FirstReborn)
@@ -244,7 +333,7 @@ RAD_C1_Shutter_01,1,Radio,The Shutter,LEON,He was carrying the shutter key on th
 RAD_C1_Shutter_02,1,Radio,The Shutter,MARA,He locked himself in with them. Through that shutter there's a tender berth. Get in it.,LOC_C1_Yard,(OBJ_C1_16)
 DLG_C1_Arrival_01,1,Dialogue,Arrival,HANK,This is as close as I go.,LOC_C1_Pier,()
 DLG_C1_Arrival_02,1,Dialogue,Arrival,LEON,Pruitt's team came in here?,LOC_C1_Pier,()
-DLG_C1_Arrival_03,1,Dialogue,Arrival,HANK,Noon yesterday. Nobody's called since.,LOC_C1_Pier,()
+DLG_C1_Arrival_03,1,Dialogue,Arrival,HANK,Around noon. Nobody's called since.,LOC_C1_Pier,()
 DLG_C1_Arrival_04,1,Dialogue,Arrival,LEON,Then somebody should.,LOC_C1_Pier,"(FLG_C1_Landed,OBJ_C1_01)"
 DLG_C1_Departure_01,1,Dialogue,Boat Departure,MARA,"Saltmere's the lights across the river. I'm on the point, in the radio station.",LOC_C1_BoatDock,()
 DLG_C1_Departure_02,1,Dialogue,Boat Departure,LEON,Keep the lights on.,LOC_C1_BoatDock,()

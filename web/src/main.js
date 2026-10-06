@@ -156,24 +156,43 @@ function resume() {
 }
 
 // ---------- boot ----------
+// The Prologue (the hotel and the drive) plays first; #chapter1 in the address starts at the port.
+const CHAPTER = location.hash === '#chapter1' ? 1 : 0;
+
 async function boot() {
-  const data = await loadData();
+  const data = await loadData(CHAPTER);
   initRenderer();
   G.input = new Input(G.renderer.domElement);
   G.audio = new Audio();
   G.ui = new UI();
-  G.level = new Level();
-  G.story = new Story(data);
+  G.chapter = CHAPTER;
+  if (CHAPTER === 0) {
+    const [{ PrologueLevel }, { PrologueStory }] = await Promise.all([import('./prologue/level0.js'), import('./prologue/story0.js')]);
+    G.level = new PrologueLevel();
+    G.story = new PrologueStory(data);
+  } else {
+    G.level = new Level();
+    G.story = new Story(data);
+  }
   G.player = new Player();
   G.player.pos.set(0, 0, 60);
-  G.strain = 1; // Chapter 1: the virus is at its weakest
+  G.strain = 1; // the virus is at its weakest in the first chapters
   G.weapons = new Weapons();
   G.items = new Items();
-  G.items.add('ammo9', 12);
-  G.items.add('herbG', 1);
+  if (CHAPTER === 1) {
+    G.items.add('ammo9', 12);
+    G.items.add('herbG', 1);
+  } else G.items.add('herbG', 1);
   G.story.setup();
   G.camera.position.set(-4, 14, 78);
   G.camera.lookAt(0, 2, 40);
+  // title screen text for the chapter that is loaded
+  $('logo-sub').textContent = CHAPTER === 0 ? 'Prologue · Check-In' : 'Chapter 1 · Port Halvern';
+  $('btn-start').textContent = CHAPTER === 0 ? 'Begin' : 'Step onto the pier';
+  $('btn-chapter').textContent = CHAPTER === 0 ? 'Skip to Chapter 1' : 'Play the Prologue first';
+  $('btn-chapter').hidden = false;
+  $('btn-chapter').addEventListener('click', () => { location.hash = CHAPTER === 0 ? '#chapter1' : '#prologue'; location.reload(); });
+  $('btn-next').addEventListener('click', () => { location.hash = '#chapter1'; location.reload(); });
 
   $('loading').hidden = true;
   $('btn-start').hidden = false;
@@ -233,9 +252,12 @@ function logic(dt) {
     G.player.update(dt);
   } else if (mode === 'title') {
     G.time += dt;
-    const t = G.time * 0.05;
-    G.camera.position.set(Math.sin(t) * 10, 12, 80);
-    G.camera.lookAt(0, 2, 40);
+    if (G.story?.titleView) G.story.titleView(G.time);
+    else {
+      const t = G.time * 0.05;
+      G.camera.position.set(Math.sin(t) * 10, 12, 80);
+      G.camera.lookAt(0, 2, 40);
+    }
   }
   if (G.level) G.level.update(dt);
   if (G.ui && mode !== 'title') G.ui.update(dt);

@@ -1,6 +1,6 @@
 """Merge the per-chapter EvilRise data into Unreal Data Table files.
 
-Reads tools/chapters/c1..c5/{narrative,objectives,puzzles,cutscenes}.json and
+Reads tools/chapters/c0..c5/{narrative,objectives,puzzles,cutscenes}.json and
 writes Content/EvilRise/Data/DT_*.csv and DT_*.json. Unreal's importer wants
 the row name in the first column (CSV) or in a "Name" key (JSON), and arrays
 in CSV written as (A,B,C). Run from the repo root: python3 tools/build_datatables.py
@@ -13,7 +13,7 @@ OUT = os.path.join(ROOT, 'Content', 'EvilRise', 'Data')
 
 def load(kind):
     rows = []
-    for c in range(1, 6):
+    for c in range(0, 6):
         with open(os.path.join(SRC, f'c{c}', f'{kind}.json'), encoding='utf-8') as f:
             rows += json.load(f)
     return rows

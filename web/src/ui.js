@@ -73,6 +73,7 @@ export class UI {
     this.drawEcg(dt, color, st);
     // ammo
     const w = G.weapons, d = w.def();
+    $('hud-ammo').style.visibility = p.unarmed ? 'hidden' : '';
     $('weapon-name').textContent = d.name + (w.reloadT > 0 ? ' · reloading' : '');
     $('ammo-mag').textContent = w.mag[w.current];
     $('ammo-mag').style.color = w.mag[w.current] === 0 ? '#b3261e' : '';
@@ -212,15 +213,24 @@ export class UI {
   }
 
   showMap() {
-    this.openModal(`<div class="panel" role="dialog" aria-label="Map"><h2>Port Halvern</h2>
+    // Chapters with several floors show only the floor Leon is standing on.
+    const here = G.level.roomAt(G.player.pos.x, G.player.pos.z);
+    const zone = here?.zone || G.level.zone;
+    const rooms = ROOMS.filter(R => !R.noMap && (!zone || R.zone === zone));
+    const title = G.level.zoneNames?.[zone] || 'Port Halvern';
+    this.openModal(`<div class="panel" role="dialog" aria-label="Map"><h2>${title}</h2>
       <canvas id="map-canvas" width="430" height="730" style="max-width:430px;justify-self:center"></canvas>
       <div class="legend"><span><i style="background:#6a1d18"></i>Items left</span><span><i style="background:#1d3550"></i>Cleared</span><span><i style="background:#d8a33a"></i>Locked door</span><span><i style="background:#e8e2d0"></i>Leon</span></div>
       <div class="close-hint">M or Esc to close</div></div>`, 'map');
     const c = $('map-canvas'), g = c.getContext('2d');
-    const S = 7, ox = 26 * S + 26, oz = 63 * S + 14;
+    // fit the shown rooms into the canvas
+    const bx0 = Math.min(...rooms.map(R => R.x0)), bx1 = Math.max(...rooms.map(R => R.x1));
+    const bz0 = Math.min(...rooms.map(R => R.z0)), bz1 = Math.max(...rooms.map(R => R.z1));
+    const S = Math.min(7, (c.width - 40) / (bx1 - bx0), (c.height - 40) / (bz1 - bz0));
+    const ox = (c.width - (bx1 - bx0) * S) / 2 - bx0 * S, oz = (c.height + (bz1 - bz0) * S) / 2 + bz0 * S;
     const X = (x) => ox + x * S, Z = (z) => oz - z * S;
     g.fillStyle = '#070809'; g.fillRect(0, 0, c.width, c.height);
-    for (const R of ROOMS) {
+    for (const R of rooms) {
       if (!G.level.visited.has(R.id)) continue;
       g.fillStyle = G.story.roomHasItems(R.id) ? '#6a1d18' : '#1d3550';
       g.fillRect(X(R.x0), Z(R.z1), (R.x1 - R.x0) * S, (R.z1 - R.z0) * S);
@@ -229,8 +239,10 @@ export class UI {
       g.fillStyle = '#d9d3c4'; g.font = '12px "Barlow Condensed", Arial'; g.textAlign = 'center';
       g.fillText(R.name, X((R.x0 + R.x1) / 2), Z((R.z0 + R.z1) / 2));
     }
+    const shown = (x, z) => rooms.some(R => x >= R.x0 && x <= R.x1 && z >= R.z0 && z <= R.z1);
     for (const d of DOORS) {
       const door = G.level.doors[d.id];
+      if (door.kind === 'open' || !shown(d.x, d.z)) continue;
       g.strokeStyle = door.locked ? '#d8a33a' : door.open ? '#070809' : '#b8b2a2';
       g.lineWidth = 4;
       g.beginPath();

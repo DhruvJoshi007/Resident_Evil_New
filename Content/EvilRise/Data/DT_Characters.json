@@ -57,12 +57,17 @@
  {
   "Name": "CHR_Ortiz",
   "display_name": "Lena Ortiz",
-  "role": "Pruitt's team. Found dead in Ch1 and Ch4."
+  "role": "Pruitt's team. Ortiz is Leon's partner in the Prologue and is found dead in Ch1. Whitlock is found dead in Ch4."
  },
  {
   "Name": "CHR_Whitlock",
   "display_name": "Sam Whitlock",
-  "role": "Pruitt's team. Found dead in Ch1 and Ch4."
+  "role": "Pruitt's team. Ortiz is Leon's partner in the Prologue and is found dead in Ch1. Whitlock is found dead in Ch4."
+ },
+ {
+  "Name": "CHR_Ruth",
+  "display_name": "Ruth",
+  "role": "Night clerk at the Gullwing Hotel (Prologue). Her desk log is an optional read."
  },
  {
   "Name": "CHR_Penhallow",

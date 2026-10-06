@@ -3,6 +3,43 @@
 Each puzzle: setup, clues, solution, failure state and the three-step hint system, plus a Blueprint build. Summary rows are in `DT_Puzzles`.
 
 
+## Prologue: Check-In
+
+One puzzle, and it is a stealth puzzle more than a logic one.
+
+---
+
+### PZL_C0_Bay14 — "Bay Fourteen"
+
+#### Setup
+Level P2 of the Gullwing Hotel garage is dark, full of parked cars, and five Husks wander or feed between them. Ortiz gave Leon the key and the bay number, but the reserved row along the far wall holds five identical grey sedans (bays 12 to 16) and most of the bay numbers on the wall are scuffed off. Bay 11 holds a red hatchback.
+
+#### Clues
+- `DLG_C0_Door_12`: Ortiz says "garage level two, bay fourteen".
+- `NAR_C0_GarageSign` by the stairs: "Reserved: bays 12–16, Federal pool vehicles."
+- The fob: within 6 m of the right car, it chirps and the indicators flash once.
+- Counting: the bays run 11 to 16 away from the ramp, so 14 is the fourth car from the ramp.
+
+#### Solution
+Walk the reserved row, listen for the chirp, and press interact at the driver door of the car in bay 14.
+
+#### Failure state
+Trying the wrong car sets off its alarm for 8 seconds. The alarm is a noise: every Husk on the level wanders toward it. They do not chase unless they see Leon, so the alarm is a reposition, not a death. Nothing locks.
+
+#### Hint system
+| Hint | When | Text |
+|---|---|---|
+| 1 | 45 s on P2 | "Bays twelve to sixteen. The reserved row." |
+| 2 | 90 s, or one alarm | "The fob chirps when you are close. Listen for it." |
+| 3 | 150 s, or two alarms | "Far wall, fourth car from the ramp. Bay fourteen." |
+
+#### Blueprint build
+1. Make `BP_BayCar` with an integer `BayNumber` and a Box Collision on the driver door. Place six of them.
+2. On interact: if `BayNumber == 14` and the inventory has `KEY_C0_CarKey`, play `LS_C0_Car`. Otherwise play the alarm cue, flash the lights with a Timeline, and call **Report Noise Event** at the car's location with a big Max Range. The Husks' AI Perception hearing sense hears it and moves them there (see F19: hearing sets "suspicious", not "chase").
+3. The chirp: on Tick (or a 0.25 s timer), if the player is within 600 cm of the bay 14 car and has not heard it yet, play the chirp at the car and flash the indicators once.
+4. The hints live on a `BP_C0_GarageDirector` with a timer and an `AlarmCount` integer.
+
+
 ## Chapter 1: Port Halvern
 
 Three puzzles, in the order the player meets them. The first is a code the chapter has already shown you. The second is an ordered input with a noise penalty instead of a fail screen. The third is a combat puzzle the boss fight is built around. None of them can be brute-forced quietly.

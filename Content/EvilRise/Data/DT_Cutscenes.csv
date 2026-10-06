@@ -1,4 +1,11 @@
 Name,chapter,title,trigger,location,sequence_asset,characters,duration_s,skippable,sets_flags
+CS_C0_Opening,0,What Happened,Starting a new game.,LOC_C0_Opening,/Game/EvilRise/Cinematics/C0/LS_C0_Opening,"(CHR_Leon,CHR_Penhallow,CHR_Begg,CHR_Kelso,CHR_Bert)",95,True,(FLG_C0_OpeningSeen)
+CS_C0_CheckIn,0,Check-In,Talking to the night clerk.,LOC_C0_Lobby,/Game/EvilRise/Cinematics/C0/LS_C0_CheckIn,"(CHR_Leon,CHR_Ruth)",30,True,(FLG_C0_CheckedIn)
+CS_C0_Morning,0,The Window,"Waking up, then opening the curtain.",LOC_C0_Room304,/Game/EvilRise/Cinematics/C0/LS_C0_Morning,(CHR_Leon),60,True,"(FLG_C0_Slept,FLG_C0_WindowSeen)"
+CS_C0_Door,0,The Knock,Opening the door with the flask in hand.,LOC_C0_Room304,/Game/EvilRise/Cinematics/C0/LS_C0_Door,"(CHR_Leon,CHR_Ortiz)",75,True,(FLG_C0_Armed)
+CS_C0_Stairwell,0,Too Many,Reaching the stairwell with Ortiz.,LOC_C0_Stairwell,/Game/EvilRise/Cinematics/C0/LS_C0_Stairwell,"(CHR_Leon,CHR_Ortiz)",20,True,(FLG_C0_Split)
+CS_C0_Car,0,Bay Fourteen,Unlocking the bureau car in bay 14.,LOC_C0_Garage,/Game/EvilRise/Cinematics/C0/LS_C0_Car,"(CHR_Leon,CHR_Ortiz)",15,True,(FLG_C0_InCar)
+CS_C0_FieldOffice,0,The Field Office,Driving through the field office gate.,LOC_C0_FieldOffice,/Game/EvilRise/Cinematics/C0/LS_C0_FieldOffice,"(CHR_Leon,CHR_Ortiz,CHR_Pruitt)",70,True,(FLG_C0_Complete)
 CS_C1_Arrival,1,Arrival at the North Pier,Level start: BeginPlay on BP_C1_Director.,LOC_C1_Pier,/Game/EvilRise/Cinematics/C1/LS_C1_Arrival,"(CHR_Leon,CHR_Pilot)",55,True,(FLG_C1_Landed)
 CS_C1_Tape0214,1,Tape 02:14,"Interact with BP_CCTVMonitor in the dock office, requires FLG_C1_ManifestsRead.",LOC_C1_DockOffice,/Game/EvilRise/Cinematics/C1/LS_C1_Tape0214,"(CHR_Leon,CHR_Begg,CHR_Kelso,CHR_Bert)",100,True,"(FLG_C1_TapeWatched,FLG_C1_CageCodeKnown,FLG_C1_MaraSlip)"
 CS_C1_FirstReborn,1,The First Reborn,"Enter the break room with FLG_C1_FirstReborn unset, or stand within 3 m of an unfinished Husk corpse 6-8 s after its death.",LOC_C1_BreakRoom,/Game/EvilRise/Cinematics/C1/LS_C1_FirstReborn,"(CHR_Leon,ENM_Reborn)",22,False,"(FLG_C1_FirstReborn,FLG_C1_FinisherTaught)"

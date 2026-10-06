@@ -9,9 +9,9 @@ import * as THREE from 'three';
 import { G, rand } from './game.js';
 import { mat, labelTexture, chainLinkTexture } from './textures.js';
 
-const GX0 = -26, GZ0 = -36, GW = 54, GH = 100;
+let GX0 = -26, GZ0 = -36, GW = 54, GH = 100;
 
-export const ROOMS = [
+export let ROOMS = [
   { id: 'pier', name: 'North Pier', x0: -10, x1: 10, z0: 40, z1: 62, floor: 'planks', step: 'wet', outdoor: true, edge: 'water' },
   { id: 'office', name: 'Dock Office', x0: -22, x1: -10, z0: 42, z1: 54, h: 3.2, floor: 'tile', step: 'tile', wall: 'plaster', safe: true,
     lights: [{ x: -16, z: 48, color: 0xffd9a0, i: 9 }] },
@@ -29,7 +29,7 @@ export const ROOMS = [
 
 // axis 'x': door sits in a wall that runs along X (constant z). axis 'z': wall along Z.
 // kind: door (hinged), shutter (rolls up), gate (chain-link, slides aside).
-export const DOORS = [
+export let DOORS = [
   { id: 'office', x: -10, z: 48, axis: 'z', label: 'Dock Office' },
   { id: 'warehouse', x: 0, z: 40, axis: 'x', label: 'Warehouse 3', kind: 'shutter', w: 4, lock: 'release' },
   { id: 'break', x: 14, z: 34, axis: 'z', label: 'Break Room' },
@@ -40,7 +40,14 @@ export const DOORS = [
 ];
 
 // Walls that need a particular look regardless of the rooms on each side.
-const PAIR_STYLE = { 'warehouse|customs': 'fence', 'yard|dock': 'shed' };
+let PAIR_STYLE = { 'warehouse|customs': 'fence', 'yard|dock': 'shed' };
+
+// Another chapter swaps in its own grid, rooms and doors before building its Level.
+// ROOMS and DOORS are live exports, so the map screen sees the new layout too.
+export function useLayout(L) {
+  [GX0, GZ0, GW, GH] = [L.gx0, L.gz0, L.gw, L.gh];
+  ROOMS = L.rooms; DOORS = L.doors; PAIR_STYLE = L.pairStyle || {};
+}
 
 const matCache = {};
 function surface(kind, rx, ry, opts = {}) {
@@ -92,6 +99,11 @@ export class Level {
   }
 
   buildFloors() {
+    this.roomFloors();
+    this.buildWater();
+  }
+
+  roomFloors() {
     for (const R of ROOMS) {
       const w = R.x1 - R.x0, d = R.z1 - R.z0;
       const wet = R.outdoor;
@@ -110,6 +122,9 @@ export class Level {
       }
       if (R.floor === 'planks') this.pilings(R);
     }
+  }
+
+  buildWater() {
     // Black river water all around the port.
     const water = this.water = new THREE.Mesh(new THREE.PlaneGeometry(400, 400, 1, 1), new THREE.MeshStandardMaterial({ color: 0x05080a, roughness: 0.08, metalness: 0.7 }));
     water.rotation.x = -Math.PI / 2; water.position.y = -0.55;
@@ -164,9 +179,10 @@ export class Level {
     }
     if (inA || inB) {
       const R = inA ? A : B;
-      return { style: 'facade', h: R.h + (R.h > 5 ? 1.2 : 0.8), tex: R.h > 5 ? 'corrugated' : R.wall === 'corrugated' ? 'corrugated' : 'concrete' };
+      return { style: 'facade', h: R.facade || R.h + (R.h > 5 ? 1.2 : 0.8), tex: R.facadeTex || (R.h > 5 ? 'corrugated' : R.wall === 'corrugated' ? 'corrugated' : 'concrete') };
     }
     const O = A || B;
+    if (O.edge === 'city') return { style: 'city', h: 0 };
     return O.edge === 'water' ? { style: 'water', h: 0 } : { style: 'stack', h: 5.2 };
   }
 
@@ -202,6 +218,10 @@ export class Level {
     };
     scan('x'); scan('z');
     for (const r of runs) this.buildRun(r);
+    this.buildLintels();
+  }
+
+  buildLintels() {
     // Lintels over doorways so each opening reads as a doorway.
     for (const d of DOORS) {
       const w = d.w || 2;
@@ -216,11 +236,6 @@ export class Level {
       lintel.castShadow = true;
       this.group.add(lintel);
     }
-    // Company sign over the warehouse shutter, and the crane control house nameplate.
-    const sign = new THREE.Mesh(new THREE.PlaneGeometry(7, 1), new THREE.MeshStandardMaterial({
-      map: labelTexture(['PORT HALVERN  ·  WAREHOUSE 3'], { w: 1024, h: 150, size: 60, bg: '#1d2124', fg: '#c9c2ac' }), roughness: 0.6,
-    }));
-    sign.position.set(0, 5.4, 40.17); this.group.add(sign);
   }
 
   doorTouches(d, R) {
@@ -240,6 +255,7 @@ export class Level {
       if (r.axis === 'z') mesh.rotation.y = Math.PI / 2;
     };
     addCollider();
+    if (this.customRun?.(r, place)) return;
     if (r.style === 'water') {
       // Timber edge beam and bollards; nothing tall, so the river stays visible.
       const beam = new THREE.Mesh(new THREE.BoxGeometry(L + 0.2, 0.22, 0.25), surface('wood', L / 2, 0.2, { color: 0x3a3026 }));
@@ -305,9 +321,14 @@ export class Level {
     for (const d of DOORS) {
       const door = { ...d, kind: d.kind || 'door', open: false, locked: !!d.lock, swing: 0, target: 0, leaves: [] };
       const w = d.w || 2;
+      if (door.kind === 'open') { // a plain opening: nothing to open, nothing in the way
+        door.open = true; door.collider = { enabled: false };
+        this.doors[d.id] = door;
+        continue;
+      }
       if (door.kind === 'door') {
         const pivot = new THREE.Group();
-        const panel = new THREE.Mesh(new THREE.BoxGeometry(w - 0.05, 2.55, 0.08), d.id === 'control' ? surface('metal', 1, 1, { color: 0x5a6a62 }) : wood);
+        const panel = new THREE.Mesh(new THREE.BoxGeometry(w - 0.05, 2.55, 0.08), d.id === 'control' || d.metal ? surface('metal', 1, 1, { color: d.color ?? 0x5a6a62 }) : d.color ? surface('wood', 1, 1, { color: d.color }) : wood);
         panel.position.set(w / 2, 1.28, 0);
         panel.castShadow = true; panel.userData.surface = 'wood';
         const knob = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 6), new THREE.MeshStandardMaterial({ color: 0xb59a5a, metalness: 0.8, roughness: 0.3 }));
@@ -400,6 +421,15 @@ export class Level {
     const moon = new THREE.DirectionalLight(0x8aa0c8, 0.55);
     moon.position.set(-30, 40, 50); moon.target.position.set(0, 0, 10);
     G.scene.add(moon, moon.target);
+    this.roomLights();
+    // Sodium floodlights on the yard and the pier. One of the yard lights is dying.
+    this.yardFloods = [this.flood(-18, -14, 0xffa860, 34, true), this.flood(20, 6, 0xffb070, 28), this.flood(-12, 8, 0xffa860, 26), this.flood(12.5, -20.6, 0xffb070, 24)];
+    this.setYardPower(false);
+    this.flood(8, 56, 0xffb070, 22);
+    this.flood(-5.4, -31, 0xffa860, 16);
+  }
+
+  roomLights() {
     for (const R of ROOMS) {
       for (const L of R.lights || []) {
         const y = (R.h || 4) - 0.35;
@@ -420,11 +450,6 @@ export class Level {
         if (!R.lamp) { R.lamp = l; R.fixture = fixture; }
       }
     }
-    // Sodium floodlights on the yard and the pier. One of the yard lights is dying.
-    this.yardFloods = [this.flood(-18, -14, 0xffa860, 34, true), this.flood(20, 6, 0xffb070, 28), this.flood(-12, 8, 0xffa860, 26), this.flood(12.5, -20.6, 0xffb070, 24)];
-    this.setYardPower(false);
-    this.flood(8, 56, 0xffb070, 22);
-    this.flood(-5.4, -31, 0xffa860, 16);
   }
 
   flood(x, z, color, intensity, flick) {
@@ -489,6 +514,12 @@ export class Level {
     const darkWood = surface('wood', 1, 1, { color: 0x6a5040 });
     const metal = surface('metal', 1, 1);
     const paint = (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.45, metalness: 0.5 });
+
+    // Company sign over the warehouse shutter.
+    const sign = new THREE.Mesh(new THREE.PlaneGeometry(7, 1), new THREE.MeshStandardMaterial({
+      map: labelTexture(['PORT HALVERN  ·  WAREHOUSE 3'], { w: 1024, h: 150, size: 60, bg: '#1d2124', fg: '#c9c2ac' }), roughness: 0.6,
+    }));
+    sign.position.set(0, 5.4, 40.17); this.group.add(sign);
 
     // ---- North Pier ----
     this.containerProp(-6.5, 57, 6.1, 0x2a4a5a);
@@ -761,7 +792,9 @@ export class Level {
   }
 
   rasterize(c) {
-    for (let j = 0; j < GH; j++) for (let i = 0; i < GW; i++) {
+    const i0 = Math.max(0, Math.floor(c.minX - 0.35 - GX0 - 0.5)), i1 = Math.min(GW - 1, Math.ceil(c.maxX + 0.35 - GX0));
+    const j0 = Math.max(0, Math.floor(c.minZ - 0.35 - GZ0 - 0.5)), j1 = Math.min(GH - 1, Math.ceil(c.maxZ + 0.35 - GZ0));
+    for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) {
       const x = GX0 + i + 0.5, z = GZ0 + j + 0.5;
       if (x > c.minX - 0.35 && x < c.maxX + 0.35 && z > c.minZ - 0.35 && z < c.maxZ + 0.35) this.blocked[this.idx(i, j)] = 1;
     }
@@ -841,7 +874,7 @@ export class Level {
     }
     // Rain falls in a box that follows the camera, shown only outdoors.
     const cam = G.camera.position;
-    const outdoorView = G.mode === 'cine' ? !this.roomAt(cam.x, cam.z) || this.roomAt(cam.x, cam.z).outdoor : !!this.roomAt(G.player.pos.x, G.player.pos.z)?.outdoor;
+    const outdoorView = G.mode === 'cine' ? !this.roomAt(cam.x, cam.z) || !!this.roomAt(cam.x, cam.z).outdoor : !!this.roomAt(G.player.pos.x, G.player.pos.z)?.outdoor;
     this.rain.visible = outdoorView;
     if (outdoorView) {
       this.rain.position.set(Math.round(cam.x), 0, Math.round(cam.z));
@@ -855,13 +888,14 @@ export class Level {
     }
     // Doors swing, shutters roll up, gates slide aside.
     for (const d of Object.values(this.doors)) {
+      if (d.kind === 'open') continue;
       d.swing += (d.target - d.swing) * Math.min(1, dt * (d.kind === 'door' ? 5 : 2.2));
       if (d.kind === 'door') for (const leaf of d.leaves) leaf.rotation.y = leaf.userData.baseRot + d.swing * leaf.userData.side;
       else if (d.kind === 'shutter') { d.panel.position.y = 1.35 + d.swing * 1.3; d.panel.scale.y = 1 - d.swing * 0.85; }
       else d.panel.position[d.axis === 'x' ? 'x' : 'z'] = (d.axis === 'x' ? d.x : d.z) + d.swing * (d.w || 2) * 0.95;
     }
-    this.updateDrops(dt);
-    if (this.boatBob !== false) this.boat.position.y = -0.25 + Math.sin(G.time * 1.3) * 0.05;
+    if (this.drops) this.updateDrops(dt);
+    if (this.boat && this.boatBob !== false) this.boat.position.y = -0.25 + Math.sin(G.time * 1.3) * 0.05;
   }
 }
 

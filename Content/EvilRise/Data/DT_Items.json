@@ -168,6 +168,14 @@
   "stack": 1
  },
  {
+  "Name": "KEY_C0_CarKey",
+  "display_name": "Bureau Car Key (bay 14)",
+  "category": "KeyItem",
+  "chapter": 0,
+  "found_at": "Given by Ortiz in room 304",
+  "stack": 1
+ },
+ {
   "Name": "KEY_C1_Fuse",
   "display_name": "Crane Fuse",
   "category": "KeyItem",

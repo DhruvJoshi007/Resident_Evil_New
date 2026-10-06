@@ -16,17 +16,17 @@ All of the files are in `Content/EvilRise/Data/`. Each table comes as a `.csv` a
 
 | Table | Rows | What it holds |
 |---|---|---|
-| `DT_Narrative` | 398 | Notes, diaries, emails, audio logs, footage, photos, radio lines and cutscene dialogue for all 5 chapters |
-| `DT_Objectives` | 84 | Every objective, its required items and flags, and what it grants |
-| `DT_Puzzles` | 20 | Puzzle setup, clues, solution, failure state, and the three hints |
-| `DT_Cutscenes` | 20 | Trigger, location, Level Sequence path, cast and flags for each cutscene |
-| `DT_Items` | 40 | Consumables, ammo, weapons and key items |
-| `DT_Characters` | 16 | The cast registry |
+| `DT_Narrative` | 455 | Notes, diaries, emails, audio logs, footage, photos, radio lines and cutscene dialogue for the Prologue and all 5 chapters |
+| `DT_Objectives` | 93 | Every objective, its required items and flags, and what it grants |
+| `DT_Puzzles` | 21 | Puzzle setup, clues, solution, failure state, and the three hints |
+| `DT_Cutscenes` | 27 | Trigger, location, Level Sequence path, cast and flags for each cutscene |
+| `DT_Items` | 41 | Consumables, ammo, weapons and key items |
+| `DT_Characters` | 17 | The cast registry |
 | `DT_Enemies` | 10 | Enemy and boss registry |
 
 **Use the JSON files when you can.** Notes contain commas, quotes and line breaks. JSON handles those safely. CSV is there so you can open the data in a spreadsheet.
 
-The per-chapter source files are in `tools/chapters/c1` to `c5`. If you edit one, run `python3 tools/build_datatables.py` from the repo root to rebuild every table. The script also checks the data:
+The per-chapter source files are in `tools/chapters/c0` (the Prologue) to `c5`. Prologue rows use chapter number 0. If you edit one, run `python3 tools/build_datatables.py` from the repo root to rebuild every table. The script also checks the data:
 - Every flag an objective needs is set somewhere.
 - Every item an objective needs is granted somewhere.
 - No ID is used twice.

@@ -20,6 +20,7 @@ WPN_Pistol,Pistol,Weapon,1,,1
 WPN_FlareGun,Flare Gun,Weapon,2,Harbor master's hut,1
 WPN_Rifle,Rifle,Weapon,3,Annex armory (special room),1
 WPN_Revolver,Revolver,Weapon,4,Hale's safe,1
+KEY_C0_CarKey,Bureau Car Key (bay 14),KeyItem,0,Given by Ortiz in room 304,1
 KEY_C1_Fuse,Crane Fuse,KeyItem,1,Break Room,1
 KEY_C1_ShutterKey,Cargo Shutter Key,KeyItem,1,Dropped by the Hookman,1
 WPN_Shotgun,Shotgun (Pruitt's team case),Weapon,1,"Customs Cage (special room, code 0214)",1

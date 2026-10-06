@@ -1,5 +1,128 @@
 [
  {
+  "Name": "CS_C0_Opening",
+  "chapter": 0,
+  "title": "What Happened",
+  "trigger": "Starting a new game.",
+  "location": "LOC_C0_Opening",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C0/LS_C0_Opening",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Penhallow",
+   "CHR_Begg",
+   "CHR_Kelso",
+   "CHR_Bert"
+  ],
+  "duration_s": 95,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C0_OpeningSeen"
+  ]
+ },
+ {
+  "Name": "CS_C0_CheckIn",
+  "chapter": 0,
+  "title": "Check-In",
+  "trigger": "Talking to the night clerk.",
+  "location": "LOC_C0_Lobby",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C0/LS_C0_CheckIn",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Ruth"
+  ],
+  "duration_s": 30,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C0_CheckedIn"
+  ]
+ },
+ {
+  "Name": "CS_C0_Morning",
+  "chapter": 0,
+  "title": "The Window",
+  "trigger": "Waking up, then opening the curtain.",
+  "location": "LOC_C0_Room304",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C0/LS_C0_Morning",
+  "characters": [
+   "CHR_Leon"
+  ],
+  "duration_s": 60,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C0_Slept",
+   "FLG_C0_WindowSeen"
+  ]
+ },
+ {
+  "Name": "CS_C0_Door",
+  "chapter": 0,
+  "title": "The Knock",
+  "trigger": "Opening the door with the flask in hand.",
+  "location": "LOC_C0_Room304",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C0/LS_C0_Door",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Ortiz"
+  ],
+  "duration_s": 75,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C0_Armed"
+  ]
+ },
+ {
+  "Name": "CS_C0_Stairwell",
+  "chapter": 0,
+  "title": "Too Many",
+  "trigger": "Reaching the stairwell with Ortiz.",
+  "location": "LOC_C0_Stairwell",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C0/LS_C0_Stairwell",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Ortiz"
+  ],
+  "duration_s": 20,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C0_Split"
+  ]
+ },
+ {
+  "Name": "CS_C0_Car",
+  "chapter": 0,
+  "title": "Bay Fourteen",
+  "trigger": "Unlocking the bureau car in bay 14.",
+  "location": "LOC_C0_Garage",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C0/LS_C0_Car",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Ortiz"
+  ],
+  "duration_s": 15,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C0_InCar"
+  ]
+ },
+ {
+  "Name": "CS_C0_FieldOffice",
+  "chapter": 0,
+  "title": "The Field Office",
+  "trigger": "Driving through the field office gate.",
+  "location": "LOC_C0_FieldOffice",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C0/LS_C0_FieldOffice",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Ortiz",
+   "CHR_Pruitt"
+  ],
+  "duration_s": 70,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C0_Complete"
+  ]
+ },
+ {
   "Name": "CS_C1_Arrival",
   "chapter": 1,
   "title": "Arrival at the North Pier",

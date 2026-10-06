@@ -3,6 +3,152 @@
 Shot by shot, with camera, action, dialogue, sound and depth of field, plus how to build each one in Sequencer. Dialogue lines are also rows in `DT_Narrative` (type Dialogue).
 
 
+## Prologue: Check-In
+
+Seven real-time Sequencer cutscenes. House style for the Prologue: the opening is narrated and slow; everything in the hotel is handheld and close, because the player has no gun until Ortiz arrives. No music until the window. Lines are rows in `DT_Narrative` (`DLG_C0_*`).
+
+---
+
+### CS_C0_Opening
+
+**Trigger:** New Game. **Location:** LOC_C0_Opening (three small sets: the Annex trial room, the Yard C container, Harbor Avenue at dawn). **Length:** 95 s. **Flags:** FLG_C0_OpeningSeen.
+
+| # | Shot | Camera | Action / Dialogue | Sound |
+|---|---|---|---|---|
+| 1 | Wide, 35 mm | Slow push in | A tiled trial room under Saltmere. One lamp, one bed, a man strapped down. NARRATOR: **"Eight months ago, under Saltmere Island, Vigor Biotech tested a virus they called V-7."** | Ventilation hum. |
+| 2 | Insert, 85 mm | Creep | A vial on a steel tray, frost on the glass. **"It was meant to make weak bodies strong. Old men. Sick men. People nobody would miss."** | A drip. |
+| 3 | Medium, 50 mm | Static | The fisherman's hand closes on the bed rail and bends it. **"Subject seven was a dying fisherman. He did not stay dying."** | Metal creak. |
+| 4 | Wide | Static | The lamp swings toward the sealed door; blood on the tiles. **"Two of the staff were dead by morning. Vigor sealed the Annex and called it a flood."** | A heavy bolt. |
+| 5 | Medium | Slow track | A container stencilled MEDICAL SUPPLIES. **"What was left of the stock went into a container."** | Forklift beeps. |
+| 6 | Wide, 24 mm | Crane down | Port Halvern, rain, two dock workers and a crowbar. **"Last night it came through Port Halvern. At 02:14, two dock workers opened it."** | Rain, the doors grinding open. |
+| 7 | Medium | Static | Cold mist rolls out over their boots. The old watchman sits down in it. **"A cold mist came out. Breathe it, and it only takes the weak."** | A hiss under the rain. |
+| 8 | Close, 85 mm | Handheld | The watchman bites the big man helping him. **"A bite takes anyone. And the strong come back stronger."** | One scream, cut short. |
+| 9 | Wide, dawn | Slow pan | Harbor Avenue, grey light, smoke, figures walking wrong far down the street. **"By dawn the port was gone. By breakfast it was walking into the city."** | Distant sirens. |
+| 10 | Wide, night | Static | Rewind to the night before. Leon walks up Harbor Avenue in the rain to the Gullwing Hotel's sign. LEON: **"None of that was on the news when I checked in."** | Rain, a bus going by. Title: **CHECK-IN**. |
+
+**Unreal setup**
+1. Make `LS_C0_Opening` in `/Game/EvilRise/Cinematics/C0/`. The three sets can live in one small sublevel far from the playable map (`L_C0_OpeningSets`); load it with **Load Stream Level** before playing the sequence and unload it in `OnFinished`.
+2. The narrator lines are Dialogue Waves on an Audio track; turn on subtitles in Project Settings and they appear from the Dialogue Wave text.
+3. The mist in shot 7 is a Niagara system with a sprite renderer and a low, slow spawn rate. Key its **Spawn Rate** parameter in the sequence (0 → 40) so it starts on the cut.
+4. Shot 10 uses the real hotel level, so put it in a second sequence `LS_C0_Walk` and play it from the first one's `OnFinished`. That way the sets sublevel can unload before the hotel loads its lights.
+
+---
+
+### CS_C0_CheckIn
+
+**Trigger:** interact with Ruth at the desk. **Location:** LOC_C0_Lobby. **Length:** 30 s. **Flags:** FLG_C0_CheckedIn.
+
+| # | Shot | Camera | Action / Dialogue |
+|---|---|---|---|
+| 1 | Over Leon's shoulder | Slow drift | The desk bell. RUTH: **"Late one."** LEON: **"Late flight. Cater, one night."** |
+| 2 | Single on Ruth, 50 mm | Static | She slides a key card across. **"Three-oh-four. Elevator's out. Stairs are past the bar."** |
+| 3 | Single on Leon | Static | **"Of course they are."** |
+| 4 | Single on Ruth | Static | **"Breakfast is seven till ten."** |
+| 5 | Wide lobby | Pan with Leon | He walks off toward the stairs. **"I'll be gone by seven."** |
+
+**Unreal setup:** an interact on `BP_Ruth` plays `LS_C0_CheckIn`; `OnFinished` adds `KEY_C0_Room304` to the inventory, sets the flag, and opens the readable `NAR_C0_KeySleeve` widget.
+
+---
+
+### CS_C0_Morning
+
+**Trigger:** interact with the bed (fade, 07:00), then the sequence plays straight through. **Location:** LOC_C0_Room304 and the street below. **Length:** 60 s. **Flags:** FLG_C0_Slept, FLG_C0_WindowSeen.
+
+| # | Shot | Camera | Action / Dialogue | Sound |
+|---|---|---|---|---|
+| 1 | High wide over the bed | Static | The TV wakes on its own. CHANNEL 6 reads the bulletin (three lines of `NAR_C0_TVBulletin`). Leon is asleep. | Broadcast tone, TV voice. |
+| 2 | Wide | Static | Leon gets up and crosses to the window. | Sirens, very far. |
+| 3 | Medium, 40 mm | Static | He pulls the curtains apart. Grey daylight floods the room. | Curtain rings. |
+| 4 | High POV from the window, 46° | Slow push | The street: wrecks with their windows broken, debris, people walking with a drag in one leg. | Rain, a car alarm somewhere. Music: one low note. |
+| 5 | Low, at the kerb | Creep | One drags a foot past a red car with its windows gone. | A shoe scraping. |
+| 6 | Medium | Static | One kneels at an open car door, feeding. | Wet sounds, kept low. |
+| 7 | Wide tracking | Pan | A man runs down the middle of the road. A big one runs after him, faster. | Running feet, a shout. |
+| 8 | Close on Leon at the glass, 85 mm | Static | LEON: **"That's not drunk."** | Car alarm. |
+| 9 | Wide from the window | Static | Three knocks at the door. | Three knocks, loud and dry. |
+
+**Unreal setup**
+1. The street is the real Harbor Avenue outside the hotel, so the cameras in shots 4–7 are simply placed outside the room. Put the street Husks in the sequence as **Spawnable** actors with an Animation track (walk, drag-walk, feed, run), not AI, so the scene plays the same every time.
+2. The curtain is a Skeletal Mesh or two Static Mesh panels; key their Transform from closed to open in shot 3, and key the room's window light intensity up at the same time.
+3. `OnFinished`: set the flag, start a 6 s looping knock sound on `BP_Door304`, and set objective `OBJ_C0_04`.
+
+---
+
+### CS_C0_Door
+
+**Trigger:** open the door of 304 while holding the flask. **Location:** LOC_C0_Room304. **Length:** 75 s. **Flags:** FLG_C0_Armed.
+
+| # | Shot | Camera | Action / Dialogue |
+|---|---|---|---|
+| 1 | Behind Leon | Static | Leon at the door, flask raised. Two more knocks. |
+| 2 | From the corridor | Fast push | The door opens, the flask comes down, and stops an inch from her face. |
+| 3 | Single on Ortiz | Static | ORTIZ: **"Cater. Cater, it's Ortiz."** |
+| 4 | Single on Leon | Static | LEON: **"You knock like one of them."** |
+| 5 | Single on Ortiz | Static | **"You answer the door like one. Put the bottle down."** He sets it on the dresser. |
+| 6 | Wide in the room | Static | She comes in; he shuts the door behind her. **"You didn't pick up. Pruitt sent me. The port went dark at three and it's spreading this way."** |
+| 7 | Over Ortiz on Leon | Static | LEON: **"What is it?"** |
+| 8 | Over Leon on Ortiz | Static | **"Something off a Vigor container. Nobody's saying more than that on an open line."** |
+| 9 | Two-shot, hands | Static | She hands over his pistol. **"Your sidearm. Thirty rounds. That's all I could carry."** |
+| 10 | Same | Static | Then a knife. **"And the knife. Quieter."** |
+| 11 | Over Ortiz on Leon | Static | **"They come for noise?"** |
+| 12 | Over Leon on Ortiz | Static | **"They wander toward it. They only come for you if they see you."** |
+| 13 | Wide toward the window | Slow drift | She looks down at the street. **"Break their line of sight and wait. They lose you. Whatever's in them chews up the part that remembers."** |
+| 14 | Over Leon toward the window | Static | She tosses him the car key. **"Bureau car, garage level two, bay fourteen. Key's yours. You drive, I shoot."** |
+
+**Unreal setup:** `OnFinished` gives `WPN_Pistol` with 9 in the magazine and 21 in reserve (30 total), `WPN_Knife` and `KEY_C0_CarKey`, sets `bUnarmed = false` on `BP_Leon` (which unhides the gun and the ammo counter), and tells `BP_Ortiz` to walk her AI path to the stairwell door.
+
+---
+
+### CS_C0_Stairwell
+
+**Trigger:** Leon reaches the end of the third-floor corridor behind Ortiz. **Location:** LOC_C0_Stairwell. **Length:** 20 s. **Flags:** FLG_C0_Split.
+
+| # | Shot | Camera | Action / Dialogue |
+|---|---|---|---|
+| 1 | High in the stairwell | Static | Three Husks shamble up from below in red emergency light. |
+| 2 | Through the doorway on Ortiz | Static | ORTIZ: **"Too many. Go down, I'll pull them up."** |
+| 3 | On Leon in the doorway | Static | LEON: **"Ortiz —"** |
+| 4 | On Ortiz | Static | **"Bay fourteen. Don't make me wait."** Two shots into the ceiling. |
+| 5 | Low from the corridor | Static | She runs up. They follow her and never look at the door. |
+
+Then a fade and Leon is on the ground floor stairs. **Unreal setup:** the three Husks are Spawnable in the sequence and destroyed with it; the playable Husks in the lobby are separate actors placed in the level.
+
+---
+
+### CS_C0_Car
+
+**Trigger:** interact with the driver door of the car in bay 14 (PZL_C0_Bay14). **Location:** LOC_C0_Garage. **Length:** 15 s. **Flags:** FLG_C0_InCar.
+
+| # | Shot | Camera | Action / Dialogue |
+|---|---|---|---|
+| 1 | Wide on the bay | Static | Leon gets in. Ortiz runs in from the ramp stairs. |
+| 2 | Through the windscreen on Ortiz | Static | ORTIZ: **"Drive."** |
+| 3 | Through the windscreen on Leon | Static | LEON: **"You took your time."** |
+| 4 | Through the windscreen, both | Static | **"I took the long way. Kestrel Street, the field office. Don't stop for anyone."** The ramp shutter rolls up. |
+| 5 | Wide across the level | Pan | The car pulls out of the bay and up the ramp. |
+
+**Unreal setup:** the car's glass material needs about 45% opacity so faces read through it. `OnFinished` possesses `BP_BureauCar` (a Chaos Vehicle) with the player controller.
+
+---
+
+### CS_C0_FieldOffice
+
+**Trigger:** the car passes the sandbag gate on Kestrel Street. **Location:** LOC_C0_FieldOffice. **Length:** 70 s including the time cards. **Flags:** FLG_C0_Complete.
+
+| # | Shot | Camera | Action / Dialogue |
+|---|---|---|---|
+| 1 | Wide on the gate | Pan | The car rolls in and stops by the porch. |
+| 2 | Wide | Static | They get out. Pruitt comes down the steps. PRUITT: **"Cater. You're late."** |
+| 3 | Over Pruitt on Leon | Static | LEON: **"Traffic."** |
+| 4 | Over Leon on Pruitt | Static | **"Port Halvern went dark at three. Vigor container. I'm taking the team in at noon."** |
+| 5 | On Leon | Static | **"I'm coming."** |
+| 6 | Over Leon on Pruitt | Static | **"You're a liaison. You hold the phones. If we don't call by dark, you call the cavalry."** |
+| 7 | Wide | Slow drift | Ortiz goes in with Pruitt. ORTIZ: **"We'll be back by dark, Cater. Keep the coffee on."** |
+| 8 | Same | Static | Fade to black. |
+| Cards | Black | — | **13:00.** Pruitt, Ortiz and Whitlock land at Port Halvern. **17:40.** Pruitt's last call: "Port police are here. Hale's people." Then nothing. **22:00.** Nobody answers the cavalry either. Leon hires a boat. |
+
+**Unreal setup:** the time cards are a UMG widget with three text blocks faded in by a widget animation; play it from `OnFinished`, then open `L_C1_PortHalvern`.
+
+
 ## Chapter 1: Port Halvern
 
 All five are real-time Sequencer cutscenes. House style: slow push-ins for dread, handheld for action, low angles on the boss, shallow depth of field, light film grain. Rain is a Niagara system that runs in the level, not in the sequence, so it never pops on a cut.
@@ -22,7 +168,7 @@ All five are real-time Sequencer cutscenes. House style: slow push-ins for dread
 | 2 | Medium wide, 35 mm | Slow handheld drift, boat-mounted | The tender's bow comes out of the fog. LEON stands at the rail in a soaked tactical jacket, one hand on a stanchion, not braced like a passenger — braced like someone counting exits. | Hull slap. Fender groan against pier timber. | f/2.8. Hank's face falls off into bokeh. |
 | 3 | Over-shoulder on Hank, 50 mm | Static, slight boat roll | HANK, not looking at him, throttle still in his hand: **"This is as close as I go."** | Throttle blip. Chain rattle. | f/2.0, shallow. |
 | 4 | Single on Leon, 50 mm | Very slow push-in | LEON steps up onto the gunwale. **"Pruitt's team came in here?"** | Boots on wet fibreglass. | f/2.0. Rain streaks catch the pier floods behind his head. |
-| 5 | Single on Hank, 50 mm | Static | HANK finally looks at him. **"Noon yesterday. Nobody's called since."** | Rain. Nothing else — drop the ambience bed two dB under this line. | f/2.0. |
+| 5 | Single on Hank, 50 mm | Static | HANK finally looks at him. **"Around noon. Nobody's called since."** | Rain. Nothing else — drop the ambience bed two dB under this line. | f/2.0. |
 | 6 | Single on Leon, 85 mm | Static, breath-level float | LEON steps across onto the pier. Beat. **"Then somebody should."** He does not say it like a line. He says it like arithmetic. | One footfall on concrete, loud and alone. | f/1.8, very shallow. |
 | 7 | Wide, 24 mm, from the pier looking out | Static, camera on the pier deck behind Leon's boots | The tender backs off. The masthead light shrinks and the fog closes over it in about four seconds. Leon does not watch it go; he is already turning inland. | Engine note rising then swallowed. Rain fills the hole it leaves. | f/5.6. Grain pushes up as the light dies. |
 | 8 | Low wide, 18 mm | Slow crane up and back, revealing gantries | Leon's flashlight snaps on and cuts one narrow cone into the fog. The crane skeletons come out of the dark above him, far bigger than he is. | Flashlight click. First low music swell — one sustained cello note, no melody. | f/4. Light shafts in volumetric fog. Title card: **PORT HALVERN — 22:30**. |
