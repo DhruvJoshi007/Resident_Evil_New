@@ -1,40 +1,27 @@
-# VEILFALL
+# EvilRise
 
-An original third-person survival horror game for Unreal Engine 5, inspired by the pacing and feel of classic survival horror.
-
-The first build has 5 chapters and about 2 hours of play. It is designed to grow to 10 or more chapters.
+An original third-person survival horror game. The target is Unreal Engine 5.8, built in Blueprint on a Mac. It has 5 chapters and takes place over one night in Port Halvern, Saltmere Island and the city of Marrow Bay.
 
 ## Docs
 
 | Doc | What it covers |
 |---|---|
-| [Design Pillars](docs/DesignPillars.md) | Lessons from the genre, core pillars, design rules, and pacing |
-| [Story Bible](docs/StoryBible.md) | Setting, outbreak, characters, mystery structure, and ending |
-| [Chapters](docs/Chapters.md) | All 5 chapters: flow, puzzles, enemies, bosses, escape routes, and files |
-| [Chapter Template](docs/ChapterTemplate.md) | How to plan Chapter 6 and later |
-| [Cutscenes](docs/Cutscenes.md) | The shot-by-shot script for every cutscene |
-| [Asset List](docs/AssetList.md) | Every model, animation, weapon, environment and sound needed, with sources |
-| [Asset Credits](docs/AssetCredits.md) | Licence log for imported assets |
-| [Project Setup](docs/systems/ProjectSetup.md) | Phase 1: how to build, open and test the Unreal project |
+| [Story Bible](docs/evilrise/StoryBible.md) | The canon story, word for word as written |
+| [Canon](docs/evilrise/Canon.md) | Fixes F1 to F18 (each one can be vetoed), the timeline, and every ID: cast, enemies, items, locations, flags |
+| [Story Overview](docs/evilrise/StoryOverview.md) | The story on one page, plus the cast sheet |
+| [Beat Sheet](docs/evilrise/BeatSheet.md) | Every chapter, beat by beat |
+| [Cutscenes](docs/evilrise/Cutscenes.md) | Shot-by-shot scripts for all 20 cutscenes, with Sequencer setup |
+| [Puzzles](docs/evilrise/Puzzles.md) | All 20 puzzles: setup, clues, solution, failure state, hints, Blueprint build |
+| [Unreal Data Setup](docs/evilrise/UnrealDataSetup.md) | How to import the Data Tables in UE 5.8, step by step |
 
-## Play the browser build
+## Game data
 
-Chapter 1 is playable in a desktop browser. See [web/README.md](web/README.md).
+`Content/EvilRise/Data/` holds the Data Tables as CSV and JSON: narrative (notes, logs, radio, dialogue), objectives, puzzles, cutscenes, items, characters and enemies. The per-chapter sources are in `tools/chapters/`. To rebuild and check the tables, run `python3 tools/build_datatables.py`.
 
-## Getting started (Unreal Engine)
+## Play Chapter 1 in a browser
 
-See [Project Setup](docs/systems/ProjectSetup.md). You need Unreal Engine 5.6+, Visual Studio 2022 and Git LFS.
+See [web/README.md](web/README.md).
 
-## Build phases
+## Older material
 
-0. Design docs (done)
-1. Project setup (done)
-2. Player movement, health states and injuries
-3. Weapons and combat
-4. Items, crates, inventory and map
-5. Enemy AI, stealth and the stalker
-6. Puzzles, doors, special rooms and saves
-7. Chapter 1 playable
-8. Chapters 2 to 5
-9. Cutscenes, audio and polish
-10. Playtest and the template for new chapters
+The earlier VEILFALL design is archived in `docs/veilfall-archive/`. The C++ project skeleton in `Source/`, `Config/` and `Veilfall.uproject` also comes from that earlier design, and EvilRise does not need it, because EvilRise is built in Blueprint.

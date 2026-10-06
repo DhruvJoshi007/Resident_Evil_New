@@ -112,6 +112,42 @@ const painters = {
     g.strokeStyle = 'rgba(40,36,30,0.7)'; g.lineWidth = 3; g.strokeRect(0, 0, s, s);
     speckle(g, s, 30, ['#3a2e24'], 20, 70, 0.25);
   },
+  // Ribbed sheet steel for sheds, warehouse walls and shipping containers.
+  corrugated(g, s) {
+    g.fillStyle = '#7a7a76'; g.fillRect(0, 0, s, s);
+    const ribs = 16, w = s / ribs;
+    for (let i = 0; i < ribs; i++) {
+      const grad = g.createLinearGradient(i * w, 0, (i + 1) * w, 0);
+      grad.addColorStop(0, '#5a5a57'); grad.addColorStop(0.35, '#a3a39d'); grad.addColorStop(0.7, '#6d6d69'); grad.addColorStop(1, '#4a4a47');
+      g.fillStyle = grad; g.fillRect(i * w, 0, w, s);
+    }
+    speckle(g, s, 90, ['#5a3a22', '#6b4426', '#3a2a1c'], 4, 26, 0.45); // rust
+    streaks(g, s, 50, '#2a1c12', 0.3);
+    grimeBottom(g, s, 0.45);
+  },
+  planks(g, s) {
+    g.fillStyle = '#2c2620'; g.fillRect(0, 0, s, s);
+    const n = 8, h = s / n;
+    for (let i = 0; i < n; i++) {
+      g.fillStyle = ['#4a4036', '#3e352c', '#544a3e', '#463c31'][i % 4];
+      g.fillRect(0, i * h + 3, s, h - 6);
+      for (let k = 0; k < 30; k++) {
+        g.globalAlpha = 0.18; g.strokeStyle = '#1c1712'; g.lineWidth = 1;
+        const y = i * h + 4 + Math.random() * (h - 8);
+        g.beginPath(); g.moveTo(0, y); g.bezierCurveTo(s * 0.3, y + 3, s * 0.6, y - 3, s, y + 1); g.stroke();
+      }
+      g.globalAlpha = 1;
+      g.fillStyle = '#1a1612';
+      for (const x of [s * 0.1, s * 0.6]) { g.beginPath(); g.arc(x, i * h + h * 0.3, 3, 0, 7); g.arc(x, i * h + h * 0.7, 3, 0, 7); g.fill(); }
+    }
+    speckle(g, s, 40, ['#101820'], 20, 60, 0.35); // wet patches
+  },
+  hazard(g, s) {
+    g.fillStyle = '#c9a227'; g.fillRect(0, 0, s, s);
+    g.fillStyle = '#151515';
+    for (let i = -s; i < s * 2; i += 64) { g.beginPath(); g.moveTo(i, 0); g.lineTo(i + 32, 0); g.lineTo(i + 32 - s, s); g.lineTo(i - s, s); g.fill(); }
+    speckle(g, s, 3000, ['#3a3a36', '#6a5a2a'], 0.5, 3, 0.5);
+  },
   carpet(g, s) {
     g.fillStyle = '#2d3a42'; g.fillRect(0, 0, s, s);
     speckle(g, s, 14000, ['#35444d', '#232e34', '#3e4c55'], 0.5, 1.5, 0.6);
@@ -208,6 +244,23 @@ export function bloodTexture() {
   splatTex = new THREE.CanvasTexture(c);
   splatTex.colorSpace = THREE.SRGBColorSpace;
   return splatTex;
+}
+
+// Chain-link fence: transparent background with a diamond wire mesh.
+let linkTex = null;
+export function chainLinkTexture() {
+  if (linkTex) return linkTex;
+  const [c, g] = canvas(128);
+  g.clearRect(0, 0, 128, 128);
+  g.strokeStyle = 'rgba(170,175,170,1)'; g.lineWidth = 3;
+  for (let i = -128; i <= 256; i += 32) {
+    g.beginPath(); g.moveTo(i, 0); g.lineTo(i + 128, 128); g.stroke();
+    g.beginPath(); g.moveTo(i, 128); g.lineTo(i + 128, 0); g.stroke();
+  }
+  linkTex = new THREE.CanvasTexture(c);
+  linkTex.wrapS = linkTex.wrapT = THREE.RepeatWrapping;
+  linkTex.colorSpace = THREE.SRGBColorSpace;
+  return linkTex;
 }
 
 // Paper with text, used for wall notices and the files on desks.

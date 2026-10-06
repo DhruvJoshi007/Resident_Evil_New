@@ -1,44 +1,55 @@
-// Chapter 1 map: Kettle Street and the Harrow Bay Police Precinct.
+// Chapter 1 map: Port Halvern. The north pier, the dock office, Warehouse 3,
+// the break room, the customs cage, the crane control house, the container
+// yard and the boat dock.
 // Rooms are rectangles on a 1 m grid. Walls are generated wherever two cells
 // belong to different rooms, minus the door openings, so layout edits stay simple.
+// The wall style depends on what is on each side: an interior wall, a building
+// facade, a stack of shipping containers, a chain-link fence, or open water.
 import * as THREE from 'three';
 import { G, rand } from './game.js';
-import { mat, tex, labelTexture } from './textures.js';
+import { mat, labelTexture, chainLinkTexture } from './textures.js';
 
-const GX0 = -26, GZ0 = -42, GW = 52, GH = 100;
-const WALL_H = 3.4, FACADE_H = 8;
+const GX0 = -26, GZ0 = -36, GW = 54, GH = 100;
 
 export const ROOMS = [
-  { id: 'street', name: 'Kettle Street', x0: -14, x1: 14, z0: 20, z1: 56, floor: 'asphalt', outdoor: true, step: 'wet' },
-  { id: 'lobby', name: 'Precinct Lobby', x0: -8, x1: 8, z0: 8, z1: 20, floor: 'tile', step: 'tile', light: [0, 14, 0xffd9a0, 16], safe: true },
-  { id: 'west', name: 'West Office', x0: -24, x1: -8, z0: 8, z1: 20, floor: 'carpet', step: 'carpet', light: [-16, 14, 0xcfe0ff, 10, true] },
-  { id: 'archives', name: 'Archives', x0: 8, x1: 24, z0: 8, z1: 20, floor: 'wood', step: 'wood', light: [16, 14, 0xffc890, 7, true] },
-  { id: 'hall', name: 'Statue Hall', x0: -8, x1: 8, z0: -10, z1: 8, floor: 'marble', step: 'tile', light: [0, -1, 0xffe2b8, 14] },
-  { id: 'armory', name: "Chief's Armoury", x0: -24, x1: -8, z0: -10, z1: 8, floor: 'concrete', step: 'concrete', light: [-16, -1, 0xfff0d0, 12] },
-  { id: 'east', name: 'East Hall', x0: 8, x1: 24, z0: -10, z1: 8, floor: 'tile', step: 'tile', light: [16, -1, 0xd8e4ff, 8, true] },
-  { id: 'interro', name: 'Interrogation', x0: 8, x1: 24, z0: -26, z1: -10, floor: 'concrete', step: 'concrete', light: [16, -18, 0xe0ffe0, 12, false, true] },
-  { id: 'cells', name: 'Cell Block', x0: -24, x1: 6, z0: -40, z1: -10, floor: 'concrete', step: 'concrete', light: [-9, -25, 0xffd0a0, 18, true] },
+  { id: 'pier', name: 'North Pier', x0: -10, x1: 10, z0: 40, z1: 62, floor: 'planks', step: 'wet', outdoor: true, edge: 'water' },
+  { id: 'office', name: 'Dock Office', x0: -22, x1: -10, z0: 42, z1: 54, h: 3.2, floor: 'tile', step: 'tile', wall: 'plaster', safe: true,
+    lights: [{ x: -16, z: 48, color: 0xffd9a0, i: 9 }] },
+  { id: 'warehouse', name: 'Warehouse 3', x0: -10, x1: 14, z0: 14, z1: 40, h: 7, floor: 'concrete', step: 'concrete', wall: 'corrugated',
+    lights: [{ x: -2, z: 33, color: 0xffc890, i: 14, flick: true }, { x: 6, z: 21, color: 0xd8e4ff, i: 10 }, { x: -6, z: 19, color: 0xffc890, i: 0, off: true }] },
+  { id: 'break', name: 'Break Room', x0: 14, x1: 24, z0: 28, z1: 40, h: 3, floor: 'tile', step: 'tile', wall: 'plaster',
+    lights: [{ x: 19, z: 34, color: 0xe8f0ff, i: 7, flick: true }] },
+  { id: 'customs', name: 'Customs Cage', x0: 14, x1: 24, z0: 14, z1: 28, h: 3.4, floor: 'concrete', step: 'concrete', wall: 'corrugated', special: true,
+    lights: [{ x: 19, z: 21, color: 0xfff0d0, i: 8 }] },
+  { id: 'control', name: 'Crane Control House', x0: -24, x1: -10, z0: 14, z1: 26, h: 3.2, floor: 'concrete', step: 'metal', wall: 'plaster',
+    lights: [{ x: -17, z: 20, color: 0xd0ffe0, i: 0, off: true }] },
+  { id: 'yard', name: 'Container Yard', x0: -24, x1: 26, z0: -22, z1: 14, floor: 'asphalt', step: 'wet', outdoor: true, edge: 'stack' },
+  { id: 'dock', name: 'Boat Dock', x0: -6, x1: 6, z0: -34, z1: -22, floor: 'planks', step: 'wet', outdoor: true, edge: 'water' },
 ];
 
 // axis 'x': door sits in a wall that runs along X (constant z). axis 'z': wall along Z.
+// kind: door (hinged), shutter (rolls up), gate (chain-link, slides aside).
 export const DOORS = [
-  { id: 'main', x: 0, z: 20, axis: 'x', label: 'Precinct main doors', double: true },
-  { id: 'west', x: -8, z: 14, axis: 'z', label: 'West Office' },
-  { id: 'archives', x: 8, z: 14, axis: 'z', label: 'Archives' },
-  { id: 'hall', x: 0, z: 8, axis: 'x', label: 'Statue Hall', double: true },
-  { id: 'armory', x: -8, z: 0, axis: 'z', label: "Chief's Armoury", lock: 'medallions' },
-  { id: 'east', x: 8, z: 0, axis: 'z', label: 'East Hall' },
-  { id: 'archEast', x: 16, z: 8, axis: 'x', label: 'East Hall' },
-  { id: 'interro', x: 16, z: -10, axis: 'x', label: 'Interrogation', lock: 'power' },
-  { id: 'cells', x: -2, z: -10, axis: 'x', label: 'Cell Block', lock: 'cellkey', double: true },
+  { id: 'office', x: -10, z: 48, axis: 'z', label: 'Dock Office' },
+  { id: 'warehouse', x: 0, z: 40, axis: 'x', label: 'Warehouse 3', kind: 'shutter', w: 4, lock: 'release' },
+  { id: 'break', x: 14, z: 34, axis: 'z', label: 'Break Room' },
+  { id: 'cage', x: 14, z: 21, axis: 'z', label: 'Customs Cage', kind: 'gate', lock: 'code' },
+  { id: 'control', x: -10, z: 22, axis: 'z', label: 'Crane Control House' },
+  { id: 'yardgate', x: 2, z: 14, axis: 'x', label: 'Container Yard', kind: 'gate', w: 4, lock: 'power' },
+  { id: 'cargo', x: 0, z: -22, axis: 'x', label: 'Boat Dock', kind: 'shutter', w: 4, lock: 'shutterkey' },
 ];
+
+// Walls that need a particular look regardless of the rooms on each side.
+const PAIR_STYLE = { 'warehouse|customs': 'fence', 'yard|dock': 'shed' };
 
 const matCache = {};
 function surface(kind, rx, ry, opts = {}) {
-  const key = `${kind}:${rx}:${ry}:${opts.color ?? ''}`;
+  const key = `${kind}:${rx}:${ry}:${opts.color ?? ''}:${opts.roughness ?? ''}`;
   if (!matCache[key]) matCache[key] = mat(kind, { repeat: rx, repeatY: ry, ...opts });
   return matCache[key];
 }
+
+const CONTAINER_COLORS = [0x6a2a22, 0x2a4a5a, 0x3a5a32, 0x8a6a2a, 0x5a5a5e, 0x2a3242, 0x7a3a1a];
 
 export class Level {
   constructor() {
@@ -52,6 +63,7 @@ export class Level {
     this.lights = [];
     this.flicker = [];
     this.visited = new Set();
+    this.animated = [];
     this.buildGrid();
     this.buildFloors();
     this.buildDoors();
@@ -75,18 +87,15 @@ export class Level {
   buildGrid() {
     for (let j = 0; j < GH; j++) for (let i = 0; i < GW; i++) {
       const x = GX0 + i + 0.5, z = GZ0 + j + 0.5;
-      const r = ROOMS.findIndex(R => x > R.x0 && x < R.x1 && z > R.z0 && z < R.z1);
-      this.cells[this.idx(i, j)] = r;
+      this.cells[this.idx(i, j)] = ROOMS.findIndex(R => x > R.x0 && x < R.x1 && z > R.z0 && z < R.z1);
     }
   }
 
   buildFloors() {
     for (const R of ROOMS) {
       const w = R.x1 - R.x0, d = R.z1 - R.z0;
-      const floorMat = surface(R.floor, w / 3, d / 3, {
-        roughness: R.outdoor ? 0.35 : R.floor === 'marble' ? 0.3 : 0.8,
-        metalness: R.outdoor ? 0.1 : 0,
-      });
+      const wet = R.outdoor;
+      const floorMat = surface(R.floor, w / 3, d / 3, { roughness: wet ? 0.3 : 0.8, metalness: wet ? 0.15 : 0 });
       const f = new THREE.Mesh(new THREE.PlaneGeometry(w, d), floorMat);
       f.rotation.x = -Math.PI / 2;
       f.position.set((R.x0 + R.x1) / 2, 0, (R.z0 + R.z1) / 2);
@@ -94,162 +103,271 @@ export class Level {
       f.userData.surface = R.floor;
       this.group.add(f);
       if (!R.outdoor) {
-        const c = new THREE.Mesh(new THREE.PlaneGeometry(w, d), surface('plaster', w / 4, d / 4, { color: 0x6a665e }));
+        const c = new THREE.Mesh(new THREE.PlaneGeometry(w, d), surface(R.h > 5 ? 'corrugated' : 'plaster', w / 4, d / 4, { color: 0x5a5852 }));
         c.rotation.x = Math.PI / 2;
-        c.position.set(f.position.x, WALL_H, f.position.z);
+        c.position.set(f.position.x, R.h, f.position.z);
         this.group.add(c);
       }
+      if (R.floor === 'planks') this.pilings(R);
     }
-    // Ground beyond the street so the skyline does not float.
-    const out = new THREE.Mesh(new THREE.PlaneGeometry(200, 200), new THREE.MeshStandardMaterial({ color: 0x0a0b0c, roughness: 1 }));
-    out.rotation.x = -Math.PI / 2; out.position.y = -0.02; this.group.add(out);
+    // Black river water all around the port.
+    const water = this.water = new THREE.Mesh(new THREE.PlaneGeometry(400, 400, 1, 1), new THREE.MeshStandardMaterial({ color: 0x05080a, roughness: 0.08, metalness: 0.7 }));
+    water.rotation.x = -Math.PI / 2; water.position.y = -0.55;
+    this.group.add(water);
+    // Standing water across the flooded end of the pier.
+    const flood = new THREE.Mesh(new THREE.PlaneGeometry(14, 9), new THREE.MeshStandardMaterial({ color: 0x0b1216, roughness: 0.05, metalness: 0.6, transparent: true, opacity: 0.72 }));
+    flood.rotation.x = -Math.PI / 2; flood.position.set(-1, 0.025, 45.5);
+    this.group.add(flood);
   }
+
+  pilings(R) {
+    const m = surface('wood', 1, 2, { color: 0x3a3028 });
+    for (let x = R.x0 + 0.4; x <= R.x1; x += 4) for (const z of [R.z0 + 0.4, R.z1 - 0.4]) {
+      const p = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.2, 1.4, 8), m);
+      p.position.set(x, -0.6, z); this.group.add(p);
+    }
+    for (let z = R.z0 + 0.4; z <= R.z1; z += 4) for (const x of [R.x0 + 0.4, R.x1 - 0.4]) {
+      const p = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.2, 1.4, 8), m);
+      p.position.set(x, -0.6, z); this.group.add(p);
+    }
+    const side = new THREE.MeshStandardMaterial({ color: 0x241e18, roughness: 0.9 });
+    const skirt = (w, d, x, z) => { const s = new THREE.Mesh(new THREE.BoxGeometry(w, 0.5, d), side); s.position.set(x, -0.25, z); this.group.add(s); };
+    skirt(R.x1 - R.x0, 0.2, (R.x0 + R.x1) / 2, R.z0); skirt(R.x1 - R.x0, 0.2, (R.x0 + R.x1) / 2, R.z1);
+    skirt(0.2, R.z1 - R.z0, R.x0, (R.z0 + R.z1) / 2); skirt(0.2, R.z1 - R.z0, R.x1, (R.z0 + R.z1) / 2);
+  }
+
+  doorHalf(d) { return (d.w || 2) / 2; }
 
   inDoorGap(axis, line, along) {
     for (const d of DOORS) {
       if (d.axis !== axis) continue;
-      if (axis === 'x' && d.z === line && Math.abs(along - d.x) < 1) return d;
-      if (axis === 'z' && d.x === line && Math.abs(along - d.z) < 1) return d;
+      const half = this.doorHalf(d);
+      if (axis === 'x' && d.z === line && Math.abs(along - d.x) < half) return d;
+      if (axis === 'z' && d.x === line && Math.abs(along - d.z) < half) return d;
     }
     return null;
   }
 
+  // Which wall goes between cell values a and b, and how tall it is.
+  wallStyle(a, b) {
+    if (a < 0 && b < 0) return null;
+    const A = a >= 0 ? ROOMS[a] : null, B = b >= 0 ? ROOMS[b] : null;
+    if (A && B) {
+      const key = PAIR_STYLE[A.id + '|' + B.id] || PAIR_STYLE[B.id + '|' + A.id];
+      if (key === 'fence') return { style: 'fence', h: 3.2 };
+      if (key === 'shed') return { style: 'shed', h: 5 };
+    }
+    const inA = A && !A.outdoor, inB = B && !B.outdoor;
+    if (inA && inB) {
+      const tall = (A.h || 3) >= (B.h || 3) ? A : B;
+      return { style: 'interior', h: tall.h, tex: tall.wall };
+    }
+    if (inA || inB) {
+      const R = inA ? A : B;
+      return { style: 'facade', h: R.h + (R.h > 5 ? 1.2 : 0.8), tex: R.h > 5 ? 'corrugated' : R.wall === 'corrugated' ? 'corrugated' : 'concrete' };
+    }
+    const O = A || B;
+    return O.edge === 'water' ? { style: 'water', h: 0 } : { style: 'stack', h: 5.2 };
+  }
+
   buildWalls() {
     const runs = [];
-    // Walls along X (between rows j-1 and j)
-    for (let j = 0; j <= GH; j++) {
-      let run = null;
-      for (let i = 0; i <= GW; i++) {
-        let edge = false, street = false;
-        if (i < GW) {
-          const a = j > 0 ? this.cells[this.idx(i, j - 1)] : -1;
-          const b = j < GH ? this.cells[this.idx(i, j)] : -1;
-          const zLine = GZ0 + j, xMid = GX0 + i + 0.5;
-          const door = this.inDoorGap('x', zLine, xMid);
-          if (door) this.doorEdges.set(`h:${i}:${j}`, door.id);
-          edge = a !== b && (a >= 0 || b >= 0) && !door;
-          street = a === 0 || b === 0;
-        }
-        if (edge && run && run.street === street) run.len++;
-        else {
-          if (run) runs.push(run);
-          run = edge ? { axis: 'x', line: GZ0 + j, start: GX0 + i, len: 1, street } : null;
-        }
-      }
-    }
-    // Walls along Z (between columns i-1 and i)
-    for (let i = 0; i <= GW; i++) {
-      let run = null;
-      for (let j = 0; j <= GH; j++) {
-        let edge = false, street = false;
-        if (j < GH) {
-          const a = i > 0 ? this.cells[this.idx(i - 1, j)] : -1;
-          const b = i < GW ? this.cells[this.idx(i, j)] : -1;
-          const xLine = GX0 + i, zMid = GZ0 + j + 0.5;
-          const door = this.inDoorGap('z', xLine, zMid);
-          if (door) this.doorEdges.set(`v:${i}:${j}`, door.id);
-          edge = a !== b && (a >= 0 || b >= 0) && !door;
-          street = a === 0 || b === 0;
-        }
-        if (edge && run && run.street === street) run.len++;
-        else {
-          if (run) runs.push(run);
-          run = edge ? { axis: 'z', line: GX0 + i, start: GZ0 + j, len: 1, street } : null;
+    const scan = (axis) => {
+      const outer = axis === 'x' ? GH : GW, inner = axis === 'x' ? GW : GH;
+      for (let o = 0; o <= outer; o++) {
+        let run = null;
+        for (let n = 0; n <= inner; n++) {
+          let ws = null, voidSide = 0;
+          if (n < inner) {
+            let a, b, line, mid, key;
+            if (axis === 'x') { // between rows o-1 and o, along column n
+              a = o > 0 ? this.cells[this.idx(n, o - 1)] : -1; b = o < GH ? this.cells[this.idx(n, o)] : -1;
+              line = GZ0 + o; mid = GX0 + n + 0.5; key = `h:${n}:${o}`;
+            } else {
+              a = o > 0 ? this.cells[this.idx(o - 1, n)] : -1; b = o < GW ? this.cells[this.idx(o, n)] : -1;
+              line = GX0 + o; mid = GZ0 + n + 0.5; key = `v:${o}:${n}`;
+            }
+            const door = this.inDoorGap(axis, line, mid);
+            if (door) this.doorEdges.set(key, door.id);
+            if (a !== b && !door) { ws = this.wallStyle(a, b); voidSide = a < 0 ? -1 : b < 0 ? 1 : 0; }
+          }
+          const sig = ws ? ws.style + ':' + ws.h + ':' + (ws.tex || '') + ':' + voidSide : null;
+          if (sig && run && run.sig === sig) run.len++;
+          else {
+            if (run) runs.push(run);
+            run = sig ? { axis, line: axis === 'x' ? GZ0 + o : GX0 + o, start: (axis === 'x' ? GX0 : GZ0) + n, len: 1, sig, voidSide, ...ws } : null;
+          }
         }
       }
-    }
-    const T = 0.3;
-    for (const r of runs) {
-      const h = r.street ? FACADE_H : WALL_H;
-      const m = r.street ? surface('brick', r.len / 3, h / 3) : surface('plaster', r.len / 3, 1);
-      const L = r.len + T;
-      const geo = r.axis === 'x' ? new THREE.BoxGeometry(L, h, T) : new THREE.BoxGeometry(T, h, L);
-      const mesh = new THREE.Mesh(geo, m);
-      const mid = r.start + r.len / 2;
-      if (r.axis === 'x') mesh.position.set(mid, h / 2, r.line); else mesh.position.set(r.line, h / 2, mid);
-      mesh.castShadow = true; mesh.receiveShadow = true;
-      mesh.userData.surface = r.street ? 'brick' : 'plaster';
-      this.group.add(mesh);
-      G.worldMeshes.push(mesh);
-      if (r.axis === 'x') G.colliders.push({ minX: r.start - T / 2, maxX: r.start + r.len + T / 2, minZ: r.line - T / 2, maxZ: r.line + T / 2 });
-      else G.colliders.push({ minX: r.line - T / 2, maxX: r.line + T / 2, minZ: r.start - T / 2, maxZ: r.start + r.len + T / 2 });
-      if (r.street) this.addWindows(r);
-    }
-    // Lintels above every door so the opening reads as a doorway.
+    };
+    scan('x'); scan('z');
+    for (const r of runs) this.buildRun(r);
+    // Lintels over doorways so each opening reads as a doorway.
     for (const d of DOORS) {
-      const isStreet = d.id === 'main';
-      const top = isStreet ? FACADE_H : WALL_H, h = top - 2.6;
-      const geo = d.axis === 'x' ? new THREE.BoxGeometry(2.3, h, 0.3) : new THREE.BoxGeometry(0.3, h, 2.3);
-      const lintel = new THREE.Mesh(geo, isStreet ? surface('brick', 1, h / 3) : surface('plaster', 1, 0.3));
-      lintel.position.set(d.x, 2.6 + h / 2, d.z);
+      const w = d.w || 2;
+      const a = d.axis === 'x' ? this.roomIndexAt(d.x, d.z - 0.5) : this.roomIndexAt(d.x - 0.5, d.z);
+      const b = d.axis === 'x' ? this.roomIndexAt(d.x, d.z + 0.5) : this.roomIndexAt(d.x + 0.5, d.z);
+      const top = this.wallStyle(a, b)?.h || 3;
+      const h = top - 2.7;
+      if (h <= 0.05) continue;
+      const geo = d.axis === 'x' ? new THREE.BoxGeometry(w + 0.3, h, 0.3) : new THREE.BoxGeometry(0.3, h, w + 0.3);
+      const lintel = new THREE.Mesh(geo, surface(d.kind === 'shutter' ? 'corrugated' : 'concrete', 1, h / 3));
+      lintel.position.set(d.x, 2.7 + h / 2, d.z);
       lintel.castShadow = true;
       this.group.add(lintel);
     }
-    // Precinct sign over the main doors
-    const sign = new THREE.Mesh(new THREE.PlaneGeometry(6, 0.9), new THREE.MeshStandardMaterial({
-      map: labelTexture(['HARROW BAY POLICE'], { w: 1024, h: 150, size: 72, bg: '#1d1f22', fg: '#c9c2ac' }), roughness: 0.6,
+    // Company sign over the warehouse shutter, and the crane control house nameplate.
+    const sign = new THREE.Mesh(new THREE.PlaneGeometry(7, 1), new THREE.MeshStandardMaterial({
+      map: labelTexture(['PORT HALVERN  ·  WAREHOUSE 3'], { w: 1024, h: 150, size: 60, bg: '#1d2124', fg: '#c9c2ac' }), roughness: 0.6,
     }));
-    sign.position.set(0, 3.6, 20.17); this.group.add(sign);
+    sign.position.set(0, 5.4, 40.17); this.group.add(sign);
   }
 
-  addWindows(r) {
-    const glow = [0x30281c, 0x5a4422, 0x1a2230];
-    for (let k = 2; k < r.len - 1; k += 3) {
-      for (let y = 3.5; y < FACADE_H - 0.5; y += 2.4) {
-        if (Math.random() < 0.35) continue;
-        const lit = Math.random() < 0.25;
-        const w = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 1.4), new THREE.MeshStandardMaterial({
-          color: 0x07090b, emissive: lit ? glow[(Math.random() * 3) | 0] : 0x000000, emissiveIntensity: 1.6, roughness: 0.15, metalness: 0.4,
-        }));
-        const along = r.start + k + 0.5;
-        // place on the street-facing side
-        if (r.axis === 'x') {
-          const side = r.line <= 20.5 ? 1 : -1;
-          w.position.set(along, y, r.line + side * 0.16);
-          if (side < 0) w.rotation.y = Math.PI;
-        } else {
-          const side = r.line < 0 ? 1 : -1;
-          w.position.set(r.line + side * 0.16, y, along);
-          w.rotation.y = side * Math.PI / 2;
-        }
-        this.group.add(w);
+  doorTouches(d, R) {
+    if (d.axis === 'x') return (R.z0 === d.z || R.z1 === d.z) && d.x > R.x0 && d.x < R.x1;
+    return (R.x0 === d.x || R.x1 === d.x) && d.z > R.z0 && d.z < R.z1;
+  }
+
+  buildRun(r) {
+    const T = 0.3, L = r.len;
+    const mid = r.start + L / 2;
+    const addCollider = () => {
+      if (r.axis === 'x') G.colliders.push({ minX: r.start - T / 2, maxX: r.start + L + T / 2, minZ: r.line - T / 2, maxZ: r.line + T / 2 });
+      else G.colliders.push({ minX: r.line - T / 2, maxX: r.line + T / 2, minZ: r.start - T / 2, maxZ: r.start + L + T / 2 });
+    };
+    const place = (mesh, along, y, out = 0) => {
+      if (r.axis === 'x') mesh.position.set(along, y, r.line + out); else mesh.position.set(r.line + out, y, along);
+      if (r.axis === 'z') mesh.rotation.y = Math.PI / 2;
+    };
+    addCollider();
+    if (r.style === 'water') {
+      // Timber edge beam and bollards; nothing tall, so the river stays visible.
+      const beam = new THREE.Mesh(new THREE.BoxGeometry(L + 0.2, 0.22, 0.25), surface('wood', L / 2, 0.2, { color: 0x3a3026 }));
+      place(beam, mid, 0.11); beam.castShadow = true; this.group.add(beam);
+      for (let k = 1.5; k < L; k += 5) {
+        const b = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.17, 0.6, 10), new THREE.MeshStandardMaterial({ color: 0x1c1d1e, metalness: 0.6, roughness: 0.5 }));
+        place(b, r.start + k, 0.3); this.group.add(b);
       }
+      return;
     }
+    if (r.style === 'stack') {
+      // Two tiers of shipping containers, pushed out into the void side.
+      const out = r.voidSide * 1.25;
+      let k = 0;
+      while (k < L) {
+        const len = Math.min(6.1, L - k);
+        for (let tier = 0; tier < 2; tier++) {
+          if (tier === 1 && Math.random() < 0.18) continue;
+          const c = this.container(len, CONTAINER_COLORS[(Math.random() * CONTAINER_COLORS.length) | 0]);
+          place(c, r.start + k + len / 2 + (tier ? rand(-0.3, 0.3) : 0), tier * 2.6, out + (tier ? rand(-0.1, 0.1) : 0));
+          this.group.add(c);
+          G.worldMeshes.push(c);
+        }
+        k += len;
+      }
+      return;
+    }
+    if (r.style === 'fence') {
+      const m = new THREE.MeshStandardMaterial({ map: chainLinkTexture().clone(), alphaTest: 0.4, side: THREE.DoubleSide, metalness: 0.6, roughness: 0.5 });
+      m.map.repeat.set(L / 0.6, r.h / 0.6); m.map.needsUpdate = true;
+      const f = new THREE.Mesh(new THREE.PlaneGeometry(L, r.h), m);
+      place(f, mid, r.h / 2); f.userData.seeThrough = true; f.userData.surface = 'metal';
+      this.group.add(f); G.worldMeshes.push(f);
+      for (let k = 0; k <= L; k += 3) {
+        const p = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, r.h, 6), new THREE.MeshStandardMaterial({ color: 0x6a6e70, metalness: 0.7, roughness: 0.4 }));
+        place(p, r.start + k, r.h / 2); this.group.add(p);
+      }
+      return;
+    }
+    // interior, facade and shed walls are solid boxes
+    const kind = r.style === 'interior' ? (r.tex || 'plaster') : r.style === 'shed' ? 'corrugated' : r.tex || 'concrete';
+    const m = surface(kind, L / 3, r.h / 3, kind === 'corrugated' ? { color: r.style === 'interior' ? 0x8a8a84 : 0x6f7a80 } : {});
+    const mesh = new THREE.Mesh(new THREE.BoxGeometry(L + T, r.h, T), m);
+    place(mesh, mid, r.h / 2);
+    mesh.castShadow = true; mesh.receiveShadow = true;
+    mesh.userData.surface = kind === 'corrugated' ? 'metal' : 'plaster';
+    this.group.add(mesh);
+    G.worldMeshes.push(mesh);
+  }
+
+  // A shipping container of the given length, lying along +X, base at y = 0.
+  container(len = 6.1, color = 0x6a2a22, opts = {}) {
+    const m = surface('corrugated', len / 1.5, 1, { color, roughness: 0.6, metalness: 0.3 });
+    const box = new THREE.Mesh(new THREE.BoxGeometry(len, 2.59, 2.44), m);
+    box.geometry.translate(0, 1.295, 0);
+    box.castShadow = !opts.noShadow; box.receiveShadow = true;
+    box.userData.surface = 'metal';
+    return box;
   }
 
   buildDoors() {
-    const wood = surface('wood', 1, 1, { color: 0x8a6a50 });
+    const wood = surface('wood', 1, 1, { color: 0x6a6258 });
     for (const d of DOORS) {
-      const door = { ...d, open: false, locked: !!d.lock, swing: 0, target: 0, leaves: [] };
-      const leaves = d.double ? [[-1, 1], [1, 1]] : [[-1, 2]];
-      for (const [side, width] of leaves) {
+      const door = { ...d, kind: d.kind || 'door', open: false, locked: !!d.lock, swing: 0, target: 0, leaves: [] };
+      const w = d.w || 2;
+      if (door.kind === 'door') {
         const pivot = new THREE.Group();
-        const panel = new THREE.Mesh(new THREE.BoxGeometry(width - 0.05, 2.55, 0.08), d.id === 'cells' ? surface('metal', 1, 1) : wood);
-        panel.position.set(-side * (width / 2), 1.28, 0);
-        panel.castShadow = true;
-        panel.userData.surface = d.id === 'cells' ? 'metal' : 'wood';
-        // handle
+        const panel = new THREE.Mesh(new THREE.BoxGeometry(w - 0.05, 2.55, 0.08), d.id === 'control' ? surface('metal', 1, 1, { color: 0x5a6a62 }) : wood);
+        panel.position.set(w / 2, 1.28, 0);
+        panel.castShadow = true; panel.userData.surface = 'wood';
         const knob = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 6), new THREE.MeshStandardMaterial({ color: 0xb59a5a, metalness: 0.8, roughness: 0.3 }));
-        knob.position.set(-side * (width - 0.15), 1.05, 0.06); pivot.add(knob);
-        pivot.add(panel);
-        const hx = d.axis === 'x' ? d.x + side : d.x, hz = d.axis === 'x' ? d.z : d.z + side;
-        pivot.position.set(hx, 0, hz);
+        knob.position.set(w - 0.15, 1.05, 0.06);
+        pivot.add(panel, knob);
+        if (d.axis === 'x') pivot.position.set(d.x - w / 2, 0, d.z); else pivot.position.set(d.x, 0, d.z - w / 2);
         pivot.rotation.y = d.axis === 'x' ? 0 : -Math.PI / 2;
-        pivot.userData.baseRot = pivot.rotation.y;
-        pivot.userData.side = side;
-        this.group.add(pivot);
-        G.worldMeshes.push(panel);
+        pivot.userData.baseRot = pivot.rotation.y; pivot.userData.side = 1;
+        this.group.add(pivot); G.worldMeshes.push(panel);
         door.leaves.push(pivot);
+      } else if (door.kind === 'shutter') {
+        const tex = mat('corrugated', { repeat: 2.2, repeatY: w / 1.6, color: d.id === 'cargo' ? 0x7a5a2a : 0x6a7278, metalness: 0.4, roughness: 0.5 });
+        tex.map = tex.map.clone(); tex.map.rotation = Math.PI / 2; tex.map.needsUpdate = true; // ribs run across the shutter
+        const panel = new THREE.Mesh(new THREE.BoxGeometry(w, 2.7, 0.1), tex);
+        const holder = new THREE.Group();
+        holder.add(panel); panel.position.y = 1.35;
+        holder.position.set(d.x, 0, d.z);
+        if (d.axis === 'z') holder.rotation.y = Math.PI / 2;
+        panel.userData.surface = 'metal';
+        this.group.add(holder); G.worldMeshes.push(panel);
+        door.panel = panel;
+        if (d.id === 'cargo') {
+          const stencil = new THREE.Mesh(new THREE.PlaneGeometry(2.6, 0.5), new THREE.MeshBasicMaterial({ map: labelTexture(['SEALED · BOAT DOCK'], { w: 512, h: 96, size: 48, bg: '#7a5a2a', fg: '#151310' }) }));
+          stencil.position.set(0, 1.8, 0.06); holder.add(stencil);
+          const back = stencil.clone(); back.rotation.y = Math.PI; back.position.z = -0.06; holder.add(back);
+        }
+      } else {
+        // chain-link gate in a steel frame; slides along the wall when opened
+        const holder = new THREE.Group();
+        const fm = new THREE.MeshStandardMaterial({ map: chainLinkTexture().clone(), alphaTest: 0.4, side: THREE.DoubleSide, metalness: 0.6, roughness: 0.5 });
+        fm.map.repeat.set(w / 0.6, 2.4 / 0.6); fm.map.needsUpdate = true;
+        const mesh = new THREE.Mesh(new THREE.PlaneGeometry(w, 2.4), fm);
+        mesh.position.y = 1.25; mesh.userData.seeThrough = true; mesh.userData.surface = 'metal';
+        const frame = new THREE.Mesh(new THREE.BoxGeometry(w, 0.06, 0.06), new THREE.MeshStandardMaterial({ color: 0x5a5e60, metalness: 0.7 }));
+        frame.position.y = 2.45; const frame2 = frame.clone(); frame2.position.y = 0.05;
+        holder.add(mesh, frame, frame2);
+        holder.position.set(d.x, 0, d.z);
+        if (d.axis === 'z') holder.rotation.y = Math.PI / 2;
+        this.group.add(holder); G.worldMeshes.push(mesh);
+        door.panel = holder;
+        if (d.lock === 'power') {
+          const box = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.4, 0.15), new THREE.MeshStandardMaterial({ color: 0x3a3e40, metalness: 0.5 }));
+          box.position.set(d.x + w / 2 + 0.5, 1.3, d.z + 0.2); this.group.add(box);
+          this.gateLamp = new THREE.Mesh(new THREE.SphereGeometry(0.04, 8, 6), new THREE.MeshBasicMaterial({ color: 0xb3261e }));
+          this.gateLamp.position.set(d.x + w / 2 + 0.5, 1.42, d.z + 0.29); this.group.add(this.gateLamp);
+        }
+        if (d.lock === 'code') {
+          const pad = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.2, 0.06), new THREE.MeshStandardMaterial({ color: 0x1a1a1a, emissive: 0x0a2a10 }));
+          pad.position.set(d.x - 0.12, 1.3, d.z - 1.2); pad.rotation.y = -Math.PI / 2; this.group.add(pad);
+        }
       }
       door.collider = d.axis === 'x'
-        ? { minX: d.x - 1, maxX: d.x + 1, minZ: d.z - 0.1, maxZ: d.z + 0.1, door: true }
-        : { minX: d.x - 0.1, maxX: d.x + 0.1, minZ: d.z - 1, maxZ: d.z + 1, door: true };
+        ? { minX: d.x - w / 2, maxX: d.x + w / 2, minZ: d.z - 0.1, maxZ: d.z + 0.1, door: true }
+        : { minX: d.x - 0.1, maxX: d.x + 0.1, minZ: d.z - w / 2, maxZ: d.z + w / 2, door: true };
       G.colliders.push(door.collider);
       this.doors[d.id] = door;
-      const pos = new THREE.Vector3(d.x, 1.2, d.z);
+      const verb = door.kind === 'shutter' ? 'Raise the shutter to' : door.kind === 'gate' ? 'Open the gate to' : 'Open door to';
       this.interacts.push({
-        pos, radius: 2.0, door,
-        label: () => door.locked ? `Examine the ${d.label} door` : `Open door to ${d.label}`,
+        pos: new THREE.Vector3(d.x, 1.2, d.z), radius: 1.5 + w / 4, door,
+        label: () => door.locked ? `Examine the ${d.label} ${door.kind === 'door' ? 'door' : door.kind}` : `${verb} ${d.label}`,
         enabled: () => !door.open,
         action: () => G.story.tryDoor(door),
       });
@@ -261,11 +379,13 @@ export class Level {
     if (!door || door.open) return;
     door.open = true; door.locked = false;
     door.collider.enabled = false;
-    // swing away from whoever opens it
     let dir = 1;
-    if (fromPos) dir = door.axis === 'x' ? Math.sign(door.z - fromPos.z) || 1 : Math.sign(fromPos.x - door.x) || 1;
-    door.target = dir * 1.45;
-    if (!silent) G.audio.door(new THREE.Vector3(door.x, 1.5, door.z));
+    if (fromPos) dir = door.axis === 'x' ? Math.sign(fromPos.z - door.z) || 1 : Math.sign(fromPos.x - door.x) || 1;
+    door.target = door.kind === 'door' ? (door.axis === 'x' ? dir : -dir) * 1.45 : 1;
+    if (!silent) {
+      const p = new THREE.Vector3(door.x, 1.5, door.z);
+      if (door.kind === 'shutter') G.audio.shutter(p); else if (door.kind === 'gate') G.audio.gate(p); else G.audio.door(p);
+    }
   }
 
   closeDoor(id, lock) {
@@ -276,44 +396,55 @@ export class Level {
   }
 
   buildLights() {
-    G.scene.add(new THREE.HemisphereLight(0x8090a8, 0x16120e, 0.5));
-    const moon = new THREE.DirectionalLight(0x8aa0c8, 0.7);
-    moon.position.set(-20, 40, 60); moon.target.position.set(0, 0, 30);
+    G.scene.add(new THREE.HemisphereLight(0x7a8aa0, 0x14110e, 0.42));
+    const moon = new THREE.DirectionalLight(0x8aa0c8, 0.55);
+    moon.position.set(-30, 40, 50); moon.target.position.set(0, 0, 10);
     G.scene.add(moon, moon.target);
     for (const R of ROOMS) {
-      if (!R.light) continue;
-      const [x, z, color, intensity, flick, off] = R.light;
-      const l = new THREE.PointLight(color, intensity, 22, 1.6);
-      l.position.set(x, WALL_H - 0.35, z);
-      const fixture = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.45, 0.12, 16), new THREE.MeshStandardMaterial({ color: 0x222222, emissive: color, emissiveIntensity: off ? 0 : 2.5 }));
-      fixture.position.set(x, WALL_H - 0.08, z);
-      this.group.add(l, fixture);
-      R.lamp = l; R.fixture = fixture; R.baseIntensity = intensity;
-      if (off) { l.visible = false; }
-      if (flick) this.flicker.push(R);
+      for (const L of R.lights || []) {
+        const y = (R.h || 4) - 0.35;
+        const l = new THREE.PointLight(L.color, L.i || 1, R.h > 5 ? 26 : 18, 1.6);
+        l.position.set(L.x, y, L.z);
+        const fixture = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.45, 0.12, 16), new THREE.MeshStandardMaterial({ color: 0x222222, emissive: L.color, emissiveIntensity: L.off ? 0 : 2.5 }));
+        fixture.position.set(L.x, R.h - 0.08, L.z);
+        if (R.h > 5) { // hanging warehouse lamp on a cable
+          fixture.position.y = y + 0.25;
+          const cable = new THREE.Mesh(new THREE.CylinderGeometry(0.01, 0.01, R.h - y - 0.25, 4), new THREE.MeshBasicMaterial({ color: 0x111111 }));
+          cable.position.set(L.x, (R.h + y + 0.25) / 2, L.z); this.group.add(cable);
+        }
+        this.group.add(l, fixture);
+        const rec = { room: R, lamp: l, fixture, base: L.i || 1, off: !!L.off };
+        if (L.off) { l.visible = false; l.intensity = 9; rec.base = 9; }
+        this.lights.push(rec);
+        if (L.flick) this.flicker.push(rec);
+        if (!R.lamp) { R.lamp = l; R.fixture = fixture; }
+      }
     }
-    // Street lamp and the burning barricade
-    const lamp = new THREE.PointLight(0xffb070, 12, 20, 1.8);
-    lamp.position.set(-11, 5.5, 46); G.scene.add(lamp);
-    this.addPost(-12.6, 46);
-    this.fire = new THREE.PointLight(0xff7a2a, 40, 24, 1.6);
-    this.fire.position.set(5, 1.4, 34); G.scene.add(this.fire);
-    this.fireMeshes = [];
-    for (let k = 0; k < 14; k++) {
-      const f = new THREE.Mesh(new THREE.ConeGeometry(0.25 + Math.random() * 0.2, 0.8 + Math.random() * 0.8, 6), new THREE.MeshBasicMaterial({ color: k % 2 ? 0xff6a1a : 0xffa03a, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false }));
-      f.position.set(3 + Math.random() * 4, 1.3 + Math.random() * 0.3, 34 + (Math.random() - 0.5) * 0.4);
-      f.userData.base = f.position.y;
-      this.group.add(f); this.fireMeshes.push(f);
-    }
+    // Sodium floodlights on the yard and the pier. One of the yard lights is dying.
+    this.yardFloods = [this.flood(-18, -14, 0xffa860, 34, true), this.flood(20, 6, 0xffb070, 28), this.flood(-12, 8, 0xffa860, 26), this.flood(12.5, -20.6, 0xffb070, 24)];
+    this.setYardPower(false);
+    this.flood(8, 56, 0xffb070, 22);
+    this.flood(-5.4, -31, 0xffa860, 16);
   }
 
-  addPost(x, z) {
-    const p = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 5.6, 8), new THREE.MeshStandardMaterial({ color: 0x1b1d1f, metalness: 0.6, roughness: 0.5 }));
-    p.position.set(x, 2.8, z); this.group.add(p);
-    const arm = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.08, 0.08), p.material);
-    arm.position.set(x + 0.8, 5.55, z); this.group.add(arm);
-    const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.16, 10, 8), new THREE.MeshStandardMaterial({ color: 0x000000, emissive: 0xffb070, emissiveIntensity: 4 }));
-    bulb.position.set(x + 1.6, 5.45, z); this.group.add(bulb);
+  flood(x, z, color, intensity, flick) {
+    const l = new THREE.PointLight(color, intensity, 34, 1.5);
+    l.position.set(x, 8.5, z); G.scene.add(l);
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.14, 9, 8), new THREE.MeshStandardMaterial({ color: 0x1b1d1f, metalness: 0.6, roughness: 0.5 }));
+    pole.position.set(x, 4.5, z); this.group.add(pole);
+    const head = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.3, 0.5), new THREE.MeshStandardMaterial({ color: 0x111111, emissive: color, emissiveIntensity: 3 }));
+    head.position.set(x, 8.9, z); this.group.add(head);
+    G.colliders.push({ minX: x - 0.15, maxX: x + 0.15, minZ: z - 0.15, maxZ: z + 0.15, prop: true });
+    const rec = { lamp: l, fixture: head, base: intensity, flood: true };
+    if (flick) this.flicker.push(rec);
+    return rec;
+  }
+
+  // Yard C floods and the crane share the gantry bus with the gate motor.
+  setYardPower(on) {
+    for (const f of this.yardFloods) { f.lamp.visible = on; f.fixture.material.emissiveIntensity = on ? 3 : 0; }
+    if (this.craneLamps) this.craneLamps.forEach(m => m.material.color.set(on ? 0x5fbf6a : 0x331010));
+    if (this.gateLamp) this.gateLamp.material.color.set(on ? 0x5fbf6a : 0xb3261e);
   }
 
   // Static box prop with collision. Returns the mesh.
@@ -333,134 +464,322 @@ export class Level {
     return mesh;
   }
 
+  // A container prop with collision. alongZ turns it 90 degrees.
+  containerProp(x, z, len, color, opts = {}) {
+    const c = this.container(len, color);
+    c.position.set(x, opts.y || 0, z);
+    if (opts.alongZ) c.rotation.y = Math.PI / 2;
+    this.group.add(c); G.worldMeshes.push(c);
+    if (!opts.y) {
+      const hw = (opts.alongZ ? 2.44 : len) / 2, hd = (opts.alongZ ? len : 2.44) / 2;
+      const col = { minX: x - hw, maxX: x + hw, minZ: z - hd, maxZ: z + hd, prop: true };
+      G.colliders.push(col); c.userData.collider = col;
+    }
+    return c;
+  }
+
+  sign(x, y, z, rotY, lines, opts = {}) {
+    const s = new THREE.Mesh(new THREE.PlaneGeometry(opts.w || 1.2, opts.h || 0.5), new THREE.MeshStandardMaterial({ map: labelTexture(lines, { w: 512, h: Math.round(512 * (opts.h || 0.5) / (opts.w || 1.2)), size: opts.size || 40, bg: opts.bg, fg: opts.fg }), roughness: 0.8 }));
+    s.position.set(x, y, z); s.rotation.y = rotY; this.group.add(s);
+    return s;
+  }
+
   buildProps() {
     const wood = surface('wood', 1, 1);
     const darkWood = surface('wood', 1, 1, { color: 0x6a5040 });
     const metal = surface('metal', 1, 1);
-    const paint = (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.4, metalness: 0.5 });
-    // Kettle Street
-    this.box(-9, 40, 2.6, 10, 3, paint(0x2c3a44), { surface: 'metal' });          // burnt-out bus
-    this.box(-9, 40, 2.4, 9.6, 0.6, new THREE.MeshStandardMaterial({ color: 0x090909 }), { y: 1.9, solid: false });
-    this.box(8.5, 29, 2, 4.4, 1.3, paint(0x4a1e1a), { surface: 'metal' });       // car
-    this.box(8.5, 29.3, 1.8, 2.2, 0.55, paint(0x1a1210), { y: 1.3, solid: false });
-    this.box(-5.5, 25.5, 4.4, 2, 1.3, paint(0x2b2f33), { surface: 'metal' });    // police car
-    this.box(-5.5, 25.5, 2.2, 1.8, 0.55, paint(0x111317), { y: 1.3, solid: false });
-    this.box(4.5, 34, 6, 0.7, 1.1, darkWood, { surface: 'wood' });               // burning barricade
-    this.box(-1.5, 34, 3, 0.5, 1.0, paint(0x8a7a2a), { surface: 'metal' });       // police barrier
-    this.box(0, 56.3, 6, 0.6, 1.4, surface('concrete', 2, 0.5), { surface: 'concrete' }); // culvert mouth
-    const culvert = new THREE.Mesh(new THREE.CircleGeometry(1.2, 20), new THREE.MeshBasicMaterial({ color: 0x020202 }));
-    culvert.position.set(0, 1.2, 55.95); culvert.rotation.y = Math.PI; this.group.add(culvert);
-    this.box(11, 50, 2.5, 0.9, 1.2, surface('metal', 1, 1, { color: 0x30402a }), { surface: 'metal' }); // dumpster in the alley
-    // Lobby
-    this.box(0, 12.5, 6, 1, 1.1, darkWood);
-    this.box(-6, 17.5, 2.6, 0.6, 0.5, wood);
-    this.box(6, 17.5, 2.6, 0.6, 0.5, wood);
-    for (const x of [-4.5, 4.5]) this.box(x, 9.5, 0.7, 0.7, WALL_H, surface('marble', 1, 2), { surface: 'concrete' });
-    // West Office
-    for (const [x, z] of [[-20, 11.5], [-15, 11.5], [-20, 16.5], [-12, 17.6]]) {
-      this.box(x, z, 2.2, 1.1, 0.78, wood);
-      this.box(x + 0.4, z, 0.5, 0.35, 0.3, paint(0x1b1b1b), { y: 0.78, solid: false }); // monitor
+    const paint = (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.45, metalness: 0.5 });
+
+    // ---- North Pier ----
+    this.containerProp(-6.5, 57, 6.1, 0x2a4a5a);
+    this.containerProp(-6.5, 57, 6.1, 0x6a2a22, { y: 2.6 });
+    this.containerProp(7, 52, 6.1, 0x3a5a32, { alongZ: true });
+    this.box(-4, 44, 1.2, 1.2, 1.0, darkWood);                                  // pallets of rope
+    this.box(5.5, 43.5, 2.4, 1.4, 1.6, paint(0x8a6a1a), { surface: 'metal' });   // forklift body
+    this.box(5.5, 44.6, 2.0, 0.2, 2.6, paint(0x222222), { surface: 'metal', solid: false }); // mast
+    for (const [x, z] of [[-9.4, 59], [9.4, 59], [9.4, 47], [-9.4, 50]]) {
+      const b = new THREE.Mesh(new THREE.CylinderGeometry(0.22, 0.26, 0.5, 12), paint(0x1a1a1a)); b.position.set(x, 0.25, z); this.group.add(b);
     }
-    this.box(-23.55, 12, 0.6, 6, 2, surface('metal', 2, 1, { color: 0x5a6a70 }), { surface: 'metal' }); // lockers
-    // Archives shelving
-    for (const x of [12, 15, 18, 21]) {
-      this.box(x, 15, 0.6, 7, 2.4, darkWood);
-      for (let k = 0; k < 4; k++) this.box(x, 15, 0.5, 6.8, 0.25, new THREE.MeshStandardMaterial({ color: [0x6b5a3c, 0x52432f, 0x7a6a4a][k % 3] }), { y: 0.35 + k * 0.55, solid: false, shadow: false });
-    }
-    // Statue Hall
-    this.box(0, -1, 1.8, 1.8, 1.0, surface('marble', 1, 1), { surface: 'concrete' }); // plinth
-    this.box(0, -8.6, 6, 1.2, 1.4, darkWood);                                       // judge's bench
-    this.box(0, -9.2, 1.2, 0.5, 2.2, darkWood, { y: 0 });                            // judge's chair back
-    for (const [x, z] of [[-5, 3], [5, 3], [-5, -4], [5, -4]]) this.box(x, z, 3, 0.55, 0.5, wood);
-    // East Hall
-    this.box(20, -8.6, 2.2, 0.7, 1.3, metal, { surface: 'metal' });
-    this.box(13, 4, 2.2, 1.1, 0.78, wood);
-    // Interrogation
-    this.box(16, -18, 2.2, 1.1, 0.8, metal, { surface: 'metal' });
-    this.box(10.5, -22, 0.15, 5, 1.6, new THREE.MeshStandardMaterial({ color: 0x1a2024, roughness: 0.05, metalness: 0.9 }), { y: 0.8, surface: 'glass' }); // one-way mirror
-    // Armoury
-    this.box(-23.6, -1, 0.5, 12, 2, metal, { surface: 'metal' });
-    this.box(-16, -1, 3, 1.2, 0.9, metal, { surface: 'metal' });
-    // Cell block: bars, cell dividers and two pillars
-    this.cellBars = [];
-    const barMat = new THREE.MeshStandardMaterial({ color: 0x3a3a3a, metalness: 0.8, roughness: 0.4 });
-    const addBars = (x, z0, z1, id) => {
-      const g = new THREE.Group();
-      for (let z = z0 + 0.2; z < z1; z += 0.25) {
-        const b = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, WALL_H, 6), barMat);
-        b.position.set(x, WALL_H / 2, z); g.add(b);
+
+    // ---- Dock Office (safe room) ----
+    this.box(-16, 51.5, 3.2, 1.1, 0.78, wood);                 // manifest desk
+    this.box(-20.6, 47, 1.1, 2.6, 0.78, wood);                 // CCTV desk
+    this.monitor = this.box(-20.7, 47.4, 0.3, 0.55, 0.42, paint(0x111111), { y: 0.78, solid: false, surface: 'metal' });
+    this.monitorScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.48, 0.34), new THREE.MeshBasicMaterial({ color: 0x223322 }));
+    this.monitorScreen.position.set(-20.54, 0.99, 47.4); this.monitorScreen.rotation.y = Math.PI / 2; this.group.add(this.monitorScreen);
+    this.box(-21.6, 43.2, 0.7, 1.4, 2.0, surface('metal', 1, 1, { color: 0x4a5a5a }), { surface: 'metal' }); // supply locker
+    this.box(-11.5, 53.3, 1.6, 0.6, 1.9, metal, { surface: 'metal' }); // filing cabinet
+    this.sign(-16, 2.1, 53.84, Math.PI, ['HALVERN PORT AUTHORITY', 'NIGHT DESK'], { w: 2.2, h: 0.6, size: 46 });
+
+    // ---- Warehouse 3: tall racking makes the aisles for sneaking ----
+    const rack = surface('metal', 1, 2, { color: 0x3a4a6a });
+    for (const x of [-6, -1, 4, 9]) {
+      for (const [z0, z1] of [[17, 25], [28, 36]]) {
+        const len = z1 - z0, zc = (z0 + z1) / 2;
+        this.box(x, zc, 1.1, len, 4.2, rack, { surface: 'metal', shadow: true });
+        for (let k = 0; k < 3; k++) {
+          for (let s = 0; s < len - 1; s += 2.2) {
+            if (Math.random() < 0.25) continue;
+            this.box(x, z0 + 0.8 + s, 1.0, 1.6, 0.9, surface('wood', 1, 1, { color: [0x8a7050, 0x6a5440, 0x7a6a5a][(k + s) % 3] }), { y: 0.3 + k * 1.3, solid: false, shadow: false });
+          }
+        }
       }
-      this.group.add(g);
-      const c = { minX: x - 0.1, maxX: x + 0.1, minZ: z0, maxZ: z1, bars: true };
-      G.colliders.push(c);
-      this.cellBars.push({ id, group: g, collider: c, open: false });
+    }
+    this.box(12, 37.5, 3, 1.5, 1.2, darkWood);   // pallets by the break room door
+    this.box(-8.5, 15.5, 2.4, 1.8, 1.4, paint(0x3a3a3a), { surface: 'metal' }); // generator
+    this.containerProp(-5, 37.6, 6.1, 0x7a3a1a);
+
+    // ---- Break Room ----
+    this.box(19, 34, 2.4, 1.2, 0.76, wood);
+    this.box(23.5, 37, 0.8, 1.0, 1.9, paint(0x8a1a1a), { surface: 'metal' }); // vending machine
+    this.box(15.6, 39.5, 2.6, 0.5, 0.9, surface('metal', 1, 1, { color: 0x6a7a80 }), { surface: 'metal' }); // counter
+    this.box(23.6, 30, 0.5, 3, 1.9, surface('metal', 2, 1, { color: 0x5a6a70 }), { surface: 'metal' }); // lockers
+    this.rotaBoard = this.sign(23.73, 1.6, 34, -Math.PI / 2, ['SHIFT ROTA', 'DAY 06-14  CRANE 1  ABEL', 'SWING 14-22  CRANE 2  SULLY', 'NIGHT 22-06  CRANE 3  DMITRI'], { w: 1.6, h: 1.0, size: 34, bg: '#e2dccb' });
+
+    // ---- Customs Cage ----
+    this.box(19.5, 18, 2.6, 1.2, 0.85, metal, { surface: 'metal' });  // inspection table with the team case
+    this.box(23.4, 24, 1, 4, 2.2, rack, { surface: 'metal' });
+    this.sign(14.2, 2.4, 24, Math.PI / 2, ['CUSTOMS HOLD', 'AUTHORISED ONLY'], { w: 1.4, h: 0.5, size: 40, bg: '#d8c890' });
+
+    // ---- Crane Control House ----
+    this.box(-17, 15.5, 6, 1.0, 1.0, surface('metal', 2, 1, { color: 0x4a5a52 }), { surface: 'metal' }); // console under the yard window
+    this.box(-23.4, 22, 0.7, 3, 2.2, surface('metal', 1, 1, { color: 0x3a4a42 }), { surface: 'metal' }); // relay cabinets
+    this.yardWindow = new THREE.Mesh(new THREE.PlaneGeometry(7, 1.1), new THREE.MeshStandardMaterial({ color: 0x0b1418, roughness: 0.05, metalness: 0.8, transparent: true, opacity: 0.55 }));
+    this.yardWindow.position.set(-17, 1.9, 14.17); this.group.add(this.yardWindow);
+    this.sign(-23.83, 1.7, 18, Math.PI / 2, ['IF THE MAIN TRIPS:', 'LET IT SIT 30 SECONDS.', 'THEN AGAIN, IN ORDER.', '  · SULLY'], { w: 1.5, h: 0.75, size: 30, bg: '#e2dccb' });
+    this.sign(-23.83, 2.6, 21.5, Math.PI / 2, ['22:41'], { w: 0.6, h: 0.25, size: 70, bg: '#151515', fg: '#ff5a3a' }); // wall clock
+    // the gantry supply panel: fuse carrier and three crane switches
+    this.cranePanel = this.box(-23.75, 19.8, 0.2, 1.1, 0.9, surface('metal', 1, 1, { color: 0x6a7a70 }), { y: 1.0, surface: 'metal', solid: false });
+    this.craneLamps = [0, 1, 2].map(k => { const m = new THREE.Mesh(new THREE.SphereGeometry(0.035, 8, 6), new THREE.MeshBasicMaterial({ color: 0x331010 })); m.position.set(-23.62, 1.65, 19.45 + k * 0.35); this.group.add(m); return m; });
+
+    // ---- Container Yard: lanes of containers make the arena ----
+    const yardStacks = [
+      [-17, 8, 6.1, false, 2], [-17, 0, 12.2, false, 1], [-9, -14, 6.1, true, 2], [11, 7, 6.1, false, 1],
+      [19, -2, 6.1, true, 2], [-20, -17, 6.1, false, 1], [8, -18, 6.1, false, 2], [-4, 6, 6.1, false, 1],
+    ];
+    for (const [x, z, len, alongZ, tiers] of yardStacks) {
+      for (let t = 0; t < tiers; t++) this.containerProp(x, z, len, CONTAINER_COLORS[(Math.random() * 7) | 0], { alongZ, y: t * 2.6 });
+    }
+    // The opened Vigor container, VGR-7718. Its doors hang open; mist still pools at the mouth.
+    this.vigor = this.containerProp(-13, -7, 6.1, 0xd9d6ce, { alongZ: false });
+    this.vigor.material = surface('corrugated', 4, 1, { color: 0xcfcbc0, roughness: 0.5, metalness: 0.3 });
+    this.sign(-13, 1.7, -5.76, 0, ['VIGOR BIOTECH', 'VGR-7718 · MEDICAL SUPPLIES'], { w: 2.6, h: 0.6, size: 44, bg: '#d8d4c8', fg: '#2a3a5a' });
+    this.vigorDoors = [];
+    for (const s of [-1, 1]) {
+      const pivot = new THREE.Group();
+      const leaf = new THREE.Mesh(new THREE.BoxGeometry(1.2, 2.5, 0.06), surface('corrugated', 1, 1, { color: 0xbdb9ae }));
+      leaf.position.set(s * 0.6, 1.3, 0); pivot.add(leaf);
+      pivot.position.set(-9.95, 0, -7 + s * 1.2); pivot.rotation.y = Math.PI / 2;
+      pivot.userData.side = s;
+      this.group.add(pivot); this.vigorDoors.push(pivot);
+    }
+    this.setVigorOpen(1);
+    // Chain-link panel Dan Kelso tore loose on the tape, still lying where it fell.
+    const fm = new THREE.MeshStandardMaterial({ map: chainLinkTexture().clone(), alphaTest: 0.4, side: THREE.DoubleSide, metalness: 0.6, roughness: 0.5 });
+    fm.map.repeat.set(3 / 0.6, 2.2 / 0.6); fm.map.needsUpdate = true;
+    this.tornGate = new THREE.Mesh(new THREE.PlaneGeometry(3, 2.2), fm);
+    this.tornGate.userData.seeThrough = true;
+    this.group.add(this.tornGate);
+    this.setTornGate(true);
+    for (const x of [-6.6, -3.4]) { const p = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 2.4, 6), paint(0x6a6e70)); p.position.set(x, 1.2, -1.5); this.group.add(p); }
+    // CAM 11: the security camera that recorded the tape, on a pole above Stack 4
+    this.box(-3.6, 2.0, 0.2, 0.2, 5.9, paint(0x3a3e40), { surface: 'metal' });
+    const camArm = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.08, 0.9), paint(0x3a3e40)); camArm.position.set(-3.55, 5.85, 1.6); this.group.add(camArm);
+    const camBody = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.2, 0.45), paint(0xd8d4c8)); camBody.position.set(-3.5, 5.7, 1.2); camBody.rotation.set(-0.5, -0.6, 0); this.group.add(camBody);
+    const camLed = new THREE.Mesh(new THREE.SphereGeometry(0.025, 6, 4), new THREE.MeshBasicMaterial({ color: 0xff2a1a })); camLed.position.set(-3.6, 5.62, 0.98); this.group.add(camLed);
+    // Hookman's shed: a corrugated lean-to with a roller shutter facing the yard.
+    const shedMat = surface('corrugated', 2, 1, { color: 0x5a6266 });
+    this.box(17.5, -12.5, 5, 0.3, 3.4, shedMat, { surface: 'metal' });
+    this.box(17.5, -17.5, 5, 0.3, 3.4, shedMat, { surface: 'metal' });
+    this.box(20, -15, 0.3, 5, 3.4, shedMat, { surface: 'metal' });
+    const roof = new THREE.Mesh(new THREE.BoxGeometry(5.4, 0.15, 5.4), shedMat); roof.position.set(17.5, 3.45, -15); this.group.add(roof);
+    this.shedShutter = this.box(15.1, -15, 0.12, 4.7, 3.0, surface('corrugated', 1, 2, { color: 0x6a7278 }), { surface: 'metal' });
+    this.shedLintel = this.box(15.1, -15, 0.3, 4.9, 0.4, shedMat, { y: 3.0, solid: false });
+    // The gantry crane over the yard, with two containers hung over hazard-striped drop zones.
+    this.buildCrane();
+    // Cargo shutter shed wall face and lights
+    this.sign(0, 4.0, -21.82, 0, ['CARGO SHUTTER 2', 'BOAT DOCK'], { w: 2.4, h: 0.6, size: 46, bg: '#2a2d30', fg: '#d8c890' });
+
+    // ---- Boat Dock ----
+    this.boat = this.makeBoat(0x3a4a52);
+    this.boat.position.set(0, -0.25, -36.2); this.boat.rotation.y = 0;
+    this.group.add(this.boat);
+    this.box(-4.6, -27, 1.2, 1.2, 0.9, darkWood);
+    this.box(4.4, -30, 1.4, 1.0, 1.1, paint(0x2a3a2a), { surface: 'metal' });
+
+    // ---- set dressing: blood, paper and puddles ----
+    const blood = (x, z, s) => {
+      const m = new THREE.Mesh(new THREE.CircleGeometry(s, 12), new THREE.MeshStandardMaterial({ color: 0x2a0503, roughness: 0.25, transparent: true, opacity: 0.85 }));
+      m.rotation.x = -Math.PI / 2; m.position.set(x, 0.012 + Math.random() * 0.002, z); this.group.add(m);
     };
-    for (let z = -40; z < -12; z += 6) {
-      addBars(-19, z, Math.min(z + 6, -10), 'w' + z);
-      addBars(1, z, Math.min(z + 6, -10), 'e' + z);
-      if (z > -40) {
-        this.box(-21.5, z, 5, 0.25, WALL_H, surface('plaster', 1, 1), { surface: 'plaster' });
-        this.box(3.5, z, 5, 0.25, WALL_H, surface('plaster', 1, 1), { surface: 'plaster' });
-      }
-    }
-    this.box(-13, -20, 1.1, 1.1, WALL_H, surface('concrete', 1, 2), { surface: 'concrete' });
-    this.box(-6, -31, 1.1, 1.1, WALL_H, surface('concrete', 1, 2), { surface: 'concrete' });
-    // Blood smears and debris for set dressing
-    for (let k = 0; k < 26; k++) {
+    // Pruitt's blood trail from the crushed radio toward the warehouse
+    for (let k = 0; k < 13; k++) blood(3.0 - k * 1.0 + rand(-0.2, 0.2), 50.0 - k * 0.15 + rand(-0.2, 0.2), rand(0.12, 0.3));
+    for (let k = 0; k < 20; k++) {
       const R = ROOMS[(Math.random() * ROOMS.length) | 0];
-      const s = new THREE.Mesh(new THREE.CircleGeometry(rand(0.2, 0.9), 12), new THREE.MeshStandardMaterial({ color: 0x2a0503, roughness: 0.25, transparent: true, opacity: 0.85 }));
-      s.rotation.x = -Math.PI / 2; s.position.set(rand(R.x0 + 1, R.x1 - 1), 0.01 + k * 0.0003, rand(R.z0 + 1, R.z1 - 1));
-      this.group.add(s);
+      blood(rand(R.x0 + 1, R.x1 - 1), rand(R.z0 + 1, R.z1 - 1), rand(0.2, 0.8));
     }
-    for (let k = 0; k < 40; k++) {
+    for (let k = 0; k < 30; k++) {
       const p = new THREE.Mesh(new THREE.PlaneGeometry(0.3, 0.22), new THREE.MeshStandardMaterial({ color: 0xcfc8b4, roughness: 0.9 }));
       p.rotation.x = -Math.PI / 2; p.rotation.z = Math.random() * 3;
-      const R = ROOMS[1 + ((Math.random() * (ROOMS.length - 1)) | 0)];
+      const R = ROOMS[[1, 2, 3, 5][(Math.random() * 4) | 0]];
       p.position.set(rand(R.x0 + 1, R.x1 - 1), 0.012, rand(R.z0 + 1, R.z1 - 1));
       this.group.add(p);
     }
   }
 
-  openCellBars(side) {
-    for (const b of this.cellBars) {
-      if (b.open || !b.id.startsWith(side)) continue;
-      b.open = true; b.collider.enabled = false;
+  // The Hookman tears the shed's roller shutter off its runners.
+  setShedOpen(open) {
+    const m = this.shedShutter;
+    m.visible = !open; m.userData.collider.enabled = !open;
+    if (open) { m.position.set(13.2, 0.08, -15.6); m.rotation.set(0, 0.3, Math.PI / 2 - 0.05); m.visible = true; }
+    else { m.position.set(15.1, 1.5, -15); m.rotation.set(0, 0, 0); }
+    this.refreshBlocked();
+  }
+
+  // Put the crane loads back the way a save recorded them ('hung' or 'down').
+  setDrops(states) {
+    this.drops.forEach((d, k) => {
+      const down = states[k] !== 'hung';
+      d.state = down ? 'down' : 'hung'; d.v = 0; d.y = down ? 0 : 5.6;
+      d.box.position.y = d.y;
+      if (d.col) d.col.enabled = down;
+      else if (down) { d.col = { minX: d.x - 1.22, maxX: d.x + 1.22, minZ: d.z - 3.05, maxZ: d.z + 3.05, prop: true }; G.colliders.push(d.col); }
+      const i = G.worldMeshes.indexOf(d.box);
+      if (down && i < 0) G.worldMeshes.push(d.box); else if (!down && i >= 0) G.worldMeshes.splice(i, 1);
+      this.setCable(d);
+    });
+    this.leverBulbs?.forEach((b, k) => b.material.color.set(k < this.drops.filter(d => d.state === 'hung').length ? 0xffc040 : 0x2a2010));
+    this.refreshBlocked();
+  }
+
+  setVigorOpen(k) {
+    for (const p of this.vigorDoors) p.rotation.y = Math.PI / 2 + p.userData.side * -1.9 * k;
+  }
+
+  // standing = the gate panel upright between its posts (on the tape); otherwise torn down
+  setTornGate(down) {
+    const g = this.tornGate;
+    if (down) { g.position.set(-5.6, 0.04, -3.4); g.rotation.set(-Math.PI / 2, 0, 0.5); }
+    else { g.position.set(-5, 1.15, -1.5); g.rotation.set(0, 0, 0); }
+  }
+
+  buildCrane() {
+    const steel = new THREE.MeshStandardMaterial({ color: 0x8a6a1a, roughness: 0.55, metalness: 0.5 });
+    const legs = [[-7, -9], [-7, -3], [11, -9], [11, -3]];
+    this.craneLegs = legs.map(([x, z]) => this.box(x, z, 0.6, 0.6, 10, steel, { surface: 'metal' }));
+    for (const x of [-7, 11]) { const beam = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.8, 6.6), steel); beam.position.set(x, 10, -6); this.group.add(beam); }
+    for (const z of [-9, -3]) { const beam = new THREE.Mesh(new THREE.BoxGeometry(18.6, 0.9, 0.6), steel); beam.position.set(2, 10.2, z); this.group.add(beam); }
+    this.sign(11, 3, -2.68, 0, ['CRANE 3'], { w: 1.2, h: 0.4, size: 60, bg: '#151515', fg: '#c9a227' });
+    this.drops = [];
+    for (const x of [-1, 6]) {
+      const zone = new THREE.Mesh(new THREE.RingGeometry(2.6, 3.0, 32), new THREE.MeshStandardMaterial({ map: surfaceMap('hazard'), roughness: 0.7 }));
+      zone.rotation.x = -Math.PI / 2; zone.position.set(x, 0.015, -6); this.group.add(zone);
+      const trolley = new THREE.Mesh(new THREE.BoxGeometry(1.4, 0.6, 6.4), new THREE.MeshStandardMaterial({ color: 0x2a2a2a, metalness: 0.6 }));
+      trolley.position.set(x, 9.5, -6); this.group.add(trolley);
+      const box = this.container(6.1, x < 0 ? 0x6a2a22 : 0x2a4a5a, { noShadow: true });
+      box.rotation.y = Math.PI / 2;
+      box.position.set(x, 5.6, -6); this.group.add(box);
+      const cable = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1, 4), new THREE.MeshBasicMaterial({ color: 0x111111 }));
+      this.group.add(cable);
+      const drop = { x, z: -6, box, cable, trolley, state: 'hung', y: 5.6, v: 0 };
+      this.setCable(drop);
+      this.drops.push(drop);
+    }
+    // The emergency release lever at the east leg
+    this.leverBase = this.box(11.9, -6, 0.5, 0.5, 1.1, new THREE.MeshStandardMaterial({ color: 0x2a2a2a, metalness: 0.6 }), { surface: 'metal' });
+    this.lever = new THREE.Group();
+    const arm = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.7, 6), new THREE.MeshStandardMaterial({ color: 0xb3261e }));
+    arm.position.y = 0.35; this.lever.add(arm);
+    this.lever.position.set(11.9, 1.1, -6); this.lever.rotation.z = 0.6;
+    this.group.add(this.lever);
+    this.sign(11.64, 0.75, -6, -Math.PI / 2, ['EMERGENCY', 'LOAD RELEASE'], { w: 0.5, h: 0.25, size: 46, bg: '#c9a227', fg: '#151515' });
+    // two indicator bulbs: one goes out per release
+    this.leverBulbs = [0, 1].map(k => { const b = new THREE.Mesh(new THREE.SphereGeometry(0.05, 8, 6), new THREE.MeshBasicMaterial({ color: 0xffc040 })); b.position.set(11.62, 1.0, -6.12 + k * 0.24); this.group.add(b); return b; });
+  }
+
+  setCable(d) {
+    const top = 9.2, bot = d.y + 2.59;
+    const len = Math.max(0.05, top - bot);
+    d.cable.scale.y = len; d.cable.position.set(d.x, bot + len / 2, d.z);
+    d.cable.visible = d.state === 'hung';
+  }
+
+  makeBoat(color) {
+    const g = new THREE.Group();
+    const shape = new THREE.Shape();
+    shape.moveTo(-1.2, -3); shape.lineTo(1.2, -3); shape.lineTo(1.25, 2); shape.quadraticCurveTo(0.9, 3.4, 0, 3.9); shape.quadraticCurveTo(-0.9, 3.4, -1.25, 2); shape.closePath();
+    const hull = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, { depth: 1.1, bevelEnabled: false }), new THREE.MeshStandardMaterial({ color, roughness: 0.5, metalness: 0.3 }));
+    hull.rotation.x = -Math.PI / 2; hull.position.y = -0.3; g.add(hull);
+    const deck = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.06, 5.6), surface('planks', 1, 2));
+    deck.position.set(0, 0.62, 0.1); g.add(deck);
+    const cabin = new THREE.Mesh(new THREE.BoxGeometry(1.6, 1.3, 1.6), new THREE.MeshStandardMaterial({ color: 0xc8c4b8, roughness: 0.6 }));
+    cabin.position.set(0, 1.3, -0.6); g.add(cabin);
+    const glass = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 0.5), new THREE.MeshStandardMaterial({ color: 0x0a1418, roughness: 0.05, metalness: 0.8 }));
+    glass.position.set(0, 1.55, 0.21); g.add(glass);
+    const lamp = new THREE.Mesh(new THREE.SphereGeometry(0.07, 8, 6), new THREE.MeshBasicMaterial({ color: 0xff3a2a }));
+    lamp.position.set(0, 2.05, -0.6); g.add(lamp);
+    g.traverse(c => { if (c.isMesh) c.castShadow = true; });
+    return g;
+  }
+
+  // Release the next hanging container. Returns the drop or null.
+  releaseContainer(pref) {
+    const hung = this.drops.filter(d => d.state === 'hung');
+    if (!hung.length) return null;
+    const d = pref && hung.includes(pref) ? pref : hung[0];
+    d.state = 'falling'; d.v = 0;
+    this.setCable(d);
+    return d;
+  }
+
+  updateDrops(dt) {
+    for (const d of this.drops) {
+      if (d.state !== 'falling') continue;
+      d.v += 22 * dt; d.y -= d.v * dt;
+      if (d.y <= 0) {
+        d.y = 0; d.state = 'down';
+        if (!d.col) { d.col = { minX: d.x - 1.22, maxX: d.x + 1.22, minZ: d.z - 3.05, maxZ: d.z + 3.05, prop: true }; G.colliders.push(d.col); }
+        d.col.enabled = true; this.rasterize(d.col);
+        G.worldMeshes.push(d.box);
+        d.onLand?.(d);
+      }
+      d.box.position.y = d.y;
     }
   }
 
   buildRain() {
-    const N = 3000, pos = new Float32Array(N * 6);
+    const N = 2600, pos = new Float32Array(N * 6);
     for (let k = 0; k < N; k++) {
-      const x = rand(-14, 14), y = rand(0, 12), z = rand(20, 56);
+      const x = rand(-18, 18), y = rand(0, 12), z = rand(-18, 18);
       pos.set([x, y, z, x + 0.02, y - 0.45, z + 0.04], k * 6);
     }
     const geo = new THREE.BufferGeometry();
     geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    this.rain = new THREE.LineSegments(geo, new THREE.LineBasicMaterial({ color: 0x9fb0c4, transparent: true, opacity: 0.18 }));
+    this.rain = new THREE.LineSegments(geo, new THREE.LineBasicMaterial({ color: 0x9fb0c4, transparent: true, opacity: 0.2 }));
     this.rain.frustumCulled = false;
     G.scene.add(this.rain);
   }
 
-  rasterizeProps() {
-    for (const c of G.colliders) {
-      if (!c.prop && !c.bars) continue;
-      for (let j = 0; j < GH; j++) for (let i = 0; i < GW; i++) {
-        const x = GX0 + i + 0.5, z = GZ0 + j + 0.5;
-        if (x > c.minX - 0.35 && x < c.maxX + 0.35 && z > c.minZ - 0.35 && z < c.maxZ + 0.35) {
-          this.blocked[this.idx(i, j)] = c.bars ? 2 : 1;
-        }
-      }
+  rasterize(c) {
+    for (let j = 0; j < GH; j++) for (let i = 0; i < GW; i++) {
+      const x = GX0 + i + 0.5, z = GZ0 + j + 0.5;
+      if (x > c.minX - 0.35 && x < c.maxX + 0.35 && z > c.minZ - 0.35 && z < c.maxZ + 0.35) this.blocked[this.idx(i, j)] = 1;
     }
   }
+
+  rasterizeProps() {
+    for (const c of G.colliders) if (c.prop && c.enabled !== false) this.rasterize(c);
+  }
+
+  // Rebuild the walkable grid after a prop moved or disappeared.
+  refreshBlocked() { this.blocked.fill(0); this.rasterizeProps(); }
 
   // ----- pathfinding (A* on the 1 m grid) -----
   passable(i, j, ni, nj) {
     if (ni < 0 || nj < 0 || ni >= GW || nj >= GH) return false;
     const a = this.cells[this.idx(i, j)], b = this.cells[this.idx(ni, nj)];
     if (b < 0) return false;
-    const bl = this.blocked[this.idx(ni, nj)];
-    if (bl === 1) return false;
-    if (bl === 2 && !this.barsOpenAt(ni, nj)) return false;
+    if (this.blocked[this.idx(ni, nj)] === 1) return false;
     if (a === b) return true;
     let key;
     if (ni === i) key = `h:${i}:${Math.max(j, nj)}`;
@@ -470,16 +789,7 @@ export class Level {
     return !!id && this.doors[id].open;
   }
 
-  barsOpenAt(i, j) {
-    const x = GX0 + i + 0.5, z = GZ0 + j + 0.5;
-    for (const b of this.cellBars) {
-      const c = b.collider;
-      if (x > c.minX - 0.4 && x < c.maxX + 0.4 && z > c.minZ - 0.4 && z < c.maxZ + 0.4) return b.open;
-    }
-    return true;
-  }
-
-  findPath(from, to, maxNodes = 2500) {
+  findPath(from, to, maxNodes = 3000) {
     const [si, sj] = this.cellOf(from.x, from.z);
     const [ti, tj] = this.cellOf(to.x, to.z);
     if (si === ti && sj === tj) return [to.clone()];
@@ -507,7 +817,7 @@ export class Level {
       for (let dj = -1; dj <= 1; dj++) for (let di = -1; di <= 1; di++) {
         if (!di && !dj) continue;
         const ni = ci + di, nj = cj + dj;
-        if (di && dj) { // diagonal: both orthogonal steps must be clear
+        if (di && dj) {
           if (!this.passable(ci, cj, ni, cj) || !this.passable(ci, cj, ci, nj) || !this.passable(ni, cj, ni, nj)) continue;
         } else if (!this.passable(ci, cj, ni, nj)) continue;
         const n = this.idx(ni, nj);
@@ -523,28 +833,38 @@ export class Level {
   }
 
   update(dt) {
-    const t = G.time;
     for (const R of this.flicker) {
       if (!R.lamp.visible) continue;
-      const f = Math.random() < 0.04 ? 0.15 : 1 - Math.random() * 0.08;
-      R.lamp.intensity = R.baseIntensity * f;
-      R.fixture.material.emissiveIntensity = 2.5 * f;
+      const f = Math.random() < (R.flood ? 0.06 : 0.04) ? 0.1 : 1 - Math.random() * 0.08;
+      R.lamp.intensity = R.base * f;
+      R.fixture.material.emissiveIntensity = (R.flood ? 3 : 2.5) * f;
     }
-    this.fire.intensity = 34 + Math.sin(t * 13) * 5 + Math.random() * 8;
-    for (const f of this.fireMeshes) { f.position.y = f.userData.base + Math.sin(t * 9 + f.id) * 0.08; f.scale.y = 0.8 + Math.random() * 0.4; }
-    // Rain falls in a loop over the street
-    const p = this.rain.geometry.attributes.position.array;
-    const fall = 16 * dt;
-    for (let k = 0; k < p.length; k += 6) {
-      p[k + 1] -= fall; p[k + 4] -= fall;
-      if (p[k + 4] < 0) { const y = 12 + Math.random() * 2; p[k + 1] = y; p[k + 4] = y - 0.45; }
+    // Rain falls in a box that follows the camera, shown only outdoors.
+    const cam = G.camera.position;
+    const outdoorView = G.mode === 'cine' ? !this.roomAt(cam.x, cam.z) || this.roomAt(cam.x, cam.z).outdoor : !!this.roomAt(G.player.pos.x, G.player.pos.z)?.outdoor;
+    this.rain.visible = outdoorView;
+    if (outdoorView) {
+      this.rain.position.set(Math.round(cam.x), 0, Math.round(cam.z));
+      const p = this.rain.geometry.attributes.position.array;
+      const fall = 16 * dt;
+      for (let k = 0; k < p.length; k += 6) {
+        p[k + 1] -= fall; p[k + 4] -= fall;
+        if (p[k + 4] < 0) { const y = 12 + Math.random() * 2; p[k + 1] = y; p[k + 4] = y - 0.45; }
+      }
+      this.rain.geometry.attributes.position.needsUpdate = true;
     }
-    this.rain.geometry.attributes.position.needsUpdate = true;
-    // Doors swing toward their target angle
+    // Doors swing, shutters roll up, gates slide aside.
     for (const d of Object.values(this.doors)) {
-      d.swing += (d.target - d.swing) * Math.min(1, dt * 5);
-      for (const leaf of d.leaves) leaf.rotation.y = leaf.userData.baseRot + d.swing * leaf.userData.side;
+      d.swing += (d.target - d.swing) * Math.min(1, dt * (d.kind === 'door' ? 5 : 2.2));
+      if (d.kind === 'door') for (const leaf of d.leaves) leaf.rotation.y = leaf.userData.baseRot + d.swing * leaf.userData.side;
+      else if (d.kind === 'shutter') { d.panel.position.y = 1.35 + d.swing * 1.3; d.panel.scale.y = 1 - d.swing * 0.85; }
+      else d.panel.position[d.axis === 'x' ? 'x' : 'z'] = (d.axis === 'x' ? d.x : d.z) + d.swing * (d.w || 2) * 0.95;
     }
-    for (const b of this.cellBars) if (b.open && b.group.position.y < WALL_H - 0.3) b.group.position.y += dt * 1.5;
+    this.updateDrops(dt);
+    if (this.boatBob !== false) this.boat.position.y = -0.25 + Math.sin(G.time * 1.3) * 0.05;
   }
+}
+
+function surfaceMap(kind) {
+  return mat(kind, { repeat: 3, repeatY: 0.4 }).map;
 }

@@ -1,4 +1,5 @@
-// Mara Kessler: movement, health states, injuries, camera and flashlight.
+// Leon Cater: movement, health states, injuries, the infection meter,
+// camera and flashlight.
 import * as THREE from 'three';
 import { G, clamp, damp, angleDiff, resolveCircle, makeNoise, rand } from './game.js';
 import { buildHumanoid, poseHumanoid } from './humanoid.js';
@@ -9,18 +10,23 @@ const RADIUS = 0.32;
 
 export class Player {
   constructor() {
-    this.h = buildHumanoid({ top: 0x8e2f22, bottom: 0x30332a, skin: 0xc79b80, hair: 0x2a1b12, ponytail: true });
-    // Reflective strips on the rescue jacket
-    const strip = new THREE.MeshStandardMaterial({ color: 0xbfbfa8, emissive: 0x222218, roughness: 0.3 });
-    for (const y of [0.22, 0.36]) {
-      const s = new THREE.Mesh(new THREE.TorusGeometry(0.175, 0.012, 4, 20), strip);
-      s.rotation.x = Math.PI / 2; s.scale.set(1.15, 0.78, 1); s.position.y = y; this.h.spine.add(s);
+    // Worn tactical jacket, utility vest, dark trousers and boots; short dark hair.
+    this.h = buildHumanoid({ top: 0x3a3d34, bottom: 0x24262a, vest: 0x26292b, skin: 0xc49a7e, hair: 0x15110d, scale: 1.04 });
+    const pouch = new THREE.MeshStandardMaterial({ color: 0x1c1e1f, roughness: 0.8 });
+    for (const x of [-0.11, 0, 0.11]) {
+      const p = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.1, 0.05), pouch);
+      p.position.set(x, 0.24, 0.17); this.h.spine.add(p);
     }
+    const holster = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.16, 0.1), pouch);
+    holster.position.set(-0.16, -0.08, 0.02); this.h.hips.add(holster);
     G.scene.add(this.h.root);
     this.pos = this.h.root.position;
     this.vel = new THREE.Vector3();
     this.yaw = Math.PI; this.camYaw = Math.PI; this.camPitch = -0.08;
     this.hp = MAX_HP;
+    this.infection = 0;      // 0..1, rises after bites until a suppressant resets it
+    this.stunT = 0;
+    this.breathT = 4;
     this.injuries = new Set();
     this.crouch = false; this.aiming = false; this.sprinting = false;
     this.stamina = 1;
@@ -50,6 +56,16 @@ export class Player {
     this.fill = new THREE.PointLight(0x9fb2c8, 1.2, 5, 2);
     G.scene.add(this.fill);
     this.ray = new THREE.Raycaster();
+  }
+
+  // Infection eats into the health Leon can recover.
+  get maxHp() { return Math.round(MAX_HP - 45 * this.infection); }
+
+  infect(amount) {
+    if (this.hp <= 0) return;
+    const first = this.infection === 0;
+    this.infection = Math.min(1, this.infection + amount);
+    if (first) G.ui.toast('Infected. The meter will keep rising and lowers your maximum health. A V-7 Suppressant resets it.', 6);
   }
 
   get state() {
@@ -88,12 +104,12 @@ export class Player {
   addInjury(kind) {
     if (this.injuries.has(kind)) return;
     this.injuries.add(kind);
-    const names = { leg: 'Leg injured. Mara will limp until treated.', bleeding: 'Bleeding. Use a herb to stop it.', arm: 'Arm injured. Aim and reload suffer.' };
+    const names = { leg: 'Leg injured. Leon will limp until treated.', bleeding: 'Bleeding. Use a herb or a bandage to stop it.', arm: 'Arm injured. Aim and reload suffer.' };
     G.ui.toast(names[kind] || kind);
   }
 
   heal(amount, cures = []) {
-    this.hp = Math.min(MAX_HP, this.hp + amount);
+    this.hp = Math.min(this.maxHp, this.hp + amount);
     for (const c of cures) this.injuries.delete(c);
   }
 
@@ -144,12 +160,13 @@ export class Player {
       g.t += dt;
       if (I.pressed('KeyE') || I.pressed('Space')) g.progress += 0.16;
       g.progress = Math.max(0, g.progress - dt * 0.25);
-      if (I.pressed('KeyF') && this.counterCd <= 0) { this.counterCd = 20; g.progress = 1; G.audio.knife(); G.ui.toast('Knife counter'); g.enemy.takeHit?.(25, 'torso', new THREE.Vector3(Math.sin(this.yaw), 0, Math.cos(this.yaw)), 2); }
+      if (I.pressed('KeyF') && this.counterCd <= 0) { this.counterCd = 20; g.progress = 1; G.audio.knife(); G.ui.toast('Knife counter'); g.enemy.takeHit?.(25, 'torso', new THREE.Vector3(Math.sin(this.yaw), 0, Math.cos(this.yaw)), 2, null, 'knife'); }
       G.ui.struggle(g.progress);
       if (g.progress >= 1) { g.enemy.release(true); this.grab = null; G.ui.struggle(null); }
       else if (g.t > 2.3) {
         G.audio.bite();
         this.damage(g.enemy.biteDamage || 24, { leg: 0.35, bleed: 0.6 });
+        this.infect(0.3);
         g.enemy.release(false); this.grab = null; G.ui.struggle(null);
       }
     }
@@ -160,9 +177,20 @@ export class Player {
       if (this.healT <= 0 && this.healItem) { G.items.applyHeal(this.healItem); this.healItem = null; }
     }
 
+    // ---- infection: creeps upward, lowers max health, shakes the aim ----
+    if (this.infection > 0 && this.hp > 0) {
+      this.infection = Math.min(1, this.infection + dt * 0.0022);
+      if (this.hp > this.maxHp) this.hp = this.maxHp;
+      if (this.infection > 0.35) {
+        this.breathT -= dt;
+        if (this.breathT <= 0) { this.breathT = 7 - this.infection * 3; G.audio.breath(0.06 + this.infection * 0.08); }
+      }
+    }
+    this.stunT = Math.max(0, this.stunT - dt);
+
     // ---- movement input ----
     let mx = 0, mz = 0;
-    if (canAct && !this.grab && this.healT <= 0) {
+    if (canAct && !this.grab && this.healT <= 0 && this.stunT <= 0) {
       if (I.down('KeyW')) mz += 1;
       if (I.down('KeyS')) mz -= 1;
       if (I.down('KeyA')) mx += 1;
@@ -242,6 +270,7 @@ export class Player {
     // ---- aim sway grows with injury and fatigue ----
     let amp = { fine: 0.004, caution: 0.009, danger: 0.02 }[st] || 0;
     if (this.injuries.has('arm')) amp += 0.01;
+    amp += this.infection * 0.012;
     if (this.sprinting || (1 - this.stamina) > 0.6) amp += 0.005;
     if (this.crouch) amp *= 0.6;
     const t = G.time;
@@ -288,11 +317,21 @@ export class Player {
     G.audio.knife();
     const fwd = new THREE.Vector3(Math.sin(this.camYaw), 0, Math.cos(this.camYaw));
     setTimeout(() => {
+      let hit = false;
       for (const e of G.enemies) {
         if (!e.alive) continue;
         const d = e.pos.clone().sub(this.pos); d.y = 0;
         const dist = d.length();
-        if (dist < 1.9 && d.normalize().dot(fwd) > 0.4) e.takeHit(18, e.downed ? 'head' : 'torso', fwd, 1.2);
+        if (dist < 1.9 && d.normalize().dot(fwd) > 0.4) { e.takeHit(18, e.downed ? 'head' : 'torso', fwd, 1.2, null, 'knife'); hit = true; }
+      }
+      // Finisher: a knife into a body that is about to get back up keeps it down.
+      if (!hit) for (const e of G.enemies) {
+        if (e.alive || !(e.pendingRise || e.waiting)) continue;
+        const d = e.pos.clone().sub(this.pos); d.y = 0;
+        if (d.length() < 1.9 && d.normalize().dot(fwd) > 0.2 && e.finish()) {
+          if (!G.flags.finisherTold) { G.flags.finisherTold = true; G.ui.toast('Finished. That one stays down.'); }
+          break;
+        }
       }
       G.items.knifeCrates(this.pos, fwd);
     }, 160);

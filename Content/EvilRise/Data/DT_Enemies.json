@@ -1,0 +1,52 @@
+[
+ {
+  "Name": "ENM_Husk",
+  "display_name": "Husk",
+  "notes": "Slow walker. Frail people (elders) are weak; strong people (workers, guards) are tough. Can rise as a Reborn."
+ },
+ {
+  "Name": "ENM_Reborn",
+  "display_name": "Reborn",
+  "notes": "Rises from an unfinished Husk or Drowned. Tentacle lashes at 1.5 to 4 m. Never rises again."
+ },
+ {
+  "Name": "ENM_Drowned",
+  "display_name": "Drowned",
+  "notes": "Lurks in water and grabs from the shallows. Can rise as a Reborn."
+ },
+ {
+  "Name": "ENM_Brute",
+  "display_name": "Brute",
+  "notes": "Armored, slow, hits hard. From Ch3."
+ },
+ {
+  "Name": "BOSS_Hookman",
+  "display_name": "The Hookman",
+  "notes": "Ch1, Dmitri Varga."
+ },
+ {
+  "Name": "BOSS_BrineMaw",
+  "display_name": "Brine Maw",
+  "notes": "Ch2 sea creature."
+ },
+ {
+  "Name": "BOSS_Warden",
+  "display_name": "The Warden",
+  "notes": "Ch3, an Annex security chief turned Brute."
+ },
+ {
+  "Name": "BOSS_Undertow",
+  "display_name": "The Undertow",
+  "notes": "Ch3 sea boss in the raft fight."
+ },
+ {
+  "Name": "BOSS_Hale",
+  "display_name": "Chief Hale",
+  "notes": "Ch4."
+ },
+ {
+  "Name": "BOSS_Voss",
+  "display_name": "Dr. Voss",
+  "notes": "Ch5 final boss, three phases."
+ }
+]

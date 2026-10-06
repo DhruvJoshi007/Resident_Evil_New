@@ -1,0 +1,11 @@
+Name,display_name,notes
+ENM_Husk,Husk,"Slow walker. Frail people (elders) are weak; strong people (workers, guards) are tough. Can rise as a Reborn."
+ENM_Reborn,Reborn,Rises from an unfinished Husk or Drowned. Tentacle lashes at 1.5 to 4 m. Never rises again.
+ENM_Drowned,Drowned,Lurks in water and grabs from the shallows. Can rise as a Reborn.
+ENM_Brute,Brute,"Armored, slow, hits hard. From Ch3."
+BOSS_Hookman,The Hookman,"Ch1, Dmitri Varga."
+BOSS_BrineMaw,Brine Maw,Ch2 sea creature.
+BOSS_Warden,The Warden,"Ch3, an Annex security chief turned Brute."
+BOSS_Undertow,The Undertow,Ch3 sea boss in the raft fight.
+BOSS_Hale,Chief Hale,Ch4.
+BOSS_Voss,Dr. Voss,"Ch5 final boss, three phases."

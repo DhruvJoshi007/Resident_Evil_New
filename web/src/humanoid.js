@@ -1,4 +1,4 @@
-// Jointed stand-in body shared by Mara, the infected and the Warden.
+// Jointed stand-in body shared by Leon, the infected and the Hookman.
 // The model faces +Z. Limbs hang along -Y from their joint groups, so a
 // negative X rotation swings a limb forward.
 import * as THREE from 'three';
@@ -58,7 +58,7 @@ export function buildHumanoid(o = {}) {
       pt.position.set(0, 0.06, -0.12); pt.rotation.x = 0.5; pt.userData.part = 'head'; head.add(pt);
     }
   }
-  // eyes: dark for Mara, pale for the infected
+  // eyes: dark for the living, pale for the infected
   const eyeMat = new THREE.MeshStandardMaterial({ color: o.zombie ? 0xd8d6b0 : 0x111111, emissive: o.zombie ? 0x22200a : 0, roughness: 0.3 });
   for (const s of [-1, 1]) {
     const eye = new THREE.Mesh(new THREE.SphereGeometry(0.016, 8, 6), eyeMat);

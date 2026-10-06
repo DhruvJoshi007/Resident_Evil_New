@@ -1,0 +1,996 @@
+[
+ {
+  "id": "NAR_C4_EvacNotice",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Emergency Notice: Zones 3 and 4",
+  "speaker": "Marrow Bay City Office",
+  "text": "ZONES 3 AND 4 ARE UNDER EVACUATION ORDER.\nCoaches leave Harbour Avenue every twenty minutes until 03:00. Carry nothing larger than one bag.\n\nDo not drink from taps in Zones 3, 4 or 5 until the water office clears them.\n\nIf a member of your household is unwell, elderly, or cannot walk to the coach, do NOT wait with them. Mark the door with tape and report the address at the plaza checkpoint.\n\nThis notice is issued on the authority of Chief W. Hale, Marrow Bay Police.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": []
+ },
+ {
+  "id": "NAR_C4_CarNote",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Note under a wiper blade",
+  "speaker": "Dinah",
+  "text": "Rob - if you get back to the car before me, we went on foot. The avenue is solid, nobody is moving. I have Ellie and your mother.\n\nThey would not let your mother on the coach. The officer said she'd slow the aisle. I'm not leaving her in the flat with tape on the door, I don't care what the notice says.\n\nWe are going up to the plaza. If the plaza is shut we are going to the station, there are police there at least.\n\nDon't wait at the car. Please.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": []
+ },
+ {
+  "id": "NAR_C4_RuizLetter",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Unsent letter in a jacket pocket",
+  "speaker": "Ana Ruiz",
+  "text": "Cris - I'm writing this in the ambulance bay because I can't say it on the phone.\n\nSomething happened at the port the night before last and we were told not to write it up. Not told. Ordered, in person, by the chief, to eleven of us in a room with the door shut.\n\nI did write it up. It's in the archive where it belongs and I kept the key on me, which is probably stupid of me.\n\nIf I'm slow coming home this week that's why. Feed the cat.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": [
+   "OBJ_C4_07"
+  ]
+ },
+ {
+  "id": "NAR_C4_RuizCamA",
+  "chapter": 4,
+  "type": "Footage",
+  "title": "Body camera 4471, clip A: Yard C, 17:38",
+  "speaker": "Ana Ruiz",
+  "text": "Night rain, floodlights, the side of a container with VGR-7718 stencilled on it. Six officers in port police jackets, none of them port police.\n\nThree federal agents are kneeling on the wet concrete with their hands flat on their heads. The tall one keeps talking.\n\nPRUITT (off camera): \"Agent Dale Pruitt. Federal. That container is evidence, Chief.\"\nHALE: \"Then it's police evidence now.\"\nPRUITT: \"You don't have the authority and you know it.\"\nHALE: \"Put him in a van.\"\n\nA younger agent moves and someone fires twice. The camera jerks to the ground, then up. The tall one is walking to the van with an officer's hand on his neck. Hale is holding his own forearm and looking at it.\n\nRUIZ (close, quiet): \"Four-four-seven-one, I'm still recording.\"",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": [
+   "OBJ_C4_11",
+   "FLG_C4_PruittTakenKnown"
+  ]
+ },
+ {
+  "id": "NAR_C4_RuizCamB",
+  "chapter": 4,
+  "type": "Footage",
+  "title": "Body camera 4471, clip B: station lobby, 01:12",
+  "speaker": "Ana Ruiz",
+  "text": "The watch desk. Ruiz's hand comes into frame and hangs a key on the duty board, then takes it back off again.\n\nRUIZ: \"Logging it out properly. Evidence room, one key, Ruiz.\"\nDESK OFFICER: \"You're not supposed to have that.\"\nRUIZ: \"Then write that down too.\"\n\nShe walks into the archive. The camera swings across rolling stacks and stops on a records cabinet with brass letter plates. Her hand pulls out her own drawer, drops the key inside, and slides it shut.\n\nRUIZ: \"My drawer, my mess.\"\n\nThe clip ends in the corridor. Somebody is screaming two floors down.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": [
+   "OBJ_C4_07",
+   "FLG_C4_BodyCamWatched"
+  ]
+ },
+ {
+  "id": "NAR_C4_DutyLog",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Watch desk duty log, night shift",
+  "speaker": "",
+  "text": "KEYS OUT / KEYS IN - NIGHT SHIFT\n\n22:40 Garage 2 - Okonjo - returned 23:55\n23:15 Cell block - Dolan - NOT RETURNED\n00:20 Armoury cage - Hale - NOT RETURNED\n01:12 Evidence room - Ruiz - NOT RETURNED (see note)\n01:30 Archive - Ruiz - returned 01:41\n\nNote added by desk: Ruiz was told twice she is not on the evidence list this month. She logged it anyway. Taking it up with the sergeant when the sergeant exists again.\n\n02:05 Everything after this is on the floor somewhere, we stopped writing.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": [
+   "OBJ_C4_07"
+  ]
+ },
+ {
+  "id": "NAR_C4_ArchiveIndex",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Records cabinet index card",
+  "speaker": "",
+  "text": "PERSONAL RECORDS CABINET - HOW IT WORKS\n\nOne drawer per serving officer, filed by surname letter, A at the top left to Z at the bottom right. Shared letters share a drawer.\n\nYour drawer is for your own notebooks, court diaries and personal property while on shift. It is NOT an evidence store. It is NOT a key store. We have a duty board for keys.\n\nDrawers do not lock. That is deliberate. If you need something locked, ask the custody sergeant.\n\n- Records clerk",
+  "location": "LOC_C4_Archive",
+  "unlocks": [
+   "OBJ_C4_07"
+  ]
+ },
+ {
+  "id": "NAR_C4_CellBlockLog",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Custody log, page torn at the corner",
+  "speaker": "",
+  "text": "CELL 1 - empty\nCELL 2 - male, no name given, no charge entered. Brought in 18:40 with the other one. Deceased 19:05. Doctor not called.\nCELL 3 - empty\nCELL 4 - male, no name given, no charge entered. Brought in 18:40. Injury to left forearm, dressed by officers, medic refused.\n\nAcross the bottom in a different hand: NO RECORD. CHIEF'S ORDERS. DO NOT ENTER THESE TWO IN THE SYSTEM.\n\nUnder that, in pencil: I am entering them in this book because this book is not the system.",
+  "location": "LOC_C4_Archive",
+  "unlocks": [
+   "OBJ_C4_11"
+  ]
+ },
+ {
+  "id": "NAR_C4_EvidenceIntake",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Evidence intake sheet, locker 17",
+  "speaker": "Custody Sgt. Okonjo",
+  "text": "LOCKER 17 - COURT SEAL\n\nContents: one bound ledger, hard cover, handwritten. Seized from a vehicle on Harbour Avenue, 11 Sep. Marked V.B. PAYMENTS on the spine.\n\nSealed on the application of CID. Under seal this locker cannot be opened from the cell block or from here. The bolt releases from the CID desk terminal and only from there, with an authorised print.\n\nDo not cut the bolt. Do not ask me to cut the bolt. Det. Sgt. Ferris has been very clear that this one goes to court in one piece.",
+  "location": "LOC_C4_EvidenceRoom",
+  "unlocks": [
+   "OBJ_C4_09"
+  ]
+ },
+ {
+  "id": "NAR_C4_FerrisBookingCard",
+  "chapter": 4,
+  "type": "Photo",
+  "title": "Booking print cards, sleeve of three",
+  "speaker": "",
+  "text": "Three grey cards in one plastic sleeve, each with ten inked boxes and a classification line at the top.\n\nCARD 1 - MARSH, D. - booked 02 Aug, affray - RIGHT INDEX: LOOP - ridge count 9\nCARD 2 - FERRIS, M., Det. Sgt. - booked 14 Sep, complaint withdrawn same day - RIGHT INDEX: WHORL - ridge count 14\nCARD 3 - UNKNOWN MALE - booked 18:40 last night, no charge entered - RIGHT INDEX: ARCH - ridge count 11\n\nOn the back of card 2, in biro: \"Booked by his own chief on a Monday and back at his desk by Tuesday. Whole thing was a message.\"",
+  "location": "LOC_C4_EvidenceRoom",
+  "unlocks": [
+   "OBJ_C4_09"
+  ]
+ },
+ {
+  "id": "NAR_C4_PruittTape",
+  "chapter": 4,
+  "type": "AudioLog",
+  "title": "Confiscated recorder, property bag 7-C",
+  "speaker": "Dale Pruitt",
+  "text": "Pruitt, continuing. Whoever finds this, the tape is the report.\n\nWe landed at the port at thirteen hundred. The container was already open and already wrong. Cold mist still coming off the floor of it at eleven hours.\n\nThe port police turned up with the chief of a city force that has no business at a port. They took Ortiz's camera and they took the manifests.\n\nI got my hand on the chief's arm and he pulled away like I'd burned him. He had a dressing under the sleeve. He has been bitten and he is walking around giving orders.\n\nIf you are federal, go up. Not out. Up.",
+  "location": "LOC_C4_EvidenceRoom",
+  "unlocks": [
+   "FLG_C4_HaleBiteKnown"
+  ]
+ },
+ {
+  "id": "NAR_C4_FerrisMemo",
+  "chapter": 4,
+  "type": "Email",
+  "title": "Re: V.B. ledger - please read before Friday",
+  "speaker": "Det. Sgt. M. Ferris",
+  "text": "To: K. Abiola, County Prosecutor's Office\nFrom: M. Ferris, Marrow Bay CID\n\nKemi - the book is real and it is in my evidence room under seal, locker 17.\n\nSix transfers over seven months from a Vigor Biotech holding account to an account in the chief's wife's maiden name. Two of the six came back the same week, I assume because somebody at their end got nervous. Four of them cleared and stayed cleared.\n\nI want the four, not the six. The four are the case.\n\nHe had me booked and printed last month on a complaint that evaporated by lunchtime. I know what that was. Please move fast.",
+  "location": "LOC_C4_DetectiveOffice",
+  "unlocks": [
+   "OBJ_C4_12"
+  ]
+ },
+ {
+  "id": "NAR_C4_PrintLockManual",
+  "chapter": 4,
+  "type": "Note",
+  "title": "PrintLock 2 quick guide, taped to the monitor",
+  "speaker": "",
+  "text": "CID DESK TERMINAL - SEAL RELEASE\n\n1. Wake the pad. The screen shows the last print this terminal accepted, as a classification and a ridge count. That is the print the seal is registered to.\n2. Lay the booking card face down on the glass, square to the arrows. The pad reads the inked right index box.\n3. Match on classification AND ridge count. A wrong card is not a free guess: three wrong reads lock the pad for ninety seconds and sound the desk alarm.\n4. On a match the terminal releases the bolt on the named locker. Go and open it by hand. The terminal does not open anything up here.",
+  "location": "LOC_C4_DetectiveOffice",
+  "unlocks": [
+   "OBJ_C4_09"
+  ]
+ },
+ {
+  "id": "NAR_C4_DeskLog",
+  "chapter": 4,
+  "type": "Note",
+  "title": "CID desk terminal, standby screen",
+  "speaker": "",
+  "text": "MARROW BAY CID - PRINTLOCK 2\n\nSEAL REGISTERED: EVIDENCE LOCKER 17\nSTATUS: BOLTED\n\nLAST ACCEPTED PRINT\n  Digit ....... RIGHT INDEX\n  Pattern ..... WHORL\n  Ridge count . 14\n  Accepted .... 14 Sep, 16:52\n\nPLACE CARD ON GLASS",
+  "location": "LOC_C4_DetectiveOffice",
+  "unlocks": [
+   "OBJ_C4_09"
+  ]
+ },
+ {
+  "id": "NAR_C4_Ledger",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Payments ledger, spine marked V.B. PAYMENTS",
+  "speaker": "",
+  "text": "Received, acct. G. Mabry (maiden)\n\n11 Mar | VGR-0431 | 8,000 | RETURNED 14 Mar\n02 Apr | VGR-0588 | 7,500 | CLEARED\n19 May | VGR-0613 | 2,000 | CLEARED\n07 Jul | VGR-0742 | 9,250 | RETURNED 09 Jul\n23 Aug | VGR-0810 | 4,000 | CLEARED\n14 Sep | VGR-0917 | 1,500 | CLEARED\n\nLast page, different pen: 0917 is the last one. Tell them the port is covered and the paper is gone. After this I am done taking it.",
+  "location": "LOC_C4_EvidenceRoom",
+  "unlocks": [
+   "OBJ_C4_12"
+  ]
+ },
+ {
+  "id": "NAR_C4_HaleRule",
+  "chapter": 4,
+  "type": "Diary",
+  "title": "Desk diary, inside the back cover",
+  "speaker": "Warren Hale",
+  "text": "Gwen asked me again where the number is written. Nowhere. I am not that stupid.\n\nIt is in the book, and only if you already know what you are looking at. Not the dates. Not the references. The money, and only the money that stayed.\n\nWhat cleared, nothing that came back. The lead figure off each one. Oldest first. Four of them, four digits, in they go.\n\nIf you cannot work that out you have no business in my safe, and if you can work it out you were already in the book, which means I have bigger problems than the safe.",
+  "location": "LOC_C4_ChiefOffice",
+  "unlocks": [
+   "OBJ_C4_12"
+  ]
+ },
+ {
+  "id": "NAR_C4_HaleSuppressant",
+  "chapter": 4,
+  "type": "Diary",
+  "title": "Desk diary, last written page",
+  "speaker": "Warren Hale",
+  "text": "Third day.\n\nThe arm stopped hurting on the second day, which the leaflet in the Vigor crate says is normal and is not good news.\n\nI took four of their injectors out of the shipment before it went up the coast. One in the morning, one at night, and the shaking stops for about nine hours. I am out at the end of this one.\n\nI ran a city tonight on nine hours at a time. I signed the evacuation order. I kept my hands in my pockets on the radio call so nobody saw.\n\nI am not going to a hospital. I know what is in me, I signed for it.",
+  "location": "LOC_C4_ChiefOffice",
+  "unlocks": [
+   "FLG_C4_HaleBiteKnown"
+  ]
+ },
+ {
+  "id": "NAR_C4_HaleClearance",
+  "chapter": 4,
+  "type": "Email",
+  "title": "Shipment clearance - final confirmation",
+  "speaker": "Vigor Biotech, Logistics",
+  "text": "To: Chief W. Hale\nCc: Dr. E. Voss, Research Director\n\nChief - confirming your clearance is on file for the Halvern movement, container VGR-7718, declared as medical supplies. Port police attendance appreciated.\n\nDr. Voss asks me to pass on that the municipal water contract renewal goes to committee next month and that your letter of support would be welcome. He notes the city will see the benefit of the programme before the committee does.\n\nAs ever, nothing in this chain is for your records.",
+  "location": "LOC_C4_ChiefOffice",
+  "unlocks": [
+   "FLG_C4_WaterContractKnown"
+  ]
+ },
+ {
+  "id": "NAR_C4_PhotoHaleVoss",
+  "chapter": 4,
+  "type": "Photo",
+  "title": "Framed photograph on the office wall",
+  "speaker": "",
+  "text": "A ribbon cutting in bright daylight. Marrow Bay Water Treatment Works, reservoir 2 behind a row of clipped shrubs.\n\nChief Hale in dress uniform holds one end of the ribbon. A thin man in a pale suit holds the shears and is not looking at the camera; he is looking up at the intake tower.\n\nThe brass plate under the glass reads: MUNICIPAL SUPPLY MODERNISATION, OPERATED UNDER CONTRACT BY VIGOR BIOTECH. And under that, a line of smaller letters: EVERY HOUSE ON ONE LINE.",
+  "location": "LOC_C4_ChiefOffice",
+  "unlocks": [
+   "FLG_C4_WaterContractKnown"
+  ]
+ },
+ {
+  "id": "NAR_C4_WaterWorksNotice",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Notice wired to the checkpoint board",
+  "speaker": "Vigor Biotech Water Services",
+  "text": "PLANNED WORKS - MARROW BAY SUPPLY\n\nA full-system line flush is scheduled from 06:00 tomorrow and will run from the treatment works through all five zones. Pressure may vary. Discolouration is normal.\n\nDuring a flush the whole network is fed from one dosing point at the works. This is routine.\n\nNo household action is required. Taps will be safe to use from the moment the flush begins.\n\nQueries: Vigor Biotech Water Services, 24h line. Please do not call the police with water enquiries.",
+  "location": "LOC_C4_Plaza",
+  "unlocks": [
+   "FLG_C4_FlushNoticeSeen"
+  ]
+ },
+ {
+  "id": "NAR_C4_DispatchLast",
+  "chapter": 4,
+  "type": "AudioLog",
+  "title": "Dispatch recorder, channel 1, 02:4x",
+  "speaker": "Dispatcher Yara Senn",
+  "text": "All units, I have no units. I'm reading back what I've got.\n\nTwelve calls on the same block, all of them saying the same sentence about somebody who was ill getting up.\n\nChief's instruction at zero one forty is that nothing goes out on channel 1 that uses the word outbreak. I have written that down twice now so it is somebody else's problem as well as mine.\n\nIf anyone is hearing this later: we were never short of officers tonight. We were short of orders.",
+  "location": "LOC_C4_Plaza",
+  "unlocks": []
+ },
+ {
+  "id": "NAR_C4_WhitlockTag",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Scratched into the paint of cell 2",
+  "speaker": "Sam Whitlock",
+  "text": "WHITLOCK S. FEDERAL. HELD WITHOUT CHARGE BY MARROW BAY PD ON ORDERS OF CHIEF HALE.\n\nORTIZ DOWN AT THE PORT.\n\nPRUITT IN THE NEXT ONE BUT ONE. HE IS BITTEN. THEY KNOW AND THEY SHUT THE HATCH ANYWAY.\n\nIF YOU ARE READING THIS AND YOU ARE ONE OF OURS, DO NOT GO ALONE TO THE TOWER. HE WILL TELL YOU TO. GO ANYWAY.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": [
+   "OBJ_C4_16"
+  ]
+ },
+ {
+  "id": "NAR_C4_BasementWork",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Maintenance board, sub-level",
+  "speaker": "Building Services",
+  "text": "SUB-LEVEL - OPEN FAULTS\n\n1. Sump pump 2 has failed. Standing water in the long store will be ankle deep by morning and worse if it rains. Chased three times.\n2. The floor conduit down there is the old kind, in the slab, and it leaks. If the floor is wet, the floor is live when the ring is energised.\n3. PANEL A and PANEL B on the walkway feed that ring. Both must be thrown together or the interlock trips.\n4. Nobody stands on that floor with the ring energised. Not for a second. I have put this in writing so that when it happens it is in writing.",
+  "location": "LOC_C4_Basement",
+  "unlocks": [
+   "OBJ_C4_14"
+  ]
+ },
+ {
+  "id": "NAR_C4_SewerMap",
+  "chapter": 4,
+  "type": "Note",
+  "title": "Works map in a cracked frame",
+  "speaker": "Marrow Bay Drainage Board",
+  "text": "STORM INTERCEPTOR - CENTRAL SECTION\n\nThe interceptor runs north from the station sump under Harbour Avenue, crosses the plaza, and ends in the service level of the Vigor Biotech building on Crown Street, where it ties into their intake.\n\nAccess hatches are police, drainage board and Vigor Biotech only.\n\nHandwritten in the corner: tie-in rebuilt last spring at their expense, their pumps, their doors, their keys. We maintain the pipe and nothing else. Ask them.",
+  "location": "LOC_C4_SewerDoor",
+  "unlocks": [
+   "OBJ_C4_15"
+  ]
+ },
+ {
+  "id": "DLG_C4_ShoreLanding_01",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Coming ashore at Marrow Bay",
+  "speaker": "MARA",
+  "text": "That's a city. I grew up looking at that skyline and it was never this quiet.",
+  "location": "LOC_C4_Shore",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_ShoreLanding_02",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Coming ashore at Marrow Bay",
+  "speaker": "LEON",
+  "text": "Half of them got out. The coaches are gone from the ramps.",
+  "location": "LOC_C4_Shore",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_ShoreLanding_03",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Coming ashore at Marrow Bay",
+  "speaker": "MARA",
+  "text": "And the other half?",
+  "location": "LOC_C4_Shore",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_ShoreLanding_04",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Coming ashore at Marrow Bay",
+  "speaker": "LEON",
+  "text": "Stay behind me in the water.",
+  "location": "LOC_C4_Shore",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_ShoreLanding_05",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Coming ashore at Marrow Bay",
+  "speaker": "MARA",
+  "text": "Where are we going?",
+  "location": "LOC_C4_Shore",
+  "unlocks": [
+   "OBJ_C4_02"
+  ]
+ },
+ {
+  "id": "DLG_C4_ShoreLanding_06",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Coming ashore at Marrow Bay",
+  "speaker": "LEON",
+  "text": "Police station. Hale signed for that container. Somewhere in that building is the paper that proves it.",
+  "location": "LOC_C4_Shore",
+  "unlocks": [
+   "OBJ_C4_02"
+  ]
+ },
+ {
+  "id": "DLG_C4_HarborAve_01",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Harbour Avenue",
+  "speaker": "MARA",
+  "text": "They left the bus doors open. Like they thought people were still coming.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_HarborAve_02",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Harbour Avenue",
+  "speaker": "LEON",
+  "text": "See the big one by the kiosk? We go around. Not through.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_HarborAve_03",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Harbour Avenue",
+  "speaker": "MARA",
+  "text": "It's wearing a stab vest.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_HarborAve_04",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Harbour Avenue",
+  "speaker": "LEON",
+  "text": "Then it was fit and strong this morning. Around.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_RuizBody_01",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Officer Ruiz in the underpass",
+  "speaker": "MARA",
+  "text": "Leon. There's a police officer in the water.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_RuizBody_02",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Officer Ruiz in the underpass",
+  "speaker": "LEON",
+  "text": "Ruiz. She's been shot, not bitten.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_RuizBody_03",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Officer Ruiz in the underpass",
+  "speaker": "MARA",
+  "text": "Shot by what?",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_RuizBody_04",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Officer Ruiz in the underpass",
+  "speaker": "LEON",
+  "text": "Her camera's still on the mount, and it's still got charge. We'll let it tell us.",
+  "location": "LOC_C4_HarborAve",
+  "unlocks": [
+   "KEY_C4_BodyCam",
+   "OBJ_C4_06"
+  ]
+ },
+ {
+  "id": "DLG_C4_PlazaCross_01",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The plaza checkpoint",
+  "speaker": "LEON",
+  "text": "Sandbags, floodlight, nobody manning it. They built this and then left it.",
+  "location": "LOC_C4_Plaza",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_PlazaCross_02",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The plaza checkpoint",
+  "speaker": "MARA",
+  "text": "Two of the big ones on the fountain. We can't go around this one.",
+  "location": "LOC_C4_Plaza",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_PlazaCross_03",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The plaza checkpoint",
+  "speaker": "LEON",
+  "text": "Then we give them somewhere else to be. Scrap and a bottle. Throw it long, stay low, move when they turn.",
+  "location": "LOC_C4_Plaza",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_PlazaCross_04",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The plaza checkpoint",
+  "speaker": "MARA",
+  "text": "You've done this before.",
+  "location": "LOC_C4_Plaza",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_PlazaCross_05",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The plaza checkpoint",
+  "speaker": "LEON",
+  "text": "Not with company. Keep up.",
+  "location": "LOC_C4_Plaza",
+  "unlocks": [
+   "OBJ_C4_05"
+  ]
+ },
+ {
+  "id": "DLG_C4_LobbySplit_01",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The station lobby",
+  "speaker": "MARA",
+  "text": "The watch desk radio is live. Four channels and a repeater on the roof.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_LobbySplit_02",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The station lobby",
+  "speaker": "LEON",
+  "text": "Then this is where you are. Door's steel, one way in, and I'll be inside the building.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_LobbySplit_03",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The station lobby",
+  "speaker": "MARA",
+  "text": "I came all this way to not come with you.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_LobbySplit_04",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The station lobby",
+  "speaker": "LEON",
+  "text": "You came all this way to be the person who can see the whole floor plan. There's a board behind you with every room on it.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_LobbySplit_05",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The station lobby",
+  "speaker": "MARA",
+  "text": "Fine. Clip the spare set on. If you stop answering I'm coming through that building with a chair leg.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": [
+   "FLG_C4_MaraInLobby"
+  ]
+ },
+ {
+  "id": "DLG_C4_LobbySplit_06",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "The station lobby",
+  "speaker": "LEON",
+  "text": "Noted.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": [
+   "FLG_C4_MaraInLobby"
+  ]
+ },
+ {
+  "id": "RAD_C4_BodyCamReact_01",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the body camera",
+  "speaker": "MARA",
+  "text": "They had him on his knees. His own people were already down and he was still arguing the law at them.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_BodyCamReact_02",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the body camera",
+  "speaker": "LEON",
+  "text": "That's Pruitt. He'd argue the law at a fire.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_BodyCamReact_03",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the body camera",
+  "speaker": "MARA",
+  "text": "They put him in a van, Leon. Vans come here.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": [
+   "OBJ_C4_11"
+  ]
+ },
+ {
+  "id": "RAD_C4_BodyCamReact_04",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the body camera",
+  "speaker": "LEON",
+  "text": "Then he's downstairs in a cell with no paperwork. Second clip. Ruiz put the evidence key somewhere she shouldn't have.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": [
+   "OBJ_C4_07"
+  ]
+ },
+ {
+  "id": "RAD_C4_BodyCamReact_05",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the body camera",
+  "speaker": "MARA",
+  "text": "Her own drawer, in the archive. She says it on camera. Brass letters on the cabinet.",
+  "location": "LOC_C4_StationLobby",
+  "unlocks": [
+   "OBJ_C4_07"
+  ]
+ },
+ {
+  "id": "RAD_C4_HintEvidenceKey_01",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "Hint: the evidence room key",
+  "speaker": "MARA",
+  "text": "Nobody hid that key, Leon. Somebody filed it. Think like the woman who filed it.",
+  "location": "LOC_C4_Archive",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_HintEvidenceKey_02",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "Hint: the evidence room key",
+  "speaker": "MARA",
+  "text": "The duty log has her name on the evidence key at one twelve, and the cabinet card says one drawer per officer, by surname.",
+  "location": "LOC_C4_Archive",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_HintEvidenceKey_03",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "Hint: the evidence room key",
+  "speaker": "MARA",
+  "text": "Ruiz. R. Pull the R drawer and stop being thorough about it.",
+  "location": "LOC_C4_Archive",
+  "unlocks": [
+   "KEY_C4_EvidenceKey"
+  ]
+ },
+ {
+  "id": "RAD_C4_HintPrint_01",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "Hint: the print lock",
+  "speaker": "MARA",
+  "text": "A sealed locker that only opens from a desk upstairs. Somebody wanted exactly one person able to open it.",
+  "location": "LOC_C4_DetectiveOffice",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_HintPrint_02",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "Hint: the print lock",
+  "speaker": "MARA",
+  "text": "The pad is telling you what it will accept. Right index, whorl, fourteen ridges. You're carrying three cards, read the tops of them.",
+  "location": "LOC_C4_DetectiveOffice",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_HintPrint_03",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "Hint: the print lock",
+  "speaker": "MARA",
+  "text": "The detective's own card. Ferris. Hale had him printed to scare him and left the one print that opens his own locker sitting in evidence.",
+  "location": "LOC_C4_DetectiveOffice",
+  "unlocks": [
+   "FLG_C4_LockerReleased"
+  ]
+ },
+ {
+  "id": "RAD_C4_HintSafe_01",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "Hint: the safe code",
+  "speaker": "MARA",
+  "text": "He wrote a whole page about not writing it down. That page is the instructions.",
+  "location": "LOC_C4_ChiefOffice",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_HintSafe_02",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "Hint: the safe code",
+  "speaker": "MARA",
+  "text": "Not the dates, not the reference numbers. The money that stayed. Four of the six cleared, and he wants the first figure off each, oldest first.",
+  "location": "LOC_C4_ChiefOffice",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_HintSafe_03",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "Hint: the safe code",
+  "speaker": "MARA",
+  "text": "Seven thousand five, two thousand, four thousand, one thousand five. Seven, two, four, one. Try it.",
+  "location": "LOC_C4_ChiefOffice",
+  "unlocks": [
+   "KEY_C4_SewerKey"
+  ]
+ },
+ {
+  "id": "DLG_C4_Pruitt_01",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "PRUITT",
+  "text": "Took you long enough.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": [
+   "FLG_C4_PruittFound"
+  ]
+ },
+ {
+  "id": "DLG_C4_Pruitt_02",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "LEON",
+  "text": "Dale. Let me get the hatch.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_03",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "PRUITT",
+  "text": "Leave the hatch. Look at my arm and then leave the hatch.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_04",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "LEON",
+  "text": "I have a suppressant.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_05",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "PRUITT",
+  "text": "Nine hours at a time. That's what it buys. I've been in here nine of those.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_06",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "PRUITT",
+  "text": "Listen while I'm still me. Voss isn't at the port and he isn't on your island. He's in the tower on Crown Street. Floor thirty-five, the lab with his name on the door.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": [
+   "FLG_C4_VossLocationKnown"
+  ]
+ },
+ {
+  "id": "DLG_C4_Pruitt_07",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "LEON",
+  "text": "Thirty-five. How do you know that?",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_08",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "PRUITT",
+  "text": "Hale came down here to look at me. He talks when he's frightened. He kept saying it won't matter by six.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_09",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "PRUITT",
+  "text": "Vigor runs the city's water. At six they flush the whole network off one dosing point and Voss puts his work in the line. Every tap, Leon. All five zones before the buses come back.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": [
+   "FLG_C4_WaterPlanKnown"
+  ]
+ },
+ {
+  "id": "DLG_C4_Pruitt_10",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "LEON",
+  "text": "Two hours.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_11",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "PRUITT",
+  "text": "Two hours. Ortiz went at the port, Whitlock went in the next cell, and I'm not going to be the thing that gets out of this one.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_12",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "PRUITT",
+  "text": "You know what I'm asking. Don't make me say it twice, I'm tired.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_13",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "LEON",
+  "text": "I heard you the first time.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "DLG_C4_Pruitt_14",
+  "chapter": 4,
+  "type": "Dialogue",
+  "title": "Cell 4",
+  "speaker": "PRUITT",
+  "text": "Good. Then go up, not out. And Leon - the chief is still in this building.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": [
+   "OBJ_C4_12"
+  ]
+ },
+ {
+  "id": "RAD_C4_PruittAfter_01",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the cells",
+  "speaker": "MARA",
+  "text": "Leon. I heard a door and then I heard nothing for four minutes.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_PruittAfter_02",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the cells",
+  "speaker": "LEON",
+  "text": "Found my team leader.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_PruittAfter_03",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the cells",
+  "speaker": "MARA",
+  "text": "Is he -",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_PruittAfter_04",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the cells",
+  "speaker": "LEON",
+  "text": "He told me where Voss is and what happens at six. That's what he did with the last of it. Write it down: Crown Street tower, floor thirty-five, the water flush at six.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": [
+   "FLG_C4_VossLocationKnown",
+   "FLG_C4_WaterPlanKnown"
+  ]
+ },
+ {
+  "id": "RAD_C4_PruittAfter_05",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the cells",
+  "speaker": "MARA",
+  "text": "Written down. Leon - I'm not going to ask you anything else about the cells.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_PruittAfter_06",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "After the cells",
+  "speaker": "LEON",
+  "text": "Thanks.",
+  "location": "LOC_C4_HoldingCells",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_BasementWarn_01",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "The stairs down",
+  "speaker": "MARA",
+  "text": "The board down here says sub-level long store. There's a fault card pinned over it in red.",
+  "location": "LOC_C4_Basement",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_BasementWarn_02",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "The stairs down",
+  "speaker": "LEON",
+  "text": "Flooded, and the conduit's in the slab. I read the same note.",
+  "location": "LOC_C4_Basement",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_BasementWarn_03",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "The stairs down",
+  "speaker": "MARA",
+  "text": "Two panels, thrown together. Which means you need to be somewhere dry when you do it.",
+  "location": "LOC_C4_Basement",
+  "unlocks": [
+   "OBJ_C4_14"
+  ]
+ },
+ {
+  "id": "RAD_C4_BasementWarn_04",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "The stairs down",
+  "speaker": "LEON",
+  "text": "There's a walkway. Stay off the channel for a while.",
+  "location": "LOC_C4_Basement",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_SewerDoorEnd_01",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "The sewer door",
+  "speaker": "MARA",
+  "text": "Leon, talk to me. The whole building just went dark and came back.",
+  "location": "LOC_C4_SewerDoor",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_SewerDoorEnd_02",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "The sewer door",
+  "speaker": "LEON",
+  "text": "Hale's done. He told me the truth first, for whatever that's worth at four in the morning.",
+  "location": "LOC_C4_SewerDoor",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_SewerDoorEnd_03",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "The sewer door",
+  "speaker": "MARA",
+  "text": "And the door?",
+  "location": "LOC_C4_SewerDoor",
+  "unlocks": []
+ },
+ {
+  "id": "RAD_C4_SewerDoorEnd_04",
+  "chapter": 4,
+  "type": "Radio",
+  "title": "The sewer door",
+  "speaker": "LEON",
+  "text": "Open. The map says this pipe comes up inside their building. Bring the lamp and come down the back stair. We're not waiting for six o'clock.",
+  "location": "LOC_C4_SewerDoor",
+  "unlocks": [
+   "FLG_C4_SewerOpen"
+  ]
+ }
+]

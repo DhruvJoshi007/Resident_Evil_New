@@ -1,0 +1,822 @@
+[
+  {
+    "id": "NAR_C5_CrewTagLog",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Waterworks Crew Tag Board",
+    "speaker": "Foreman J. Addo",
+    "text": "NIGHT CREW — SIGN OUT WHEN YOU SURFACE\n\nAddo, J. — Culvert 4 — 23:40 — back 01:10\nPereira, M. — Culvert 4 — 23:40 — back 01:10\nStoll, R. — Vigor intake — 00:15 —\nOkafor, B. — Vigor intake — 00:15 —\n\nWritten under the board in marker: Stoll and Okafor never signed back in. Their meters are still hanging here. Vigor's man said the intake was their business and shut the hatch on us. If anybody from the city reads this board, read that line twice.",
+    "location": "LOC_C5_Sewers",
+    "unlocks": ["OBJ_C5_02"]
+  },
+  {
+    "id": "NAR_C5_WaterWorkOrder",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Work Order 4471 — Dosing Skid Changeover",
+    "speaker": "R. Stoll, plant mechanic",
+    "text": "WORK ORDER 4471 — SERVICE LEVEL, INTAKE HALL\n\nSix skids piped off the city main. Client supplied the agent in sealed drums and would not tell me what it is. Not my business, they pay the invoice.\n\nRULE AND I AM WRITING IT BIG: PURGE THE LOOP BEFORE YOU CHANGE AGENT. The loop holds about 400 litres of whatever ran last. Open PURGE, let it clear to the sump, then shut the reservoir bypass, then open the city main. In that order. Do it out of order and you push the old batch into forty thousand homes.\n\nTimer is set for 06:12 and locked. I asked why. Nobody answered.",
+    "location": "LOC_C5_ServiceLevel",
+    "unlocks": ["FLG_C5_DosingRigFound", "PZL_C5_WaterMain"]
+  },
+  {
+    "id": "NAR_C5_PumpTag",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Valve Tag, Skid 3",
+    "speaker": "",
+    "text": "A brass tag wired to the valve stem, and a strip of tape under it.\n\nTAG: CITY MAIN — FEED. DO NOT OPERATE WITHOUT PLANT AUTHORITY.\n\nTAPE, in pencil: Authority is Dr. V. now. He came down himself at two in the morning to watch the drums go on. Stood there the whole time with his hands behind his back like a man at a christening.",
+    "location": "LOC_C5_ServiceLevel",
+    "unlocks": []
+  },
+  {
+    "id": "NAR_C5_LockdownNotice",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Lobby Screen — Containment Notice",
+    "speaker": "",
+    "text": "VIGOR BIOTECH — BUILDING STATUS: CONTAINMENT, LEVEL 3\n\nAll floors card-locked. Passenger lifts disabled. Freight lift available to duty engineering only.\nStaff: shelter in place. Do not attempt the stairwells.\nExternal reporting is suspended by order of the Director of Research.\n\nThe screen is still cycling the notice to an empty lobby. Someone has put a chair through the glass of the second panel.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": ["OBJ_C5_05"]
+  },
+  {
+    "id": "NAR_C5_GuardShiftLog",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Security Desk Log — Night",
+    "speaker": "D. Marchetti, security",
+    "text": "22:00 — Dr. Voss on site. Says send the night staff home, keep the volunteer list.\n22:40 — Bussed out 61 people. 14 stayed. Fourteen. They were happy about it.\n23:15 — Floor 31 asks us not to come up for any alarm tonight. Any alarm. In writing, they said.\n01:05 — Something is wrong with the ones who stayed. Vesic is wrong.\n02:30 — Locked the lobby from the inside. Voss is above us and he is not answering the desk phone.\n\nThe log stops there. Marchetti is still in the chair, and his badge is still clipped on.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": ["FLG_C5_LobbyReached"]
+  },
+  {
+    "id": "NAR_C5_PhotoBoard",
+    "chapter": 5,
+    "type": "Photo",
+    "title": "Staff Photo — Research Division, Spring",
+    "speaker": "",
+    "text": "Forty-odd people on the front steps of the tower, squinting. Dr. Voss is centre, hands behind his back, not smiling so much as waiting for the photographer to finish. Dr. Ines Calder stands at his left shoulder with a folder she has not put down.\n\nBack row, third from the right, a young technician in a lab coat two sizes too big, laughing at whoever is next to him. The name strip under the photo reads O. QUINN.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": ["RAD_C5_OwenPhoto"]
+  },
+  {
+    "id": "NAR_C5_FacilitiesEmail",
+    "chapter": 5,
+    "type": "Email",
+    "title": "Re: stop giving out the override",
+    "speaker": "L. Haddow, Facilities",
+    "text": "From: L. Haddow, Facilities\nTo: Duty Engineering, all shifts\nSubject: Re: stop giving out the override\n\nThe freight lift override is not 1987. It has not been 1987 since the plaque went up and half the contractors in the city worked that out.\n\nI have reset it to the lift car's inspection number. It is printed on the sticker inside the car, at shoulder height, where you have all been leaning for six years. If you cannot find a number that is in the lift you are standing in, you should not be operating the lift.\n\nFour digits. Do not write it on anything.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": ["PZL_C5_LiftOverride"]
+  },
+  {
+    "id": "NAR_C5_LiftSticker",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Inspection Sticker, Freight Lift Car",
+    "speaker": "",
+    "text": "A scuffed foil sticker at shoulder height inside the freight car, half worn through by shoulders and trolley handles.\n\nMARROW BAY LIFTS & HOISTS\nUNIT: FREIGHT 2 — VIGOR TOWER\nINSP. NO. 3042\nCAPACITY 2000 kg — NEXT EXAMINATION: OVERDUE",
+    "location": "LOC_C5_Lobby",
+    "unlocks": ["PZL_C5_LiftOverride"]
+  },
+  {
+    "id": "NAR_C5_GeneticsBench",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Bench Notes — Generation Drift",
+    "speaker": "Dr. P. Vesic",
+    "text": "Drift measurements, fourth week.\n\nEach passage through a host comes back stronger. Not a little. Measurably. Grip, bite force, recovery, all climbing generation on generation, and the climb is not flattening the way a sane thing's would.\n\nA frail host gives us a weak carrier. A strong host gives us a strong one, and the strong one makes the next strong one worse. We are not watching an illness. We are watching something being bred, and the city is the bench.\n\nI put this in writing so that when somebody asks who knew, the answer is on paper.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "NAR_C5_Footage31",
+    "chapter": 5,
+    "type": "Footage",
+    "title": "Lab Camera 31-2 — 23:52",
+    "speaker": "",
+    "text": "Grey footage, no sound. Eleven people in lab coats at the long bench, sleeves rolled, auto-injectors laid out in a row like cutlery.\n\nDr. Voss walks the line. He does not touch anyone. He says something short and they dose themselves, one after another, in order, and then they shake each other's hands.\n\nAt 00:14 the first of them goes down on one knee. Nobody helps him up. They are all watching him the way you watch a kettle.\n\nAt 00:31 the camera is knocked sideways and records the ceiling for the next four hours.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": ["FLG_C5_VolunteersKnown"]
+  },
+  {
+    "id": "NAR_C5_TechLastEntry",
+    "chapter": 5,
+    "type": "Diary",
+    "title": "Pocket Notebook — Last Page",
+    "speaker": "Jun Park, technician",
+    "text": "00:48. I did not take it. I let them think I did and I put mine in the sharps bin.\n\n01:20. Vesic is in the cage corridor hitting the mesh. He has been strong his whole life, he ran the river race in June, and now he is strong like a machine press.\n\n02:05. They are slow for an hour and then they are not. Dr. V writes the times down. He has a stopwatch. He is thrilled.\n\n03:10. Hand is shaking too much. Whoever reads this, it is in the cold drawer in the vault. The triplet is on the labels, it has always been on the labels, he never thought anyone outside would need to read one.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": ["PZL_C5_Sequencer"]
+  },
+  {
+    "id": "NAR_C5_VialLabel",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Vial Label, Genetics Bench Rack",
+    "speaker": "",
+    "text": "A printed label on a frosted 2 ml vial, one of a tray of forty identical ones. The same label is on every vial in the building, and nobody who worked here ever had to think about it twice.\n\nVIGOR BIOTECH — RESTRICTED\nSTRAIN: V-7\nMARKER: G T C\nLINEAGE: S7\nPASSAGE: 11\nDO NOT WARM ABOVE −60\n\nSomeone has written FOR THE VAULT DIALS on the tray lid in marker, and then scribbled it out again.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": ["PZL_C5_Sequencer"]
+  },
+  {
+    "id": "NAR_C5_CalderRequisition",
+    "chapter": 5,
+    "type": "Email",
+    "title": "Requisition 2208 — blanks",
+    "speaker": "Dr. I. Calder",
+    "text": "From: I. Calder\nTo: Stores\nSubject: Requisition 2208 — blanks\n\nTwo hundred G-T-C blanks for the vault sequencer, same as last time. Set the dials left to right in that order when you load the drawer or the interlock will not read the tray.\n\nAnd please stop sending me the four-base practice blanks. There is one marker in this building that matters and everyone here can recite it.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": ["PZL_C5_Sequencer"]
+  },
+  {
+    "id": "NAR_C5_VossNotesOne",
+    "chapter": 5,
+    "type": "Diary",
+    "title": "Private Lab Notes — Book Nine",
+    "speaker": "Dr. Elias Voss",
+    "text": "Ines kept saying accident. I have stopped correcting her in meetings because it upsets the room.\n\nIt was not an accident. It was a result. I set out to find the ceiling of the human body and I found a floor instead: the weak take it and die, the strong take it and become something the weak could never have been. That is not failure. That is selection, running faster than it has ever been allowed to run.\n\nThe ones who stayed tonight understood that. Fourteen of them. I will not pretend I did not feel something when they rolled their sleeves up.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "NAR_C5_ConcentrateManifest",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Cold Store Manifest — Outbound",
+    "speaker": "",
+    "text": "OUTBOUND — SERVICE LEVEL INTAKE HALL, NOT THE DOCK\n\nDRUM 01 to 06 — V-7 CONCENTRATE, PASSAGE 11 — 400 L TOTAL\nDESTINATION: MUNICIPAL SUPPLY, NORTH DISTRIBUTION\nRELEASE: 06:12, AUTOMATIC, NO CONFIRMATION REQUIRED\nAUTHORISED: E. VOSS, DIRECTOR OF RESEARCH\n\nHandwritten at the bottom in a different pen: contract says we treat the city's water. Nobody ever asks what treat means.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": ["FLG_C5_WaterPlanKnown"]
+  },
+  {
+    "id": "NAR_C5_CryoLog",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Cryo Bay Log — Floor 33",
+    "speaker": "H. Oyelaran, cryo tech",
+    "text": "For whoever is on next, because I am tired of writing this out.\n\nThe rack interlock will not lift unless bays 31, 32 and 33 all read −80. All three. Equal. It does not care which bay you actually want, it reads the set as one.\n\nIf you park a bay at −20 to thaw a tray, that is fine, but put it back to −80 when you are done or nobody can open the rack.\n\nAnd do not be clever and run a bay to −196 to make it lift faster. The frost line cracks, the alarm goes off at the loading bay, and then you are explaining yourself to security at four in the morning. Ask me how I know.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": ["PZL_C5_CryoRack"]
+  },
+  {
+    "id": "NAR_C5_BaySticky",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Sticky Note on Bay 32",
+    "speaker": "H. Oyelaran",
+    "text": "BAY 32 AT −20, THAWING A TRAY. BACK BY SIX. DO NOT TOUCH.\n\nUnder it, a second note in the same hand, stuck on crooked: Bay 33 is OFF because the compressor tripped again, hit the reset on the side before you set it. I am not coming back by six, am I.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": ["PZL_C5_CryoRack"]
+  },
+  {
+    "id": "NAR_C5_VossToCalder",
+    "chapter": 5,
+    "type": "AudioLog",
+    "title": "Recorded Message — To Ines",
+    "speaker": "Dr. Elias Voss",
+    "text": "Ines. It is the fourteenth time I have recorded this and it is still not right, so this one stays.\n\nThey pulled you out of the harbour on a Tuesday. They told me by email. An email, Ines.\n\nYou said I had built a disease. You said it in this office, at that desk, the one I have not let them take away. You wanted to burn the strain and publish the trial and take whatever came. I thought you were frightened. I have thought about it every night since and I think now you simply loved them more than you loved the work, and I never understood how to do both.\n\nTonight it goes into the water. The weak will be lifted or they will be gone, and either way nobody will have to be weak again. You would have stopped me. That is the only argument against it I have ever respected, and you are not here to make it.\n\nI kept your coat on the hook. Goodnight.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": ["FLG_C5_CalderMessageHeard"]
+  },
+  {
+    "id": "NAR_C5_SynthesisManual",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Synthesis Rig — Operating Card",
+    "speaker": "",
+    "text": "LAMINATED CARD, CHAINED TO THE RIG\n\n1. Load carriers into ports A, B and C. The rig will not arm with an empty port.\n2. Enter the inactivation sequence on the keypad. The rig runs a cold-shock cycle against the strain and will reject any sequence it does not recognise.\n3. Press RUN. Cycle time 90 seconds. Do not open the hood mid-cycle.\n4. Draw the finished dose from the output port into an injector.\n\nUnder point 2, in Voss's handwriting: the sequence is not written anywhere in this building. It only ever existed in the Annex trial log, and the Annex is sealed. That is the point.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": ["PZL_C5_Synthesis"]
+  },
+  {
+    "id": "NAR_C5_VossFinalFormula",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Antidote Formula — Final Sheet",
+    "speaker": "Dr. Elias Voss",
+    "text": "The counter-agent, finished, since Ines will not stop asking from wherever she is.\n\nThree carriers. A binds the strain's coat. B is the chaperone that keeps A from folding on itself. C is the trigger. None of the three does anything alone, which is the only elegant thing about it.\n\nAnd it will not assemble at body temperature. The strain has to be shocked cold first, exactly the way the Annex trial log sets it out, or the whole mix is just expensive water. I wrote that sequence down once, eight months ago, underground, and I never wrote it again.\n\nSo: the cure exists and cannot be made. I find that tidier than destroying it.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": ["PZL_C5_Synthesis", "OBJ_C5_12"]
+  },
+  {
+    "id": "NAR_C5_DawnSchedule",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Desk Diary — Today",
+    "speaker": "Dr. Elias Voss",
+    "text": "05:00 — Last pass of the floors. Volunteers secured where they are.\n05:30 — Service level. Confirm the skids and the timer by hand, not by screen.\n06:12 — Sunrise. North distribution first, then the rest of the grid behind it.\n06:30 — Roof. I would like to watch the light come up over a city that is about to stop being frightened of itself.\n\nNothing after 06:30. The rest of the page is blank, and he has ruled a neat line under it.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "NAR_C5_VossDeskLetter",
+    "chapter": 5,
+    "type": "Diary",
+    "title": "Unsent Letter, Under the Roof Card",
+    "speaker": "Dr. Elias Voss",
+    "text": "To the committee, or to whoever is left to read a letter.\n\nYou funded strength and then you were embarrassed by it. You signed the shipments, you took the contract for the city's water, you asked me for a product and then asked me to make it polite.\n\nI am not sorry, and I am not mad. Those are the two things everyone will want me to be.\n\nThe roof card is here because I expect to be the last one up there and I would rather not break my own door. If you are reading this and I am not on the roof, then something has gone correctly for one of you.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": ["OBJ_C5_11"]
+  },
+  {
+    "id": "NAR_C5_ManifoldChecklist",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Manifold Checklist, Roof Plant Room",
+    "speaker": "Dr. Elias Voss",
+    "text": "CLIPPED TO THE MANIFOLD, IN VOSS'S HAND\n\nMechanic's order, which I have checked twice because he was right about it:\n\nPURGE first. The loop holds the last batch and it will go wherever you send it.\nBYPASS shut, so nothing runs back to the reservoir.\nCITY MAIN last. Then the pump.\n\nI dislike how much of tonight depends on three brass handles turned by a man on an hourly rate.",
+    "location": "LOC_C5_Roof",
+    "unlocks": ["PZL_C5_WaterMain"]
+  },
+  {
+    "id": "NAR_C5_VialLedger",
+    "chapter": 5,
+    "type": "Note",
+    "title": "Sample Ledger — Final Page",
+    "speaker": "",
+    "text": "V-7 CONCENTRATE, 2 ml ARCHIVE VIALS — PASSAGE 11\n\nCAST: 40\nIN RACK: 39\nBROKEN / DISPOSED: 0\nSIGNED OUT: 0\n\nThe arithmetic is in two different pens. Somebody has gone over the 39 twice, hard enough to tear the paper, and written a question mark beside it that nobody ever answered.",
+    "location": "LOC_C5_Roof",
+    "unlocks": ["FLG_C5_VialMissing"]
+  },
+  {
+    "id": "RAD_C5_Approach_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Into the sewers",
+    "speaker": "MARA",
+    "text": "Leon, the waterworks man here says the Vigor intake is off the fourth culvert. Big grey hatch, you can't miss it.",
+    "location": "LOC_C5_Sewers",
+    "unlocks": ["OBJ_C5_01"]
+  },
+  {
+    "id": "RAD_C5_Approach_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Into the sewers",
+    "speaker": "LEON",
+    "text": "I'm in the water up to here. Something's in it with me.",
+    "location": "LOC_C5_Sewers",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_Approach_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Into the sewers",
+    "speaker": "MARA",
+    "text": "Then don't stop moving. It's twenty past five. Sunrise is six twelve.",
+    "location": "LOC_C5_Sewers",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_Approach_04",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Into the sewers",
+    "speaker": "LEON",
+    "text": "Plenty of time.",
+    "location": "LOC_C5_Sewers",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_DosingRig_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The intake hall",
+    "speaker": "LEON",
+    "text": "Mara, their water plant is real. Six skids, hoses taped straight onto the city main, drums sitting ready.",
+    "location": "LOC_C5_ServiceLevel",
+    "unlocks": ["FLG_C5_DosingRigFound"]
+  },
+  {
+    "id": "RAD_C5_DosingRig_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The intake hall",
+    "speaker": "MARA",
+    "text": "Pruitt told you dawn. There's a timer?",
+    "location": "LOC_C5_ServiceLevel",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_DosingRig_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The intake hall",
+    "speaker": "LEON",
+    "text": "Locked at six twelve. I can't stop it from down here, the valves are upstairs on the roof.",
+    "location": "LOC_C5_ServiceLevel",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_DosingRig_04",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The intake hall",
+    "speaker": "MARA",
+    "text": "Then we stop using it to argue with him and start using it. Same pipe, different medicine.",
+    "location": "LOC_C5_ServiceLevel",
+    "unlocks": ["FLG_C5_WaterPlanKnown"]
+  },
+  {
+    "id": "RAD_C5_DosingRig_05",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The intake hall",
+    "speaker": "LEON",
+    "text": "I like you when you're angry.",
+    "location": "LOC_C5_ServiceLevel",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_OwenPhoto_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The photo board",
+    "speaker": "LEON",
+    "text": "There's a staff photo in their lobby. Back row, third from the right.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_OwenPhoto_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The photo board",
+    "speaker": "MARA",
+    "text": "Coat too big for him. He never got it taken in, he said it made him look senior.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_OwenPhoto_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The photo board",
+    "speaker": "MARA",
+    "text": "He's laughing in that one. I didn't know they'd put him on a wall.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_OwenPhoto_04",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The photo board",
+    "speaker": "LEON",
+    "text": "He warned you. You're the reason I got this far. Take that one.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_OwenPhoto_05",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The photo board",
+    "speaker": "MARA",
+    "text": "Ask me again at sunrise. Get in the lift, Leon.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintLift_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: freight lift override",
+    "speaker": "MARA",
+    "text": "Four digits on a keypad, and a building full of people who write things down. Somebody told somebody that code.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintLift_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: freight lift override",
+    "speaker": "MARA",
+    "text": "Read the facilities email on the reception terminal again. She says she moved it to the lift car's inspection number.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintLift_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: freight lift override",
+    "speaker": "MARA",
+    "text": "It's the sticker inside the car, at your shoulder. Three zero four two. Not the year on the plaque.",
+    "location": "LOC_C5_Lobby",
+    "unlocks": ["FLG_C5_LiftOnline"]
+  },
+  {
+    "id": "RAD_C5_Floor31_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Floor 31",
+    "speaker": "LEON",
+    "text": "Fourteen of his people stayed behind last night and dosed themselves at the bench. There's camera footage. They shook hands afterwards.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": ["FLG_C5_VolunteersKnown"]
+  },
+  {
+    "id": "RAD_C5_Floor31_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Floor 31",
+    "speaker": "MARA",
+    "text": "Why would anyone do that?",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_Floor31_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Floor 31",
+    "speaker": "LEON",
+    "text": "Because he asked them to, and nobody up here has told him no in years.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_Floor31_04",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Floor 31",
+    "speaker": "MARA",
+    "text": "They were fit, healthy people, Leon. Mind the strong ones.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintSequencer_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: Genetics vault sequencer",
+    "speaker": "MARA",
+    "text": "Three dials, three letters. That's a code they used every day, so it'll be printed on something they handled every day.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintSequencer_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: Genetics vault sequencer",
+    "speaker": "MARA",
+    "text": "The tech's last page said it's on the labels. Pick a vial off the bench rack and read the marker line.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintSequencer_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: Genetics vault sequencer",
+    "speaker": "MARA",
+    "text": "G, T, C. Left to right, the way Calder's requisition says to load the drawer.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": ["FLG_C5_CompB"]
+  },
+  {
+    "id": "RAD_C5_Decon_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The decon corridor",
+    "speaker": "LEON",
+    "text": "There's an armored one walking the decon corridor. Narrow glass tube, nowhere to back up.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_Decon_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The decon corridor",
+    "speaker": "MARA",
+    "text": "Don't. Six rounds won't do it and you need the six.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_Decon_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The decon corridor",
+    "speaker": "LEON",
+    "text": "The booths cycle. I'll step in one and let him walk past.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_Decon_04",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The decon corridor",
+    "speaker": "MARA",
+    "text": "Breathe out slow. He hears better than he sees.",
+    "location": "LOC_C5_Floor31_Genetics",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_WaterPlan_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The manifest",
+    "speaker": "LEON",
+    "text": "Mara, I've got his manifest. Four hundred litres of concentrate, north distribution, six twelve, signed by him.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": ["FLG_C5_WaterPlanKnown"]
+  },
+  {
+    "id": "RAD_C5_WaterPlan_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The manifest",
+    "speaker": "MARA",
+    "text": "North distribution is the shelters. The hospital. Everybody too slow to run tonight.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_WaterPlan_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The manifest",
+    "speaker": "LEON",
+    "text": "That's not an accident. That's the point of it.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_WaterPlan_04",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "The manifest",
+    "speaker": "MARA",
+    "text": "I'm telling the waterworks crew to stand by the manifold readout. If anything moves in that pipe they'll see it.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintCryo_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: cryo rack interlock",
+    "speaker": "MARA",
+    "text": "Three bays, three different temperatures, and a rack that won't open. It's not asking you to be clever, it's asking you to be tidy.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintCryo_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: cryo rack interlock",
+    "speaker": "MARA",
+    "text": "The cryo log says the interlock reads all three bays as one set. Somebody left one thawing and another one tripped out.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintCryo_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: cryo rack interlock",
+    "speaker": "MARA",
+    "text": "Reset bay 33's compressor, then put all three to minus eighty. Not lower. Minus one ninety-six cracks the line and screams.",
+    "location": "LOC_C5_Floor33_Cryo",
+    "unlocks": ["FLG_C5_CompC"]
+  },
+  {
+    "id": "RAD_C5_HintSynth_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: the synthesis machine",
+    "speaker": "MARA",
+    "text": "Three ports, three carriers. It won't even arm until all three are in.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintSynth_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: the synthesis machine",
+    "speaker": "MARA",
+    "text": "Then it wants the inactivation sequence. His own sheet says it only ever existed in one place, and you've already been there.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintSynth_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: the synthesis machine",
+    "speaker": "MARA",
+    "text": "The cold-shock sequence from the Annex trial log, Leon. Owen's floor. Key it in exactly as it was written and hit RUN.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": ["FLG_C5_AntidoteMade"]
+  },
+  {
+    "id": "RAD_C5_HintMain_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: the roof manifold",
+    "speaker": "MARA",
+    "text": "Three handles and a pump switch. Get the order wrong and you send his batch instead of yours.",
+    "location": "LOC_C5_Roof",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintMain_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: the roof manifold",
+    "speaker": "MARA",
+    "text": "The mechanic wrote the order on his work order downstairs, and Voss copied it onto the clipboard right there. Clear the loop first.",
+    "location": "LOC_C5_Roof",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_HintMain_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "Hint: the roof manifold",
+    "speaker": "MARA",
+    "text": "Purge. Then shut the reservoir bypass. Then open the city main, then the pump. In that order, Leon.",
+    "location": "LOC_C5_Roof",
+    "unlocks": ["FLG_C5_AntidoteReleased"]
+  },
+  {
+    "id": "RAD_C5_AllClear_01",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "All clear",
+    "speaker": "MARA",
+    "text": "Leon. The crew's got movement on the north readout. Whatever you put in that pipe, it's moving.",
+    "location": "LOC_C5_Roof",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_AllClear_02",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "All clear",
+    "speaker": "LEON",
+    "text": "Then it's in the city. Tell the shelters to drink the water.",
+    "location": "LOC_C5_Roof",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_AllClear_03",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "All clear",
+    "speaker": "MARA",
+    "text": "Saying that out loud is going to be the strangest sentence of my life. Marrow Bay, all stations, this is Halvern Harbor Radio. The water is clear. Repeat, the water is clear.",
+    "location": "LOC_C5_Roof",
+    "unlocks": ["FLG_C5_AllClearGiven"]
+  },
+  {
+    "id": "RAD_C5_AllClear_04",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "All clear",
+    "speaker": "MARA",
+    "text": "Leon. Is he done?",
+    "location": "LOC_C5_Roof",
+    "unlocks": []
+  },
+  {
+    "id": "RAD_C5_AllClear_05",
+    "chapter": 5,
+    "type": "Radio",
+    "title": "All clear",
+    "speaker": "LEON",
+    "text": "He's done. Come up and see the light, Mara. You earned the view.",
+    "location": "LOC_C5_Roof",
+    "unlocks": []
+  },
+  {
+    "id": "DLG_C5_VossReveal_01",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: Voss",
+    "speaker": "VOSS",
+    "text": "You're wet. There's a towel by the sink, I'm not joking, it's a clean room.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": ["FLG_C5_VossRevealed"]
+  },
+  {
+    "id": "DLG_C5_VossReveal_02",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: Voss",
+    "speaker": "LEON",
+    "text": "Dr. Voss. Step away from the console.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "DLG_C5_VossReveal_03",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: Voss",
+    "speaker": "VOSS",
+    "text": "It's locked and the timer doesn't care about either of us. Sit down. You've come a long way to arrest a man about water.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "DLG_C5_VossReveal_04",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: Voss",
+    "speaker": "LEON",
+    "text": "The port. The island. Your fourteen people on floor thirty-one. That's not water, that's a body count.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "DLG_C5_VossReveal_05",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: Voss",
+    "speaker": "VOSS",
+    "text": "A count of the weak. I did not choose who it takes, Agent. It chooses. I only stopped apologising for the choice.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "DLG_C5_VossReveal_06",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: Voss",
+    "speaker": "LEON",
+    "text": "Calder didn't stop apologising. That's why she's in the harbor.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "DLG_C5_VossReveal_07",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: Voss",
+    "speaker": "VOSS",
+    "text": "Don't. You've read her diary, you haven't read her.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "DLG_C5_VossReveal_08",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: Voss",
+    "speaker": "VOSS",
+    "text": "Build it, if you can. You can't, but build it. I'd like to see the sequence I buried come up out of the ground after me.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": ["OBJ_C5_12"]
+  },
+  {
+    "id": "DLG_C5_VossFinal_01",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: the finish",
+    "speaker": "VOSS",
+    "text": "You built it. You actually built it.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "DLG_C5_VossFinal_02",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: the finish",
+    "speaker": "VOSS",
+    "text": "Then give it to me. Not the city. Me. I want to know if it works.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": []
+  },
+  {
+    "id": "DLG_C5_VossFinal_03",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Crown Lab: the finish",
+    "speaker": "LEON",
+    "text": "It works.",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "unlocks": ["FLG_C5_VossDead"]
+  },
+  {
+    "id": "DLG_C5_Sunrise_01",
+    "chapter": 5,
+    "type": "Dialogue",
+    "title": "Roof, 06:12",
+    "speaker": "LEON",
+    "text": "Six twelve. He had the time right.",
+    "location": "LOC_C5_Roof",
+    "unlocks": []
+  }
+]

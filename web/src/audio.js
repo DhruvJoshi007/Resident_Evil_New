@@ -100,7 +100,7 @@ export class Audio {
     else this.noise(0.08, { freq: surface === 'metal' ? 3500 : 1600, q: 2, gain: 0.35, pos });
   }
   step(surface, loud = 1) {
-    const f = { wet: 900, tile: 2200, wood: 700, carpet: 400, concrete: 1400, metal: 2600 }[surface] || 1200;
+    const f = { wet: 900, tile: 2200, wood: 700, carpet: 400, concrete: 1400, metal: 2600, planks: 650 }[surface] || 1200;
     this.noise(surface === 'wet' ? 0.14 : 0.07, { freq: f, q: 1.2, gain: 0.12 * loud, type: 'bandpass' });
     if (surface === 'wet') this.noise(0.1, { freq: 3000, q: 0.8, gain: 0.05 * loud, type: 'highpass' });
   }
@@ -140,6 +140,21 @@ export class Audio {
   save() { [392, 523, 659, 523].forEach((f, i) => setTimeout(() => this.tone(f, 0.5, { gain: 0.07, type: 'triangle' }), i * 220)); }
   radio() { this.noise(0.3, { freq: 2000, q: 0.5, gain: 0.15 }); }
   collapse(pos) { this.noise(2.5, { freq: 120, q: 0.6, gain: 1.0, pos, type: 'lowpass' }); this.noise(1.5, { freq: 800, q: 0.5, gain: 0.4, pos }); }
+  shutter(pos) { this.noise(1.6, { freq: 900, q: 3, gain: 0.3, pos, sweepTo: 1600 }); for (let i = 0; i < 10; i++) setTimeout(() => this.noise(0.04, { freq: 2200, q: 4, gain: 0.15, pos }), i * 140); }
+  gate(pos) { this.noise(1.0, { freq: 1800, q: 6, gain: 0.18, pos, sweepTo: 1200 }); this.noise(0.12, { freq: 400, q: 1, gain: 0.4, pos, type: 'lowpass' }); }
+  chain(pos, gain = 0.3) { for (let i = 0; i < 6; i++) setTimeout(() => this.tone(2400 + Math.random() * 1800, 0.06, { type: 'triangle', gain: gain * 0.4, pos }), i * 45); this.noise(0.3, { freq: 3000, q: 2, gain: gain * 0.3, pos }); }
+  clang(pos) { this.tone(420, 0.9, { type: 'triangle', gain: 0.35, pos, slideTo: 380 }); this.tone(1130, 0.5, { gain: 0.15, pos }); this.noise(0.2, { freq: 1500, q: 1, gain: 0.6, pos }); }
+  shriek(pos) {
+    this.tone(900, 1.1, { type: 'sawtooth', gain: 0.18, pos, slideTo: 1800, attack: 0.05 });
+    this.tone(1340, 0.9, { type: 'square', gain: 0.06, pos, slideTo: 2400, attack: 0.05 });
+    this.noise(1.0, { freq: 2600, q: 3, gain: 0.35, pos, sweepTo: 4200 });
+  }
+  wetTear(pos) { this.noise(0.6, { freq: 500, q: 1.5, gain: 0.6, pos, sweepTo: 200 }); this.noise(0.3, { freq: 1600, q: 2, gain: 0.3, pos }); }
+  cough(pos, gain = 0.25) { [0, 260, 480].forEach(t => setTimeout(() => this.noise(0.16, { freq: 700, q: 1.2, gain, pos }), t)); }
+  breath(gain = 0.12) { this.noise(0.9, { freq: 900, q: 0.7, gain, attack: 0.25 }); setTimeout(() => this.noise(0.7, { freq: 600, q: 0.7, gain: gain * 0.8, attack: 0.2 }), 1000); }
+  staticBurst(dur = 0.5) { this.noise(dur, { freq: 3000, q: 0.3, gain: 0.3, type: 'highpass' }); }
+  engine(pos, dur = 3) { this.tone(52, dur, { type: 'sawtooth', gain: 0.25, pos, attack: 0.4 }); this.tone(78, dur, { type: 'square', gain: 0.06, pos, attack: 0.4 }); this.noise(dur, { freq: 220, q: 1, gain: 0.3, pos, type: 'lowpass', attack: 0.4 }); }
+  inject() { this.noise(0.25, { freq: 4000, q: 3, gain: 0.25, sweepTo: 2000 }); this.tone(600, 0.15, { gain: 0.08 }); }
   sparks(pos) { for (let i = 0; i < 4; i++) setTimeout(() => this.noise(0.06, { freq: 5000, gain: 0.3, pos }), i * 60); }
 
   // Rain bed and a low drone that follow the player in and out of buildings.

@@ -1,0 +1,360 @@
+[
+ {
+  "Name": "CS_C1_Arrival",
+  "chapter": 1,
+  "title": "Arrival at the North Pier",
+  "trigger": "Level start: BeginPlay on BP_C1_Director.",
+  "location": "LOC_C1_Pier",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_Arrival",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Pilot"
+  ],
+  "duration_s": 55,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C1_Landed"
+  ]
+ },
+ {
+  "Name": "CS_C1_Tape0214",
+  "chapter": 1,
+  "title": "Tape 02:14",
+  "trigger": "Interact with BP_CCTVMonitor in the dock office, requires FLG_C1_ManifestsRead.",
+  "location": "LOC_C1_DockOffice",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_Tape0214",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Begg",
+   "CHR_Kelso",
+   "CHR_Bert"
+  ],
+  "duration_s": 100,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C1_TapeWatched",
+   "FLG_C1_CageCodeKnown",
+   "FLG_C1_MaraSlip"
+  ]
+ },
+ {
+  "Name": "CS_C1_FirstReborn",
+  "chapter": 1,
+  "title": "The First Reborn",
+  "trigger": "Enter the break room with FLG_C1_FirstReborn unset, or stand within 3 m of an unfinished Husk corpse 6-8 s after its death.",
+  "location": "LOC_C1_BreakRoom",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_FirstReborn",
+  "characters": [
+   "CHR_Leon",
+   "ENM_Reborn"
+  ],
+  "duration_s": 22,
+  "skippable": false,
+  "sets_flags": [
+   "FLG_C1_FirstReborn",
+   "FLG_C1_FinisherTaught"
+  ]
+ },
+ {
+  "Name": "CS_C1_HookmanIntro",
+  "chapter": 1,
+  "title": "The Hookman",
+  "trigger": "Enter BP_C1_YardTrigger in Stack 4 with FLG_C1_PowerRestored set.",
+  "location": "LOC_C1_Yard",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_HookmanIntro",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Varga"
+  ],
+  "duration_s": 40,
+  "skippable": false,
+  "sets_flags": [
+   "FLG_C1_HookmanIntro"
+  ]
+ },
+ {
+  "Name": "CS_C1_BoatDeparture",
+  "chapter": 1,
+  "title": "Boat Departure",
+  "trigger": "Interact with BP_TenderInteract at the boat dock with FLG_C1_ShutterOpen set.",
+  "location": "LOC_C1_BoatDock",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_BoatDeparture",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara"
+  ],
+  "duration_s": 50,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C1_BoatTaken",
+   "FLG_C1_Complete"
+  ]
+ },
+ {
+  "Name": "CS_C2_FloodedStreet",
+  "chapter": 2,
+  "title": "Flooded Street",
+  "trigger": "Leon's boots break the surface of the street water on Quay Row (overlap volume at the water line, first time only)",
+  "location": "LOC_C2_FloodedStreet",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C2/LS_C2_FloodedStreet",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara",
+   "ENM_Drowned"
+  ],
+  "duration_s": 52,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C2_StreetIntro",
+   "FLG_C2_FirstDrowned"
+  ]
+ },
+ {
+  "Name": "CS_C2_BrineMawSurfaces",
+  "chapter": 2,
+  "title": "Brine Maw Surfaces",
+  "trigger": "Leon steps onto the low dock in the harbor basin, with FLG_C2_SluiceWheelFound already true",
+  "location": "LOC_C2_Harbor",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C2/LS_C2_BrineMawSurfaces",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara",
+   "BOSS_BrineMaw"
+  ],
+  "duration_s": 44,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C2_MawSurfaced"
+  ]
+ },
+ {
+  "Name": "CS_C2_LighthouseReveal",
+  "chapter": 2,
+  "title": "Lighthouse Reveal",
+  "trigger": "The third mirror dial reaches 250 and PZL_C2_LensReveal resolves; fired from BP_Puzzle_LighthouseLens",
+  "location": "LOC_C2_Lighthouse",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C2/LS_C2_LighthouseReveal",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara"
+  ],
+  "duration_s": 58,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C2_LensSolved",
+   "FLG_C2_StairOpen",
+   "FLG_C2_AnnexKnown",
+   "FLG_C2_Complete"
+  ]
+ },
+ {
+  "Name": "CS_C3_MaraMeetsLeon",
+  "chapter": 3,
+  "title": "Mara Meets Leon",
+  "trigger": "Leon enters the crypt lift shaft volume with FLG_C3_PatientZeroSeen set",
+  "location": "LOC_C3_CryptLift",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C3/LS_C3_MaraMeetsLeon",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara"
+  ],
+  "duration_s": 52,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C3_MaraJoined"
+  ]
+ },
+ {
+  "Name": "CS_C3_WardenIntro",
+  "chapter": 3,
+  "title": "The Warden",
+  "trigger": "Player carries KEY_C3_AntidoteA and crosses the coolant plant floor on the way back from the cold vault",
+  "location": "LOC_C3_CoolingChamber",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C3/LS_C3_WardenIntro",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara",
+   "BOSS_Warden"
+  ],
+  "duration_s": 44,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C3_WardenAwake"
+  ]
+ },
+ {
+  "Name": "CS_C3_UndertowRising",
+  "chapter": 3,
+  "title": "The Undertow Rising",
+  "trigger": "Raft reaches the first rock pillar waypoint with FLG_C3_RaftLaunched set",
+  "location": "LOC_C3_SeaCave",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C3/LS_C3_UndertowRising",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara",
+   "BOSS_Undertow"
+  ],
+  "duration_s": 48,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C3_UndertowSeen"
+  ]
+ },
+ {
+  "Name": "CS_C4_Pruitt",
+  "chapter": 4,
+  "title": "Cell 4",
+  "trigger": "Leon enters the volume in front of cell 4 in the holding cell block, with FLG_C4_BodyCamWatched set",
+  "location": "LOC_C4_HoldingCells",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C4/LS_C4_Pruitt",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Pruitt"
+  ],
+  "duration_s": 110,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C4_PruittFound",
+   "FLG_C4_VossLocationKnown",
+   "FLG_C4_WaterPlanKnown"
+  ]
+ },
+ {
+  "Name": "CS_C4_HaleConfession",
+  "chapter": 4,
+  "title": "Hale's confession",
+  "trigger": "Leon enters the correct code on the safe in the chief's office and FLG_C4_SafeOpen is set",
+  "location": "LOC_C4_ChiefOffice",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C4/LS_C4_HaleConfession",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Hale"
+  ],
+  "duration_s": 130,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C4_HaleConfessed",
+   "FLG_C4_HaleFled"
+  ]
+ },
+ {
+  "Name": "CS_C4_HaleMutation",
+  "chapter": 4,
+  "title": "Hale's mutation",
+  "trigger": "Leon reaches the end of the sub-level walkway above the flooded long store, with FLG_C4_BasementReached set",
+  "location": "LOC_C4_Basement",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C4/LS_C4_HaleMutation",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Hale"
+  ],
+  "duration_s": 65,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C4_HaleMutated"
+  ]
+ },
+ {
+  "Name": "CS_C4_SewerDoor",
+  "chapter": 4,
+  "title": "The sewer door",
+  "trigger": "Leon uses KEY_C4_SewerKey on the maintenance door beneath the sump room, with FLG_C4_HaleDead set",
+  "location": "LOC_C4_SewerDoor",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C4/LS_C4_SewerDoor",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara"
+  ],
+  "duration_s": 75,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C4_SewerOpen",
+   "FLG_C4_Chapter4Complete"
+  ]
+ },
+ {
+  "Name": "CS_C5_LabArrival",
+  "chapter": 5,
+  "title": "Lab Arrival",
+  "trigger": "Leon enters the tower lobby from the service stair, after FLG_C5_DosingRigFound",
+  "location": "LOC_C5_Lobby",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_LabArrival",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara"
+  ],
+  "duration_s": 58,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C5_LobbyReached"
+  ]
+ },
+ {
+  "Name": "CS_C5_VossReveal",
+  "chapter": 5,
+  "title": "Voss's Reveal",
+  "trigger": "Leon steps out of the freight lift on floor 35 with FLG_C5_CompB and FLG_C5_CompC set",
+  "location": "LOC_C5_Floor35_CrownLab",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_VossReveal",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Voss"
+  ],
+  "duration_s": 110,
+  "skippable": true,
+  "sets_flags": [
+   "FLG_C5_CrownLabReached",
+   "FLG_C5_VossRevealed"
+  ]
+ },
+ {
+  "Name": "CS_C5_FinalTransformation",
+  "chapter": 5,
+  "title": "Final Transformation",
+  "trigger": "The synthesis cycle completes and Leon draws the dose (FLG_C5_AntidoteMade)",
+  "location": "LOC_C5_Floor35_CrownLab",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_FinalTransformation",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Voss"
+  ],
+  "duration_s": 75,
+  "skippable": false,
+  "sets_flags": [
+   "FLG_C5_VossPhase1Start"
+  ]
+ },
+ {
+  "Name": "CS_C5_Sunrise",
+  "chapter": 5,
+  "title": "Sunrise",
+  "trigger": "The roof manifold is set correctly and the dosing pump starts (FLG_C5_AntidoteReleased)",
+  "location": "LOC_C5_Roof",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_Sunrise",
+  "characters": [
+   "CHR_Leon",
+   "CHR_Mara"
+  ],
+  "duration_s": 90,
+  "skippable": false,
+  "sets_flags": [
+   "FLG_C5_Sunrise",
+   "FLG_C5_AllClearGiven"
+  ]
+ },
+ {
+  "Name": "CS_C5_MissingVial",
+  "chapter": 5,
+  "title": "The Missing Vial",
+  "trigger": "Chained directly off CS_C5_Sunrise OnFinished",
+  "location": "LOC_C5_Floor35_CrownLab",
+  "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_MissingVial",
+  "characters": [],
+  "duration_s": 40,
+  "skippable": false,
+  "sets_flags": [
+   "FLG_C5_VialMissing",
+   "FLG_C5_ChapterComplete"
+  ]
+ }
+]

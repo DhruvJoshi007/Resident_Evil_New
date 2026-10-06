@@ -1,0 +1,41 @@
+Name,display_name,category,chapter,found_at,stack
+ITM_HerbGreen,Green Herb,Consumable,0,,1
+ITM_HerbRed,Red Herb,Consumable,0,,1
+ITM_MixGG,Mixed Herb (G+G),Consumable,0,,1
+ITM_MixGR,Mixed Herb (G+R),Consumable,0,,1
+ITM_Bandage,Bandage,Consumable,0,,1
+ITM_FirstAidSpray,First Aid Spray,Consumable,0,,1
+ITM_Suppressant,V-7 Suppressant,Consumable,1,,1
+ITM_Battery,Battery,Crafting,0,,5
+ITM_Gunpowder,Gunpowder,Crafting,0,,10
+ITM_Scrap,Scrap Metal,Crafting,0,,10
+ITM_NoiseLure,Noise Lure,Consumable,1,,3
+AMMO_Pistol,Pistol Ammo,Ammo,1,,60
+AMMO_Shells,Shotgun Shells,Ammo,1,,20
+AMMO_Flare,Flare Rounds,Ammo,2,,10
+AMMO_Rifle,Rifle Rounds,Ammo,3,,20
+AMMO_Revolver,Revolver Rounds,Ammo,4,,12
+WPN_Knife,Knife,Weapon,1,,1
+WPN_Pistol,Pistol,Weapon,1,,1
+WPN_FlareGun,Flare Gun,Weapon,2,Harbor master's hut,1
+WPN_Rifle,Rifle,Weapon,3,Annex armory (special room),1
+WPN_Revolver,Revolver,Weapon,4,Hale's safe,1
+KEY_C1_Fuse,Crane Fuse,KeyItem,1,Break Room,1
+KEY_C1_ShutterKey,Cargo Shutter Key,KeyItem,1,Dropped by the Hookman,1
+WPN_Shotgun,Shotgun (Pruitt's team case),Weapon,1,"Customs Cage (special room, code 0214)",1
+KEY_C2_HymnSheet,"Hymn Sheet ""Low Tide""",KeyItem,2,Calder's house cellar,1
+KEY_C2_BellKey,Bell Tower Key,KeyItem,2,Revealed by the organ,1
+KEY_C2_SluiceWheel,Sluice Gate Wheel,KeyItem,2,Bell tower (special room),1
+KEY_C2_LensCrank,Lens Crank,KeyItem,2,Fish market cold store,1
+KEY_C3_KeycardB2,Level B2 Keycard,KeyItem,3,On Owen Quinn's body,1
+KEY_C3_AntidoteA,Antidote Component A,KeyItem,3,Cooling chamber cold vault (special room),1
+KEY_C3_MasterKey,Annex Master Key,KeyItem,3,Security office (special room),1
+KEY_C4_BodyCam,Officer Ruiz's Body Camera,KeyItem,4,"Street, on Ruiz's body",1
+KEY_C4_EvidenceKey,Evidence Room Key,KeyItem,4,Archive,1
+KEY_C4_PrintCard,Fingerprint Card,KeyItem,4,Evidence room,1
+KEY_C4_Ledger,Payments Ledger,KeyItem,4,Evidence room locker,1
+KEY_C4_SewerKey,Sewer Door Key,KeyItem,4,Hale's safe (special room),1
+KEY_C5_AntidoteB,Antidote Component B,KeyItem,5,"Floor 31, Genetics Lab (special room)",1
+KEY_C5_AntidoteC,Antidote Component C,KeyItem,5,"Floor 33, Cryo Lab (special room)",1
+KEY_C5_Antidote,V-7 Antidote,KeyItem,5,"Synthesis machine, Crown Lab",1
+KEY_C5_RoofCard,Roof Access Card,KeyItem,5,Voss's desk,1

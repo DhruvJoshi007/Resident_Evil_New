@@ -1,0 +1,50 @@
+[
+  {
+    "id": "CS_C4_Pruitt",
+    "chapter": 4,
+    "title": "Cell 4",
+    "trigger": "Leon enters the volume in front of cell 4 in the holding cell block, with FLG_C4_BodyCamWatched set",
+    "location": "LOC_C4_HoldingCells",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C4/LS_C4_Pruitt",
+    "characters": ["CHR_Leon", "CHR_Pruitt"],
+    "duration_s": 110,
+    "skippable": true,
+    "sets_flags": ["FLG_C4_PruittFound", "FLG_C4_VossLocationKnown", "FLG_C4_WaterPlanKnown"]
+  },
+  {
+    "id": "CS_C4_HaleConfession",
+    "chapter": 4,
+    "title": "Hale's confession",
+    "trigger": "Leon enters the correct code on the safe in the chief's office and FLG_C4_SafeOpen is set",
+    "location": "LOC_C4_ChiefOffice",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C4/LS_C4_HaleConfession",
+    "characters": ["CHR_Leon", "CHR_Hale"],
+    "duration_s": 130,
+    "skippable": true,
+    "sets_flags": ["FLG_C4_HaleConfessed", "FLG_C4_HaleFled"]
+  },
+  {
+    "id": "CS_C4_HaleMutation",
+    "chapter": 4,
+    "title": "Hale's mutation",
+    "trigger": "Leon reaches the end of the sub-level walkway above the flooded long store, with FLG_C4_BasementReached set",
+    "location": "LOC_C4_Basement",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C4/LS_C4_HaleMutation",
+    "characters": ["CHR_Leon", "CHR_Hale"],
+    "duration_s": 65,
+    "skippable": true,
+    "sets_flags": ["FLG_C4_HaleMutated"]
+  },
+  {
+    "id": "CS_C4_SewerDoor",
+    "chapter": 4,
+    "title": "The sewer door",
+    "trigger": "Leon uses KEY_C4_SewerKey on the maintenance door beneath the sump room, with FLG_C4_HaleDead set",
+    "location": "LOC_C4_SewerDoor",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C4/LS_C4_SewerDoor",
+    "characters": ["CHR_Leon", "CHR_Mara"],
+    "duration_s": 75,
+    "skippable": true,
+    "sets_flags": ["FLG_C4_SewerOpen", "FLG_C4_Chapter4Complete"]
+  }
+]

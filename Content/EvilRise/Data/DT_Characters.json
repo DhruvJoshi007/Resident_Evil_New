@@ -1,0 +1,82 @@
+[
+ {
+  "Name": "CHR_Leon",
+  "display_name": "Leon Cater",
+  "role": "Player. Federal agent, former tactical team member, mid-30s. Calm, dry, controlled."
+ },
+ {
+  "Name": "CHR_Mara",
+  "display_name": "Mara Quinn",
+  "role": "Harbor radio operator. Guides Leon by radio in Ch1 and Ch2, joins him on the raft at the end of Ch3, then runs the relay radio at the police station in Ch4 and Ch5."
+ },
+ {
+  "Name": "CHR_Voss",
+  "display_name": "Dr. Elias Voss",
+  "role": "Vigor Biotech lead scientist. The final boss."
+ },
+ {
+  "Name": "CHR_Hale",
+  "display_name": "Chief Warren Hale",
+  "role": "Marrow Bay police chief, bought by Vigor. Boss in Ch4."
+ },
+ {
+  "Name": "CHR_Calder",
+  "display_name": "Dr. Ines Calder",
+  "role": "Voss's assistant. Dead before the story begins. Speaks through her diary and through Voss's message."
+ },
+ {
+  "Name": "CHR_Pruitt",
+  "display_name": "Agent Dale Pruitt",
+  "role": "Leader of the lost contact team. Clues in Ch1, payoff in Ch4."
+ },
+ {
+  "Name": "CHR_Owen",
+  "display_name": "Owen Quinn",
+  "role": "Mara's brother, a Vigor technician. Dead in the Annex (Ch3)."
+ },
+ {
+  "Name": "CHR_Bert",
+  "display_name": "Bert Linnane",
+  "role": "Port watchman, the first to turn (Tape 02:14)."
+ },
+ {
+  "Name": "CHR_Kelso",
+  "display_name": "Dan Kelso",
+  "role": "Dockworker, bitten by Bert. Appears in Ch1 as a strong Husk."
+ },
+ {
+  "Name": "CHR_Begg",
+  "display_name": "Tom Begg",
+  "role": "Night worker who opened the container. Appears on the tape."
+ },
+ {
+  "Name": "CHR_Varga",
+  "display_name": "Dmitri Varga",
+  "role": "Night-shift operator of Crane 3. Becomes the Hookman."
+ },
+ {
+  "Name": "CHR_Ortiz",
+  "display_name": "Lena Ortiz",
+  "role": "Pruitt's team. Found dead in Ch1 and Ch4."
+ },
+ {
+  "Name": "CHR_Whitlock",
+  "display_name": "Sam Whitlock",
+  "role": "Pruitt's team. Found dead in Ch1 and Ch4."
+ },
+ {
+  "Name": "CHR_Penhallow",
+  "display_name": "Ezra Penhallow",
+  "role": "Subject 7, Patient Zero (Ch3 footage)."
+ },
+ {
+  "Name": "CHR_Pilot",
+  "display_name": "Hank Doyle",
+  "role": "Boat pilot who drops Leon off in Ch1."
+ },
+ {
+  "Name": "CHR_Ruiz",
+  "display_name": "Officer Ana Ruiz",
+  "role": "Dead officer whose body camera Leon finds in Ch4."
+ }
+]

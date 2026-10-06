@@ -1,0 +1,50 @@
+[
+  {
+    "id": "PZL_C2_OrganHymn",
+    "chapter": 2,
+    "name": "The Chapel Organ",
+    "location": "LOC_C2_Church",
+    "setup": "The chapel organ is the only working machine on the island. Its keyboards are swollen shut; only the lettered foot pedals move. A wooden shutter over the small pipes runs on the bell tower latch linkage, and Calder hid the bell tower key inside it three weeks ago. Interacting opens a focus view of eight lettered pedals and a six-slot readout.",
+    "clues": ["NAR_C2_HymnSheet", "NAR_C2_CalderDiary4", "NAR_C2_VergerNote", "NAR_C2_HymnBoard"],
+    "solution": "Press the pedals D, G, E, D, A, D in that order (hymn 42 \"Low Tide\", pedal line, six notes left to right as written). The pipe shutter draws back and the bell tower key is on a nail inside.",
+    "failure": "A wrong pedal plays the flat chord, which is extremely loud, and resets the entry. The second cumulative mistake in a visit brings two Drowned up the flooded nave; each further mistake brings one more, capped at four alive. The chancel platform is high ground, so the fight is winnable. Death respawns at the vestry safe room with the sequence reset and the sheet never lost.",
+    "hint_1": "That organ's the only thing in the parish that still works. If the doctor hid something, she hid it in the thing nobody would dare touch.",
+    "hint_2": "Ignore the keyboards, they're swollen shut. The verger's note on the bench says pedals only, and the sheet from her cellar is the pedal line.",
+    "hint_3": "Six pedals, left to right as written: D, G, E, D, A, and D again. People drop the last one. Don't.",
+    "hint_trigger": "Hint 1 after 60 s in the nave with KEY_C2_HymnSheet held and the puzzle untouched. Hint 2 after 2 failed attempts or 150 s with the puzzle open. Hint 3 after 4 failed attempts or 240 s. Timers pause during combat and no hint repeats within a visit.",
+    "reward": ["KEY_C2_BellKey"],
+    "sets_flag": "FLG_C2_OrganSolved"
+  },
+  {
+    "id": "PZL_C2_LensReveal",
+    "chapter": 2,
+    "name": "The Lighthouse Lens",
+    "location": "LOC_C2_Lighthouse",
+    "setup": "A three-panel lens drum in the lamp room, each panel on its own salt-seized worm drive with a brass bearing dial reading 000 to 355 in 5 degree steps. No handle is supplied: the keeper's crank has been down at the fish market cold store since March. The service door is behind the keeper's framed chart and has no keyhole, because the latch inside its frame is a bimetal strip that releases when the concentrated beam warms it.",
+    "clues": ["NAR_C2_MarketShiftNote", "NAR_C2_KeeperLog", "NAR_C2_HarborChart", "NAR_C2_BrassPlate"],
+    "solution": "With KEY_C2_LensCrank fitted, set the lower mirror to 040 (chapel spire), then the middle to 115 (sluice gate housing), then the upper to 250 (drowned mooring stone). The three beams gather on the worn brass patch under the chart, the latch drops, and the chart panel opens onto the hidden stair.",
+    "failure": "No enemies and no death. A wrong bearing just puts the beam on bare wall. Touching a higher spindle before the one below it is correct shears the drive pin: a bang, that dial jams for 20 s, and all three dials reset to 000. Three shears in a row bends the crank lug, adding a 4 s wind-up to every turn for the rest of the chapter. Without the crank the spindles do not move at all.",
+    "hint_1": "There's no keyhole on that service door, is there. So the lock isn't a lock, it's the light.",
+    "hint_2": "The keeper's book sets each mirror on a landmark, lower then middle then upper. His third bearing's scratched out, but the harbor master's chart has all three.",
+    "hint_3": "Lower to the spire, 040. Middle to the sluice, 115. Upper to the drowned mooring stone, 250. In that order or you'll shear the pin.",
+    "hint_trigger": "Hint 1 after 60 s in the lamp room. Hint 2 after 2 shears or 150 s. Hint 3 after 4 shears or 240 s, and only if FLG_C2_BearingsKnown is set; otherwise hint 2 repeats once and names the harbor master's hut, because Mara cannot know a number Leon has not read out.",
+    "reward": ["FLG_C2_StairOpen", "CS_C2_LighthouseReveal"],
+    "sets_flag": "FLG_C2_LensSolved"
+  },
+  {
+    "id": "PZL_C2_SluiceGate",
+    "chapter": 2,
+    "name": "Taking the Water Away From the Brine Maw",
+    "location": "LOC_C2_Harbor",
+    "setup": "The basin is brim-full because the Harbor Board pumps were switched off three days ago, deliberately, to flood the Annex's lower doors. The Brine Maw owns that water and takes no damage at all in it. The sluice capstan on the west wall has had its wheel cut off the chain and carried to the bell tower, so the player arrives with KEY_C2_SluiceWheel already in hand and the gate is a plan rather than a mid-boss scavenger hunt.",
+    "clues": ["NAR_C2_SluiceNotice", "NAR_C2_AudioLog_Calder", "NAR_C2_FlareLocker", "NAR_C2_HarborLogDrowned"],
+    "solution": "Ship the wheel on the capstan, then land three full turns, one per pass of the Maw, taking cover behind the capstan housing between passes. The basin drops a third per turn to mud. Beached, the Maw cannot turn and the glowing sac behind its jaw hinge stays exposed on its left flank: two flare rounds into the sac kill it.",
+    "failure": "Shooting it in deep water deals zero damage. Standing on the low dock for more than one pass is an instant grab kill; the stone quay is safe. Being hit while cranking loses the current turn's progress and about a third of health but not the turn count. If the player has no flares the pistol can finish it slowly, but after 45 s beached it works back into the channel, re-floods the basin to a third, and one turn must be re-cranked. Death respawns at the vestry safe room with the turn count preserved.",
+    "hint_1": "Shooting it in deep water is just noise. The basin is the only thing on your side down there, so change it.",
+    "hint_2": "The capstan is on the west wall with the notice bolted to it. Ship the wheel from the bell tower and it's three full turns against the stop.",
+    "hint_3": "One turn per pass, that's all you get. When it beaches, the sac behind the jaw comes open. Put a flare in it.",
+    "hint_trigger": "Hint 1 after 20 s of no-damage shooting in deep water. Hint 2 after 45 s in the encounter or one death. Hint 3 after two turns done plus 30 s without progress, or two deaths.",
+    "reward": ["ITM_Suppressant", "AMMO_Flare", "FLG_C2_CausewayOpen"],
+    "sets_flag": "FLG_C2_MawDead"
+  }
+]

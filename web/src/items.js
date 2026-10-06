@@ -4,21 +4,19 @@ import { G, rand, makeNoise, addUpdater } from './game.js';
 import { mat, dotTexture } from './textures.js';
 
 export const ITEMS = {
-  ammo9: { name: 'Handgun Ammo', stack: 60, color: '#c8a050', kind: 'ammo' },
+  ammo9: { name: 'Pistol Ammo', stack: 60, color: '#c8a050', kind: 'ammo' },
   shells: { name: 'Shotgun Shells', stack: 20, color: '#a3271d', kind: 'ammo' },
   herbG: { name: 'Green Herb', stack: 1, color: '#3f8a3a', heal: 35, cures: ['bleeding'], kind: 'heal' },
   herbR: { name: 'Red Herb', stack: 1, color: '#a8302a', kind: 'herb', note: 'Mix with a green herb to make it work.' },
   mixGG: { name: 'Mixed Herb G+G', stack: 1, color: '#2f7a3a', heal: 70, cures: ['bleeding'], kind: 'heal' },
   mixGR: { name: 'Mixed Herb G+R', stack: 1, color: '#7a6a2a', heal: 100, cures: ['bleeding', 'leg', 'arm'], kind: 'heal' },
   bandage: { name: 'Bandage', stack: 1, color: '#d9d3c4', heal: 12, cures: ['bleeding', 'arm'], kind: 'heal' },
+  suppressant: { name: 'V-7 Suppressant', stack: 1, color: '#6a8ab0', kind: 'cure' },
 };
 
 export const KEY_ITEMS = {
-  medalLion: 'Lion Medallion',
-  medalOwl: 'Owl Medallion',
-  medalSerpent: 'Serpent Medallion',
-  cellKey: 'Cell Block Key',
-  map: 'District Map',
+  fuse: 'Crane Fuse',
+  shutterKey: 'Cargo Shutter Key',
 };
 
 const COMBOS = { 'herbG+herbG': 'mixGG', 'herbG+herbR': 'mixGR', 'herbR+herbG': 'mixGR' };
@@ -64,10 +62,18 @@ export class Items {
     const def = ITEMS[s.id];
     if (def.kind === 'heal') {
       const p = G.player;
-      if (p.hp >= 100 && !def.cures.some(c => p.injuries.has(c))) { G.ui.toast('Mara does not need that right now.'); return; }
+      if (p.hp >= p.maxHp && !def.cures.some(c => p.injuries.has(c))) { G.ui.toast('Leon does not need that right now.'); return; }
       this.slots[k] = null;
       G.ui.closeModal();
       p.startHeal(s.id);
+    } else if (def.kind === 'cure') {
+      const p = G.player;
+      if (p.infection <= 0) { G.ui.toast('Leon is not infected. Save it.'); return; }
+      this.slots[k] = null;
+      G.ui.closeModal();
+      p.infection = 0; p.heal(10);
+      G.audio.inject();
+      G.ui.toast('V-7 Suppressant injected. The infection meter is back to zero, for now.', 4);
     } else if (def.kind === 'ammo') {
       G.ui.toast('Ammunition loads automatically when you reload (R).');
     } else G.ui.toast(def.note || 'That cannot be used on its own.');
@@ -109,11 +115,20 @@ export class Items {
       lbl.position.y = 0.06; g.add(lbl);
     } else if (id === 'bandage') {
       const b = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.08, 12), new THREE.MeshStandardMaterial({ color: 0xe0dccf })); b.position.y = 0.04; g.add(b);
-    } else if (id.startsWith('medal')) {
-      const c = { medalLion: 0xc8a040, medalOwl: 0xb0b8c0, medalSerpent: 0x6a9a5a }[id];
-      const d = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.025, 24), new THREE.MeshStandardMaterial({ color: c, metalness: 0.9, roughness: 0.25 }));
-      d.rotation.x = Math.PI / 2; d.position.y = 0.14; g.add(d);
-    } else if (id === 'cellKey') {
+    } else if (id === 'fuse') {
+      const body = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.26, 14), new THREE.MeshStandardMaterial({ color: 0xd8d0b0, roughness: 0.5 }));
+      body.rotation.z = Math.PI / 2; body.position.y = 0.06; g.add(body);
+      for (const x of [-0.15, 0.15]) { const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 0.05, 14), new THREE.MeshStandardMaterial({ color: 0xb08a40, metalness: 0.9, roughness: 0.3 })); cap.rotation.z = Math.PI / 2; cap.position.set(x, 0.06, 0); g.add(cap); }
+    } else if (id === 'suppressant') {
+      const tube = new THREE.Mesh(new THREE.CylinderGeometry(0.022, 0.022, 0.16, 10), new THREE.MeshStandardMaterial({ color: 0x3a5a8a, roughness: 0.4 }));
+      tube.rotation.z = Math.PI / 2; tube.position.y = 0.025; g.add(tube);
+      const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.024, 0.024, 0.05, 10), new THREE.MeshStandardMaterial({ color: 0xc9a227 }));
+      cap.rotation.z = Math.PI / 2; cap.position.set(0.1, 0.025, 0); g.add(cap);
+    } else if (id === 'radio') {
+      const b = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.03, 0.2), new THREE.MeshStandardMaterial({ color: 0x1a1a1a, roughness: 0.6 }));
+      b.position.y = 0.015; b.rotation.set(0, 0.6, 0.15); g.add(b);
+      const ant = new THREE.Mesh(new THREE.CylinderGeometry(0.006, 0.006, 0.14, 5), b.material); ant.position.set(0.05, 0.02, 0.1); ant.rotation.x = 1.4; g.add(ant);
+    } else if (id === 'shutterKey') {
       const k = new THREE.Mesh(new THREE.TorusGeometry(0.05, 0.012, 6, 16), new THREE.MeshStandardMaterial({ color: 0x8a7a5a, metalness: 0.9, roughness: 0.3 }));
       k.position.y = 0.08; g.add(k);
       const shaft = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.015, 0.015), k.material); shaft.position.set(0.12, 0.08, 0); g.add(shaft);
@@ -132,7 +147,7 @@ export class Items {
 
   // o = { id, qty, x, z, y, key, file, label, onPick }
   spawn(o) {
-    const model = this.makeModel(o.file ? 'file' : o.id);
+    const model = this.makeModel(o.model || (o.file ? 'file' : o.id));
     model.position.set(o.x, o.y ?? 0, o.z);
     G.scene.add(model);
     const glint = new THREE.Sprite(this.glintMat.clone());
@@ -214,6 +229,7 @@ export class Items {
       ['herbG', p.hp < 60 ? 4 : 1.5, () => 1],
       ['bandage', p.injuries.size ? 2 : 0.5, () => 1],
       ['shells', G.weapons.owned.includes('shotgun') ? 2 : 0, () => 4],
+      ['suppressant', p.infection > 0.3 ? 1 : 0, () => 1],
       [null, 2, () => 0],
     ];
     const total = table.reduce((s, r) => s + r[1], 0);

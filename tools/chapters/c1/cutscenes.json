@@ -1,0 +1,62 @@
+[
+  {
+    "id": "CS_C1_Arrival",
+    "chapter": 1,
+    "title": "Arrival at the North Pier",
+    "trigger": "Level start: BeginPlay on BP_C1_Director.",
+    "location": "LOC_C1_Pier",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_Arrival",
+    "characters": ["CHR_Leon", "CHR_Pilot"],
+    "duration_s": 55,
+    "skippable": true,
+    "sets_flags": ["FLG_C1_Landed"]
+  },
+  {
+    "id": "CS_C1_Tape0214",
+    "chapter": 1,
+    "title": "Tape 02:14",
+    "trigger": "Interact with BP_CCTVMonitor in the dock office, requires FLG_C1_ManifestsRead.",
+    "location": "LOC_C1_DockOffice",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_Tape0214",
+    "characters": ["CHR_Leon", "CHR_Begg", "CHR_Kelso", "CHR_Bert"],
+    "duration_s": 100,
+    "skippable": true,
+    "sets_flags": ["FLG_C1_TapeWatched", "FLG_C1_CageCodeKnown", "FLG_C1_MaraSlip"]
+  },
+  {
+    "id": "CS_C1_FirstReborn",
+    "chapter": 1,
+    "title": "The First Reborn",
+    "trigger": "Enter the break room with FLG_C1_FirstReborn unset, or stand within 3 m of an unfinished Husk corpse 6-8 s after its death.",
+    "location": "LOC_C1_BreakRoom",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_FirstReborn",
+    "characters": ["CHR_Leon", "ENM_Reborn"],
+    "duration_s": 22,
+    "skippable": false,
+    "sets_flags": ["FLG_C1_FirstReborn", "FLG_C1_FinisherTaught"]
+  },
+  {
+    "id": "CS_C1_HookmanIntro",
+    "chapter": 1,
+    "title": "The Hookman",
+    "trigger": "Enter BP_C1_YardTrigger in Stack 4 with FLG_C1_PowerRestored set.",
+    "location": "LOC_C1_Yard",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_HookmanIntro",
+    "characters": ["CHR_Leon", "CHR_Varga"],
+    "duration_s": 40,
+    "skippable": false,
+    "sets_flags": ["FLG_C1_HookmanIntro"]
+  },
+  {
+    "id": "CS_C1_BoatDeparture",
+    "chapter": 1,
+    "title": "Boat Departure",
+    "trigger": "Interact with BP_TenderInteract at the boat dock with FLG_C1_ShutterOpen set.",
+    "location": "LOC_C1_BoatDock",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C1/LS_C1_BoatDeparture",
+    "characters": ["CHR_Leon", "CHR_Mara"],
+    "duration_s": 50,
+    "skippable": true,
+    "sets_flags": ["FLG_C1_BoatTaken", "FLG_C1_Complete"]
+  }
+]

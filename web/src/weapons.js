@@ -5,7 +5,7 @@ import { G, rand, makeNoise, addUpdater } from './game.js';
 import { dotTexture, bloodTexture } from './textures.js';
 
 export const WEAPONS = {
-  handgun: { name: 'Handgun', ammo: 'ammo9', mag: 9, damage: 32, pellets: 1, spread: 0.008, interval: 0.26, reload: 1.5, kick: 0.045, noise: 26, impulse: 1.2, falloff: 40 },
+  handgun: { name: 'Pistol', ammo: 'ammo9', mag: 9, damage: 32, pellets: 1, spread: 0.008, interval: 0.26, reload: 1.5, kick: 0.045, noise: 26, impulse: 1.2, falloff: 40 },
   shotgun: { name: 'Shotgun', ammo: 'shells', mag: 4, damage: 15, pellets: 8, spread: 0.065, interval: 0.95, reload: 0.55, perShell: true, kick: 0.12, noise: 34, impulse: 3.5, falloff: 12 },
 };
 
@@ -180,10 +180,12 @@ export class Weapons {
     for (const h of hits) {
       if (!h.object.visible) continue;
       const ud = h.object.userData;
+      if (ud.seeThrough && Math.random() < 0.85) continue; // most rounds pass through chain-link
       const falloff = Math.max(0.35, 1 - Math.max(0, h.distance - 4) / d.falloff);
       if (ud.enemy) {
         if (!ud.enemy.alive) continue;
         const res = ud.enemy.takeHit(d.damage * falloff, ud.part, dir, d.impulse * falloff, h.point);
+        if (res === 'miss') continue;
         if (res === 'blocked') { this.sparks(h.point, 0xffd080, 10); G.audio.ricochet(h.point); return false; }
         this.bloodBurst(h.point, dir);
         G.audio.impact(h.point, 'flesh');

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "CS_C5_LabArrival",
+    "chapter": 5,
+    "title": "Lab Arrival",
+    "trigger": "Leon enters the tower lobby from the service stair, after FLG_C5_DosingRigFound",
+    "location": "LOC_C5_Lobby",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_LabArrival",
+    "characters": ["CHR_Leon", "CHR_Mara"],
+    "duration_s": 58,
+    "skippable": true,
+    "sets_flags": ["FLG_C5_LobbyReached"]
+  },
+  {
+    "id": "CS_C5_VossReveal",
+    "chapter": 5,
+    "title": "Voss's Reveal",
+    "trigger": "Leon steps out of the freight lift on floor 35 with FLG_C5_CompB and FLG_C5_CompC set",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_VossReveal",
+    "characters": ["CHR_Leon", "CHR_Voss"],
+    "duration_s": 110,
+    "skippable": true,
+    "sets_flags": ["FLG_C5_CrownLabReached", "FLG_C5_VossRevealed"]
+  },
+  {
+    "id": "CS_C5_FinalTransformation",
+    "chapter": 5,
+    "title": "Final Transformation",
+    "trigger": "The synthesis cycle completes and Leon draws the dose (FLG_C5_AntidoteMade)",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_FinalTransformation",
+    "characters": ["CHR_Leon", "CHR_Voss"],
+    "duration_s": 75,
+    "skippable": false,
+    "sets_flags": ["FLG_C5_VossPhase1Start"]
+  },
+  {
+    "id": "CS_C5_Sunrise",
+    "chapter": 5,
+    "title": "Sunrise",
+    "trigger": "The roof manifold is set correctly and the dosing pump starts (FLG_C5_AntidoteReleased)",
+    "location": "LOC_C5_Roof",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_Sunrise",
+    "characters": ["CHR_Leon", "CHR_Mara"],
+    "duration_s": 90,
+    "skippable": false,
+    "sets_flags": ["FLG_C5_Sunrise", "FLG_C5_AllClearGiven"]
+  },
+  {
+    "id": "CS_C5_MissingVial",
+    "chapter": 5,
+    "title": "The Missing Vial",
+    "trigger": "Chained directly off CS_C5_Sunrise OnFinished",
+    "location": "LOC_C5_Floor35_CrownLab",
+    "sequence_asset": "/Game/EvilRise/Cinematics/C5/LS_C5_MissingVial",
+    "characters": [],
+    "duration_s": 40,
+    "skippable": false,
+    "sets_flags": ["FLG_C5_VialMissing", "FLG_C5_ChapterComplete"]
+  }
+]

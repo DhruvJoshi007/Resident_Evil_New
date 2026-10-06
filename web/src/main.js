@@ -11,7 +11,7 @@ import { Level } from './level.js';
 import { Player } from './player.js';
 import { Weapons } from './weapons.js';
 import { Items } from './items.js';
-import { Story } from './story.js';
+import { Story, loadData } from './story.js';
 import { UI } from './ui.js';
 
 const $ = (id) => document.getElementById(id);
@@ -86,12 +86,19 @@ function initRenderer() {
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
   const grade = new ShaderPass({
-    uniforms: { tDiffuse: { value: null }, time: { value: 0 }, danger: { value: 0 }, hurt: { value: 0 }, ca: { value: 0.6 } },
+    uniforms: { tDiffuse: { value: null }, time: { value: 0 }, danger: { value: 0 }, hurt: { value: 0 }, ca: { value: 0.6 }, infect: { value: 0 }, cctv: { value: 0 }, glitch: { value: 0 } },
     vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
     fragmentShader: `
-      uniform sampler2D tDiffuse; uniform float time, danger, hurt, ca; varying vec2 vUv;
+      uniform sampler2D tDiffuse; uniform float time, danger, hurt, ca, infect, cctv, glitch; varying vec2 vUv;
       float rnd(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
       void main(){
+        vec2 uv = vUv;
+        // infection: a slow swim at the edges of vision
+        uv += infect * 0.006 * vec2(sin(uv.y * 18.0 + time * 2.1), cos(uv.x * 14.0 + time * 1.7)) * smoothstep(0.15, 0.6, length(uv - 0.5));
+        // CCTV tape: line tearing and a rolling band
+        float band = smoothstep(0.0, 0.02, abs(fract(uv.y - time * 0.11) - 0.5) - 0.47);
+        uv.x += cctv * (glitch * (rnd(vec2(floor(uv.y * 60.0), floor(time * 20.0))) - 0.5) * 0.08 + (1.0 - band) * 0.004);
+        vec2 vUv = uv;
         vec2 d = vUv - 0.5; float r = length(d);
         float off = ca * (0.0015 + 0.006 * r) * (1.0 + danger);
         vec3 col = vec3(texture2D(tDiffuse, vUv + d * off).r, texture2D(tDiffuse, vUv).g, texture2D(tDiffuse, vUv - d * off).b);
@@ -103,6 +110,17 @@ function initRenderer() {
         col += vec3(0.55, 0.0, 0.0) * hurt * (1.0 - vig * 0.6);
         col = mix(col, col * vec3(1.25, 0.55, 0.55), danger * 0.3 * (0.5 + 0.5 * sin(time * 4.5)) * (1.0 - vig));
         col += (rnd(vUv * vec2(1731.0, 977.0) + fract(time)) - 0.5) * 0.055;
+        col = mix(col, col * vec3(0.92, 1.05, 0.9) + vec3(0.0, 0.015, 0.0), infect * 0.6);
+        if (cctv > 0.0) {
+          float g = dot(col, vec3(0.299, 0.587, 0.114));
+          g = pow(g * 1.35, 0.8);
+          vec3 tape = vec3(g * 0.92, g, g * 0.88);
+          tape *= 0.86 + 0.14 * sin(vUv.y * 900.0);
+          tape += (rnd(floor(vUv * vec2(320.0, 240.0)) + fract(time * 8.0)) - 0.5) * 0.16;
+          tape *= mix(0.6, 1.0, band);
+          tape = mix(tape, vec3(rnd(vUv * 500.0 + time)), glitch * 0.85);
+          col = mix(col, tape, cctv);
+        }
         gl_FragColor = vec4(col, 1.0);
       }`,
   });
@@ -138,22 +156,24 @@ function resume() {
 }
 
 // ---------- boot ----------
-function boot() {
+async function boot() {
+  const data = await loadData();
   initRenderer();
   G.input = new Input(G.renderer.domElement);
   G.audio = new Audio();
   G.ui = new UI();
   G.level = new Level();
-  G.story = new Story();
+  G.story = new Story(data);
   G.player = new Player();
-  G.player.pos.set(0, 0, 55.2);
+  G.player.pos.set(0, 0, 60);
+  G.strain = 1; // Chapter 1: the virus is at its weakest
   G.weapons = new Weapons();
   G.items = new Items();
   G.items.add('ammo9', 12);
   G.items.add('herbG', 1);
   G.story.setup();
-  G.camera.position.set(0, 20, 64);
-  G.camera.lookAt(0, 0, 36);
+  G.camera.position.set(-4, 14, 78);
+  G.camera.lookAt(0, 2, 40);
 
   $('loading').hidden = true;
   $('btn-start').hidden = false;
@@ -170,7 +190,7 @@ function boot() {
   $('btn-restart-cp').addEventListener('click', () => { $('pause-screen').hidden = true; G.story.loadGame(); G.requestLock(); });
   $('btn-continue').addEventListener('click', () => { $('dead-screen').hidden = true; G.story.loadGame(); G.requestLock(); });
   $('btn-replay').addEventListener('click', () => location.reload());
-  if (matchMedia('(pointer: coarse)').matches) document.querySelector('.note').textContent = 'VEILFALL needs a keyboard and mouse. Open this page on a computer to play.';
+  if (matchMedia('(pointer: coarse)').matches) document.querySelector('.note').textContent = 'EvilRise needs a keyboard and mouse. Open this page on a computer to play.';
 
   let last = performance.now();
   const frame = (now) => {
@@ -184,7 +204,9 @@ function boot() {
 
 function tick(dt) {
   logic(dt);
-  G.composer.render(dt);
+  // security footage holds each frame for 1/8 s, like a cheap recorder
+  if (G.frameHold) { G.holdT = (G.holdT || 0) + dt; if (G.holdT >= G.frameHold) { G.holdT = 0; G.composer.render(dt); } }
+  else G.composer.render(dt);
   G.input?.endFrame();
 }
 
@@ -212,26 +234,25 @@ function logic(dt) {
   } else if (mode === 'title') {
     G.time += dt;
     const t = G.time * 0.05;
-    G.camera.position.set(Math.sin(t) * 6, 16, 62);
-    G.camera.lookAt(0, 0, 36);
+    G.camera.position.set(Math.sin(t) * 10, 12, 80);
+    G.camera.lookAt(0, 2, 40);
   }
   if (G.level) G.level.update(dt);
   if (G.ui && mode !== 'title') G.ui.update(dt);
   G.audio?.update();
-  // screen treatment follows Mara's condition
+  // screen treatment follows Leon's condition
   if (G.fx) {
     const p = G.player;
     G.fx.time.value = G.time;
     G.fx.danger.value += (((p?.state === 'danger' ? 1 : p?.state === 'caution' ? 0.25 : 0)) - G.fx.danger.value) * Math.min(1, dt * 2);
     G.fx.hurt.value = p ? p.hurtFlash * 0.6 : 0;
+    G.fx.infect.value += ((p?.infection || 0) - G.fx.infect.value) * Math.min(1, dt);
   }
 }
 
-window.VEILFALL = G; // handy for debugging from the console
+window.EVILRISE = G; // handy for debugging from the console
 
-try {
-  boot();
-} catch (err) {
+boot().catch((err) => {
   $('loading').textContent = 'Could not start: ' + err.message;
   console.error(err);
-}
+});

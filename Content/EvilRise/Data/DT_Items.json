@@ -1,0 +1,322 @@
+[
+ {
+  "Name": "ITM_HerbGreen",
+  "display_name": "Green Herb",
+  "category": "Consumable",
+  "chapter": 0,
+  "found_at": "",
+  "stack": 1
+ },
+ {
+  "Name": "ITM_HerbRed",
+  "display_name": "Red Herb",
+  "category": "Consumable",
+  "chapter": 0,
+  "found_at": "",
+  "stack": 1
+ },
+ {
+  "Name": "ITM_MixGG",
+  "display_name": "Mixed Herb (G+G)",
+  "category": "Consumable",
+  "chapter": 0,
+  "found_at": "",
+  "stack": 1
+ },
+ {
+  "Name": "ITM_MixGR",
+  "display_name": "Mixed Herb (G+R)",
+  "category": "Consumable",
+  "chapter": 0,
+  "found_at": "",
+  "stack": 1
+ },
+ {
+  "Name": "ITM_Bandage",
+  "display_name": "Bandage",
+  "category": "Consumable",
+  "chapter": 0,
+  "found_at": "",
+  "stack": 1
+ },
+ {
+  "Name": "ITM_FirstAidSpray",
+  "display_name": "First Aid Spray",
+  "category": "Consumable",
+  "chapter": 0,
+  "found_at": "",
+  "stack": 1
+ },
+ {
+  "Name": "ITM_Suppressant",
+  "display_name": "V-7 Suppressant",
+  "category": "Consumable",
+  "chapter": 1,
+  "found_at": "",
+  "stack": 1
+ },
+ {
+  "Name": "ITM_Battery",
+  "display_name": "Battery",
+  "category": "Crafting",
+  "chapter": 0,
+  "found_at": "",
+  "stack": 5
+ },
+ {
+  "Name": "ITM_Gunpowder",
+  "display_name": "Gunpowder",
+  "category": "Crafting",
+  "chapter": 0,
+  "found_at": "",
+  "stack": 10
+ },
+ {
+  "Name": "ITM_Scrap",
+  "display_name": "Scrap Metal",
+  "category": "Crafting",
+  "chapter": 0,
+  "found_at": "",
+  "stack": 10
+ },
+ {
+  "Name": "ITM_NoiseLure",
+  "display_name": "Noise Lure",
+  "category": "Consumable",
+  "chapter": 1,
+  "found_at": "",
+  "stack": 3
+ },
+ {
+  "Name": "AMMO_Pistol",
+  "display_name": "Pistol Ammo",
+  "category": "Ammo",
+  "chapter": 1,
+  "found_at": "",
+  "stack": 60
+ },
+ {
+  "Name": "AMMO_Shells",
+  "display_name": "Shotgun Shells",
+  "category": "Ammo",
+  "chapter": 1,
+  "found_at": "",
+  "stack": 20
+ },
+ {
+  "Name": "AMMO_Flare",
+  "display_name": "Flare Rounds",
+  "category": "Ammo",
+  "chapter": 2,
+  "found_at": "",
+  "stack": 10
+ },
+ {
+  "Name": "AMMO_Rifle",
+  "display_name": "Rifle Rounds",
+  "category": "Ammo",
+  "chapter": 3,
+  "found_at": "",
+  "stack": 20
+ },
+ {
+  "Name": "AMMO_Revolver",
+  "display_name": "Revolver Rounds",
+  "category": "Ammo",
+  "chapter": 4,
+  "found_at": "",
+  "stack": 12
+ },
+ {
+  "Name": "WPN_Knife",
+  "display_name": "Knife",
+  "category": "Weapon",
+  "chapter": 1,
+  "found_at": "",
+  "stack": 1
+ },
+ {
+  "Name": "WPN_Pistol",
+  "display_name": "Pistol",
+  "category": "Weapon",
+  "chapter": 1,
+  "found_at": "",
+  "stack": 1
+ },
+ {
+  "Name": "WPN_FlareGun",
+  "display_name": "Flare Gun",
+  "category": "Weapon",
+  "chapter": 2,
+  "found_at": "Harbor master's hut",
+  "stack": 1
+ },
+ {
+  "Name": "WPN_Rifle",
+  "display_name": "Rifle",
+  "category": "Weapon",
+  "chapter": 3,
+  "found_at": "Annex armory (special room)",
+  "stack": 1
+ },
+ {
+  "Name": "WPN_Revolver",
+  "display_name": "Revolver",
+  "category": "Weapon",
+  "chapter": 4,
+  "found_at": "Hale's safe",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C1_Fuse",
+  "display_name": "Crane Fuse",
+  "category": "KeyItem",
+  "chapter": 1,
+  "found_at": "Break Room",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C1_ShutterKey",
+  "display_name": "Cargo Shutter Key",
+  "category": "KeyItem",
+  "chapter": 1,
+  "found_at": "Dropped by the Hookman",
+  "stack": 1
+ },
+ {
+  "Name": "WPN_Shotgun",
+  "display_name": "Shotgun (Pruitt's team case)",
+  "category": "Weapon",
+  "chapter": 1,
+  "found_at": "Customs Cage (special room, code 0214)",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C2_HymnSheet",
+  "display_name": "Hymn Sheet \"Low Tide\"",
+  "category": "KeyItem",
+  "chapter": 2,
+  "found_at": "Calder's house cellar",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C2_BellKey",
+  "display_name": "Bell Tower Key",
+  "category": "KeyItem",
+  "chapter": 2,
+  "found_at": "Revealed by the organ",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C2_SluiceWheel",
+  "display_name": "Sluice Gate Wheel",
+  "category": "KeyItem",
+  "chapter": 2,
+  "found_at": "Bell tower (special room)",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C2_LensCrank",
+  "display_name": "Lens Crank",
+  "category": "KeyItem",
+  "chapter": 2,
+  "found_at": "Fish market cold store",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C3_KeycardB2",
+  "display_name": "Level B2 Keycard",
+  "category": "KeyItem",
+  "chapter": 3,
+  "found_at": "On Owen Quinn's body",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C3_AntidoteA",
+  "display_name": "Antidote Component A",
+  "category": "KeyItem",
+  "chapter": 3,
+  "found_at": "Cooling chamber cold vault (special room)",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C3_MasterKey",
+  "display_name": "Annex Master Key",
+  "category": "KeyItem",
+  "chapter": 3,
+  "found_at": "Security office (special room)",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C4_BodyCam",
+  "display_name": "Officer Ruiz's Body Camera",
+  "category": "KeyItem",
+  "chapter": 4,
+  "found_at": "Street, on Ruiz's body",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C4_EvidenceKey",
+  "display_name": "Evidence Room Key",
+  "category": "KeyItem",
+  "chapter": 4,
+  "found_at": "Archive",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C4_PrintCard",
+  "display_name": "Fingerprint Card",
+  "category": "KeyItem",
+  "chapter": 4,
+  "found_at": "Evidence room",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C4_Ledger",
+  "display_name": "Payments Ledger",
+  "category": "KeyItem",
+  "chapter": 4,
+  "found_at": "Evidence room locker",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C4_SewerKey",
+  "display_name": "Sewer Door Key",
+  "category": "KeyItem",
+  "chapter": 4,
+  "found_at": "Hale's safe (special room)",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C5_AntidoteB",
+  "display_name": "Antidote Component B",
+  "category": "KeyItem",
+  "chapter": 5,
+  "found_at": "Floor 31, Genetics Lab (special room)",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C5_AntidoteC",
+  "display_name": "Antidote Component C",
+  "category": "KeyItem",
+  "chapter": 5,
+  "found_at": "Floor 33, Cryo Lab (special room)",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C5_Antidote",
+  "display_name": "V-7 Antidote",
+  "category": "KeyItem",
+  "chapter": 5,
+  "found_at": "Synthesis machine, Crown Lab",
+  "stack": 1
+ },
+ {
+  "Name": "KEY_C5_RoofCard",
+  "display_name": "Roof Access Card",
+  "category": "KeyItem",
+  "chapter": 5,
+  "found_at": "Voss's desk",
+  "stack": 1
+ }
+]

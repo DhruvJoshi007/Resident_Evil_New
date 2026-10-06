@@ -1,0 +1,1186 @@
+Name,chapter,type,title,speaker,text,location,unlocks
+NAR_C1_ManifestA,1,Note,"Inbound Manifest — Berth 2, Yard C",Priya Dann,"INBOUND MANIFEST / PORT HALVERN / BERTH 2 -> YARD C
+Vessel: MV Coldwater Rose. Discharged 23:50.
+
+Unit VGR-7718. Consignor: VIGOR BIOTECH LOGISTICS. Contents declared: MEDICAL SUPPLIES, NON-HAZ.
+Temp log: -4 C maintained dockside. Reefer plug 14.
+Customs: CLEARED ON PAPER. No physical inspection.
+Handling note (consignor): DO NOT BREAK SEAL. DO NOT INSPECT. Consignor agent collects at 06:00.
+
+Clerk's margin, in pen: Non-haz doesn't need minus four. Flagged it to Sully. Sully says sign it and go home.",LOC_C1_DockOffice,"(OBJ_C1_06,FLG_C1_VigorLinked)"
+NAR_C1_ManifestB,1,Note,Manifest Amendment 7718-A,,"AMENDMENT TO MANIFEST VGR-7718
+Filed 01:02. Filed by: terminal override, badge not recorded.
+
+Storage reassigned: REEFER ROW -> YARD C, STACK 4, GROUND TIER.
+Reason given: ""consignor request, ground access"".
+Plug 14 released. Unit now UNPOWERED.
+
+Second margin note, different hand: whoever moved it took it off the cold plug four hours before pickup. That's not access. That's so nobody walks past it.",LOC_C1_DockOffice,(FLG_C1_VigorLinked)
+NAR_C1_ClerkDiary,1,Diary,Day Clerk's Desk Diary,Priya Dann,"Tuesday. Third Vigor unit this month. Same consignor, same wording, same nobody-opens-it. The lads have started calling them coffins. I asked them not to.
+
+Wednesday. Bert's back on nights. He shouldn't be. He had the chest thing all winter and he still walks the whole fence line because he says the camera on Stack 4 is blind. He's seventy-one. Somebody should tell the office. I'm the office.
+
+Thursday. Half the day shift didn't come in. Nobody's answering the harbour line. I'm writing this because I don't know what else to do with my hands.",LOC_C1_DockOffice,()
+NAR_C1_EmailVigor,1,Email,Email: Re: 7718 handling,Vigor Biotech Logistics,"FROM: logistics@vigorbiotech
+TO: terminal.super@porthalvern
+SUBJECT: Re: 7718 handling
+
+Our handling instruction stands. The unit is not to be opened, sampled, photographed or scanned, by your staff or by customs.
+
+Your clearance for this lane is already authorised at city level. If any officer raises it, give them the authorisation number and nothing else. Do not put the number in writing.
+
+Our agent collects at 06:00. Keep the lane clear and keep your night crew off Stack 4.",LOC_C1_DockOffice,(FLG_C1_VigorLinked)
+NAR_C1_EmailReply,1,Email,Email: Re: Re: 7718 handling,Marcus Sully,"FROM: terminal.super@porthalvern
+TO: logistics@vigorbiotech
+SUBJECT: Re: Re: 7718 handling
+
+Understood. Lane's clear.
+
+For the record, I'd be happier if the paperwork matched the temperature. Minus four on a medical-supplies declaration gets questions from people I can't wave an authorisation number at.
+
+I've moved night crew off Stack 4 on the rota. Varga's on Crane 3 and he does what he's told. Begg and Kelso are reefer row. Linnane walks the fence and he's half deaf, so that's fine.
+
+Last one of these, Marcus.",LOC_C1_DockOffice,()
+NAR_C1_PruittRadio,1,Note,Crushed Field Radio,,"A federal-issue handheld, flattened edge-on — something heavy came down on it at an angle. The channel wheel is snapped off at 4. The battery pack is still warm enough to have been live within the day.
+
+Taped inside the cover, a strip of paper in blunt pencil: D. PRUITT / ORTIZ ch4 / WHITLOCK ch4 / IF SPLIT, REGROUP NORTH PIER.
+
+Nobody regrouped. The drag marks going inland are two sets of heels, side by side, and nobody dragged themselves.",LOC_C1_Pier,"(OBJ_C1_04,FLG_C1_PruittRadioFound)"
+NAR_C1_WatchRound,1,Note,Watchman's Round Sheet,Bert Linnane,"FENCE ROUND — NIGHTS — INITIAL EACH POINT
+
+01:00 gate / BL  01:30 reefer row / BL  02:00 stack 4 / BL
+02:30 stack 4 / BL — mist on the ground here, cold, smells like a dentist
+03:00 ______
+03:30 ______
+
+Under the empty lines, in a shaky hand that doesn't match the initials above: he's up. bert's up and he's not right. don't come down here. — T.B.",LOC_C1_Pier,()
+NAR_C1_Tape0214,1,Footage,"Security Camera Log — Yard C, Stack 4",,"OVERNIGHT LOG / CAM 11 / YARD C STACK 4 / NO AUDIO
+
+02:14 — Two men at a ground-tier unit, 7718. One works a bar under the seal. The door swings. White mist pours out low and stays low, the way cold does.
+
+02:31 — An old man in a watchman's coat walks into frame through the mist, hand on his chest. He stops. He sits down against the container like a man who has decided to rest. He does not get up.
+
+02:58 — One of the workers comes back with a flask. He kneels. The old man takes his wrist and bites through it. The worker gets clear and runs holding his arm.
+
+03:40 — The same worker stands under the camera. He is not holding his arm any more. He takes the Stack 4 gate in both hands and pulls until the lock tears out of the frame. He is faster leaving than he was arriving.",LOC_C1_DockOffice,"(FLG_C1_TapeWatched,FLG_C1_CageCodeKnown,OBJ_C1_07)"
+NAR_C1_PA_Loop,1,AudioLog,Warehouse PA — Looping Announcement,Port Halvern PA,"[A recorded woman's voice, cheerful, on a loop. It has been playing to an empty warehouse for twenty hours.]
+
+""Attention Yard C. Due to an operational incident, all personnel are to muster at the north pier for head count. Do not use the yard gates. Do not approach Stack 4.""
+
+[Click. Hiss. Then a live voice cuts over it, close to the microphone, fast:]
+
+""Nobody's at the pier. Whoever's listening, the pier is where they went and the pier is where it — ""
+
+[The loop resumes.]",LOC_C1_Warehouse,()
+NAR_C1_OrtizBody,1,Note,Agent Ortiz,,"Federal ID in the vest pocket: ORTIZ, LENA R. Sidearm locked back on an empty magazine, slide forward on nothing. Fourteen casings inside two metres of where she sat down.
+
+Two bites, left forearm and shoulder. The shoulder one was wrapped with her own cravat, neatly, one-handed.
+
+She is still holding a notebook against her ribs. Her thumb has worn the cover through on one page, like she read it over and over while she waited.
+
+She did not rise. Somebody made sure of that, and then walked away, and the casings say she was alone by then.",LOC_C1_Warehouse,(FLG_C1_OrtizFound)
+NAR_C1_ShiftRota,1,Note,Gantry Shift Rota Board,Marcus Sully,"GANTRY CRANE ROTA — WEEK 41 — DON'T SWAP WITHOUT ASKING ME
+
+CRANE 1 — DAY (06:00-14:00) — ABEL
+CRANE 2 — SWING (14:00-22:00) — SULLY
+CRANE 3 — NIGHT (22:00-06:00) — DMITRI
+
+START-UP ORDER, EVERY TIME: bring up whoever's on shift now, then the next shift round the clock, then the last. The main breaker will not carry three cold motors in the wrong order. It trips, it bangs, and I am not walking out there at three in the morning again.
+
+Taped under the board: fuse lives in the cabinet in here, NOT in the control house, because the control house floods.",LOC_C1_BreakRoom,(FLG_C1_CraneOrderKnown)
+NAR_C1_VargaLog,1,AudioLog,Crane 3 Cab Recorder — Night Shift,Dmitri Varga,"[Cab recorder, rain on glass, motor hum.]
+
+02:16. Something's venting at Stack 4. Begg's down there with a bar. Told him over the tannoy to leave it. He waved.
+
+03:05. Bert's on the ground and Kelso's screaming. I'm not coming down. I've got forty metres of air under me and a locked hatch and that is the most sensible place in this port.
+
+04:50. It's in the cab stair. I've got the hook block hard against the hatch. Hand's bad. Something got the hand.
+
+[Long pause. Breathing changes pitch.]
+
+05:30. If somebody plays this. I keep the hook with me. Tell my mother I kept — [recording ends]",LOC_C1_BreakRoom,()
+NAR_C1_KelsoSlip,1,Note,Overtime Slip,Dan Kelso,"OVERTIME AUTHORISATION — NIGHTS — 4 HRS
+NAME: D. KELSO  BADGE: 2209
+REASON: ""consignor assist, reefer row""
+
+On the back, in biro: Tom says the Vigor one's worth a look. Says the last three had cold boxes in them and nobody counted the cold boxes. I said no. He asked twice. It's four hours' money and Bert's the only one on the fence and Bert can't hear a thing.
+
+I'm going to regret this at six in the morning.",LOC_C1_BreakRoom,()
+NAR_C1_PruittScratch,1,Note,Scratched Into the Cage Frame,Dale Pruitt,"Gouged into the paint beside the keypad with a knife point, fast and deep:
+
+CAGE = WHEN IT OPENED
+
+Under it, smaller: GEAR INSIDE. ORTIZ IS IN THE WAREHOUSE. I'M GOING TO THE OFFICE TO CALL IT IN.
+Under that, scratched shallower, like he came back once: PORT POLICE ARE HERE. WRONG ONES.",LOC_C1_CustomsCage,(FLG_C1_CageCodeKnown)
+NAR_C1_CustomsSlip,1,Note,Customs Inspection Slip (Void),,"PHYSICAL INSPECTION REQUEST — UNIT VGR-7718
+Raised by: night customs officer, badge 41
+Ground: declaration inconsistent with carriage temperature.
+
+Stamped diagonally across the form in red: WITHDRAWN — CITY AUTHORISATION ON FILE.
+
+Badge 41 wrote one line at the bottom before he filed it anyway: Authorisation came from a police number, not a customs number. I've kept a copy where the keypad is, because the keypad code is a date only four of us know, and after tonight I'd like somebody to come looking.",LOC_C1_CustomsCage,(FLG_C1_CageCodeKnown)
+NAR_C1_OrtizNotes,1,Diary,Ortiz — Field Notes,Lena Ortiz,"13:00. Landed. Port's quiet in the wrong way — gear left running, nobody on it.
+
+14:20. Dock office CCTV holds an overnight log. Pruitt watched four minutes of it and went grey. He locked our case in the customs cage and set the code to the timestamp. He said if anyone federal comes after us, they'll read the tape before they find the cage, and then they'll already know the number.
+
+16:00. Whitlock's chasing the consignor name. Vigor Biotech. Everything here routes through a city authorisation nobody will put in writing.
+
+17:40. Pruitt's on the radio to Bay Central. He's saying ""port police"". He's saying ""Hale's people"". Then he isn't saying anything.
+
+Later. My arm's wrapped. I can hear them walking the aisles. Whoever reads this: the tape is the whole case. Take the tape.",LOC_C1_CustomsCage,(FLG_C1_PruittFateHinted)
+NAR_C1_SuppressantLabel,1,Note,V-7 Suppressant — Auto-injector Label,Vigor Biotech,"V-7 SUPPRESSANT / AUTO-INJECTOR / SINGLE USE
+FOR AUTHORISED FIELD PERSONNEL. NOT FOR SALE. NOT A CURE.
+
+Administer to outer thigh within 30 minutes of exposure or bite. Resets serum titre to baseline. Does NOT clear the agent from tissue. Repeat exposure requires repeat dose.
+
+Side panel, printed small: Suppression is not remission. Personnel reporting more than two doses are to be reassigned and are not to be told why.",LOC_C1_CustomsCage,()
+NAR_C1_BreakerNote,1,Note,Taped Above the Breaker,Marcus Sully,"IF THE MAIN TRIPS:
+1. Don't just slam it back in. Let it sit thirty seconds or you'll weld the contacts.
+2. It bangs like a gunshot and every gull in the estuary lifts. Expect company — last month it brought the whole night crew out of the break room wanting to know who died.
+3. Then do it again IN ORDER. On shift first. Round the clock from there.
+
+Three tries and I'm calling the contractor and it's coming out of somebody's hours.",LOC_C1_ControlHouse,()
+NAR_C1_FusePlate,1,Note,Panel Plate — Gantry Supply,,"GANTRY SUPPLY — 400A CARTRIDGE FUSE — SLOT EMPTY
+
+Stencilled on the empty carrier, factory lettering: DO NOT ENERGISE GANTRY BUS WITHOUT CARTRIDGE IN PLACE.
+
+A strip of gaffer tape over it, hand-marked: spare cartridge is in the break room cabinet. Control house takes water over the sill on a spring tide and I'm not drowning four hundred quid of fuse.
+
+Below the three gantry switches, a brass plate: C1 / C2 / C3. The yard gate motor and the yard crane are on the same bus. No power, no gate.",LOC_C1_ControlHouse,()
+NAR_C1_KelsoGate,1,Note,Stack 4 Gate,,"The personnel gate into Stack 4 is standing open because the lock plate is gone. Not cut, not drilled — torn out, taking a fist of chain-link and three rivets with it. The steel is bowed outward where two hands held it.
+
+A Vigor-issue high-visibility vest is snagged on the burr, size XL, badge 2209 on the chest tab.
+
+Whoever did this was strong before. He got stronger after.",LOC_C1_Yard,()
+NAR_C1_DropZoneSign,1,Note,Yard Safety Sign,,"DANGER — SUSPENDED LOAD ZONE — KEEP OUT WHEN STRIPES ARE LIT
+
+Ground marking: yellow and black hazard stripes, four metres square, directly beneath the yard crane's hook block.
+
+RELEASE LEVER AT CRANE LEG. The lever drops whatever is on the hook. It does not ask twice and it does not stop halfway.
+
+Spray-painted underneath by somebody with no respect for signage: two cans per shift. then you're hanging nothing and you're on your own.",LOC_C1_Yard,(FLG_C1_DropZoneKnown)
+NAR_C1_ContainerSeal,1,Photo,Broken Seal — VGR-7718,,"A bolt seal, levered rather than cut, still hanging from the locking bar by its sheared stem. The barrel is stamped VIGOR BIOTECH and, beneath that, a lot number: V7-1140-SM.
+
+SM. The same two letters are on every crate stencil inside the unit.
+
+The pry bar is on the ground where it was dropped. There is frost on the door sill and nothing has been cold in this yard for twenty hours.",LOC_C1_Yard,()
+NAR_C1_ContainerInterior,1,Note,Inside VGR-7718,,"Eleven foam-lined transit cases in racks. Ten are closed and intact. The eleventh is open, and its cradle is moulded for four cylinders. Three cylinders are still seated. The fourth cradle holds a cylinder with a split collar and a vent valve wound fully open.
+
+Stencil on the rack end: ANNEX RECOVERY — SM — RETURN TO TOWER, DO NOT DECANT.
+
+A clipboard chained to the wall: RECOVERED FROM SALTMERE ANNEX, SEALED STORE. Recovering technician signature is two letters and a long ragged line, as though his hand was shaking. O. Q.",LOC_C1_Yard,(FLG_C1_AnnexHinted)
+NAR_C1_VargaNote,1,Note,Pinned Inside the Crane Shed,Dmitri Varga,"Pinned to the shed board with a shackle pin, written on the back of a load chart:
+
+I am not sick. I am cold all the time and my arm is growing and I can feel the chain in it, which is a stupid thing to write and it is true.
+
+I stay in the shed. If I stay in the shed I only hurt the ones that come in.
+
+If you are reading this you came in.
+
+Don't stand on the stripes.",LOC_C1_Yard,(FLG_C1_DropZoneKnown)
+NAR_C1_NightCrewPhoto,1,Photo,"Night Crew, Week 39",,"A phone photo printed on office paper and pinned over the break room kettle. Five people crowded under a gantry leg in rain, all grinning, all holding mugs.
+
+Names biroed on the white border, left to right: ABEL — SULLY — BERT (71 AND STILL ON NIGHTS, DISGRACE) — TOM — DAN.
+
+At the edge of frame, half out of it, a tall man in a crane harness who did not want to be in the picture. Somebody has written DMITRI and an arrow.
+
+In the corner, a date three weeks before tonight.",LOC_C1_BreakRoom,()
+NAR_C1_BeggPhone,1,Note,Phone on the Reefer Row Steps,Tom Begg,"A work phone, cracked, 4% battery, one unsent message open on screen.
+
+To: DAN K
+02:51 — mate come back the old boy is on the deck by 7718 he aint breathing right
+02:53 — DAN
+02:53 — dan he got up
+03:02 — dont come back
+03:04 — i can hear you in the row. dont answer me if its you. if its you dont answer me
+
+The message was never sent. There is no signal in reefer row and there never has been.",LOC_C1_Warehouse,()
+NAR_C1_HarbourBoard,1,Note,Harbour Notice Board,Halvern Harbour Authority,"NOTICE TO MARINERS — RIVER MOUTH
+
+Saltmere Point: harbour radio station manned 24h, channel 16 and port band. Ferry service to Saltmere SUSPENDED until further notice — no crew available.
+
+Tender berth: south boat dock, inside the cargo shutter. Shutter is keyed. Key held by yard supervisor or duty gantry operator ONLY.
+
+Tide tonight: high water 23:55. The boat dock floods ankle-deep at the top of the tide. Watch the water. Things wash in on a high tide and they don't always wash out.",LOC_C1_DockOffice,()
+RAD_C1_MaraFirst_01,1,Radio,First Contact,MARA,"Port channel, anyone. This is Halvern Harbor Radio. Please.",LOC_C1_Pier,(OBJ_C1_02)
+RAD_C1_MaraFirst_02,1,Radio,First Contact,LEON,"Agent Cater, federal. I'm on the north pier.",LOC_C1_Pier,()
+RAD_C1_MaraFirst_03,1,Radio,First Contact,MARA,Federal. The last ones stopped answering.,LOC_C1_Pier,()
+RAD_C1_MaraFirst_04,1,Radio,First Contact,LEON,That's why I'm here.,LOC_C1_Pier,()
+RAD_C1_MaraFirst_05,1,Radio,First Contact,MARA,I'm Mara. I'm across the river on Saltmere. I can see your flashlight.,LOC_C1_Pier,()
+RAD_C1_MaraFirst_06,1,Radio,First Contact,LEON,Then you know I'm alone. Talk me through it.,LOC_C1_Pier,"(FLG_C1_MaraContact,OBJ_C1_03)"
+RAD_C1_PruittRadio_01,1,Radio,The Crushed Radio,LEON,Found a federal handset. Someone stood on it.,LOC_C1_Pier,()
+RAD_C1_PruittRadio_02,1,Radio,The Crushed Radio,MARA,"There were three of them. I heard one shouting yesterday evening, then nothing on any band.",LOC_C1_Pier,()
+RAD_C1_PruittRadio_03,1,Radio,The Crushed Radio,LEON,Blood goes inland. I'll follow it while it's still wet.,LOC_C1_Pier,(OBJ_C1_04)
+RAD_C1_SafeRoom_01,1,Radio,The Dock Office,MARA,The dock office has a relay set. Key it and I'll log you in — that way I know you're still there.,LOC_C1_DockOffice,(OBJ_C1_05)
+RAD_C1_SafeRoom_02,1,Radio,The Dock Office,LEON,Understood. There's a stack of manifests on this desk with a company name all over them.,LOC_C1_DockOffice,()
+RAD_C1_SafeRoom_03,1,Radio,The Dock Office,MARA,Read it to me later. There's a monitor in there too. The night log runs on it.,LOC_C1_DockOffice,(OBJ_C1_06)
+RAD_C1_AfterTape_01,1,Radio,After the Tape,LEON,Old man went first. The big one went faster.,LOC_C1_DockOffice,(FLG_C1_TapeWatched)
+RAD_C1_AfterTape_02,1,Radio,After the Tape,MARA,Owen said not to open anything.,LOC_C1_DockOffice,(FLG_C1_MaraSlip)
+RAD_C1_AfterTape_03,1,Radio,After the Tape,MARA,Never mind.,LOC_C1_DockOffice,()
+RAD_C1_AfterTape_04,1,Radio,After the Tape,LEON,Timestamp was 02:14. I'll keep that one.,LOC_C1_DockOffice,"(FLG_C1_CageCodeKnown,OBJ_C1_07)"
+RAD_C1_Warehouse_01,1,Radio,Warehouse 3,MARA,Warehouse 3 is your only way to the yard side. It's a long room full of pallets.,LOC_C1_Warehouse,()
+RAD_C1_Warehouse_02,1,Radio,Warehouse 3,LEON,Three of them on the floor. They haven't looked up yet.,LOC_C1_Warehouse,()
+RAD_C1_Warehouse_03,1,Radio,Warehouse 3,MARA,Then don't make them. They hear better than they see — throw something and they'll go to the noise.,LOC_C1_Warehouse,()
+RAD_C1_Warehouse_04,1,Radio,Warehouse 3,LEON,Walking past is cheaper than shooting. Noted.,LOC_C1_Warehouse,(OBJ_C1_09)
+RAD_C1_Ortiz_01,1,Radio,Ortiz,LEON,One of the team. Ortiz. She ran dry and she sat down to do it properly.,LOC_C1_Warehouse,(FLG_C1_OrtizFound)
+RAD_C1_Ortiz_02,1,Radio,Ortiz,MARA,I'm sorry.,LOC_C1_Warehouse,()
+RAD_C1_Ortiz_03,1,Radio,Ortiz,LEON,She left notes. She was better at this than whoever sent her.,LOC_C1_Warehouse,()
+RAD_C1_Reborn_01,1,Radio,The First Reborn,LEON,It got back up. It is not the same shape it was.,LOC_C1_BreakRoom,(FLG_C1_FirstReborn)
+RAD_C1_Reborn_02,1,Radio,The First Reborn,MARA,They do that if you leave them halfway. Bert's lot went quiet and then they didn't.,LOC_C1_BreakRoom,()
+RAD_C1_Reborn_03,1,Radio,The First Reborn,MARA,"Head, or fire, or your knife on the ground. Finish them or they finish standing up.",LOC_C1_BreakRoom,(FLG_C1_FinisherTaught)
+RAD_C1_Reborn_04,1,Radio,The First Reborn,LEON,Then nobody gets left halfway.,LOC_C1_BreakRoom,()
+RAD_C1_HintCage_01,1,Radio,Hint — Customs Cage,MARA,"A customs cage is where they put the things they don't want walking off. Four digits, so it's a date or a time to somebody.",LOC_C1_CustomsCage,()
+RAD_C1_HintCage_02,1,Radio,Hint — Customs Cage,MARA,"There's writing scratched by the keypad. Whoever set the code left you the sentence, not the number.",LOC_C1_CustomsCage,()
+RAD_C1_HintCage_03,1,Radio,Hint — Customs Cage,MARA,When it opened. You watched it open. Put the time on the keypad — zero two one four.,LOC_C1_CustomsCage,(OBJ_C1_10)
+RAD_C1_HintCrane_01,1,Radio,Hint — Crane Power,MARA,Dead panel means a pulled fuse. Nobody keeps a spare in a shed that floods — try where they make tea.,LOC_C1_ControlHouse,()
+RAD_C1_HintCrane_02,1,Radio,Hint — Crane Power,MARA,"Three switches, three cranes, and a supervisor who wrote the start-up order on the rota board. Whoever's on shift comes up first.",LOC_C1_ControlHouse,()
+RAD_C1_HintCrane_03,1,Radio,Hint — Crane Power,MARA,"It's the middle of the night, Cater. Nights is Crane 3. Then round the clock — day, then swing. Three, one, two.",LOC_C1_ControlHouse,(OBJ_C1_11)
+RAD_C1_Kelso_01,1,Radio,The Big One,LEON,The one from the tape is out here. He took a shotgun shell and kept coming.,LOC_C1_Yard,()
+RAD_C1_Kelso_02,1,Radio,The Big One,MARA,The bitten ones come back stronger than they were alive. The sick ones you can walk away from. Not him.,LOC_C1_Yard,()
+RAD_C1_HintHookman_01,1,Radio,Hint — The Hookman,MARA,Don't trade with him. He's got twelve feet of reach and you've got a handgun.,LOC_C1_Yard,()
+RAD_C1_HintHookman_02,1,Radio,Hint — The Hookman,MARA,"He throws that hook and when it bites steel instead of you, he can't let go. Watch his back when he's pulling.",LOC_C1_Yard,()
+RAD_C1_HintHookman_03,1,Radio,Hint — The Hookman,MARA,There's a container hanging over those painted stripes and a lever at the crane leg. Get him on the stripes and pull it.,LOC_C1_Yard,(FLG_C1_DropZoneKnown)
+RAD_C1_Shutter_01,1,Radio,The Shutter,LEON,He was carrying the shutter key on the chain. He never used it.,LOC_C1_Yard,(FLG_C1_HookmanDead)
+RAD_C1_Shutter_02,1,Radio,The Shutter,MARA,He locked himself in with them. Through that shutter there's a tender berth. Get in it.,LOC_C1_Yard,(OBJ_C1_16)
+DLG_C1_Arrival_01,1,Dialogue,Arrival,HANK,This is as close as I go.,LOC_C1_Pier,()
+DLG_C1_Arrival_02,1,Dialogue,Arrival,LEON,Pruitt's team came in here?,LOC_C1_Pier,()
+DLG_C1_Arrival_03,1,Dialogue,Arrival,HANK,Noon yesterday. Nobody's called since.,LOC_C1_Pier,()
+DLG_C1_Arrival_04,1,Dialogue,Arrival,LEON,Then somebody should.,LOC_C1_Pier,"(FLG_C1_Landed,OBJ_C1_01)"
+DLG_C1_Departure_01,1,Dialogue,Boat Departure,MARA,"Saltmere's the lights across the river. I'm on the point, in the radio station.",LOC_C1_BoatDock,()
+DLG_C1_Departure_02,1,Dialogue,Boat Departure,LEON,Keep the lights on.,LOC_C1_BoatDock,()
+DLG_C1_Departure_03,1,Dialogue,Boat Departure,MARA,They're all I've got.,LOC_C1_BoatDock,"(FLG_C1_BoatTaken,FLG_C1_Complete)"
+NAR_C2_TideWarning,2,Note,Parish Notice: High Water,Saltmere Parish Council,"POSTED 11 DAYS AGO.
+The pumps at the sluice are off until the county sends a part. Expect water to the first step on Quay Row and the whole of Chapel Lane.
+Do not wade. Two people have gone in this month and one did not come out.
+If you cannot get to the ferry, stay upstairs, keep a light in the window, and we will come door to door.
+We did not come door to door. There was nobody left to send. - R. Teague, warden (added by hand)",LOC_C2_FloodedStreet,()
+NAR_C2_MarketWall,2,Note,Scrawl on the Market Tiles,,"Written in gutting-table chalk, three feet high, across the white tiles:
+DON'T DRINK THE WATER
+DON'T BOIL IT EITHER
+IT CAME UP THE DRAINS FROM UNDER US
+Below it, smaller, in a different hand: Nan drank it and she's fine. She's 80. She's fine.
+Below that, in the first hand again: she is not fine.",LOC_C2_FishMarket,(FLG_C2_WaterRouteKnown)
+NAR_C2_CalderDiary3,2,Diary,"Calder's Pages, 1 of 5",Dr. Ines Calder,"Taped under the auctioneer's desk, market hall.
+I am splitting this up. If one place burns or floods, the rest keeps.
+Start here, because this is where I understood it. I bought a crab off a man on this floor who could not lift his own box. Eight months later I read his file. He was the first one we put it in, and he lifted a steel door off its runners.
+Elias calls that a result. I called it a man who used to sell me crab.
+The other pages are where I pray and where I sleep.",LOC_C2_FishMarket,"(OBJ_C2_05,FLG_C2_DiaryPage1)"
+NAR_C2_IceReceipt,2,Note,Cold Store Receipt Book,Saltmere Fish Market,"Carbon copy, third sheet from the back.
+ACCOUNT: VIGOR BIOTECH (SITE SERVICES), 14 months standing.
+ITEM: Cold store bay 3, exclusive hire. Flake ice, 400 kg weekly. Transport crates, returned empty.
+NOTE FROM THE CLERK: they pay six months up front and they never take fish. Bay 3 is theirs and we don't go in it. The crates go down the shore road at night, not to the ferry.
+PAID. Stamped. Signed for by a driver who printed VIGOR in the name box and nothing else.",LOC_C2_FishMarket,(FLG_C2_VigorOnIsland)
+NAR_C2_MarketShiftNote,2,Note,Cold Store Door Note,Pell,"Nailed inside the roller door of bay 3.
+TOM - the lighthouse crank is on the nail in here, not in the hut. The keeper brought it down to lever the ice chute in March and never carried it back up, and now he's not answering his door either.
+If anybody from the county asks, the crank is at the lighthouse where it belongs.
+If anybody from VIGOR asks, you've never seen a crank.
+- Pell",LOC_C2_FishMarket,(OBJ_C2_15)
+NAR_C2_FamilyNote,2,Note,Note on a Wardrobe Door,Jess Arrow,"Pinned at child height on the inside of the wardrobe.
+BABS - if you are reading this in here then you did the right thing and I am proud of you.
+Count to two hundred. Slow. They go away when the water is still.
+Do not open it for the noise. The noise is not me. I will knock three times and say your whole name, both names, and if I don't say both names it isn't me.
+Mum.",LOC_C2_FloodedStreet,()
+NAR_C2_PhotoVossHale,2,Photo,Water-Stained Photograph,,"A framed photo on a shelf of medical journals, the bottom third bloomed and buckled by damp.
+A marquee, a long table, a cut ribbon. Two men shaking hands over it and holding the pose a beat too long for the camera.
+On the left, younger, in a good coat: Dr. Elias Voss.
+On the right, in dress uniform with the braid: Chief Warren Hale, Marrow Bay Police.
+The banner behind them is legible where the water stopped: VIGOR BIOTECH - SALTMERE SITE - COMMUNITY PARTNERS.
+On the back, in Calder's hand: they have known each other for eleven years. I keep forgetting that, so here it is on a wall.",LOC_C2_CalderHouse,(FLG_C2_PhotoFound)
+NAR_C2_VossLetter,2,Email,Printed Email: Re: your resignation,Dr. Elias Voss,"FROM: E. Voss
+TO: I. Calder
+SUBJECT: Re: your resignation
+
+Iness,
+
+You keep using the word accident. An accident is a thing you do not repeat. I have repeated it nine times.
+
+You met Penhallow. You shook a dying man's hand. Two months later that hand could bend rebar. You want me to call that a tragedy because the man it happened to did not stay polite.
+
+The resignation is not accepted, because there is nothing to resign from. There is no programme. There is a sealed building under an island and a contract that says I may keep it sealed.
+
+Come back before someone decides you are a loose end. I would rather it were me who said that to you than someone with a different job.
+
+E.",LOC_C2_CalderHouse,(FLG_C2_VossMotiveKnown)
+NAR_C2_CalderDiary4,2,Diary,"Calder's Pages, 2 of 5",Dr. Ines Calder,"Oilcloth packet, cellar shelf, behind the preserve jars.
+The hymn sheet is folded in with this page on purpose. I am not musical and I never was, so if you have found both, you are looking for the same thing I hid.
+I put the bell tower key inside the organ. The verger showed me the panel behind the pipe shutter years ago, when he was proud of the thing. Play the verse and the shutter opens, the way it opens for the bell ringers.
+Six notes. They are written on the sheet. Play them in the order they are written and nothing else, because that organ is loud and this town listens now.",LOC_C2_CalderCellar,"(PZL_C2_OrganHymn,FLG_C2_DiaryPage2)"
+NAR_C2_HymnSheet,2,Note,"Hymn Sheet: ""Low Tide""",Saltmere Chapel Hymnal,"A single sheet, foxed at the edges, hand-ruled.
+HYMN 42 - LOW TIDE - verse 1, pedal line only (as played at Saltmere)
+
+D    G    E    D    A    D
+Down  go  every  dark  anchor  down
+
+Under the stave, in pencil: six pedals, left to right as written. The organist's hand, not Calder's.
+Under that, in Calder's hand: six. Not five. Not seven. The last one is a D again and everybody gets that wrong.",LOC_C2_CalderCellar,"(KEY_C2_HymnSheet,PZL_C2_OrganHymn)"
+NAR_C2_CalderDiary5,2,Diary,"Calder's Pages, 3 of 5",Dr. Ines Calder,"Same packet, cellar.
+I have written the important part nine times and burned it eight. Here it is plain.
+It was never a weapon. Elias wanted a treatment. He wanted to take a body that was failing and give it back more than it lost, and the strain does exactly that, which is the whole problem. It only takes in the weak, and it gives them strength they never had, and it takes everything else.
+He did not build a disease. He built a success, and the success is what you met in the street.
+The work is not in the city. It is below the island. Under my feet while I write this.",LOC_C2_CalderCellar,"(FLG_C2_AnnexKnown,FLG_C2_DiaryPage3)"
+NAR_C2_AudioLog_Calder,2,AudioLog,"Dictaphone, Tape Side B",Dr. Ines Calder,"(tape hiss, a chair, water moving somewhere below)
+They turned the pumps off three days ago and told the council it was a part on order. It is not a part. The basin is meant to come up. When the basin comes up, the lower doors flood and nobody goes down the stair, and the sealed building stays sealed.
+(pause)
+I am going to the harbor tonight to look at the gate myself. If the wheel is off the capstan then I am right and somebody took it off, and if somebody took it off then they know I have been asking.
+(a long breath)
+If this is the last side of this tape, the pages are in three places and I am sorry about the organ. It really is very loud.",LOC_C2_CalderCellar,"(FLG_C2_SluicePlotKnown,OBJ_C2_11)"
+NAR_C2_CalderDiary1,2,Diary,"Calder's Pages, 4 of 5",Dr. Ines Calder,"Folded into hymnal 42 in the third pew, chapel nave.
+Eight months ago I signed a consent form for a man who could not hold the pen. Trial seven. We called him Subject 7 because Elias says names make people sentimental, and he is right, they do.
+He killed Aldous and he killed Ruth and he did it with his hands, and the report I typed says ADVERSE EVENT, EQUIPMENT.
+I typed that. Nobody made me.
+So I am not writing this to be forgiven. I am writing it so that the next person who comes through this chapel does not have to work it out from scratch.",LOC_C2_Church,(FLG_C2_DiaryPage4)
+NAR_C2_CalderDiary2,2,Diary,"Calder's Pages, 5 of 5",Dr. Ines Calder,"Inside the vestry hymn cupboard, chapel.
+Two routes, and I want this written by someone who measured it.
+Breathe it as mist or drink it out of a bad tap, and it only takes if your body is already losing. The old, the sick, the worn out. Everyone else coughs and goes to work.
+But a bite is a full dose straight in, and a full dose does not care how strong you are. It cares very much afterwards. The stronger the body, the worse the thing that stands up in it.
+So the ones to fear here are not the grandmothers. They are the harbor men.",LOC_C2_Church,"(FLG_C2_BiteRuleKnown,FLG_C2_DiaryPage5)"
+NAR_C2_VergerNote,2,Note,"Verger's Instructions, Pinned to the Organ Bench","Howell Teague, verger","FOR WHOEVER PLAYS WHILE I AM IN HOSPITAL.
+The pedal board is the only thing still true on this instrument. The manuals are swollen and two stops are dead, so play the pedal line only and the congregation will cope.
+The shutter over the small pipes is on the same linkage as the bell tower latch. Play the opening of 42 correctly and it draws back. Play it wrong and you get the flat chord, which is the loudest sound in this parish, and then you may start again.
+Pedals are lettered on the brass. Do not improvise. I will know.",LOC_C2_Church,(PZL_C2_OrganHymn)
+NAR_C2_HymnBoard,2,Note,Hymn Board by the Chancel,,"Slotted wooden numbers, three of the four still hanging.
+THIS SUNDAY
+18 - Bright Is The Morning
+42 - LOW TIDE
+7 - (number missing, slot empty)
+EVENSONG CANCELLED - WATER
+Chalked across the bottom of the board, recent, shaky: 42 only. Nothing else. Please.",LOC_C2_Church,()
+NAR_C2_ChapelRegister,2,Note,"Chapel Register, Last Page","Howell Teague, verger","BURIALS, this year, entered late and badly, for which I apologise to God and the diocese.
+- Aldous Frey. No body. Company sent a casket and asked us not to open it. We did not open it.
+- Ruth Maddern. Same. Same casket maker.
+- Ezra Penhallow. Entry struck out and rewritten: NOT DECEASED, REMOVED BY AMBULANCE, SEE CORRESPONDENCE. There is no correspondence.
+- Ines Calder. Pulled out of the basin. Nobody sent a casket for her.
+NOTE: the crypt lift is condemned. It goes further down than the crypt and I have never liked it.",LOC_C2_Church,(FLG_C2_CryptLiftSeen)
+NAR_C2_SluiceNotice,2,Note,Sluice Gate Operating Notice,Saltmere Harbor Board,"Bolted to the capstan housing, enamel, chipped.
+TO CLOSE THE GATE: ship the wheel, then THREE FULL TURNS against the stop. The basin falls about a metre and a half to the mud. Allow four minutes.
+TO OPEN: reverse, and stand clear of the chain.
+THE WHEEL IS NOT LEFT ON THE CAPSTAN. Children. It lives chained in the bell tower with the ringing gear.
+DO NOT CLOSE THE GATE WITH A VESSEL IN THE BASIN. It will sit on the bottom and you will own it.",LOC_C2_Harbor,"(PZL_C2_SluiceGate,OBJ_C2_09)"
+NAR_C2_FlareLocker,2,Note,Flare Locker Card,Saltmere Harbor Board,"Card wired to the locker handle. The locker is already forced; the hasp is bent back and the seal is torn.
+CONTENTS: signal pistol, 25 mm. Cartridges, red, six. For distress use only. Replaced annually.
+Six is crossed out. Three is written over it, and under that, in pencil: used three on the thing in the basin and it did not care for them. It went down and stayed down. If you are reading this, it is still in there, and it does not like burning.
+No signature.",LOC_C2_HarborMasterHut,"(WPN_FlareGun,FLG_C2_MawWeaknessKnown)"
+NAR_C2_HarborChart,2,Note,Chart Table: Mooring Bearings,Saltmere Harbor Board,"A linen chart under glass, pencil bearings taken from the lighthouse lamp room and written in the margin.
+BEARINGS FROM THE LAMP (true, not magnetic)
+- Chapel spire ............ 040
+- Sluice gate housing ..... 115
+- Drowned mooring stone ... 250
+The stone is the one that only shows at low water, off the west shallows. Three boats on it in my time.
+Pencilled under the list: the keeper used these three to true his mirrors every spring. He said the light was only honest if it agreed with the chart.",LOC_C2_HarborMasterHut,"(FLG_C2_BearingsKnown,PZL_C2_LensReveal)"
+NAR_C2_HarborLogDrowned,2,Note,"Harbor Master's Log, 3 Weeks Back",Harbor Master J. Vane,"0520. Recovered a female body from the basin, west wall, by the capstan housing. Identified as Dr. I. Calder, of Chapel Lane. Coat buttoned, boots laced, torch in her pocket still switched on.
+Cause recorded as drowning by the county man, who did not come to the island to record it.
+MY OWN NOTE, AND I WILL KEEP IT HERE: the capstan wheel was lying in the mud six feet from her and the chain was cut, not broken. Somebody took that wheel off while she was watching, or she took it off herself and somebody took it back.
+I said this twice on the telephone. Nobody wrote it down.",LOC_C2_HarborMasterHut,(FLG_C2_SluicePlotKnown)
+NAR_C2_Footage_Lighthouse,2,Footage,"Service Camera, Causeway Track",,"A weatherproof camera on the causeway rail, battery box still warm. The card holds four clips.
+CLIP 1, eight months ago, daylight: two men in Vigor coveralls welding a steel plate over the old coal hatch at the lighthouse base.
+CLIP 2, same week: a flatbed with crates. The crates go to the lighthouse door. They do not come out.
+CLIP 3, three weeks ago, night: a woman in a long coat walking the causeway alone toward the harbor, torch in hand. She does not come back past the camera.
+CLIP 4, three days ago: one man, alone, going in with a sample case. The timestamp is the only thing on him that is legible. He does not come back past the camera either.",LOC_C2_Lighthouse,"(FLG_C2_AnnexKnown,OBJ_C2_15)"
+NAR_C2_KeeperLog,2,Note,Keeper's Bearing Book,Keeper A. Rell,"A hardbacked book chained to the lamp room desk, open at TRUEING THE MIRRORS, SPRING.
+The carriage is seized every year by salt. Ship the crank on the lower spindle and work up. ORDER IS ALWAYS LOWER, MIDDLE, UPPER. One, two, three. Never from the top, you will shear the pin.
+Set each mirror on its own landmark and the beam gathers on the chart mark by the door, where the brass is worn through.
+- LOWER mirror to the chapel spire .... 040
+- MIDDLE mirror to the sluice ......... 115
+- UPPER mirror to the ................. (the line is scratched out hard, down to the paper. A bearing was written here and somebody removed it.)
+The harbor master keeps the same three on his chart table. Go and ask him, it is not a secret, it is a hill and a gate and a stone.",LOC_C2_Lighthouse,"(PZL_C2_LensReveal,FLG_C2_LensOrderKnown)"
+NAR_C2_BrassPlate,2,Note,Brass Plate Under the Lens,"Harlow & Sons, Opticians","HARLOW & SONS - SALTMERE LIGHT - CATADIOPTRIC, 3 PANEL
+Each panel runs on its own worm drive. Dials read in 5 degree steps, 000 to 355.
+NO HANDLE IS SUPPLIED. The crank is the keeper's property and is to be kept in the lamp room at all times.
+Scratched beside the maker's name, much later and much deeper: SERVICE DOOR BEHIND THE CHART. LATCH IS ON THE LIGHT, NOT ON A KEY. THAT WAS NOT MY IDEA.",LOC_C2_Lighthouse,(PZL_C2_LensReveal)
+RAD_C2_Arrival_01,2,Radio,Saltmere Landing,MARA,You're on the slipway. I watched your light come across the whole way.,LOC_C2_Landing,(OBJ_C2_01)
+RAD_C2_Arrival_02,2,Radio,Saltmere Landing,LEON,Then you've got a better view than I do. Where am I?,LOC_C2_Landing,()
+RAD_C2_Arrival_03,2,Radio,Saltmere Landing,MARA,"Quay Row. Chapel Lane is up the hill, the market's at the top of the street, and everything between is under water.",LOC_C2_Landing,(OBJ_C2_02)
+RAD_C2_Arrival_04,2,Radio,Saltmere Landing,LEON,And you? That's your window out on the point.,LOC_C2_Landing,()
+RAD_C2_Arrival_05,2,Radio,Saltmere Landing,MARA,"Radio station, second floor, door barricaded with a filing cabinet and a dead man's desk. I'm not coming out and you're not coming in.",LOC_C2_Landing,(FLG_C2_MaraLocated)
+RAD_C2_Arrival_06,2,Radio,Saltmere Landing,LEON,We'll see about the second half of that.,LOC_C2_Landing,()
+RAD_C2_StreetWarning_01,2,Radio,What's In The Water,MARA,"Leon. Stop walking. Whatever you just saw take that body, there are more of them and they live in the deep part.",LOC_C2_FloodedStreet,(FLG_C2_FirstDrowned)
+RAD_C2_StreetWarning_02,2,Radio,What's In The Water,LEON,They don't come up on the steps?,LOC_C2_FloodedStreet,()
+RAD_C2_StreetWarning_03,2,Radio,What's In The Water,MARA,"Not if you're quiet. Walk the walls, use the doorways, and get inside a house the second you hear one break surface.",LOC_C2_FloodedStreet,(OBJ_C2_05)
+RAD_C2_StreetWarning_04,2,Radio,What's In The Water,LEON,Wardrobes and under beds. Like being nine again.,LOC_C2_FloodedStreet,()
+RAD_C2_RadioStation_01,2,Radio,The Point,LEON,"I'm on the point jetty. Or what's left of it, which is about four metres and a handrail.",LOC_C2_FloodedStreet,()
+RAD_C2_RadioStation_02,2,Radio,The Point,MARA,"Don't. The shallows between you and me are full of them, I can hear them on the stonework all night.",LOC_C2_FloodedStreet,(FLG_C2_RadioStationBlocked)
+RAD_C2_RadioStation_03,2,Radio,The Point,LEON,I can see your light from here.,LOC_C2_FloodedStreet,()
+RAD_C2_RadioStation_04,2,Radio,The Point,MARA,Then look at it and go the other way. I've got water and a door. Find out what did this instead.,LOC_C2_FloodedStreet,(OBJ_C2_05)
+RAD_C2_Photo_01,2,Radio,The Photograph,LEON,"Found a photo in the dead doctor's front room. Ribbon-cutting. Voss from Vigor, shaking hands with a police chief in dress braid.",LOC_C2_CalderHouse,(FLG_C2_PhotoFound)
+RAD_C2_Photo_02,2,Radio,The Photograph,MARA,Which chief?,LOC_C2_CalderHouse,()
+RAD_C2_Photo_03,2,Radio,The Photograph,LEON,Hale. Marrow Bay. The man whose officers took the container off my team's hands.,LOC_C2_CalderHouse,()
+RAD_C2_Photo_04,2,Radio,The Photograph,MARA,"Eleven years of each other's barbecues. That's not a coincidence, that's a friendship.",LOC_C2_CalderHouse,()
+RAD_C2_Photo_05,2,Radio,The Photograph,LEON,"It's a friendship with a shipping schedule. Keep it in your head, we'll need it later.",LOC_C2_CalderHouse,()
+RAD_C2_SafeRoom_01,2,Radio,Vestry Check-In,MARA,Relay's strong in there. Thick walls. That's the first clean signal I've had off you since the pier.,LOC_C2_Church,(FLG_C2_VestrySafeRoom)
+RAD_C2_SafeRoom_02,2,Radio,Vestry Check-In,LEON,There's a kettle and a locker and nothing trying to kill me. I'll take the ten minutes.,LOC_C2_Church,()
+RAD_C2_SafeRoom_03,2,Radio,Vestry Check-In,MARA,Check in here whenever you pass. If you stop checking in I'll assume the worst and I'd rather not practise that.,LOC_C2_Church,()
+RAD_C2_Diary_01,2,Radio,Calder's Pages,LEON,"There's a page taped under a desk in the fish market. Dr. Ines Calder, Vigor. She says she split them across three places.",LOC_C2_FishMarket,(FLG_C2_DiaryHuntStarted)
+RAD_C2_Diary_02,2,Radio,Calder's Pages,MARA,Calder. The harbor master pulled her out of the basin three weeks ago. Everyone said she slipped.,LOC_C2_FishMarket,()
+RAD_C2_Diary_03,2,Radio,Calder's Pages,LEON,"She hid pages in a church, a market and her own cellar. People who slip don't do that.",LOC_C2_BellTower,()
+RAD_C2_Diary_04,2,Radio,Calder's Pages,MARA,So what did she find?,LOC_C2_Lighthouse,()
+RAD_C2_Diary_05,2,Radio,Calder's Pages,LEON,"That none of this was meant to kill anybody. It was meant to fix people who were already dying. It worked, and this is what working looks like.",LOC_C2_Lighthouse,(FLG_C2_RevealLanded)
+RAD_C2_Diary_06,2,Radio,Calder's Pages,MARA,That's worse. You understand that's worse.,LOC_C2_Lighthouse,()
+RAD_C2_HintOrgan_01,2,Radio,Hint: The Organ,MARA,"That organ's the only thing in the parish that still works. If the doctor hid something, she hid it in the thing nobody would dare touch.",LOC_C2_Church,()
+RAD_C2_HintOrgan_02,2,Radio,Hint: The Organ,MARA,"Ignore the keyboards, they're swollen shut. The verger's note on the bench says pedals only, and the sheet from her cellar is the pedal line.",LOC_C2_Church,()
+RAD_C2_HintOrgan_03,2,Radio,Hint: The Organ,MARA,"Six pedals, left to right as written: D, G, E, D, A, and D again. People drop the last one. Don't.",LOC_C2_Church,(PZL_C2_OrganHymn)
+RAD_C2_MawWarning_01,2,Radio,The Thing In The Basin,MARA,"Leon, that wake. Get off the low dock, get off it now.",LOC_C2_Harbor,(FLG_C2_MawSurfaced)
+RAD_C2_MawWarning_02,2,Radio,The Thing In The Basin,LEON,I've seen it. It's about eleven metres of eel and it's wearing someone's net.,LOC_C2_Harbor,()
+RAD_C2_MawWarning_03,2,Radio,The Thing In The Basin,MARA,"You can't fight that in water, nobody can. Take the water away from it.",LOC_C2_Harbor,(OBJ_C2_11)
+RAD_C2_MawWarning_04,2,Radio,The Thing In The Basin,LEON,"The gate. Three turns and a metre and a half of mud. Keep talking, I'll be busy.",LOC_C2_Harbor,()
+RAD_C2_HintSluice_01,2,Radio,Hint: The Sluice Gate,MARA,"Shooting it in deep water is just noise. The basin is the only thing on your side down there, so change it.",LOC_C2_Harbor,()
+RAD_C2_HintSluice_02,2,Radio,Hint: The Sluice Gate,MARA,The capstan is on the west wall with the notice bolted to it. Ship the wheel from the bell tower and it's three full turns against the stop.,LOC_C2_Harbor,()
+RAD_C2_HintSluice_03,2,Radio,Hint: The Sluice Gate,MARA,"One turn per pass, that's all you get. When it beaches, the sac behind the jaw comes open. Put a flare in it.",LOC_C2_Harbor,"(PZL_C2_SluiceGate,FLG_C2_MawWeaknessKnown)"
+RAD_C2_HintLens_01,2,Radio,Hint: The Lighthouse Lens,MARA,"There's no keyhole on that service door, is there. So the lock isn't a lock, it's the light.",LOC_C2_Lighthouse,()
+RAD_C2_HintLens_02,2,Radio,Hint: The Lighthouse Lens,MARA,"The keeper's book sets each mirror on a landmark, lower then middle then upper. His third bearing's scratched out, but the harbor master's chart has all three.",LOC_C2_Lighthouse,()
+RAD_C2_HintLens_03,2,Radio,Hint: The Lighthouse Lens,MARA,"Lower to the spire, 040. Middle to the sluice, 115. Upper to the drowned mooring stone, 250. In that order or you'll shear the pin.",LOC_C2_Lighthouse,(PZL_C2_LensReveal)
+RAD_C2_StairFound_01,2,Radio,Below The Island,LEON,The latch dropped. There's a door behind the keeper's chart and a stone stair going down.,LOC_C2_HiddenStair,(FLG_C2_StairOpen)
+RAD_C2_StairFound_02,2,Radio,Below The Island,MARA,Down to what? There's nothing under that rock but rock.,LOC_C2_HiddenStair,()
+RAD_C2_StairFound_03,2,Radio,Below The Island,LEON,"Painted steel, cable trays, and air moving up at me. Calder's last page says the work is below the island. She meant it literally.",LOC_C2_HiddenStair,(FLG_C2_AnnexKnown)
+RAD_C2_StairFound_04,2,Radio,Below The Island,MARA,Then I'll lose you on the radio the moment you're under the water line.,LOC_C2_HiddenStair,()
+RAD_C2_StairFound_05,2,Radio,Below The Island,LEON,Keep the set warm and the light on. I'll come up somewhere.,LOC_C2_HiddenStair,(OBJ_C2_16)
+NAR_C3_LockdownNotice,3,Note,Facility Lockdown Notice,Dr. Elias Voss,"EFFECTIVE IMMEDIATELY. Saltmere Annex is closed under clause 14 (containment). All staff out by 18:00. Leave samples in the cold vault. Leave logs where they are.
+
+No incident report will be filed from this site. Questions go to me and to nobody else.
+
+The lift to the crypt stays powered for the salvage crews. Everything else goes dark.
+
+E. Voss",LOC_C3_Reception,(FLG_C3_AnnexEntered)
+NAR_C3_OrientationCard,3,Note,New Staff Orientation Card,,"WELCOME TO SALTMERE ANNEX
+
+B1: reception, patient ward, observation, labs, whiteboard bay.
+B2: security wing, armory, coolant plant, cooling chamber, cold vault.
+
+B2 is card-controlled. Your card is not a B2 card. Do not ask.
+
+The crypt lift is the only way up to the island. It takes two minutes and it is loud. If you are claustrophobic, say so now, not at minute one.",LOC_C3_Reception,(OBJ_C3_03)
+NAR_C3_VisitorLog,3,Note,Sign-In Sheet (last page),,"DATE / NAME / PURPOSE / OUT
+
+14th / R. Imes / damp survey / 11:40
+14th / R. Imes / damp survey / 16:02
+22nd / salvage crew (3) / cable recovery / 19:15
+
+--- sheet skips four months ---
+
+3 days ago / O. QUINN / sample recovery, cold vault, B2 clearance issued / ----
+
+No out time. The pen is still clipped to the board.",LOC_C3_Reception,(FLG_C3_OwenSigned)
+NAR_C3_WardIntake,3,Note,Intake Form: Subject 7,Dr. Ines Calder,"SUBJECT 7. Ezra Penhallow, 68. Fisherman, Saltmere. Referred by the island clinic.
+
+Condition: terminal, four to seven weeks. Weight down 19 kg. Can no longer stand for a full minute.
+
+Consent: given, witnessed, read back to him twice. He asked whether it would hurt. I said I did not know. He said that was honest.
+
+Note for the file: he is not a volunteer of convenience. He is a dying man who was offered strength. I want that written down by someone who was in the room.
+
+I. Calder",LOC_C3_Ward,()
+NAR_C3_NurseDiary,3,Diary,Ward Nurse's Page,R. Imes,"Day eleven with Subject 7.
+
+He calls me girl, which I have decided not to mind. He talks about the boat he sold. He says the worst part of dying was not being able to carry his own gear down the slip.
+
+Today he carried his own water jug to the bed. He laughed about it for a long time. Then he laughed for a bit too long.
+
+Dr. V came down to watch him do it and wrote four lines and left. He did not say one word to Ezra. Not one.",LOC_C3_Ward,()
+NAR_C3_Footage_Reel1,3,Footage,"Trial Footage, Reel 1: Intake",,"Grainy monochrome, ward lighting, timecode 00:00:11.
+
+An old man sits on the edge of a bed in a gown, elbows on his knees, breathing in a way that takes effort. A gloved hand swabs his arm.
+
+EZRA: ""Will it be quick, either way?""
+CALDER (off camera): ""We don't know.""
+EZRA: ""Then put it in before I think about it.""
+
+The injection goes in. He watches it go in. The reel ends on him looking at the ceiling, counting under his breath.",LOC_C3_Ward,(OBJ_C3_04)
+NAR_C3_Footage_Reel2,3,Footage,"Trial Footage, Reel 2: Day Fourteen",,"Timecode 00:00:03. The same man, standing, no gown now, a vest and trousers that no longer fit.
+
+He lifts a crate of ballast weights that two staff carried in together. He sets it down gently, which is somehow worse.
+
+VOSS (off camera): ""Again.""
+
+He lifts it again. His forearms are wrong, corded past what skin should hold. At 00:01:48 his head turns to the camera and stays turned for nine seconds without blinking.
+
+VOSS (off camera, quiet): ""There. That's the body I wanted.""",LOC_C3_Ward,()
+NAR_C3_Footage_Reel3,3,Footage,"Trial Footage, Reel 3: Day Fifteen, 04:20",,"Night lighting. The camera is knocked off level in the first second and films the rest at an angle.
+
+Two staff in the frame. One is trying to talk to him by name. He takes her off her feet without seeming to decide to.
+
+The reel runs forty more seconds. There is no fighting in it after the first eight.
+
+At the end, a door opens. Shoes, not running. Voss steps into frame, looks at the floor, then at the thing standing over it, and speaks to the room.
+
+VOSS: ""Log it as a success with a complication. Seal the level. Nobody outside this building hears the word accident.""",LOC_C3_Ward,"(FLG_C3_PatientZeroSeen,OBJ_C3_05)"
+NAR_C3_OwenRadioLog,3,AudioLog,"Handheld Recorder, Last Entry",Owen Quinn,"(breathing, water dripping)
+
+Third day. Cold vault's fine, samples are fine, nothing down here is fine.
+
+I got a B2 card off the chief's board. If anyone reviews this, I took it, it's mine, leave my record alone.
+
+(pause)
+
+Mara. If this ever gets to you. I called the port about the container and they logged it and did nothing, and then I called you instead, and that was me putting it on you. That wasn't fair. You didn't open anything. I did the work that filled it.
+
+Stairwell's flooding and the lift's at the top. I'm going to sit on the landing a while.",LOC_C3_Ward,"(KEY_C3_KeycardB2,FLG_C3_OwenFound)"
+NAR_C3_OwenLastNote,3,Note,Folded Note in a Coat Pocket,Owen Quinn,"M —
+
+If I'm late, the tide's in the stair and I'm waiting it out. Don't come down. I mean it this time.
+
+The container is VGR-7718. It is not medical supplies. Whoever signs for it at the port is in it up to the neck.
+
+Tell them it was me who said so, not you. You've got a job and a radio and a town. I've got a badge they can take off me.
+
+— O",LOC_C3_Ward,(FLG_C3_OwenTruth)
+NAR_C3_PhotoOwenMara,3,Photo,"Photograph, Creased in Four",,"Two people on a slip in summer, squinting. A boy of about nineteen with his arm around his sister's shoulders, both holding one fish between them as if it were a trophy.
+
+On the back, in biro: ""you hooked it, I carried it. O.""",LOC_C3_Ward,()
+NAR_C3_MaintNoteConduit,3,Note,Maintenance Snag List,R. Imes,"SNAG 41 — B2 bulkhead reader goes dead maybe twice a week. It is NOT the cards.
+
+The conduit plug in the grey wall box left of the frame works itself loose when the bulkhead slams. Open the box, push the plug home until it clicks twice, then swipe. Works every time.
+
+SNAG 42 — the reader beeps for a good ten seconds while it resets and it carries down the whole corridor. Stand somewhere you can see both ends before you do it.",LOC_C3_Labs,(FLG_C3_ReaderFixKnown)
+NAR_C3_TrialLog07,3,Note,"V-7 Trial Log, Sheet 07",Dr. Ines Calder,"STRAIN RESPONSE, THERMAL. Ninth repeat, same result.
+
+V-7 holds together at blood warmth and at steady cold. What breaks it is being moved between the two. Call it a cold-shock ladder.
+
+THE LADDER, in order, no stage skipped:
+1. Chill the volume to +4 C and HOLD 90 s.
+2. Drop to -12 C and HOLD 30 s.
+3. Return to +4 C and HOLD 60 s.
+4. Purge.
+
+Three stages up and down, then purge. Bonds fail in stage 2 and cannot re-form in stage 3. Skip a stage and it re-forms stronger, so do not improvise.
+
+This is the shape any inhibitor has to be built around. Written here because Dr. Voss will not put it in the main file.",LOC_C3_Labs,"(FLG_C3_ColdShockKnown,OBJ_C3_09)"
+NAR_C3_CalderMemo,3,Email,Re: Re: Subject 7 reclassification,Dr. Ines Calder,"Elias,
+
+You are calling it a therapy in the funding file and a candidate in the lab file and those are two different words.
+
+It took hold in him because he was dying. That is not a feature. That is the only door it can get through, and the moment somebody strong is bitten by somebody who got through that door, the door stops mattering.
+
+I am keeping my own notes. I am not doing it to spite you. I am doing it because in eight months nobody will remember who said what in this corridor.
+
+Ines",LOC_C3_Labs,()
+NAR_C3_Whiteboard,3,Note,Lab Whiteboard (half wiped),,"Written large across the top and not wiped:
+
+   TRIAL 07 / RUN 03 — THERMAL
+
+Under it, a table in the same hand:
+
+   STAGE | TEMP  | HOLD
+     1   |  +4 C |  90 s
+     2   | -12 C |  30 s
+     3   |  +4 C |  60 s
+     4   | PURGE |   -
+
+In the corner, boxed and underlined twice:
+
+   CHAMBER INTERLOCK WILL NOT RELEASE THE VAULT UNTIL ALL FOUR STAGES RUN IN ORDER.
+   PURGE LAST. PURGE EARLY = RELIEF VENT = START AGAIN.",LOC_C3_Whiteboard,(FLG_C3_LadderPosted)
+NAR_C3_ChiefSticky,3,Note,Sticky Note on the Board Frame,,"To whoever keeps knocking:
+
+I am not coming out to the corridor every time you forget the office code. It is on the board you are standing in front of.
+
+Trial number, then run number. Two digits each, in that order. Four buttons. If you cannot read a board you should not be in my office.
+
+— SEC CHIEF",LOC_C3_Whiteboard,(FLG_C3_OfficeCodeKnown)
+NAR_C3_SecChiefLog,3,Diary,Security Chief's Day Book,,"Last page, written in three sittings.
+
+Sealed the level like he asked. Counted them out, counted the doors, signed the sheet. Two did not come out and I signed the sheet anyway.
+
+Kept the master key. It is mine until somebody senior enough comes down here to take it off me, which will be never.
+
+Later: head's hot. Bit through my own lip in the night and did not wake up for it. Fuel pack's chafing where the plate sits.
+
+Later: I can hear the pumps through the floor and the pumps are off.",LOC_C3_SecurityWing,(FLG_C3_WardenForeshadowed)
+NAR_C3_ShipmentClearance,3,Note,Cold Store Clearance VGR-7718,,"VIGOR BIOTECH — MOVEMENT CLEARANCE
+
+Consignment: VGR-7718. Origin: Saltmere Annex cold store. Destination: Vigor Tower via Port Halvern Yard C.
+Declared contents: medical supplies, refrigerated.
+Actual contents, internal line: V-7 stock, live, 14 units.
+
+Cleared for transit, authorised: E. VOSS, Research Director.
+
+Port handling and police escort countersigned:
+
+   W. HALE, Chief of Police, Marrow Bay
+
+Handwritten under the signature: ""No customs hold. No manifest copy to the harbour office.""",LOC_C3_SecurityWing,(FLG_C3_HaleSignature)
+NAR_C3_VossMemoSeal,3,Email,"Annex closure, final",Dr. Elias Voss,"To site security, copy to nobody.
+
+The two staff we lost are recorded as a plant-room accident. That is the only version. If a family asks, they ask the company, not you.
+
+Subject 7 remains on the level. He is not a disposal problem, he is data. Keep the ward doors shut and the power on the lift.
+
+We move the programme to the tower. Eight months and a better room and this becomes the thing I said it was.
+
+E.V.",LOC_C3_SecurityWing,()
+NAR_C3_ArmoryInventory,3,Note,Armory Board,,"RACK CHECK — signed weekly, last signature eight months old.
+
+1. Bolt rifle ............ PRESENT
+2. Bolt rifle ............ SIGNED OUT, SEC CHIEF, not returned
+3. Shot ................. transferred to Yard C escort
+4. Flare pistol ......... transferred to harbour master, Saltmere
+
+Rifle rounds: two boxes. Count them in and out. I will know.",LOC_C3_Armory,(WPN_Rifle)
+NAR_C3_SumpWarning,3,Note,"Taped to the Stair Door, B2",R. Imes,"PUMPS ARE OFF. Lower level is holding about a metre and rising a hand's width a week.
+
+Do not wade it in boots you care about and do not wade it alone.
+
+And before anyone laughs at me again: something took the float switch off its chain. The chain is bitten. I have kept it in my locker.",LOC_C3_LowerLevels,()
+NAR_C3_ValveProcedure,3,Note,Cooling Chamber Operating Card,,"Laminated, chained to the valve gallery rail.
+
+VALVE 1 — BRINE INTAKE. Floods the chamber and pulls it down to +4 C.
+VALVE 2 — CRYO. Takes a flooded chamber to -12 C. Will not bite on a dry chamber.
+VALVE 3 — PURGE. Dumps the chamber to the sump and ends the run.
+
+GAUGE above the gallery shows chamber temperature. A green HOLD lamp lights when the stage temperature is reached and goes out when the hold time is served.
+
+Work the valves one at a time. Serve every hold. If the sequence is wrong the relief vent blows live steam across the gallery and the run resets.",LOC_C3_CoolingChamber,()
+NAR_C3_ColdVaultManifest,3,Note,Cold Vault Carousel Card,Dr. Ines Calder,"CAROUSEL 2, POSITION 1 — ""A"". Inhibitor base, cold-set. Stable at vault temperature, stable in a hand for a few hours, dead if it warms past that.
+
+A on its own does nothing at all. It is one third of a thing.
+
+B (binder) and C (carrier) were never made here. They are at the tower, and so is the only machine that will put the three of them together, and that machine wants the thermal ladder from sheet 07 or it spits the batch out.
+
+Whoever is reading this: take all three or take none.",LOC_C3_ColdVault,"(KEY_C3_AntidoteA,FLG_C3_AntidoteAFound)"
+RAD_C3_Descent_01,3,Radio,Into the tunnel,MARA,You're under the island now. I can hear the rock in your mic.,LOC_C3_Tunnel,()
+RAD_C3_Descent_02,3,Radio,Into the tunnel,LEON,There's a bulkhead ahead with a company serial on it. Your island has a basement.,LOC_C3_Tunnel,()
+RAD_C3_Descent_03,3,Radio,Into the tunnel,MARA,Nobody ever said a word about anything under the lighthouse.,LOC_C3_Tunnel,()
+RAD_C3_Descent_04,3,Radio,Into the tunnel,LEON,That's usually the point of a basement. Stay on this channel.,LOC_C3_Tunnel,(OBJ_C3_02)
+RAD_C3_Reception_01,3,Radio,Reception,LEON,"Reception, lights on half, closure notice on the desk. Signed by a Doctor Voss.",LOC_C3_Reception,()
+RAD_C3_Reception_02,3,Radio,Reception,MARA,Is there a sign-in sheet? Tell me if there's a sign-in sheet.,LOC_C3_Reception,()
+RAD_C3_Reception_03,3,Radio,Reception,LEON,There is. Why does that matter to you right now?,LOC_C3_Reception,()
+RAD_C3_Reception_04,3,Radio,Reception,MARA,"(a long pause, then a metal sound at her end) There's a lift in the church crypt. I'm in it.",LOC_C3_Reception,()
+RAD_C3_Reception_05,3,Radio,Reception,LEON,"Mara, go back up.",LOC_C3_Reception,()
+RAD_C3_Reception_06,3,Radio,Reception,MARA,It only goes one way once it starts. Two minutes.,LOC_C3_Reception,(OBJ_C3_03)
+RAD_C3_FootageTalk_01,3,Radio,After the third reel,LEON,Found their trial footage. A man named Penhallow. He was dying and he said yes.,LOC_C3_Ward,()
+RAD_C3_FootageTalk_02,3,Radio,After the third reel,MARA,Ezra? He sold his boat to my neighbour. We thought he died in a hospice.,LOC_C3_Ward,()
+RAD_C3_FootageTalk_03,3,Radio,After the third reel,LEON,He didn't. And the man running it stood in the room afterwards and called it a success.,LOC_C3_Ward,()
+RAD_C3_FootageTalk_04,3,Radio,After the third reel,MARA,"(static, her breathing) Lift's slowing. I'm nearly down.",LOC_C3_Ward,(OBJ_C3_05)
+DLG_C3_OwenTruth_01,3,Dialogue,The stairwell,LEON,Technician. Vigor jacket. He's got a B2 card in his hand.,LOC_C3_Ward,()
+DLG_C3_OwenTruth_02,3,Dialogue,The stairwell,MARA,Don't move him.,LOC_C3_Ward,()
+DLG_C3_OwenTruth_03,3,Dialogue,The stairwell,LEON,You know him.,LOC_C3_Ward,()
+DLG_C3_OwenTruth_04,3,Dialogue,The stairwell,MARA,Owen. He's my brother. He worked for them.,LOC_C3_Ward,()
+DLG_C3_OwenTruth_05,3,Dialogue,The stairwell,MARA,He called me three days ago. He said a container was coming through the port and nobody should open it.,LOC_C3_Ward,()
+DLG_C3_OwenTruth_06,3,Dialogue,The stairwell,LEON,And you had a radio.,LOC_C3_Ward,()
+DLG_C3_OwenTruth_07,3,Dialogue,The stairwell,MARA,"I had the whole port on a radio. I said nothing, because saying it meant saying his name.",LOC_C3_Ward,()
+DLG_C3_OwenTruth_08,3,Dialogue,The stairwell,MARA,Two nights later they opened it anyway. So it didn't even buy him anything.,LOC_C3_Ward,()
+DLG_C3_OwenTruth_09,3,Dialogue,The stairwell,LEON,(after a moment) I've seen what one phone call to the right desk does. Usually nothing.,LOC_C3_Ward,()
+DLG_C3_OwenTruth_10,3,Dialogue,The stairwell,MARA,That's not absolution.,LOC_C3_Ward,()
+DLG_C3_OwenTruth_11,3,Dialogue,The stairwell,LEON,"No. It's a fact. Take the photo out of his pocket, leave him the coat. We need the card.",LOC_C3_Ward,"(FLG_C3_OwenTruth,OBJ_C3_07)"
+RAD_C3_HintKeycard_01,3,Dialogue,Hint: B2 bulkhead,MARA,"The card's good, I watched it light the panel orange. So it isn't the card.",LOC_C3_Labs,()
+RAD_C3_HintKeycard_02,3,Dialogue,Hint: B2 bulkhead,MARA,"There's a snag list back in the labs that moans about this exact reader. Grey wall box, left of the frame.",LOC_C3_Labs,(FLG_C3_ReaderFixKnown)
+RAD_C3_HintKeycard_03,3,Dialogue,Hint: B2 bulkhead,MARA,"Open the box, push the loose plug in until it clicks twice, then swipe. And watch the corridor, the reset beeps for ages.",LOC_C3_Labs,()
+RAD_C3_HintWhiteboard_01,3,Dialogue,Hint: security office code,MARA,Four digits and a note from a man who thought he was being funny. It's on the board.,LOC_C3_Whiteboard,()
+RAD_C3_HintWhiteboard_02,3,Dialogue,Hint: security office code,MARA,"Read the top line of the whiteboard, not the table. Trial number, then run number.",LOC_C3_Whiteboard,(FLG_C3_OfficeCodeKnown)
+RAD_C3_HintWhiteboard_03,3,Dialogue,Hint: security office code,MARA,"Trial seven, run three. Two digits each. Zero seven, zero three.",LOC_C3_Whiteboard,()
+RAD_C3_HintValves_01,3,Dialogue,Hint: cooling chamber,MARA,The vault's holding its own door shut. It wants the chamber run properly first.,LOC_C3_CoolingChamber,()
+RAD_C3_HintValves_02,3,Dialogue,Hint: cooling chamber,MARA,"That log you copied down. Four stages, plus four, minus twelve, plus four, purge. The gauge is the board, the valves are the pen.",LOC_C3_CoolingChamber,(FLG_C3_ColdShockKnown)
+RAD_C3_HintValves_03,3,Dialogue,Hint: cooling chamber,MARA,"Intake until the lamp dies, cryo until it dies, shut cryo and intake again until it dies, then purge. Purge last or the vent blows.",LOC_C3_CoolingChamber,()
+DLG_C3_FirstBrute_01,3,Dialogue,The thing in the wing,MARA,That one's wearing armour.,LOC_C3_SecurityWing,(FLG_C3_FirstBrute)
+DLG_C3_FirstBrute_02,3,Dialogue,The thing in the wing,LEON,It was wearing it before. Body's grown into the plate.,LOC_C3_SecurityWing,()
+DLG_C3_FirstBrute_03,3,Dialogue,The thing in the wing,LEON,Don't trade shots with it. Doors and corners.,LOC_C3_SecurityWing,()
+DLG_C3_ColdVault_01,3,Dialogue,Cold vault,LEON,Component A. Calder's writing says it's a third of a cure.,LOC_C3_ColdVault,()
+DLG_C3_ColdVault_02,3,Dialogue,Cold vault,MARA,A third is more than this island's had all night.,LOC_C3_ColdVault,()
+DLG_C3_ColdVault_03,3,Dialogue,Cold vault,LEON,The other two are in their tower in the city. With the machine that mixes them.,LOC_C3_ColdVault,()
+DLG_C3_ColdVault_04,3,Dialogue,Cold vault,MARA,Then we're going to the city. Say it like it's a plan and I'll believe it.,LOC_C3_ColdVault,(OBJ_C3_15)
+RAD_C3_HintWarden_01,3,Dialogue,Hint: the Warden,MARA,Pistol's doing nothing to that plate. Use the room.,LOC_C3_CoolingChamber,()
+RAD_C3_HintWarden_02,3,Dialogue,Hint: the Warden,MARA,"Yellow gas valves on the bay walls. Open one, get him standing in it, then drop the blast door on the bay.",LOC_C3_CoolingChamber,()
+RAD_C3_HintWarden_03,3,Dialogue,Hint: the Warden,MARA,"The blast strips his back plate. There's a fuel line under it. Shoot the line while it's bare, you've got about four seconds.",LOC_C3_CoolingChamber,()
+DLG_C3_WardenAfter_01,3,Dialogue,After the Warden,MARA,He had the keys to every door down here and he still couldn't leave.,LOC_C3_CoolingChamber,(FLG_C3_WardenDead)
+DLG_C3_WardenAfter_02,3,Dialogue,After the Warden,LEON,He sealed two people in and signed the sheet. Then he stayed with it.,LOC_C3_CoolingChamber,()
+DLG_C3_WardenAfter_03,3,Dialogue,After the Warden,MARA,The far wall's down. There's salt air coming through it.,LOC_C3_CoolingChamber,(OBJ_C3_16)
+DLG_C3_SeaCave_01,3,Dialogue,Sea cave,LEON,"Maintenance raft. Oars, a bailing can, and about a foot of freeboard.",LOC_C3_SeaCave,()
+DLG_C3_SeaCave_02,3,Dialogue,Sea cave,MARA,I row. You've got the gun and I've got twenty years of this water.,LOC_C3_SeaCave,()
+DLG_C3_SeaCave_03,3,Dialogue,Sea cave,LEON,"Then I'll call it. Left and right, loud, and you don't argue.",LOC_C3_SeaCave,()
+DLG_C3_SeaCave_04,3,Dialogue,Sea cave,MARA,Mainland's that way. Four miles of nothing to hide behind.,LOC_C3_SeaCave,(FLG_C3_RaftLaunched)
+RAD_C3_HintUndertow_01,3,Dialogue,Hint: the Undertow,MARA,I can't steer and watch. Call it or we're on the rocks.,LOC_C3_SeaCave,()
+RAD_C3_HintUndertow_02,3,Dialogue,Hint: the Undertow,MARA,"It opens that eye before it swings. That's your window, not after.",LOC_C3_SeaCave,()
+RAD_C3_HintUndertow_03,3,Dialogue,Hint: the Undertow,MARA,"If it's got hold of the raft, shoot the arm, not the eye. Free us first.",LOC_C3_SeaCave,()
+DLG_C3_Shore_01,3,Dialogue,The mainland shore,MARA,Marrow Bay. Half those streets should be lit.,LOC_C3_SeaCave,()
+DLG_C3_Shore_02,3,Dialogue,The mainland shore,LEON,Count the sirens instead. They stopped moving an hour ago.,LOC_C3_SeaCave,()
+DLG_C3_Shore_03,3,Dialogue,The mainland shore,MARA,Who do we hand that clearance sheet to? Because one of the names on it runs the police.,LOC_C3_SeaCave,()
+DLG_C3_Shore_04,3,Dialogue,The mainland shore,LEON,"Then we start with him. Pull the raft up past the tide line, we're not coming back for it.",LOC_C3_SeaCave,(FLG_C3_Chapter3Complete)
+NAR_C4_EvacNotice,4,Note,Emergency Notice: Zones 3 and 4,Marrow Bay City Office,"ZONES 3 AND 4 ARE UNDER EVACUATION ORDER.
+Coaches leave Harbour Avenue every twenty minutes until 03:00. Carry nothing larger than one bag.
+
+Do not drink from taps in Zones 3, 4 or 5 until the water office clears them.
+
+If a member of your household is unwell, elderly, or cannot walk to the coach, do NOT wait with them. Mark the door with tape and report the address at the plaza checkpoint.
+
+This notice is issued on the authority of Chief W. Hale, Marrow Bay Police.",LOC_C4_HarborAve,()
+NAR_C4_CarNote,4,Note,Note under a wiper blade,Dinah,"Rob - if you get back to the car before me, we went on foot. The avenue is solid, nobody is moving. I have Ellie and your mother.
+
+They would not let your mother on the coach. The officer said she'd slow the aisle. I'm not leaving her in the flat with tape on the door, I don't care what the notice says.
+
+We are going up to the plaza. If the plaza is shut we are going to the station, there are police there at least.
+
+Don't wait at the car. Please.",LOC_C4_HarborAve,()
+NAR_C4_RuizLetter,4,Note,Unsent letter in a jacket pocket,Ana Ruiz,"Cris - I'm writing this in the ambulance bay because I can't say it on the phone.
+
+Something happened at the port the night before last and we were told not to write it up. Not told. Ordered, in person, by the chief, to eleven of us in a room with the door shut.
+
+I did write it up. It's in the archive where it belongs and I kept the key on me, which is probably stupid of me.
+
+If I'm slow coming home this week that's why. Feed the cat.",LOC_C4_HarborAve,(OBJ_C4_07)
+NAR_C4_RuizCamA,4,Footage,"Body camera 4471, clip A: Yard C, 17:38",Ana Ruiz,"Night rain, floodlights, the side of a container with VGR-7718 stencilled on it. Six officers in port police jackets, none of them port police.
+
+Three federal agents are kneeling on the wet concrete with their hands flat on their heads. The tall one keeps talking.
+
+PRUITT (off camera): ""Agent Dale Pruitt. Federal. That container is evidence, Chief.""
+HALE: ""Then it's police evidence now.""
+PRUITT: ""You don't have the authority and you know it.""
+HALE: ""Put him in a van.""
+
+A younger agent moves and someone fires twice. The camera jerks to the ground, then up. The tall one is walking to the van with an officer's hand on his neck. Hale is holding his own forearm and looking at it.
+
+RUIZ (close, quiet): ""Four-four-seven-one, I'm still recording.""",LOC_C4_StationLobby,"(OBJ_C4_11,FLG_C4_PruittTakenKnown)"
+NAR_C4_RuizCamB,4,Footage,"Body camera 4471, clip B: station lobby, 01:12",Ana Ruiz,"The watch desk. Ruiz's hand comes into frame and hangs a key on the duty board, then takes it back off again.
+
+RUIZ: ""Logging it out properly. Evidence room, one key, Ruiz.""
+DESK OFFICER: ""You're not supposed to have that.""
+RUIZ: ""Then write that down too.""
+
+She walks into the archive. The camera swings across rolling stacks and stops on a records cabinet with brass letter plates. Her hand pulls out her own drawer, drops the key inside, and slides it shut.
+
+RUIZ: ""My drawer, my mess.""
+
+The clip ends in the corridor. Somebody is screaming two floors down.",LOC_C4_StationLobby,"(OBJ_C4_07,FLG_C4_BodyCamWatched)"
+NAR_C4_DutyLog,4,Note,"Watch desk duty log, night shift",,"KEYS OUT / KEYS IN - NIGHT SHIFT
+
+22:40 Garage 2 - Okonjo - returned 23:55
+23:15 Cell block - Dolan - NOT RETURNED
+00:20 Armoury cage - Hale - NOT RETURNED
+01:12 Evidence room - Ruiz - NOT RETURNED (see note)
+01:30 Archive - Ruiz - returned 01:41
+
+Note added by desk: Ruiz was told twice she is not on the evidence list this month. She logged it anyway. Taking it up with the sergeant when the sergeant exists again.
+
+02:05 Everything after this is on the floor somewhere, we stopped writing.",LOC_C4_StationLobby,(OBJ_C4_07)
+NAR_C4_ArchiveIndex,4,Note,Records cabinet index card,,"PERSONAL RECORDS CABINET - HOW IT WORKS
+
+One drawer per serving officer, filed by surname letter, A at the top left to Z at the bottom right. Shared letters share a drawer.
+
+Your drawer is for your own notebooks, court diaries and personal property while on shift. It is NOT an evidence store. It is NOT a key store. We have a duty board for keys.
+
+Drawers do not lock. That is deliberate. If you need something locked, ask the custody sergeant.
+
+- Records clerk",LOC_C4_Archive,(OBJ_C4_07)
+NAR_C4_CellBlockLog,4,Note,"Custody log, page torn at the corner",,"CELL 1 - empty
+CELL 2 - male, no name given, no charge entered. Brought in 18:40 with the other one. Deceased 19:05. Doctor not called.
+CELL 3 - empty
+CELL 4 - male, no name given, no charge entered. Brought in 18:40. Injury to left forearm, dressed by officers, medic refused.
+
+Across the bottom in a different hand: NO RECORD. CHIEF'S ORDERS. DO NOT ENTER THESE TWO IN THE SYSTEM.
+
+Under that, in pencil: I am entering them in this book because this book is not the system.",LOC_C4_Archive,(OBJ_C4_11)
+NAR_C4_EvidenceIntake,4,Note,"Evidence intake sheet, locker 17",Custody Sgt. Okonjo,"LOCKER 17 - COURT SEAL
+
+Contents: one bound ledger, hard cover, handwritten. Seized from a vehicle on Harbour Avenue, 11 Sep. Marked V.B. PAYMENTS on the spine.
+
+Sealed on the application of CID. Under seal this locker cannot be opened from the cell block or from here. The bolt releases from the CID desk terminal and only from there, with an authorised print.
+
+Do not cut the bolt. Do not ask me to cut the bolt. Det. Sgt. Ferris has been very clear that this one goes to court in one piece.",LOC_C4_EvidenceRoom,(OBJ_C4_09)
+NAR_C4_FerrisBookingCard,4,Photo,"Booking print cards, sleeve of three",,"Three grey cards in one plastic sleeve, each with ten inked boxes and a classification line at the top.
+
+CARD 1 - MARSH, D. - booked 02 Aug, affray - RIGHT INDEX: LOOP - ridge count 9
+CARD 2 - FERRIS, M., Det. Sgt. - booked 14 Sep, complaint withdrawn same day - RIGHT INDEX: WHORL - ridge count 14
+CARD 3 - UNKNOWN MALE - booked 18:40 last night, no charge entered - RIGHT INDEX: ARCH - ridge count 11
+
+On the back of card 2, in biro: ""Booked by his own chief on a Monday and back at his desk by Tuesday. Whole thing was a message.""",LOC_C4_EvidenceRoom,(OBJ_C4_09)
+NAR_C4_PruittTape,4,AudioLog,"Confiscated recorder, property bag 7-C",Dale Pruitt,"Pruitt, continuing. Whoever finds this, the tape is the report.
+
+We landed at the port at thirteen hundred. The container was already open and already wrong. Cold mist still coming off the floor of it at eleven hours.
+
+The port police turned up with the chief of a city force that has no business at a port. They took Ortiz's camera and they took the manifests.
+
+I got my hand on the chief's arm and he pulled away like I'd burned him. He had a dressing under the sleeve. He has been bitten and he is walking around giving orders.
+
+If you are federal, go up. Not out. Up.",LOC_C4_EvidenceRoom,(FLG_C4_HaleBiteKnown)
+NAR_C4_FerrisMemo,4,Email,Re: V.B. ledger - please read before Friday,Det. Sgt. M. Ferris,"To: K. Abiola, County Prosecutor's Office
+From: M. Ferris, Marrow Bay CID
+
+Kemi - the book is real and it is in my evidence room under seal, locker 17.
+
+Six transfers over seven months from a Vigor Biotech holding account to an account in the chief's wife's maiden name. Two of the six came back the same week, I assume because somebody at their end got nervous. Four of them cleared and stayed cleared.
+
+I want the four, not the six. The four are the case.
+
+He had me booked and printed last month on a complaint that evaporated by lunchtime. I know what that was. Please move fast.",LOC_C4_DetectiveOffice,(OBJ_C4_12)
+NAR_C4_PrintLockManual,4,Note,"PrintLock 2 quick guide, taped to the monitor",,"CID DESK TERMINAL - SEAL RELEASE
+
+1. Wake the pad. The screen shows the last print this terminal accepted, as a classification and a ridge count. That is the print the seal is registered to.
+2. Lay the booking card face down on the glass, square to the arrows. The pad reads the inked right index box.
+3. Match on classification AND ridge count. A wrong card is not a free guess: three wrong reads lock the pad for ninety seconds and sound the desk alarm.
+4. On a match the terminal releases the bolt on the named locker. Go and open it by hand. The terminal does not open anything up here.",LOC_C4_DetectiveOffice,(OBJ_C4_09)
+NAR_C4_DeskLog,4,Note,"CID desk terminal, standby screen",,"MARROW BAY CID - PRINTLOCK 2
+
+SEAL REGISTERED: EVIDENCE LOCKER 17
+STATUS: BOLTED
+
+LAST ACCEPTED PRINT
+  Digit ....... RIGHT INDEX
+  Pattern ..... WHORL
+  Ridge count . 14
+  Accepted .... 14 Sep, 16:52
+
+PLACE CARD ON GLASS",LOC_C4_DetectiveOffice,(OBJ_C4_09)
+NAR_C4_Ledger,4,Note,"Payments ledger, spine marked V.B. PAYMENTS",,"Received, acct. G. Mabry (maiden)
+
+11 Mar | VGR-0431 | 8,000 | RETURNED 14 Mar
+02 Apr | VGR-0588 | 7,500 | CLEARED
+19 May | VGR-0613 | 2,000 | CLEARED
+07 Jul | VGR-0742 | 9,250 | RETURNED 09 Jul
+23 Aug | VGR-0810 | 4,000 | CLEARED
+14 Sep | VGR-0917 | 1,500 | CLEARED
+
+Last page, different pen: 0917 is the last one. Tell them the port is covered and the paper is gone. After this I am done taking it.",LOC_C4_EvidenceRoom,(OBJ_C4_12)
+NAR_C4_HaleRule,4,Diary,"Desk diary, inside the back cover",Warren Hale,"Gwen asked me again where the number is written. Nowhere. I am not that stupid.
+
+It is in the book, and only if you already know what you are looking at. Not the dates. Not the references. The money, and only the money that stayed.
+
+What cleared, nothing that came back. The lead figure off each one. Oldest first. Four of them, four digits, in they go.
+
+If you cannot work that out you have no business in my safe, and if you can work it out you were already in the book, which means I have bigger problems than the safe.",LOC_C4_ChiefOffice,(OBJ_C4_12)
+NAR_C4_HaleSuppressant,4,Diary,"Desk diary, last written page",Warren Hale,"Third day.
+
+The arm stopped hurting on the second day, which the leaflet in the Vigor crate says is normal and is not good news.
+
+I took four of their injectors out of the shipment before it went up the coast. One in the morning, one at night, and the shaking stops for about nine hours. I am out at the end of this one.
+
+I ran a city tonight on nine hours at a time. I signed the evacuation order. I kept my hands in my pockets on the radio call so nobody saw.
+
+I am not going to a hospital. I know what is in me, I signed for it.",LOC_C4_ChiefOffice,(FLG_C4_HaleBiteKnown)
+NAR_C4_HaleClearance,4,Email,Shipment clearance - final confirmation,"Vigor Biotech, Logistics","To: Chief W. Hale
+Cc: Dr. E. Voss, Research Director
+
+Chief - confirming your clearance is on file for the Halvern movement, container VGR-7718, declared as medical supplies. Port police attendance appreciated.
+
+Dr. Voss asks me to pass on that the municipal water contract renewal goes to committee next month and that your letter of support would be welcome. He notes the city will see the benefit of the programme before the committee does.
+
+As ever, nothing in this chain is for your records.",LOC_C4_ChiefOffice,(FLG_C4_WaterContractKnown)
+NAR_C4_PhotoHaleVoss,4,Photo,Framed photograph on the office wall,,"A ribbon cutting in bright daylight. Marrow Bay Water Treatment Works, reservoir 2 behind a row of clipped shrubs.
+
+Chief Hale in dress uniform holds one end of the ribbon. A thin man in a pale suit holds the shears and is not looking at the camera; he is looking up at the intake tower.
+
+The brass plate under the glass reads: MUNICIPAL SUPPLY MODERNISATION, OPERATED UNDER CONTRACT BY VIGOR BIOTECH. And under that, a line of smaller letters: EVERY HOUSE ON ONE LINE.",LOC_C4_ChiefOffice,(FLG_C4_WaterContractKnown)
+NAR_C4_WaterWorksNotice,4,Note,Notice wired to the checkpoint board,Vigor Biotech Water Services,"PLANNED WORKS - MARROW BAY SUPPLY
+
+A full-system line flush is scheduled from 06:00 tomorrow and will run from the treatment works through all five zones. Pressure may vary. Discolouration is normal.
+
+During a flush the whole network is fed from one dosing point at the works. This is routine.
+
+No household action is required. Taps will be safe to use from the moment the flush begins.
+
+Queries: Vigor Biotech Water Services, 24h line. Please do not call the police with water enquiries.",LOC_C4_Plaza,(FLG_C4_FlushNoticeSeen)
+NAR_C4_DispatchLast,4,AudioLog,"Dispatch recorder, channel 1, 02:4x",Dispatcher Yara Senn,"All units, I have no units. I'm reading back what I've got.
+
+Twelve calls on the same block, all of them saying the same sentence about somebody who was ill getting up.
+
+Chief's instruction at zero one forty is that nothing goes out on channel 1 that uses the word outbreak. I have written that down twice now so it is somebody else's problem as well as mine.
+
+If anyone is hearing this later: we were never short of officers tonight. We were short of orders.",LOC_C4_Plaza,()
+NAR_C4_WhitlockTag,4,Note,Scratched into the paint of cell 2,Sam Whitlock,"WHITLOCK S. FEDERAL. HELD WITHOUT CHARGE BY MARROW BAY PD ON ORDERS OF CHIEF HALE.
+
+ORTIZ DOWN AT THE PORT.
+
+PRUITT IN THE NEXT ONE BUT ONE. HE IS BITTEN. THEY KNOW AND THEY SHUT THE HATCH ANYWAY.
+
+IF YOU ARE READING THIS AND YOU ARE ONE OF OURS, DO NOT GO ALONE TO THE TOWER. HE WILL TELL YOU TO. GO ANYWAY.",LOC_C4_HoldingCells,(OBJ_C4_16)
+NAR_C4_BasementWork,4,Note,"Maintenance board, sub-level",Building Services,"SUB-LEVEL - OPEN FAULTS
+
+1. Sump pump 2 has failed. Standing water in the long store will be ankle deep by morning and worse if it rains. Chased three times.
+2. The floor conduit down there is the old kind, in the slab, and it leaks. If the floor is wet, the floor is live when the ring is energised.
+3. PANEL A and PANEL B on the walkway feed that ring. Both must be thrown together or the interlock trips.
+4. Nobody stands on that floor with the ring energised. Not for a second. I have put this in writing so that when it happens it is in writing.",LOC_C4_Basement,(OBJ_C4_14)
+NAR_C4_SewerMap,4,Note,Works map in a cracked frame,Marrow Bay Drainage Board,"STORM INTERCEPTOR - CENTRAL SECTION
+
+The interceptor runs north from the station sump under Harbour Avenue, crosses the plaza, and ends in the service level of the Vigor Biotech building on Crown Street, where it ties into their intake.
+
+Access hatches are police, drainage board and Vigor Biotech only.
+
+Handwritten in the corner: tie-in rebuilt last spring at their expense, their pumps, their doors, their keys. We maintain the pipe and nothing else. Ask them.",LOC_C4_SewerDoor,(OBJ_C4_15)
+DLG_C4_ShoreLanding_01,4,Dialogue,Coming ashore at Marrow Bay,MARA,That's a city. I grew up looking at that skyline and it was never this quiet.,LOC_C4_Shore,()
+DLG_C4_ShoreLanding_02,4,Dialogue,Coming ashore at Marrow Bay,LEON,Half of them got out. The coaches are gone from the ramps.,LOC_C4_Shore,()
+DLG_C4_ShoreLanding_03,4,Dialogue,Coming ashore at Marrow Bay,MARA,And the other half?,LOC_C4_Shore,()
+DLG_C4_ShoreLanding_04,4,Dialogue,Coming ashore at Marrow Bay,LEON,Stay behind me in the water.,LOC_C4_Shore,()
+DLG_C4_ShoreLanding_05,4,Dialogue,Coming ashore at Marrow Bay,MARA,Where are we going?,LOC_C4_Shore,(OBJ_C4_02)
+DLG_C4_ShoreLanding_06,4,Dialogue,Coming ashore at Marrow Bay,LEON,Police station. Hale signed for that container. Somewhere in that building is the paper that proves it.,LOC_C4_Shore,(OBJ_C4_02)
+DLG_C4_HarborAve_01,4,Dialogue,Harbour Avenue,MARA,They left the bus doors open. Like they thought people were still coming.,LOC_C4_HarborAve,()
+DLG_C4_HarborAve_02,4,Dialogue,Harbour Avenue,LEON,See the big one by the kiosk? We go around. Not through.,LOC_C4_HarborAve,()
+DLG_C4_HarborAve_03,4,Dialogue,Harbour Avenue,MARA,It's wearing a stab vest.,LOC_C4_HarborAve,()
+DLG_C4_HarborAve_04,4,Dialogue,Harbour Avenue,LEON,Then it was fit and strong this morning. Around.,LOC_C4_HarborAve,()
+DLG_C4_RuizBody_01,4,Dialogue,Officer Ruiz in the underpass,MARA,Leon. There's a police officer in the water.,LOC_C4_HarborAve,()
+DLG_C4_RuizBody_02,4,Dialogue,Officer Ruiz in the underpass,LEON,"Ruiz. She's been shot, not bitten.",LOC_C4_HarborAve,()
+DLG_C4_RuizBody_03,4,Dialogue,Officer Ruiz in the underpass,MARA,Shot by what?,LOC_C4_HarborAve,()
+DLG_C4_RuizBody_04,4,Dialogue,Officer Ruiz in the underpass,LEON,"Her camera's still on the mount, and it's still got charge. We'll let it tell us.",LOC_C4_HarborAve,"(KEY_C4_BodyCam,OBJ_C4_06)"
+DLG_C4_PlazaCross_01,4,Dialogue,The plaza checkpoint,LEON,"Sandbags, floodlight, nobody manning it. They built this and then left it.",LOC_C4_Plaza,()
+DLG_C4_PlazaCross_02,4,Dialogue,The plaza checkpoint,MARA,Two of the big ones on the fountain. We can't go around this one.,LOC_C4_Plaza,()
+DLG_C4_PlazaCross_03,4,Dialogue,The plaza checkpoint,LEON,"Then we give them somewhere else to be. Scrap and a bottle. Throw it long, stay low, move when they turn.",LOC_C4_Plaza,()
+DLG_C4_PlazaCross_04,4,Dialogue,The plaza checkpoint,MARA,You've done this before.,LOC_C4_Plaza,()
+DLG_C4_PlazaCross_05,4,Dialogue,The plaza checkpoint,LEON,Not with company. Keep up.,LOC_C4_Plaza,(OBJ_C4_05)
+DLG_C4_LobbySplit_01,4,Dialogue,The station lobby,MARA,The watch desk radio is live. Four channels and a repeater on the roof.,LOC_C4_StationLobby,()
+DLG_C4_LobbySplit_02,4,Dialogue,The station lobby,LEON,"Then this is where you are. Door's steel, one way in, and I'll be inside the building.",LOC_C4_StationLobby,()
+DLG_C4_LobbySplit_03,4,Dialogue,The station lobby,MARA,I came all this way to not come with you.,LOC_C4_StationLobby,()
+DLG_C4_LobbySplit_04,4,Dialogue,The station lobby,LEON,You came all this way to be the person who can see the whole floor plan. There's a board behind you with every room on it.,LOC_C4_StationLobby,()
+DLG_C4_LobbySplit_05,4,Dialogue,The station lobby,MARA,Fine. Clip the spare set on. If you stop answering I'm coming through that building with a chair leg.,LOC_C4_StationLobby,(FLG_C4_MaraInLobby)
+DLG_C4_LobbySplit_06,4,Dialogue,The station lobby,LEON,Noted.,LOC_C4_StationLobby,(FLG_C4_MaraInLobby)
+RAD_C4_BodyCamReact_01,4,Radio,After the body camera,MARA,They had him on his knees. His own people were already down and he was still arguing the law at them.,LOC_C4_StationLobby,()
+RAD_C4_BodyCamReact_02,4,Radio,After the body camera,LEON,That's Pruitt. He'd argue the law at a fire.,LOC_C4_StationLobby,()
+RAD_C4_BodyCamReact_03,4,Radio,After the body camera,MARA,"They put him in a van, Leon. Vans come here.",LOC_C4_StationLobby,(OBJ_C4_11)
+RAD_C4_BodyCamReact_04,4,Radio,After the body camera,LEON,Then he's downstairs in a cell with no paperwork. Second clip. Ruiz put the evidence key somewhere she shouldn't have.,LOC_C4_StationLobby,(OBJ_C4_07)
+RAD_C4_BodyCamReact_05,4,Radio,After the body camera,MARA,"Her own drawer, in the archive. She says it on camera. Brass letters on the cabinet.",LOC_C4_StationLobby,(OBJ_C4_07)
+RAD_C4_HintEvidenceKey_01,4,Radio,Hint: the evidence room key,MARA,"Nobody hid that key, Leon. Somebody filed it. Think like the woman who filed it.",LOC_C4_Archive,()
+RAD_C4_HintEvidenceKey_02,4,Radio,Hint: the evidence room key,MARA,"The duty log has her name on the evidence key at one twelve, and the cabinet card says one drawer per officer, by surname.",LOC_C4_Archive,()
+RAD_C4_HintEvidenceKey_03,4,Radio,Hint: the evidence room key,MARA,Ruiz. R. Pull the R drawer and stop being thorough about it.,LOC_C4_Archive,(KEY_C4_EvidenceKey)
+RAD_C4_HintPrint_01,4,Radio,Hint: the print lock,MARA,A sealed locker that only opens from a desk upstairs. Somebody wanted exactly one person able to open it.,LOC_C4_DetectiveOffice,()
+RAD_C4_HintPrint_02,4,Radio,Hint: the print lock,MARA,"The pad is telling you what it will accept. Right index, whorl, fourteen ridges. You're carrying three cards, read the tops of them.",LOC_C4_DetectiveOffice,()
+RAD_C4_HintPrint_03,4,Radio,Hint: the print lock,MARA,The detective's own card. Ferris. Hale had him printed to scare him and left the one print that opens his own locker sitting in evidence.,LOC_C4_DetectiveOffice,(FLG_C4_LockerReleased)
+RAD_C4_HintSafe_01,4,Radio,Hint: the safe code,MARA,He wrote a whole page about not writing it down. That page is the instructions.,LOC_C4_ChiefOffice,()
+RAD_C4_HintSafe_02,4,Radio,Hint: the safe code,MARA,"Not the dates, not the reference numbers. The money that stayed. Four of the six cleared, and he wants the first figure off each, oldest first.",LOC_C4_ChiefOffice,()
+RAD_C4_HintSafe_03,4,Radio,Hint: the safe code,MARA,"Seven thousand five, two thousand, four thousand, one thousand five. Seven, two, four, one. Try it.",LOC_C4_ChiefOffice,(KEY_C4_SewerKey)
+DLG_C4_Pruitt_01,4,Dialogue,Cell 4,PRUITT,Took you long enough.,LOC_C4_HoldingCells,(FLG_C4_PruittFound)
+DLG_C4_Pruitt_02,4,Dialogue,Cell 4,LEON,Dale. Let me get the hatch.,LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_03,4,Dialogue,Cell 4,PRUITT,Leave the hatch. Look at my arm and then leave the hatch.,LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_04,4,Dialogue,Cell 4,LEON,I have a suppressant.,LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_05,4,Dialogue,Cell 4,PRUITT,Nine hours at a time. That's what it buys. I've been in here nine of those.,LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_06,4,Dialogue,Cell 4,PRUITT,"Listen while I'm still me. Voss isn't at the port and he isn't on your island. He's in the tower on Crown Street. Floor thirty-five, the lab with his name on the door.",LOC_C4_HoldingCells,(FLG_C4_VossLocationKnown)
+DLG_C4_Pruitt_07,4,Dialogue,Cell 4,LEON,Thirty-five. How do you know that?,LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_08,4,Dialogue,Cell 4,PRUITT,Hale came down here to look at me. He talks when he's frightened. He kept saying it won't matter by six.,LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_09,4,Dialogue,Cell 4,PRUITT,"Vigor runs the city's water. At six they flush the whole network off one dosing point and Voss puts his work in the line. Every tap, Leon. All five zones before the buses come back.",LOC_C4_HoldingCells,(FLG_C4_WaterPlanKnown)
+DLG_C4_Pruitt_10,4,Dialogue,Cell 4,LEON,Two hours.,LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_11,4,Dialogue,Cell 4,PRUITT,"Two hours. Ortiz went at the port, Whitlock went in the next cell, and I'm not going to be the thing that gets out of this one.",LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_12,4,Dialogue,Cell 4,PRUITT,"You know what I'm asking. Don't make me say it twice, I'm tired.",LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_13,4,Dialogue,Cell 4,LEON,I heard you the first time.,LOC_C4_HoldingCells,()
+DLG_C4_Pruitt_14,4,Dialogue,Cell 4,PRUITT,"Good. Then go up, not out. And Leon - the chief is still in this building.",LOC_C4_HoldingCells,(OBJ_C4_12)
+RAD_C4_PruittAfter_01,4,Radio,After the cells,MARA,Leon. I heard a door and then I heard nothing for four minutes.,LOC_C4_HoldingCells,()
+RAD_C4_PruittAfter_02,4,Radio,After the cells,LEON,Found my team leader.,LOC_C4_HoldingCells,()
+RAD_C4_PruittAfter_03,4,Radio,After the cells,MARA,Is he -,LOC_C4_HoldingCells,()
+RAD_C4_PruittAfter_04,4,Radio,After the cells,LEON,"He told me where Voss is and what happens at six. That's what he did with the last of it. Write it down: Crown Street tower, floor thirty-five, the water flush at six.",LOC_C4_HoldingCells,"(FLG_C4_VossLocationKnown,FLG_C4_WaterPlanKnown)"
+RAD_C4_PruittAfter_05,4,Radio,After the cells,MARA,Written down. Leon - I'm not going to ask you anything else about the cells.,LOC_C4_HoldingCells,()
+RAD_C4_PruittAfter_06,4,Radio,After the cells,LEON,Thanks.,LOC_C4_HoldingCells,()
+RAD_C4_BasementWarn_01,4,Radio,The stairs down,MARA,The board down here says sub-level long store. There's a fault card pinned over it in red.,LOC_C4_Basement,()
+RAD_C4_BasementWarn_02,4,Radio,The stairs down,LEON,"Flooded, and the conduit's in the slab. I read the same note.",LOC_C4_Basement,()
+RAD_C4_BasementWarn_03,4,Radio,The stairs down,MARA,"Two panels, thrown together. Which means you need to be somewhere dry when you do it.",LOC_C4_Basement,(OBJ_C4_14)
+RAD_C4_BasementWarn_04,4,Radio,The stairs down,LEON,There's a walkway. Stay off the channel for a while.,LOC_C4_Basement,()
+RAD_C4_SewerDoorEnd_01,4,Radio,The sewer door,MARA,"Leon, talk to me. The whole building just went dark and came back.",LOC_C4_SewerDoor,()
+RAD_C4_SewerDoorEnd_02,4,Radio,The sewer door,LEON,"Hale's done. He told me the truth first, for whatever that's worth at four in the morning.",LOC_C4_SewerDoor,()
+RAD_C4_SewerDoorEnd_03,4,Radio,The sewer door,MARA,And the door?,LOC_C4_SewerDoor,()
+RAD_C4_SewerDoorEnd_04,4,Radio,The sewer door,LEON,Open. The map says this pipe comes up inside their building. Bring the lamp and come down the back stair. We're not waiting for six o'clock.,LOC_C4_SewerDoor,(FLG_C4_SewerOpen)
+NAR_C5_CrewTagLog,5,Note,Waterworks Crew Tag Board,Foreman J. Addo,"NIGHT CREW — SIGN OUT WHEN YOU SURFACE
+
+Addo, J. — Culvert 4 — 23:40 — back 01:10
+Pereira, M. — Culvert 4 — 23:40 — back 01:10
+Stoll, R. — Vigor intake — 00:15 —
+Okafor, B. — Vigor intake — 00:15 —
+
+Written under the board in marker: Stoll and Okafor never signed back in. Their meters are still hanging here. Vigor's man said the intake was their business and shut the hatch on us. If anybody from the city reads this board, read that line twice.",LOC_C5_Sewers,(OBJ_C5_02)
+NAR_C5_WaterWorkOrder,5,Note,Work Order 4471 — Dosing Skid Changeover,"R. Stoll, plant mechanic","WORK ORDER 4471 — SERVICE LEVEL, INTAKE HALL
+
+Six skids piped off the city main. Client supplied the agent in sealed drums and would not tell me what it is. Not my business, they pay the invoice.
+
+RULE AND I AM WRITING IT BIG: PURGE THE LOOP BEFORE YOU CHANGE AGENT. The loop holds about 400 litres of whatever ran last. Open PURGE, let it clear to the sump, then shut the reservoir bypass, then open the city main. In that order. Do it out of order and you push the old batch into forty thousand homes.
+
+Timer is set for 06:12 and locked. I asked why. Nobody answered.",LOC_C5_ServiceLevel,"(FLG_C5_DosingRigFound,PZL_C5_WaterMain)"
+NAR_C5_PumpTag,5,Note,"Valve Tag, Skid 3",,"A brass tag wired to the valve stem, and a strip of tape under it.
+
+TAG: CITY MAIN — FEED. DO NOT OPERATE WITHOUT PLANT AUTHORITY.
+
+TAPE, in pencil: Authority is Dr. V. now. He came down himself at two in the morning to watch the drums go on. Stood there the whole time with his hands behind his back like a man at a christening.",LOC_C5_ServiceLevel,()
+NAR_C5_LockdownNotice,5,Note,Lobby Screen — Containment Notice,,"VIGOR BIOTECH — BUILDING STATUS: CONTAINMENT, LEVEL 3
+
+All floors card-locked. Passenger lifts disabled. Freight lift available to duty engineering only.
+Staff: shelter in place. Do not attempt the stairwells.
+External reporting is suspended by order of the Director of Research.
+
+The screen is still cycling the notice to an empty lobby. Someone has put a chair through the glass of the second panel.",LOC_C5_Lobby,(OBJ_C5_05)
+NAR_C5_GuardShiftLog,5,Note,Security Desk Log — Night,"D. Marchetti, security","22:00 — Dr. Voss on site. Says send the night staff home, keep the volunteer list.
+22:40 — Bussed out 61 people. 14 stayed. Fourteen. They were happy about it.
+23:15 — Floor 31 asks us not to come up for any alarm tonight. Any alarm. In writing, they said.
+01:05 — Something is wrong with the ones who stayed. Vesic is wrong.
+02:30 — Locked the lobby from the inside. Voss is above us and he is not answering the desk phone.
+
+The log stops there. Marchetti is still in the chair, and his badge is still clipped on.",LOC_C5_Lobby,(FLG_C5_LobbyReached)
+NAR_C5_PhotoBoard,5,Photo,"Staff Photo — Research Division, Spring",,"Forty-odd people on the front steps of the tower, squinting. Dr. Voss is centre, hands behind his back, not smiling so much as waiting for the photographer to finish. Dr. Ines Calder stands at his left shoulder with a folder she has not put down.
+
+Back row, third from the right, a young technician in a lab coat two sizes too big, laughing at whoever is next to him. The name strip under the photo reads O. QUINN.",LOC_C5_Lobby,(RAD_C5_OwenPhoto)
+NAR_C5_FacilitiesEmail,5,Email,Re: stop giving out the override,"L. Haddow, Facilities","From: L. Haddow, Facilities
+To: Duty Engineering, all shifts
+Subject: Re: stop giving out the override
+
+The freight lift override is not 1987. It has not been 1987 since the plaque went up and half the contractors in the city worked that out.
+
+I have reset it to the lift car's inspection number. It is printed on the sticker inside the car, at shoulder height, where you have all been leaning for six years. If you cannot find a number that is in the lift you are standing in, you should not be operating the lift.
+
+Four digits. Do not write it on anything.",LOC_C5_Lobby,(PZL_C5_LiftOverride)
+NAR_C5_LiftSticker,5,Note,"Inspection Sticker, Freight Lift Car",,"A scuffed foil sticker at shoulder height inside the freight car, half worn through by shoulders and trolley handles.
+
+MARROW BAY LIFTS & HOISTS
+UNIT: FREIGHT 2 — VIGOR TOWER
+INSP. NO. 3042
+CAPACITY 2000 kg — NEXT EXAMINATION: OVERDUE",LOC_C5_Lobby,(PZL_C5_LiftOverride)
+NAR_C5_GeneticsBench,5,Note,Bench Notes — Generation Drift,Dr. P. Vesic,"Drift measurements, fourth week.
+
+Each passage through a host comes back stronger. Not a little. Measurably. Grip, bite force, recovery, all climbing generation on generation, and the climb is not flattening the way a sane thing's would.
+
+A frail host gives us a weak carrier. A strong host gives us a strong one, and the strong one makes the next strong one worse. We are not watching an illness. We are watching something being bred, and the city is the bench.
+
+I put this in writing so that when somebody asks who knew, the answer is on paper.",LOC_C5_Floor31_Genetics,()
+NAR_C5_Footage31,5,Footage,Lab Camera 31-2 — 23:52,,"Grey footage, no sound. Eleven people in lab coats at the long bench, sleeves rolled, auto-injectors laid out in a row like cutlery.
+
+Dr. Voss walks the line. He does not touch anyone. He says something short and they dose themselves, one after another, in order, and then they shake each other's hands.
+
+At 00:14 the first of them goes down on one knee. Nobody helps him up. They are all watching him the way you watch a kettle.
+
+At 00:31 the camera is knocked sideways and records the ceiling for the next four hours.",LOC_C5_Floor31_Genetics,(FLG_C5_VolunteersKnown)
+NAR_C5_TechLastEntry,5,Diary,Pocket Notebook — Last Page,"Jun Park, technician","00:48. I did not take it. I let them think I did and I put mine in the sharps bin.
+
+01:20. Vesic is in the cage corridor hitting the mesh. He has been strong his whole life, he ran the river race in June, and now he is strong like a machine press.
+
+02:05. They are slow for an hour and then they are not. Dr. V writes the times down. He has a stopwatch. He is thrilled.
+
+03:10. Hand is shaking too much. Whoever reads this, it is in the cold drawer in the vault. The triplet is on the labels, it has always been on the labels, he never thought anyone outside would need to read one.",LOC_C5_Floor31_Genetics,(PZL_C5_Sequencer)
+NAR_C5_VialLabel,5,Note,"Vial Label, Genetics Bench Rack",,"A printed label on a frosted 2 ml vial, one of a tray of forty identical ones. The same label is on every vial in the building, and nobody who worked here ever had to think about it twice.
+
+VIGOR BIOTECH — RESTRICTED
+STRAIN: V-7
+MARKER: G T C
+LINEAGE: S7
+PASSAGE: 11
+DO NOT WARM ABOVE −60
+
+Someone has written FOR THE VAULT DIALS on the tray lid in marker, and then scribbled it out again.",LOC_C5_Floor31_Genetics,(PZL_C5_Sequencer)
+NAR_C5_CalderRequisition,5,Email,Requisition 2208 — blanks,Dr. I. Calder,"From: I. Calder
+To: Stores
+Subject: Requisition 2208 — blanks
+
+Two hundred G-T-C blanks for the vault sequencer, same as last time. Set the dials left to right in that order when you load the drawer or the interlock will not read the tray.
+
+And please stop sending me the four-base practice blanks. There is one marker in this building that matters and everyone here can recite it.",LOC_C5_Floor31_Genetics,(PZL_C5_Sequencer)
+NAR_C5_VossNotesOne,5,Diary,Private Lab Notes — Book Nine,Dr. Elias Voss,"Ines kept saying accident. I have stopped correcting her in meetings because it upsets the room.
+
+It was not an accident. It was a result. I set out to find the ceiling of the human body and I found a floor instead: the weak take it and die, the strong take it and become something the weak could never have been. That is not failure. That is selection, running faster than it has ever been allowed to run.
+
+The ones who stayed tonight understood that. Fourteen of them. I will not pretend I did not feel something when they rolled their sleeves up.",LOC_C5_Floor31_Genetics,()
+NAR_C5_ConcentrateManifest,5,Note,Cold Store Manifest — Outbound,,"OUTBOUND — SERVICE LEVEL INTAKE HALL, NOT THE DOCK
+
+DRUM 01 to 06 — V-7 CONCENTRATE, PASSAGE 11 — 400 L TOTAL
+DESTINATION: MUNICIPAL SUPPLY, NORTH DISTRIBUTION
+RELEASE: 06:12, AUTOMATIC, NO CONFIRMATION REQUIRED
+AUTHORISED: E. VOSS, DIRECTOR OF RESEARCH
+
+Handwritten at the bottom in a different pen: contract says we treat the city's water. Nobody ever asks what treat means.",LOC_C5_Floor33_Cryo,(FLG_C5_WaterPlanKnown)
+NAR_C5_CryoLog,5,Note,Cryo Bay Log — Floor 33,"H. Oyelaran, cryo tech","For whoever is on next, because I am tired of writing this out.
+
+The rack interlock will not lift unless bays 31, 32 and 33 all read −80. All three. Equal. It does not care which bay you actually want, it reads the set as one.
+
+If you park a bay at −20 to thaw a tray, that is fine, but put it back to −80 when you are done or nobody can open the rack.
+
+And do not be clever and run a bay to −196 to make it lift faster. The frost line cracks, the alarm goes off at the loading bay, and then you are explaining yourself to security at four in the morning. Ask me how I know.",LOC_C5_Floor33_Cryo,(PZL_C5_CryoRack)
+NAR_C5_BaySticky,5,Note,Sticky Note on Bay 32,H. Oyelaran,"BAY 32 AT −20, THAWING A TRAY. BACK BY SIX. DO NOT TOUCH.
+
+Under it, a second note in the same hand, stuck on crooked: Bay 33 is OFF because the compressor tripped again, hit the reset on the side before you set it. I am not coming back by six, am I.",LOC_C5_Floor33_Cryo,(PZL_C5_CryoRack)
+NAR_C5_VossToCalder,5,AudioLog,Recorded Message — To Ines,Dr. Elias Voss,"Ines. It is the fourteenth time I have recorded this and it is still not right, so this one stays.
+
+They pulled you out of the harbour on a Tuesday. They told me by email. An email, Ines.
+
+You said I had built a disease. You said it in this office, at that desk, the one I have not let them take away. You wanted to burn the strain and publish the trial and take whatever came. I thought you were frightened. I have thought about it every night since and I think now you simply loved them more than you loved the work, and I never understood how to do both.
+
+Tonight it goes into the water. The weak will be lifted or they will be gone, and either way nobody will have to be weak again. You would have stopped me. That is the only argument against it I have ever respected, and you are not here to make it.
+
+I kept your coat on the hook. Goodnight.",LOC_C5_Floor33_Cryo,(FLG_C5_CalderMessageHeard)
+NAR_C5_SynthesisManual,5,Note,Synthesis Rig — Operating Card,,"LAMINATED CARD, CHAINED TO THE RIG
+
+1. Load carriers into ports A, B and C. The rig will not arm with an empty port.
+2. Enter the inactivation sequence on the keypad. The rig runs a cold-shock cycle against the strain and will reject any sequence it does not recognise.
+3. Press RUN. Cycle time 90 seconds. Do not open the hood mid-cycle.
+4. Draw the finished dose from the output port into an injector.
+
+Under point 2, in Voss's handwriting: the sequence is not written anywhere in this building. It only ever existed in the Annex trial log, and the Annex is sealed. That is the point.",LOC_C5_Floor35_CrownLab,(PZL_C5_Synthesis)
+NAR_C5_VossFinalFormula,5,Note,Antidote Formula — Final Sheet,Dr. Elias Voss,"The counter-agent, finished, since Ines will not stop asking from wherever she is.
+
+Three carriers. A binds the strain's coat. B is the chaperone that keeps A from folding on itself. C is the trigger. None of the three does anything alone, which is the only elegant thing about it.
+
+And it will not assemble at body temperature. The strain has to be shocked cold first, exactly the way the Annex trial log sets it out, or the whole mix is just expensive water. I wrote that sequence down once, eight months ago, underground, and I never wrote it again.
+
+So: the cure exists and cannot be made. I find that tidier than destroying it.",LOC_C5_Floor35_CrownLab,"(PZL_C5_Synthesis,OBJ_C5_12)"
+NAR_C5_DawnSchedule,5,Note,Desk Diary — Today,Dr. Elias Voss,"05:00 — Last pass of the floors. Volunteers secured where they are.
+05:30 — Service level. Confirm the skids and the timer by hand, not by screen.
+06:12 — Sunrise. North distribution first, then the rest of the grid behind it.
+06:30 — Roof. I would like to watch the light come up over a city that is about to stop being frightened of itself.
+
+Nothing after 06:30. The rest of the page is blank, and he has ruled a neat line under it.",LOC_C5_Floor35_CrownLab,()
+NAR_C5_VossDeskLetter,5,Diary,"Unsent Letter, Under the Roof Card",Dr. Elias Voss,"To the committee, or to whoever is left to read a letter.
+
+You funded strength and then you were embarrassed by it. You signed the shipments, you took the contract for the city's water, you asked me for a product and then asked me to make it polite.
+
+I am not sorry, and I am not mad. Those are the two things everyone will want me to be.
+
+The roof card is here because I expect to be the last one up there and I would rather not break my own door. If you are reading this and I am not on the roof, then something has gone correctly for one of you.",LOC_C5_Floor35_CrownLab,(OBJ_C5_11)
+NAR_C5_ManifoldChecklist,5,Note,"Manifold Checklist, Roof Plant Room",Dr. Elias Voss,"CLIPPED TO THE MANIFOLD, IN VOSS'S HAND
+
+Mechanic's order, which I have checked twice because he was right about it:
+
+PURGE first. The loop holds the last batch and it will go wherever you send it.
+BYPASS shut, so nothing runs back to the reservoir.
+CITY MAIN last. Then the pump.
+
+I dislike how much of tonight depends on three brass handles turned by a man on an hourly rate.",LOC_C5_Roof,(PZL_C5_WaterMain)
+NAR_C5_VialLedger,5,Note,Sample Ledger — Final Page,,"V-7 CONCENTRATE, 2 ml ARCHIVE VIALS — PASSAGE 11
+
+CAST: 40
+IN RACK: 39
+BROKEN / DISPOSED: 0
+SIGNED OUT: 0
+
+The arithmetic is in two different pens. Somebody has gone over the 39 twice, hard enough to tear the paper, and written a question mark beside it that nobody ever answered.",LOC_C5_Roof,(FLG_C5_VialMissing)
+RAD_C5_Approach_01,5,Radio,Into the sewers,MARA,"Leon, the waterworks man here says the Vigor intake is off the fourth culvert. Big grey hatch, you can't miss it.",LOC_C5_Sewers,(OBJ_C5_01)
+RAD_C5_Approach_02,5,Radio,Into the sewers,LEON,I'm in the water up to here. Something's in it with me.,LOC_C5_Sewers,()
+RAD_C5_Approach_03,5,Radio,Into the sewers,MARA,Then don't stop moving. It's twenty past five. Sunrise is six twelve.,LOC_C5_Sewers,()
+RAD_C5_Approach_04,5,Radio,Into the sewers,LEON,Plenty of time.,LOC_C5_Sewers,()
+RAD_C5_DosingRig_01,5,Radio,The intake hall,LEON,"Mara, their water plant is real. Six skids, hoses taped straight onto the city main, drums sitting ready.",LOC_C5_ServiceLevel,(FLG_C5_DosingRigFound)
+RAD_C5_DosingRig_02,5,Radio,The intake hall,MARA,Pruitt told you dawn. There's a timer?,LOC_C5_ServiceLevel,()
+RAD_C5_DosingRig_03,5,Radio,The intake hall,LEON,"Locked at six twelve. I can't stop it from down here, the valves are upstairs on the roof.",LOC_C5_ServiceLevel,()
+RAD_C5_DosingRig_04,5,Radio,The intake hall,MARA,"Then we stop using it to argue with him and start using it. Same pipe, different medicine.",LOC_C5_ServiceLevel,(FLG_C5_WaterPlanKnown)
+RAD_C5_DosingRig_05,5,Radio,The intake hall,LEON,I like you when you're angry.,LOC_C5_ServiceLevel,()
+RAD_C5_OwenPhoto_01,5,Radio,The photo board,LEON,"There's a staff photo in their lobby. Back row, third from the right.",LOC_C5_Lobby,()
+RAD_C5_OwenPhoto_02,5,Radio,The photo board,MARA,"Coat too big for him. He never got it taken in, he said it made him look senior.",LOC_C5_Lobby,()
+RAD_C5_OwenPhoto_03,5,Radio,The photo board,MARA,He's laughing in that one. I didn't know they'd put him on a wall.,LOC_C5_Lobby,()
+RAD_C5_OwenPhoto_04,5,Radio,The photo board,LEON,He warned you. You're the reason I got this far. Take that one.,LOC_C5_Lobby,()
+RAD_C5_OwenPhoto_05,5,Radio,The photo board,MARA,"Ask me again at sunrise. Get in the lift, Leon.",LOC_C5_Lobby,()
+RAD_C5_HintLift_01,5,Radio,Hint: freight lift override,MARA,"Four digits on a keypad, and a building full of people who write things down. Somebody told somebody that code.",LOC_C5_Lobby,()
+RAD_C5_HintLift_02,5,Radio,Hint: freight lift override,MARA,Read the facilities email on the reception terminal again. She says she moved it to the lift car's inspection number.,LOC_C5_Lobby,()
+RAD_C5_HintLift_03,5,Radio,Hint: freight lift override,MARA,"It's the sticker inside the car, at your shoulder. Three zero four two. Not the year on the plaque.",LOC_C5_Lobby,(FLG_C5_LiftOnline)
+RAD_C5_Floor31_01,5,Radio,Floor 31,LEON,Fourteen of his people stayed behind last night and dosed themselves at the bench. There's camera footage. They shook hands afterwards.,LOC_C5_Floor31_Genetics,(FLG_C5_VolunteersKnown)
+RAD_C5_Floor31_02,5,Radio,Floor 31,MARA,Why would anyone do that?,LOC_C5_Floor31_Genetics,()
+RAD_C5_Floor31_03,5,Radio,Floor 31,LEON,"Because he asked them to, and nobody up here has told him no in years.",LOC_C5_Floor31_Genetics,()
+RAD_C5_Floor31_04,5,Radio,Floor 31,MARA,"They were fit, healthy people, Leon. Mind the strong ones.",LOC_C5_Floor31_Genetics,()
+RAD_C5_HintSequencer_01,5,Radio,Hint: Genetics vault sequencer,MARA,"Three dials, three letters. That's a code they used every day, so it'll be printed on something they handled every day.",LOC_C5_Floor31_Genetics,()
+RAD_C5_HintSequencer_02,5,Radio,Hint: Genetics vault sequencer,MARA,The tech's last page said it's on the labels. Pick a vial off the bench rack and read the marker line.,LOC_C5_Floor31_Genetics,()
+RAD_C5_HintSequencer_03,5,Radio,Hint: Genetics vault sequencer,MARA,"G, T, C. Left to right, the way Calder's requisition says to load the drawer.",LOC_C5_Floor31_Genetics,(FLG_C5_CompB)
+RAD_C5_Decon_01,5,Radio,The decon corridor,LEON,"There's an armored one walking the decon corridor. Narrow glass tube, nowhere to back up.",LOC_C5_Floor31_Genetics,()
+RAD_C5_Decon_02,5,Radio,The decon corridor,MARA,Don't. Six rounds won't do it and you need the six.,LOC_C5_Floor31_Genetics,()
+RAD_C5_Decon_03,5,Radio,The decon corridor,LEON,The booths cycle. I'll step in one and let him walk past.,LOC_C5_Floor31_Genetics,()
+RAD_C5_Decon_04,5,Radio,The decon corridor,MARA,Breathe out slow. He hears better than he sees.,LOC_C5_Floor31_Genetics,()
+RAD_C5_WaterPlan_01,5,Radio,The manifest,LEON,"Mara, I've got his manifest. Four hundred litres of concentrate, north distribution, six twelve, signed by him.",LOC_C5_Floor33_Cryo,(FLG_C5_WaterPlanKnown)
+RAD_C5_WaterPlan_02,5,Radio,The manifest,MARA,North distribution is the shelters. The hospital. Everybody too slow to run tonight.,LOC_C5_Floor33_Cryo,()
+RAD_C5_WaterPlan_03,5,Radio,The manifest,LEON,That's not an accident. That's the point of it.,LOC_C5_Floor33_Cryo,()
+RAD_C5_WaterPlan_04,5,Radio,The manifest,MARA,I'm telling the waterworks crew to stand by the manifold readout. If anything moves in that pipe they'll see it.,LOC_C5_Floor33_Cryo,()
+RAD_C5_HintCryo_01,5,Radio,Hint: cryo rack interlock,MARA,"Three bays, three different temperatures, and a rack that won't open. It's not asking you to be clever, it's asking you to be tidy.",LOC_C5_Floor33_Cryo,()
+RAD_C5_HintCryo_02,5,Radio,Hint: cryo rack interlock,MARA,The cryo log says the interlock reads all three bays as one set. Somebody left one thawing and another one tripped out.,LOC_C5_Floor33_Cryo,()
+RAD_C5_HintCryo_03,5,Radio,Hint: cryo rack interlock,MARA,"Reset bay 33's compressor, then put all three to minus eighty. Not lower. Minus one ninety-six cracks the line and screams.",LOC_C5_Floor33_Cryo,(FLG_C5_CompC)
+RAD_C5_HintSynth_01,5,Radio,Hint: the synthesis machine,MARA,"Three ports, three carriers. It won't even arm until all three are in.",LOC_C5_Floor35_CrownLab,()
+RAD_C5_HintSynth_02,5,Radio,Hint: the synthesis machine,MARA,"Then it wants the inactivation sequence. His own sheet says it only ever existed in one place, and you've already been there.",LOC_C5_Floor35_CrownLab,()
+RAD_C5_HintSynth_03,5,Radio,Hint: the synthesis machine,MARA,"The cold-shock sequence from the Annex trial log, Leon. Owen's floor. Key it in exactly as it was written and hit RUN.",LOC_C5_Floor35_CrownLab,(FLG_C5_AntidoteMade)
+RAD_C5_HintMain_01,5,Radio,Hint: the roof manifold,MARA,Three handles and a pump switch. Get the order wrong and you send his batch instead of yours.,LOC_C5_Roof,()
+RAD_C5_HintMain_02,5,Radio,Hint: the roof manifold,MARA,"The mechanic wrote the order on his work order downstairs, and Voss copied it onto the clipboard right there. Clear the loop first.",LOC_C5_Roof,()
+RAD_C5_HintMain_03,5,Radio,Hint: the roof manifold,MARA,"Purge. Then shut the reservoir bypass. Then open the city main, then the pump. In that order, Leon.",LOC_C5_Roof,(FLG_C5_AntidoteReleased)
+RAD_C5_AllClear_01,5,Radio,All clear,MARA,"Leon. The crew's got movement on the north readout. Whatever you put in that pipe, it's moving.",LOC_C5_Roof,()
+RAD_C5_AllClear_02,5,Radio,All clear,LEON,Then it's in the city. Tell the shelters to drink the water.,LOC_C5_Roof,()
+RAD_C5_AllClear_03,5,Radio,All clear,MARA,"Saying that out loud is going to be the strangest sentence of my life. Marrow Bay, all stations, this is Halvern Harbor Radio. The water is clear. Repeat, the water is clear.",LOC_C5_Roof,(FLG_C5_AllClearGiven)
+RAD_C5_AllClear_04,5,Radio,All clear,MARA,Leon. Is he done?,LOC_C5_Roof,()
+RAD_C5_AllClear_05,5,Radio,All clear,LEON,"He's done. Come up and see the light, Mara. You earned the view.",LOC_C5_Roof,()
+DLG_C5_VossReveal_01,5,Dialogue,Crown Lab: Voss,VOSS,"You're wet. There's a towel by the sink, I'm not joking, it's a clean room.",LOC_C5_Floor35_CrownLab,(FLG_C5_VossRevealed)
+DLG_C5_VossReveal_02,5,Dialogue,Crown Lab: Voss,LEON,Dr. Voss. Step away from the console.,LOC_C5_Floor35_CrownLab,()
+DLG_C5_VossReveal_03,5,Dialogue,Crown Lab: Voss,VOSS,It's locked and the timer doesn't care about either of us. Sit down. You've come a long way to arrest a man about water.,LOC_C5_Floor35_CrownLab,()
+DLG_C5_VossReveal_04,5,Dialogue,Crown Lab: Voss,LEON,"The port. The island. Your fourteen people on floor thirty-one. That's not water, that's a body count.",LOC_C5_Floor35_CrownLab,()
+DLG_C5_VossReveal_05,5,Dialogue,Crown Lab: Voss,VOSS,"A count of the weak. I did not choose who it takes, Agent. It chooses. I only stopped apologising for the choice.",LOC_C5_Floor35_CrownLab,()
+DLG_C5_VossReveal_06,5,Dialogue,Crown Lab: Voss,LEON,Calder didn't stop apologising. That's why she's in the harbor.,LOC_C5_Floor35_CrownLab,()
+DLG_C5_VossReveal_07,5,Dialogue,Crown Lab: Voss,VOSS,"Don't. You've read her diary, you haven't read her.",LOC_C5_Floor35_CrownLab,()
+DLG_C5_VossReveal_08,5,Dialogue,Crown Lab: Voss,VOSS,"Build it, if you can. You can't, but build it. I'd like to see the sequence I buried come up out of the ground after me.",LOC_C5_Floor35_CrownLab,(OBJ_C5_12)
+DLG_C5_VossFinal_01,5,Dialogue,Crown Lab: the finish,VOSS,You built it. You actually built it.,LOC_C5_Floor35_CrownLab,()
+DLG_C5_VossFinal_02,5,Dialogue,Crown Lab: the finish,VOSS,Then give it to me. Not the city. Me. I want to know if it works.,LOC_C5_Floor35_CrownLab,()
+DLG_C5_VossFinal_03,5,Dialogue,Crown Lab: the finish,LEON,It works.,LOC_C5_Floor35_CrownLab,(FLG_C5_VossDead)
+DLG_C5_Sunrise_01,5,Dialogue,"Roof, 06:12",LEON,Six twelve. He had the time right.,LOC_C5_Roof,()

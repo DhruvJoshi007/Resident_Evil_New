@@ -1,0 +1,50 @@
+[
+  {
+    "id": "PZL_C1_CustomsCage",
+    "chapter": 1,
+    "name": "When It Opened",
+    "location": "LOC_C1_CustomsCage",
+    "setup": "A steel mesh customs cage with a four-digit keypad. Pruitt's team case is visible through the mesh from two rooms away. He set the code himself, assuming the next federal agent through here would watch the dock office tape before reaching the cage.",
+    "clues": ["NAR_C1_Tape0214", "NAR_C1_PruittScratch", "NAR_C1_CustomsSlip", "NAR_C1_OrtizNotes", "RAD_C1_AfterTape_04"],
+    "solution": "Enter 0214 on the keypad - the timestamp of the first fragment of the security footage, which the scratched note 'CAGE = WHEN IT OPENED' tells you to use.",
+    "failure": "No lockout and no alarm, but the keypad is loud. Every third wrong entry spawns two Husks at the warehouse apron door and sets them to investigate the cage, so guessing costs ammunition instead of progress.",
+    "hint_1": "A customs cage is where they put the things they don't want walking off. Four digits, so it's a date or a time to somebody.",
+    "hint_2": "There's writing scratched by the keypad. Whoever set the code left you the sentence, not the number.",
+    "hint_3": "When it opened. You watched it open. Put the time on the keypad - zero two one four.",
+    "hint_trigger": "Hint 1 at 45 s at the keypad; hint 2 at 90 s or 2 wrong entries; hint 3 at 150 s, 4 wrong entries, or a second return to the cage. If FLG_C1_TapeWatched is unset, hint 3 becomes 'Go back to the office and watch the night log first.'",
+    "reward": ["WPN_Shotgun", "AMMO_Shells", "ITM_Suppressant", "NAR_C1_OrtizNotes"],
+    "sets_flag": "FLG_C1_CageOpen"
+  },
+  {
+    "id": "PZL_C1_CranePower",
+    "chapter": 1,
+    "name": "Whoever's On Now",
+    "location": "LOC_C1_ControlHouse",
+    "setup": "Two stages in one room. The gantry supply panel has an empty 400 A fuse carrier, so nothing works until the spare cartridge is fetched from the break room cabinet. With the fuse seated, three brass-plated switches labelled C1, C2 and C3 go live under the main breaker, and must be thrown in the supervisor's start-up order. The yard gate motor and the yard crane are on the same bus.",
+    "clues": ["NAR_C1_ShiftRota", "NAR_C1_FusePlate", "NAR_C1_BreakerNote", "NAR_C1_VargaLog"],
+    "solution": "Seat KEY_C1_Fuse in the carrier, then throw C3, then C1, then C2. The rota board says to bring up whoever is on shift now and then go round the clock; it is 22:40, so nights (Crane 3) first, then day (Crane 1), then swing (Crane 2).",
+    "failure": "A wrong order trips the main breaker. The lights die, the bang spikes Leon's noise radius, the switches lock out for 30 seconds, and Husks are pathed to the control house door - two on the first trip, three on the second, four on every trip after. The puzzle never fails permanently; brute-forcing all six permutations just arrives at the Hookman out of ammunition.",
+    "hint_1": "Dead panel means a pulled fuse. Nobody keeps a spare in a shed that floods - try where they make tea.",
+    "hint_2": "Three switches, three cranes, and a supervisor who wrote the start-up order on the rota board. Whoever's on shift comes up first.",
+    "hint_3": "It's the middle of the night, Cater. Nights is Crane 3. Then round the clock - day, then swing. Three, one, two.",
+    "hint_trigger": "Hint 1 at 40 s at a dead panel (suppressed if the player already holds KEY_C1_Fuse) or 60 s at a live panel; hint 2 at 120 s with the fuse seated or 1 breaker trip; hint 3 at 200 s or 2 breaker trips.",
+    "reward": ["FLG_C1_PowerRestored", "FLG_C1_YardGateOpen"],
+    "sets_flag": "FLG_C1_PowerRestored"
+  },
+  {
+    "id": "PZL_C1_DropZone",
+    "chapter": 1,
+    "name": "Don't Stand on the Stripes",
+    "location": "LOC_C1_Yard",
+    "setup": "The boss arena's trick, solved during the fight. A 20-foot container hangs on the yard crane's hook block over a hazard-striped square of concrete, and a release lever sits at the crane leg with two lit bulbs for its two remaining uses. The Hookman will not walk onto the square on his own; the player has to bait him across it.",
+    "clues": ["NAR_C1_DropZoneSign", "NAR_C1_VargaNote", "CS_C1_HookmanIntro"],
+    "solution": "Bait the Hookman fully inside the hazard square - stand on it and move off late, or draw a hook throw from the far side so he closes across it - then pull the lever at the crane leg. The drop pins him and exposes the growth on his back for about 6 seconds. Two uses only; after that, finish him by baiting the hook into steel and shooting the back during the 2.5 s overreach.",
+    "failure": "Pulling the lever while he is off the square wastes one of the two uses: the container hits bare concrete and an indicator bulb goes out. Standing on the square yourself when it drops is an instant kill, which the sign, Varga's note and the lit stripes all warn about beforehand.",
+    "hint_1": "Don't trade with him. He's got twelve feet of reach and you've got a handgun.",
+    "hint_2": "He throws that hook and when it bites steel instead of you, he can't let go. Watch his back when he's pulling.",
+    "hint_3": "There's a container hanging over those painted stripes and a lever at the crane leg. Get him on the stripes and pull it.",
+    "hint_trigger": "Hint 1 at 20 s of fighting; hint 2 at 60 s or after two completed hook throws; hint 3 at 110 s, on Leon dropping to Danger health, or after the player passes within 2 m of the lever twice without using it.",
+    "reward": ["KEY_C1_ShutterKey"],
+    "sets_flag": "FLG_C1_DropUsed"
+  }
+]

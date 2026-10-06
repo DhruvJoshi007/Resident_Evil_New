@@ -1,4 +1,4 @@
-<title>VEILFALL Chapter 1</title>
+<title>EvilRise Chapter 1</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Barlow+Condensed:wght@400;500;600&family=Special+Elite&display=swap">
@@ -110,6 +110,13 @@ body.cine .gameplay { display: none !important; }
 .stats b { display: block; font-size: 30px; font-weight: 500; font-variant-numeric: tabular-nums; }
 .stats span { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); }
 #loading { font-size: 16px; letter-spacing: 0.3em; color: var(--dim); text-transform: uppercase; }
+/* CCTV playback: the tape fills the screen, no letterbox, burned-in overlay */
+body.cctv .letterbox { height: 0 !important; }
+#cctv { position: fixed; inset: 0; pointer-events: none; z-index: 6; font-family: "Courier New", monospace; color: #e8f0e0; text-shadow: 0 0 3px #000, 0 0 1px #000; font-size: clamp(13px, 1.6vw, 20px); letter-spacing: 0.08em; }
+#cctv .tl { position: absolute; left: 4vw; top: 4vh; }
+#cctv .tr { position: absolute; right: 4vw; top: 4vh; }
+#cctv .rec { position: absolute; left: 4vw; bottom: 5vh; color: #ff5a4a; }
+.chip.infect { background: rgba(110, 60, 160, 0.35); border-color: #9a6ad0; color: #e0ccff; }
 @media (prefers-reduced-motion: reduce) { .letterbox, #titlecard, #fade, #toast { transition: none; } }
 </style>
 
@@ -132,7 +139,7 @@ body.cine .gameplay { display: none !important; }
   <div id="vital-label">Fine</div>
 </div>
 <div class="hud gameplay" id="hud-ammo" hidden>
-  <div id="weapon-name">Handgun</div>
+  <div id="weapon-name">Pistol</div>
   <div id="ammo-mag">9</div>
   <div id="ammo-res">/ 0</div>
 </div>
@@ -145,15 +152,16 @@ body.cine .gameplay { display: none !important; }
 <div class="hud" id="struggle" hidden>Break free: tap E<div id="struggle-bar"><div id="struggle-fill"></div></div></div>
 <div class="hud" id="titlecard" style="opacity:0"><small id="titlecard-small"></small><span id="titlecard-text"></span></div>
 <div id="fade"></div>
+<div id="cctv" hidden><span class="tl">CAM 11 — YARD C STACK 4 — NO AUDIO</span><span class="tr" id="cctv-time">02:14:00</span><span class="rec">● PLAY</span></div>
 
 <div class="screen" id="title-screen">
   <div class="screen-inner">
     <div>
-      <div class="logo">VEILFALL</div>
-      <div class="logo-sub">Chapter 1 · Quarantine</div>
+      <div class="logo">EvilRise</div>
+      <div class="logo-sub">Chapter 1 · Port Halvern</div>
     </div>
-    <div id="loading">Loading the city</div>
-    <button class="btn" id="btn-start" hidden>Enter Harrow Bay</button>
+    <div id="loading">Loading the port</div>
+    <button class="btn" id="btn-start" hidden>Step onto the pier</button>
     <div class="controls">
       <div><b>W A S D</b>Move</div>
       <div><b>Mouse</b>Look</div>
@@ -195,10 +203,10 @@ body.cine .gameplay { display: none !important; }
   <div class="screen-inner">
     <div>
       <div class="logo-sub">Chapter 1 complete</div>
-      <div class="logo" style="font-size:64px">Quarantine</div>
+      <div class="logo" style="font-size:64px">Port Halvern</div>
     </div>
     <div class="stats" id="end-stats"></div>
-    <p class="note">Next: Chapter 2, Undercurrent. Mara follows the storm drains toward the water treatment plant.</p>
+    <p class="note">Next: Chapter 2, Saltmere Island. Leon crosses the river mouth to Mara's radio station on the point.</p>
     <button class="btn" id="btn-replay">Play again</button>
   </div>
 </div>

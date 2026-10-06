@@ -3,6 +3,7 @@
 import { G, clamp } from './game.js';
 import { ITEMS, KEY_ITEMS } from './items.js';
 import { ROOMS, DOORS } from './level.js';
+import { WEAPONS } from './weapons.js';
 
 const $ = (id) => document.getElementById(id);
 
@@ -65,8 +66,9 @@ export class UI {
     const color = { fine: '#5fbf6a', caution: '#d8a33a', danger: '#b3261e', dead: '#b3261e' }[st];
     $('vital-label').textContent = { fine: 'Fine', caution: 'Caution', danger: 'Danger', dead: '' }[st];
     $('vital-label').style.color = color;
-    const inj = [...p.injuries].map(i => ({ leg: 'Leg injury', bleeding: 'Bleeding', arm: 'Arm injury', poisoned: 'Poisoned' }[i]));
-    const injHtml = inj.map(i => `<span class="chip">${i}</span>`).join('');
+    const inj = [...p.injuries].map(i => ({ leg: 'Leg injury', bleeding: 'Bleeding', arm: 'Arm injury' }[i]));
+    let injHtml = inj.map(i => `<span class="chip">${i}</span>`).join('');
+    if (p.infection > 0) injHtml += `<span class="chip infect">Infected ${Math.round(p.infection * 100)}%</span>`;
     if (injHtml !== this.lastInj) { $('injuries').innerHTML = injHtml; this.lastInj = injHtml; }
     this.drawEcg(dt, color, st);
     // ammo
@@ -141,7 +143,7 @@ export class UI {
   }
 
   showFile(title, body) {
-    const paras = body.split('\n\n').map(p => `<p>${p.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</p>`).join('');
+    const paras = body.split('\n\n').map(p => `<p>${p.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\n/g, '<br>')}</p>`).join('');
     this.openModal(`<div class="sheet" role="dialog" aria-label="${title}"><h2>${title}</h2>${paras}<div class="close-hint">Press E or Esc to close</div></div>`, 'file');
   }
 
@@ -153,7 +155,7 @@ export class UI {
       return `<button class="slot${this.selected === k ? ' sel' : ''}" data-k="${k}" id="slot-${k}"><span class="sw" style="background:${d.color}"></span><span class="qty">${d.stack > 1 ? s.qty : ''}</span><span>${d.name}</span></button>`;
     }).join('');
     const keys = [...it.keys].map(k => `<span>${KEY_ITEMS[k]}</span>`).join('') || '<span class="small" style="border:0;color:var(--dim)">None yet</span>';
-    const weapons = G.weapons.owned.map(w => `<span>${w === 'handgun' ? 'Handgun' : 'Shotgun'} · ${G.weapons.mag[w]} loaded</span>`).join('');
+    const weapons = G.weapons.owned.map(w => `<span>${WEAPONS[w].name} · ${G.weapons.mag[w]} loaded</span>`).join('');
     const files = G.story.filesRead.map(f => `<button data-file="${f}">${G.story.fileTitle(f)}</button>`).join('') || '<span class="small">No files yet.</span>';
     const sel = this.selected != null && it.slots[this.selected] ? ITEMS[it.slots[this.selected].id] : null;
     this.openModal(`<div class="panel" role="dialog" aria-label="Inventory">
@@ -174,10 +176,10 @@ export class UI {
     $('modal').querySelectorAll('[data-file]').forEach(b => b.addEventListener('click', () => G.story.readFile(b.dataset.file, true)));
   }
 
-  showKeypad(onSubmit) {
+  showKeypad(onSubmit, title = 'Keypad', note = 'A four-digit code.') {
     let code = '';
-    this.openModal(`<div class="panel" style="width:min(320px,100%)" role="dialog" aria-label="Locker keypad">
-      <h2>Locker 12</h2><p class="small">A four-digit combination lock.</p>
+    this.openModal(`<div class="panel" style="width:min(320px,100%)" role="dialog" aria-label="${title}">
+      <h2>${title}</h2><p class="small">${note}</p>
       <div class="readout" id="kp-read">____</div>
       <div class="keypad">${[1, 2, 3, 4, 5, 6, 7, 8, 9, 'C', 0, 'OK'].map(k => `<button data-k="${k}">${k}</button>`).join('')}</div>
       <div class="close-hint">Esc to step away</div></div>`, 'keypad');
@@ -193,27 +195,29 @@ export class UI {
     this.keypadKey = (e) => { if (/^Digit\d$/.test(e.code)) press(e.code.slice(5)); if (e.code === 'Enter') press('OK'); if (e.code === 'Backspace') press('C'); };
   }
 
-  showBreakers(state, onToggle, onEngage) {
+  // Gantry supply panel: three crane switches brought up one at a time.
+  showCranePanel(order, onFlip) {
     const render = () => {
-      $('br-row').innerHTML = 'ABCDE'.split('').map((l, k) => `<button data-b="${k}" class="${state[k] ? 'on' : ''}"><span>${l}</span><span style="font-size:14px">${state[k] ? 'ON' : 'OFF'}</span></button>`).join('');
-      $('br-row').querySelectorAll('[data-b]').forEach(b => b.addEventListener('click', () => { onToggle(+b.dataset.b); render(); }));
+      $('br-row').innerHTML = [1, 2, 3].map(n => {
+        const on = order.includes(n);
+        return `<button data-b="${n}" class="${on ? 'on' : ''}" ${on ? 'disabled' : ''}><span>CRANE ${n}</span><span style="font-size:14px">${on ? 'ON · ' + (order.indexOf(n) + 1) : 'OFF'}</span></button>`;
+      }).join('');
+      $('br-row').querySelectorAll('[data-b]:not([disabled])').forEach(b => b.addEventListener('click', () => { if (onFlip(+b.dataset.b) !== false && this.modalOpen === 'breakers') render(); }));
     };
-    this.openModal(`<div class="panel" style="width:min(480px,100%)" role="dialog" aria-label="Fuse box">
-      <h2>Fuse Box</h2><p class="small">Five breakers feed the east wing. The wrong combination trips the main.</p>
-      <div class="breakers" id="br-row"></div>
-      <button class="btn" id="br-go">Throw the main switch</button>
+    this.openModal(`<div class="panel" style="width:min(480px,100%)" role="dialog" aria-label="Gantry supply panel">
+      <h2>Gantry Supply</h2><p class="small">The fuse is seated. Three crane switches share one main breaker. Bring them up one at a time, in the right order.</p>
+      <div class="breakers" id="br-row" style="grid-template-columns:repeat(3,minmax(0,1fr))"></div>
       <div class="close-hint">Esc to step away</div></div>`, 'breakers');
     render();
-    $('br-go').addEventListener('click', () => onEngage());
   }
 
   showMap() {
-    this.openModal(`<div class="panel" role="dialog" aria-label="Map"><h2>Harrow Bay Precinct</h2>
+    this.openModal(`<div class="panel" role="dialog" aria-label="Map"><h2>Port Halvern</h2>
       <canvas id="map-canvas" width="430" height="730" style="max-width:430px;justify-self:center"></canvas>
-      <div class="legend"><span><i style="background:#6a1d18"></i>Items left</span><span><i style="background:#1d3550"></i>Cleared</span><span><i style="background:#d8a33a"></i>Locked door</span><span><i style="background:#e8e2d0"></i>Mara</span></div>
+      <div class="legend"><span><i style="background:#6a1d18"></i>Items left</span><span><i style="background:#1d3550"></i>Cleared</span><span><i style="background:#d8a33a"></i>Locked door</span><span><i style="background:#e8e2d0"></i>Leon</span></div>
       <div class="close-hint">M or Esc to close</div></div>`, 'map');
     const c = $('map-canvas'), g = c.getContext('2d');
-    const S = 7, ox = 26 * S + 33, oz = 58 * S + 20;
+    const S = 7, ox = 26 * S + 26, oz = 63 * S + 14;
     const X = (x) => ox + x * S, Z = (z) => oz - z * S;
     g.fillStyle = '#070809'; g.fillRect(0, 0, c.width, c.height);
     for (const R of ROOMS) {
@@ -230,8 +234,9 @@ export class UI {
       g.strokeStyle = door.locked ? '#d8a33a' : door.open ? '#070809' : '#b8b2a2';
       g.lineWidth = 4;
       g.beginPath();
-      if (d.axis === 'x') { g.moveTo(X(d.x - 1), Z(d.z)); g.lineTo(X(d.x + 1), Z(d.z)); }
-      else { g.moveTo(X(d.x), Z(d.z - 1)); g.lineTo(X(d.x), Z(d.z + 1)); }
+      const hw = (d.w || 2) / 2;
+      if (d.axis === 'x') { g.moveTo(X(d.x - hw), Z(d.z)); g.lineTo(X(d.x + hw), Z(d.z)); }
+      else { g.moveTo(X(d.x), Z(d.z - hw)); g.lineTo(X(d.x), Z(d.z + hw)); }
       g.stroke();
     }
     const p = G.player;
