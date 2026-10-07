@@ -49,6 +49,7 @@ Then open http://localhost:8000. The Prologue starts by default; open http://loc
 | Port layout: pier, dock office, Warehouse 3, break room, customs cage, control house, container yard and boat dock. Doors, shutters, gates, the gantry crane, rain | `src/level.js` |
 | Story flow, documents, radio, the cage keypad (0214), the crane switches (3, 1, 2), the drop zone, cutscenes, relay-radio saves | `src/story.js` |
 | HUD, inventory, map, keypad and crane panel | `src/ui.js` |
+| Real 3D characters: loads rigged .glb or .fbx models listed in `models/models.json` and drives their skeletons from the stand-in bodies (see [models/README.md](models/README.md)) | `src/models.js` |
 | Prologue: the Gullwing Hotel, its garage and the drive to Kestrel Street; time of day and per-floor lighting | `src/prologue/level0.js` |
 | Prologue story: the opening, check-in, the window, Ortiz at the door, the stairwell, bay 14, the field office | `src/prologue/story0.js` |
 | The drive: car handling, crashes, the car's health, runners that grab a slow car, Ortiz shooting them off | `src/prologue/drive.js` |

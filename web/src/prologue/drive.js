@@ -102,7 +102,7 @@ export class Drive {
 
   // Leon at the wheel (right of the car's centre line), Ortiz beside him. Also used in the garage cutscene.
   static seatCrew(car) {
-    const crew = [buildHumanoid({ top: 0x3a3d34, bottom: 0x24262a, vest: 0x26292b, skin: 0xc49a7e, hair: 0x15110d }), buildHumanoid({ top: 0x1c2430, bottom: 0x1a1c20, skin: 0xb08066, hair: 0x120e0c, ponytail: true, scale: 0.97 })];
+    const crew = [buildHumanoid({ role: 'leon', top: 0x3a3d34, bottom: 0x24262a, vest: 0x26292b, skin: 0xc49a7e, hair: 0x15110d }), buildHumanoid({ role: 'ortiz', top: 0x1c2430, bottom: 0x1a1c20, skin: 0xb08066, hair: 0x120e0c, ponytail: true, scale: 0.97 })];
     crew.forEach((h, i) => { h.root.position.set(i ? -0.42 : 0.42, -0.05, -0.35); car.add(h.root); poseHumanoid(h, { kneel: 1 }); h.armR.sh.rotation.set(-1.2, 0, 0.1); h.armL.sh.rotation.set(-1.2, 0, -0.1); });
     // open the cabin up: a roof and four pillars instead of the solid block
     const cab = car.userData.cabin;

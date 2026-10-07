@@ -3,6 +3,7 @@
 // negative X rotation swings a limb forward.
 import * as THREE from 'three';
 import { tex } from './textures.js';
+import { attachModel } from './models.js';
 
 function m(kind, color, rough = 0.85) {
   return new THREE.MeshStandardMaterial({ map: tex(kind, 1), color, roughness: rough, bumpMap: tex(kind, 1), bumpScale: 0.4 });
@@ -93,6 +94,7 @@ export function buildHumanoid(o = {}) {
   h.legL = leg(1); h.legR = leg(-1);
 
   root.traverse(c => { if (c.isMesh) h.meshes.push(c); });
+  if (o.role) attachModel(h, o.role); // a real 3D model, if web/models/models.json names one
   return h;
 }
 

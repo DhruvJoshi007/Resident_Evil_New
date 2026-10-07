@@ -33,7 +33,7 @@ const LOOK = {
 // Someone who is not the player and not an enemy: walks along waypoints and poses.
 class Npc {
   constructor(look, x, z, yaw = 0) {
-    this.h = buildHumanoid(look);
+    this.h = buildHumanoid({ role: Object.keys(LOOK).find(k => LOOK[k] === look), ...look });
     G.scene.add(this.h.root);
     this.pos = this.h.root.position; this.pos.set(x, 0, z);
     this.yaw = yaw; this.phase = 0; this.stride = 0;

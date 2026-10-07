@@ -573,7 +573,7 @@ export class Story {
     const p = G.player, L = G.level;
     const tender = L.makeBoat(0x4a4038);
     G.scene.add(tender);
-    const hank = buildHumanoid({ top: 0x3a4a3a, bottom: 0x2a2a2a, skin: 0xb88a6e, hair: 0x6a6258, scale: 1.0 });
+    const hank = buildHumanoid({ role: 'hank', top: 0x3a4a3a, bottom: 0x2a2a2a, skin: 0xb88a6e, hair: 0x6a6258, scale: 1.0 });
     tender.add(hank.root); hank.root.position.set(0.3, 0.62, 0.7); hank.root.rotation.y = Math.PI;
     const work = new THREE.PointLight(0xffe2c0, 5, 7, 1.6); work.position.set(0, 2.4, -1.2); tender.add(work);
     const place = (z) => { tender.position.set(0, -0.25 + Math.sin(G.time * 1.6) * 0.05, z); tender.rotation.z = Math.sin(G.time * 1.1) * 0.025; };

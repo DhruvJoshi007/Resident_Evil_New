@@ -53,9 +53,9 @@ export function tapeCutscene(story, onDone) {
   };
 
   // actors and props
-  const begg = actor({ top: 0x33414a, bottom: 0x23262a, skin: 0xc49a7e, hair: 0x2a1b12 });
-  const kelso = actor({ top: 0x9a8a2a, bottom: 0x2a3040, skin: 0xb48a6e, hair: 0x15110d, scale: 1.12 });
-  const bert = actor({ top: 0x2a2e3a, bottom: 0x2e2a26, skin: 0xc8a890, hair: 0x9a968c, scale: 0.94 });
+  const begg = actor({ role: 'begg', top: 0x33414a, bottom: 0x23262a, skin: 0xc49a7e, hair: 0x2a1b12 });
+  const kelso = actor({ role: 'kelso', top: 0x9a8a2a, bottom: 0x2a3040, skin: 0xb48a6e, hair: 0x15110d, scale: 1.12 });
+  const bert = actor({ role: 'bert', top: 0x2a2e3a, bottom: 0x2e2a26, skin: 0xc8a890, hair: 0x9a968c, scale: 0.94 });
   const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 0.8, 6), new THREE.MeshStandardMaterial({ color: 0x5a1a14, metalness: 0.6 }));
   bar.position.y = -0.25; begg.h.armR.grip.add(bar);
   const flask = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.22, 10), new THREE.MeshStandardMaterial({ color: 0x8a9a9a, metalness: 0.8, roughness: 0.3 }));

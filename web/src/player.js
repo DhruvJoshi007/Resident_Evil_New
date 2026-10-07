@@ -11,7 +11,7 @@ const RADIUS = 0.32;
 export class Player {
   constructor() {
     // Worn tactical jacket, utility vest, dark trousers and boots; short dark hair.
-    this.h = buildHumanoid({ top: 0x3a3d34, bottom: 0x24262a, vest: 0x26292b, skin: 0xc49a7e, hair: 0x15110d, scale: 1.04 });
+    this.h = buildHumanoid({ role: 'leon', top: 0x3a3d34, bottom: 0x24262a, vest: 0x26292b, skin: 0xc49a7e, hair: 0x15110d, scale: 1.04 });
     const pouch = new THREE.MeshStandardMaterial({ color: 0x1c1e1f, roughness: 0.8 });
     for (const x of [-0.11, 0, 0.11]) {
       const p = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.1, 0.05), pouch);

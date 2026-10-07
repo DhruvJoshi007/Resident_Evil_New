@@ -12,6 +12,7 @@ import { Player } from './player.js';
 import { Weapons } from './weapons.js';
 import { Items } from './items.js';
 import { Story, loadData } from './story.js';
+import { loadModelList, syncModels } from './models.js';
 import { UI } from './ui.js';
 
 const $ = (id) => document.getElementById(id);
@@ -175,7 +176,7 @@ function resume() {
 const CHAPTER = location.hash === '#chapter1' ? 1 : 0;
 
 async function boot() {
-  const data = await loadData(CHAPTER);
+  const [data] = await Promise.all([loadData(CHAPTER), loadModelList()]);
   initRenderer();
   G.input = new Input(G.renderer.domElement);
   G.audio = new Audio();
@@ -238,6 +239,7 @@ async function boot() {
 
 function tick(dt) {
   logic(dt);
+  syncModels();
   // security footage holds each frame for 1/8 s, like a cheap recorder
   if (G.frameHold) { G.holdT = (G.holdT || 0) + dt; if (G.holdT >= G.frameHold) { G.holdT = 0; G.composer.render(dt); } }
   else G.composer.render(dt);

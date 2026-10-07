@@ -31,7 +31,7 @@ export class Husk {
     const B = this.build = BUILDS[o.build || 'normal'];
     const pool = LOOKS[o.build || 'normal'];
     const look = o.clothes || pool[(Math.random() * pool.length) | 0];
-    this.h = buildHumanoid({ zombie: true, skin: 0xa3a690, hair: o.build === 'frail' ? 0x8a8478 : Math.random() < 0.3 ? null : 0x1a1612, scale: o.scale ?? B.scale * rand(0.97, 1.03), ...look });
+    this.h = buildHumanoid({ role: o.role || (o.build === 'worker' ? 'husk_big' : o.build === 'frail' ? 'husk_frail' : 'husk'), zombie: true, skin: 0xa3a690, hair: o.build === 'frail' ? 0x8a8478 : Math.random() < 0.3 ? null : 0x1a1612, scale: o.scale ?? B.scale * rand(0.97, 1.03), ...look });
     this.h.root.position.set(o.x, 0, o.z);
     this.h.root.rotation.y = this.yaw = o.yaw ?? rand(0, 6.28);
     G.scene.add(this.h.root);
@@ -492,7 +492,7 @@ export class Husk {
 // ============================================================
 export class Hookman extends Husk {
   constructor(o) {
-    super({ ...o, hp: 1100, scale: 1.4, canRise: false, clothes: { top: 0x8a4a14, bottom: 0x2a3040, vest: 0x9a7a1a, helmet: 0xc9a227 }, speed: 1.15, bite: 0 });
+    super({ ...o, role: 'hookman', hp: 1100, scale: 1.4, canRise: false, clothes: { top: 0x8a4a14, bottom: 0x2a3040, vest: 0x9a7a1a, helmet: 0xc9a227 }, speed: 1.15, bite: 0 });
     this.name = 'The Hookman';
     this.boss = true;
     this.phase2 = false;
