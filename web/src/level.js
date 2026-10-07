@@ -7,7 +7,11 @@
 // facade, a stack of shipping containers, a chain-link fence, or open water.
 import * as THREE from 'three';
 import { G, rand } from './game.js';
+
 import { mat, labelTexture, chainLinkTexture } from './textures.js';
+
+// Every room lamp and floodlight is this much brighter than its listed value.
+export const LIGHT_BOOST = 1.7;
 
 let GX0 = -26, GZ0 = -36, GW = 54, GH = 100;
 
@@ -16,13 +20,13 @@ export let ROOMS = [
   { id: 'office', name: 'Dock Office', x0: -22, x1: -10, z0: 42, z1: 54, h: 3.2, floor: 'tile', step: 'tile', wall: 'plaster', safe: true,
     lights: [{ x: -16, z: 48, color: 0xffd9a0, i: 9 }] },
   { id: 'warehouse', name: 'Warehouse 3', x0: -10, x1: 14, z0: 14, z1: 40, h: 7, floor: 'concrete', step: 'concrete', wall: 'corrugated',
-    lights: [{ x: -2, z: 33, color: 0xffc890, i: 14, flick: true }, { x: 6, z: 21, color: 0xd8e4ff, i: 10 }, { x: -6, z: 19, color: 0xffc890, i: 0, off: true }] },
+    lights: [{ x: -2, z: 33, color: 0xffc890, i: 14, flick: true }, { x: 6, z: 21, color: 0xd8e4ff, i: 10 }, { x: -6, z: 19, color: 0xffc890, i: 0, off: true }, { x: 8, z: 31, color: 0xffc890, i: 9 }] },
   { id: 'break', name: 'Break Room', x0: 14, x1: 24, z0: 28, z1: 40, h: 3, floor: 'tile', step: 'tile', wall: 'plaster',
     lights: [{ x: 19, z: 34, color: 0xe8f0ff, i: 7, flick: true }] },
   { id: 'customs', name: 'Customs Cage', x0: 14, x1: 24, z0: 14, z1: 28, h: 3.4, floor: 'concrete', step: 'concrete', wall: 'corrugated', special: true,
     lights: [{ x: 19, z: 21, color: 0xfff0d0, i: 8 }] },
   { id: 'control', name: 'Crane Control House', x0: -24, x1: -10, z0: 14, z1: 26, h: 3.2, floor: 'concrete', step: 'metal', wall: 'plaster',
-    lights: [{ x: -17, z: 20, color: 0xd0ffe0, i: 0, off: true }] },
+    lights: [{ x: -17, z: 20, color: 0xd0ffe0, i: 0, off: true }, { x: -13, z: 16, color: 0xffc890, i: 4 }] },
   { id: 'yard', name: 'Container Yard', x0: -24, x1: 26, z0: -22, z1: 14, floor: 'asphalt', step: 'wet', outdoor: true, edge: 'stack' },
   { id: 'dock', name: 'Boat Dock', x0: -6, x1: 6, z0: -34, z1: -22, floor: 'planks', step: 'wet', outdoor: true, edge: 'water' },
 ];
@@ -417,8 +421,8 @@ export class Level {
   }
 
   buildLights() {
-    G.scene.add(new THREE.HemisphereLight(0x7a8aa0, 0x14110e, 0.42));
-    const moon = new THREE.DirectionalLight(0x8aa0c8, 0.55);
+    G.scene.add(new THREE.HemisphereLight(0x8a9ab4, 0x2a2420, 1.4));
+    const moon = new THREE.DirectionalLight(0x9ab0d8, 1.0);
     moon.position.set(-30, 40, 50); moon.target.position.set(0, 0, 10);
     G.scene.add(moon, moon.target);
     this.roomLights();
@@ -426,6 +430,7 @@ export class Level {
     this.yardFloods = [this.flood(-18, -14, 0xffa860, 34, true), this.flood(20, 6, 0xffb070, 28), this.flood(-12, 8, 0xffa860, 26), this.flood(12.5, -20.6, 0xffb070, 24)];
     this.setYardPower(false);
     this.flood(8, 56, 0xffb070, 22);
+    this.flood(-8, 44, 0xffb070, 16); // pier head
     this.flood(-5.4, -31, 0xffa860, 16);
   }
 
@@ -433,7 +438,7 @@ export class Level {
     for (const R of ROOMS) {
       for (const L of R.lights || []) {
         const y = (R.h || 4) - 0.35;
-        const l = new THREE.PointLight(L.color, L.i || 1, R.h > 5 ? 26 : 18, 1.6);
+        const l = new THREE.PointLight(L.color, (L.i || 1) * LIGHT_BOOST, R.h > 5 ? 30 : 22, 1.5);
         l.position.set(L.x, y, L.z);
         const fixture = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.45, 0.12, 16), new THREE.MeshStandardMaterial({ color: 0x222222, emissive: L.color, emissiveIntensity: L.off ? 0 : 2.5 }));
         fixture.position.set(L.x, R.h - 0.08, L.z);
@@ -443,8 +448,8 @@ export class Level {
           cable.position.set(L.x, (R.h + y + 0.25) / 2, L.z); this.group.add(cable);
         }
         this.group.add(l, fixture);
-        const rec = { room: R, lamp: l, fixture, base: L.i || 1, off: !!L.off };
-        if (L.off) { l.visible = false; l.intensity = 9; rec.base = 9; }
+        const rec = { room: R, lamp: l, fixture, base: (L.i || 1) * LIGHT_BOOST, off: !!L.off };
+        if (L.off) { l.visible = false; l.intensity = rec.base = 9 * LIGHT_BOOST; }
         this.lights.push(rec);
         if (L.flick) this.flicker.push(rec);
         if (!R.lamp) { R.lamp = l; R.fixture = fixture; }
@@ -453,14 +458,14 @@ export class Level {
   }
 
   flood(x, z, color, intensity, flick) {
-    const l = new THREE.PointLight(color, intensity, 34, 1.5);
+    const l = new THREE.PointLight(color, intensity * LIGHT_BOOST, 40, 1.4);
     l.position.set(x, 8.5, z); G.scene.add(l);
     const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.14, 9, 8), new THREE.MeshStandardMaterial({ color: 0x1b1d1f, metalness: 0.6, roughness: 0.5 }));
     pole.position.set(x, 4.5, z); this.group.add(pole);
     const head = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.3, 0.5), new THREE.MeshStandardMaterial({ color: 0x111111, emissive: color, emissiveIntensity: 3 }));
     head.position.set(x, 8.9, z); this.group.add(head);
     G.colliders.push({ minX: x - 0.15, maxX: x + 0.15, minZ: z - 0.15, maxZ: z + 0.15, prop: true });
-    const rec = { lamp: l, fixture: head, base: intensity, flood: true };
+    const rec = { lamp: l, fixture: head, base: intensity * LIGHT_BOOST, flood: true };
     if (flick) this.flicker.push(rec);
     return rec;
   }

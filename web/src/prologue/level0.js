@@ -38,9 +38,9 @@ const ROOMS0 = [
     lights: [{ x: 69, z: 27, color: 0xd8e4ff, i: 7 }] },
   // garage level P2
   { id: 'garage', name: 'Garage Level P2', zone: 'garage', x0: -20, x1: 24, z0: -44, z1: -14, h: 2.9, floor: 'concrete', step: 'concrete', wall: 'concrete',
-    lights: [{ x: -12, z: -22, color: 0xd8f0ff, i: 3, flick: true }, { x: 10, z: -22, color: 0xd8f0ff, i: 3 }, { x: -6, z: -36, color: 0xffb070, i: 2.5 }, { x: 14, z: -38, color: 0xd8f0ff, i: 0, off: true }] },
+    lights: [{ x: -12, z: -22, color: 0xd8f0ff, i: 8, flick: true }, { x: 10, z: -22, color: 0xd8f0ff, i: 8 }, { x: -6, z: -36, color: 0xffb070, i: 7 }, { x: -14, z: -39, color: 0xd8f0ff, i: 6 }, { x: 4, z: -40, color: 0xd8f0ff, i: 7 }, { x: 0, z: -29, color: 0xffd8a0, i: 6 }, { x: 14, z: -38, color: 0xd8f0ff, i: 0, off: true }] },
   { id: 'p2stairs', name: 'Garage Stairs', zone: 'garage', x0: 24, x1: 28, z0: -22, z1: -14, h: 2.9, floor: 'concrete', step: 'concrete', wall: 'concrete',
-    lights: [{ x: 26, z: -18, color: 0xffa060, i: 2 }] },
+    lights: [{ x: 26, z: -18, color: 0xffa060, i: 6 }] },
   // outside: Harbor Avenue in front of the hotel (seen, never walked) and the drive
   { id: 'harbor', name: 'Harbor Avenue', zone: 'street', noMap: true, x0: -40, x1: 80, z0: 40, z1: 58, floor: 'asphalt', step: 'wet', outdoor: true, edge: 'city' },
   { id: 'harborS', name: 'Harbor Avenue', zone: 'street', noMap: true, x0: -8, x1: 8, z0: -416, z1: -60, floor: 'asphalt', step: 'wet', outdoor: true, edge: 'city' },
@@ -148,7 +148,7 @@ export class PrologueLevel extends Level {
   }
 
   buildLights() {
-    this.hemi = new THREE.HemisphereLight(0x7a8aa0, 0x14110e, 0.42);
+    this.hemi = new THREE.HemisphereLight(0x8a9ab4, 0x2a2420, 1.0);
     this.sun = new THREE.DirectionalLight(0x8aa0c8, 0.55);
     this.sun.position.set(-40, 60, 30); this.sun.target.position.set(0, 0, 0);
     G.scene.add(this.hemi, this.sun, this.sun.target);
@@ -171,7 +171,7 @@ export class PrologueLevel extends Level {
     pole.position.set(x, 3, z); this.group.add(pole);
     const head = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.18, 0.35), new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0xffb070, emissiveIntensity: 3 }));
     head.position.set(x, 6.05, z + 0.4); this.group.add(head);
-    const l = new THREE.PointLight(0xffb070, 10, 22, 1.6); l.position.set(x, 5.8, z + 1); G.scene.add(l);
+    const l = new THREE.PointLight(0xffb070, 18, 26, 1.5); l.position.set(x, 5.8, z + 1); G.scene.add(l);
     return { lamp: l, fixture: head };
   }
 
@@ -180,12 +180,12 @@ export class PrologueLevel extends Level {
     this.time = t;
     const S = G.scene;
     const night = t === 'night';
-    S.background.set(night ? 0x050608 : t === 'dawn' ? 0x5a5c66 : 0x7a8088);
-    S.fog.color.set(night ? 0x07080a : t === 'dawn' ? 0x4a4c54 : 0x6a7076);
-    S.fog.density = night ? 0.04 : 0.012;
-    this.hemi.color.set(night ? 0x7a8aa0 : 0xb8c4d4); this.hemi.groundColor.set(night ? 0x14110e : 0x4a443c);
-    this.hemi.intensity = night ? 0.42 : t === 'dawn' ? 1.5 : 1.9;
-    this.sun.color.set(night ? 0x8aa0c8 : 0xe8e4dc); this.sun.intensity = night ? 0.5 : 1.6;
+    S.background.set(night ? 0x161b22 : t === 'dawn' ? 0x5a5c66 : 0x7a8088);
+    S.fog.color.set(night ? 0x161b22 : t === 'dawn' ? 0x4a4c54 : 0x6a7076);
+    S.fog.density = night ? 0.026 : 0.01;
+    this.hemi.color.set(night ? 0x8a9ab4 : 0xb8c4d4); this.hemi.groundColor.set(night ? 0x2a2420 : 0x4a443c);
+    this.hemi.intensity = night ? 1.4 : t === 'dawn' ? 1.8 : 2.2;
+    this.sun.color.set(night ? 0x8aa0c8 : 0xe8e4dc); this.sun.intensity = night ? 0.9 : 1.8;
     for (const s of this.streetLamps) s.fixture.material.emissiveIntensity = night ? 3 : 0.2;
     // in the morning the hotel has lost its power: emergency lighting only,
     // and room 304 is lit by the grey window
@@ -193,10 +193,10 @@ export class PrologueLevel extends Level {
       const id = rec.room.id;
       rec.want = !rec.off;
       if (night) continue;
-      if (id === 'r304') { rec.lamp.color.set(0xb8c4d4); rec.lamp.intensity = rec.base = 9; rec.fixture.material.emissiveIntensity = 0; continue; }
+      if (id === 'r304') { rec.lamp.color.set(0xb8c4d4); rec.lamp.intensity = rec.base = 15; rec.fixture.material.emissiveIntensity = 0; continue; }
       if (['lobby', 'bar', 'office', 'corridor', 'stair1', 'stair3'].includes(id)) {
-        const keep = id === 'stair3' || id === 'stair1' || rec === this.lights.find(r => r.room.id === id);
-        rec.want = keep; rec.lamp.color.set(0xff5a3a); rec.lamp.intensity = rec.base = id === 'stair3' ? 9 : 6;
+        const keep = true; // every emergency lamp works, so no corridor goes black
+        rec.want = keep; rec.lamp.color.set(0xff5a3a); rec.lamp.intensity = rec.base = id === 'stair3' ? 15 : 11;
         rec.fixture.material.emissive.set(0xff5a3a); rec.fixture.material.emissiveIntensity = keep ? 1.2 : 0;
       }
     }
@@ -388,6 +388,7 @@ export class PrologueLevel extends Level {
     this.barrier = this.box(-150.5, -408, 0.15, 6, 0.15, paint(0xc83020), { y: 1.0, solid: false });
     this.sign(-169.8, 4, -408, Math.PI / 2, ['FEDERAL FIELD OFFICE', 'KESTREL STREET'], { w: 5.5, h: 1.2, size: 52, bg: '#1a2a3a', fg: '#e0e0d0' });
     this.box(-168, -408, 2.2, 4, 0.2, paint(0x2a2a2a), { y: 2.7, solid: false }); // the entrance canopy
+    const porch = new THREE.PointLight(0xffd8a8, 14, 14, 1.5); porch.position.set(-167.4, 2.5, -408); this.group.add(porch); // the porch lamp over the door
     this.fieldDoor = this.box(-168.9, -408, 0.1, 1.8, 2.3, paint(0x0c1418, 0.1), { solid: false });
 
     this.buildSets();

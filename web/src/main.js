@@ -63,6 +63,8 @@ function onKey(e) {
     else if (e.code === 'KeyM') ui.showMap();
     else if (e.code === 'Escape') pause();
   }
+  // brightness: - and = (or + on the keypad), any time
+  if (['Minus', 'NumpadSubtract', 'Equal', 'NumpadAdd'].includes(e.code)) setBrightness(G.fx.bright.value + (e.code === 'Minus' || e.code === 'NumpadSubtract' ? -0.1 : 0.1), true);
 }
 
 // ---------- renderer & post ----------
@@ -73,11 +75,11 @@ function initRenderer() {
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.3;
+  renderer.toneMappingExposure = 1.7;
   $('game').appendChild(renderer.domElement);
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x050608);
-  scene.fog = new THREE.FogExp2(0x07080a, 0.042);
+  scene.background = new THREE.Color(0x161b22);
+  scene.fog = new THREE.FogExp2(0x161b22, 0.026);
   const camera = new THREE.PerspectiveCamera(62, innerWidth / innerHeight, 0.05, 200);
   const target = new THREE.WebGLRenderTarget(innerWidth, innerHeight, { type: THREE.HalfFloatType, samples: 4 });
   const composer = new EffectComposer(renderer, target);
@@ -86,10 +88,10 @@ function initRenderer() {
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
   const grade = new ShaderPass({
-    uniforms: { tDiffuse: { value: null }, time: { value: 0 }, danger: { value: 0 }, hurt: { value: 0 }, ca: { value: 0.6 }, infect: { value: 0 }, cctv: { value: 0 }, glitch: { value: 0 } },
+    uniforms: { tDiffuse: { value: null }, time: { value: 0 }, danger: { value: 0 }, hurt: { value: 0 }, ca: { value: 0.6 }, infect: { value: 0 }, cctv: { value: 0 }, glitch: { value: 0 }, bright: { value: 1.25 } },
     vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }',
     fragmentShader: `
-      uniform sampler2D tDiffuse; uniform float time, danger, hurt, ca, infect, cctv, glitch; varying vec2 vUv;
+      uniform sampler2D tDiffuse; uniform float time, danger, hurt, ca, infect, cctv, glitch, bright; varying vec2 vUv;
       float rnd(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
       void main(){
         vec2 uv = vUv;
@@ -103,10 +105,12 @@ function initRenderer() {
         float off = ca * (0.0015 + 0.006 * r) * (1.0 + danger);
         vec3 col = vec3(texture2D(tDiffuse, vUv + d * off).r, texture2D(tDiffuse, vUv).g, texture2D(tDiffuse, vUv - d * off).b);
         float lum = dot(col, vec3(0.299, 0.587, 0.114));
-        col = mix(col, vec3(lum), 0.2 + danger * 0.45);
+        col = mix(col, vec3(lum), 0.12 + danger * 0.45);
+        // brightness setting: lifts the shadows more than the highlights
+        col = pow(max(col, 0.0), vec3(1.0 / bright));
         col *= vec3(1.02, 0.99, 0.93);
         float vig = smoothstep(0.9, 0.22, r * (1.0 + danger * 0.35));
-        col *= mix(0.25, 1.0, vig);
+        col *= mix(0.6, 1.0, vig);
         col += vec3(0.55, 0.0, 0.0) * hurt * (1.0 - vig * 0.6);
         col = mix(col, col * vec3(1.25, 0.55, 0.55), danger * 0.3 * (0.5 + 0.5 * sin(time * 4.5)) * (1.0 - vig));
         col += (rnd(vUv * vec2(1731.0, 977.0) + fract(time)) - 0.5) * 0.055;
@@ -126,10 +130,21 @@ function initRenderer() {
   });
   composer.addPass(grade);
   G.renderer = renderer; G.scene = scene; G.camera = camera; G.composer = composer; G.fx = grade.uniforms;
+  // a soft light on the camera so faces and walls near the lens never go fully black
+  G.camFill = new THREE.PointLight(0xc8d2e0, 3, 9, 1.6); camera.add(G.camFill); scene.add(camera);
+  let saved = 1.25; try { saved = parseFloat(localStorage.getItem('evilrise.bright')) || 1.25; } catch {}
+  setBrightness(saved);
   addEventListener('resize', () => {
     camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
     renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight);
   });
+}
+
+function setBrightness(v, announce) {
+  v = Math.round(Math.min(2, Math.max(0.8, v)) * 10) / 10;
+  G.fx.bright.value = v;
+  try { localStorage.setItem('evilrise.bright', String(v)); } catch {}
+  if (announce) G.ui?.toast(`Brightness ${Math.round(v * 100)}%  ( - darker, = brighter )`, 2);
 }
 
 G.requestLock = () => {

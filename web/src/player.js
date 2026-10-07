@@ -49,12 +49,12 @@ export class Player {
     this.camOverride = null; // cutscene camera
     this.camPos = new THREE.Vector3();
 
-    const fl = this.flashlight = new THREE.SpotLight(0xfff1dc, 70, 28, 0.44, 0.55, 1.5);
+    const fl = this.flashlight = new THREE.SpotLight(0xfff1dc, 95, 36, 0.52, 0.5, 1.3);
     fl.castShadow = true;
     fl.shadow.mapSize.set(1024, 1024);
-    fl.shadow.bias = -0.0005; fl.shadow.camera.near = 0.3; fl.shadow.camera.far = 28;
+    fl.shadow.bias = -0.0005; fl.shadow.camera.near = 0.3; fl.shadow.camera.far = 36;
     G.scene.add(fl, fl.target);
-    this.fill = new THREE.PointLight(0x9fb2c8, 1.2, 5, 2);
+    this.fill = new THREE.PointLight(0x9fb2c8, 4, 10, 1.6);
     G.scene.add(this.fill);
     this.ray = new THREE.Raycaster();
   }

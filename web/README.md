@@ -34,6 +34,7 @@ Then open http://localhost:8000. The Prologue starts by default; open http://loc
 | Tab | Inventory, files and herb mixing |
 | M | Map |
 | Space | Skip cutscene |
+| - and = | Darker and brighter (remembered next time) |
 | W A S D (in the car) | Accelerate, brake and reverse, steer |
 
 ## What is in it
